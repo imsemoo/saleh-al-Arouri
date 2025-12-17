@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "Almarai";
+  src: url("../fonts/Almarai-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almarai-Bold";
+  src: url("../fonts/Almarai-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almarai";
+  src: url("../fonts/Almarai-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almarai";
+  src: url("../fonts/Almarai-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Al-Jazeera-Arabic";
+  src: url("../fonts/Al-Jazeera-Arabic Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Al-Jazeera-Arabic-Bold";
+  src: url("../fonts/Al-Jazeera-Arabic\ Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barada";
+  src: url("../fonts/barada-reqa.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color tokens */
+  --color-primary: #15582d;
+  --color-primary-dark: #0d3f21;
+  --color-primary-light: #4f9a62;
+  --color-accent: #c7952a;
+  --color-accent-dark: #9c6a1d;
+  --color-neutral-950: #0f140f;
+  --color-neutral-900: #1c1c1a;
+  --color-neutral-800: #2c2a26;
+  --color-neutral-700: #44413c;
+  --color-neutral-600: #5a574f;
+  --color-neutral-400: #8c8778;
+  --color-neutral-200: #ded8cf;
+  --color-neutral-100: #f6f4ef;
+  --color-neutral-50: #ffffff;
+  --color-border: rgba(15, 20, 15, 0.15);
+
+  /* Spacing scale */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Radius scale */
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+
+  /* Shadow tokens */
+  --shadow-soft: 0 6px 18px rgba(15, 15, 15, 0.15);
+  --shadow-medium: 0 12px 32px rgba(10, 10, 10, 0.25);
+
+  /* Typography scale */
+  --type-h1: 2.75rem;
+  --type-h2: 2.25rem;
+  --type-h3: 1.875rem;
+  --type-h4: 1.5rem;
+  --type-h5: 1.25rem;
+  --type-h6: 1rem;
+  --type-body: 1rem;
+  --type-small: 0.875rem;
+
+  /* Font families */
+  --font-family-body: "Almarai", "Barada", system-ui, sans-serif;
+  --font-family-heading: "Almarai-Bold", sans-serif;
+
+  /* Z-index */
+  --z-index-nav: 900;
+  --z-index-modal: 1100;
+  --z-index-dropdown: 1050;
+
+  /* Misc */
+  --transition-fast: 220ms ease-in-out;
+  --page-max-width: 1200px;
+
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --header-border: rgba(15, 20, 15, 0.10);
+  --surface-bg: rgba(255, 255, 255, 0.92);
+  --surface-border: rgba(15, 20, 15, 0.10);
+
+  --ring: 0 0 0 4px rgba(199, 149, 42, 0.18);
+  --shadow-nav: 0 18px 35px rgba(15, 20, 15, 0.08);
+
+  --radius-pill: 999px;
+}
