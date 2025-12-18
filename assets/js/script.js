@@ -330,6 +330,25 @@ const initCollectionCards = () => {
     card.addEventListener("keydown", go);
   });
 };
+/**
+ * Makes milestone cards open the modal when clicking on the card body,
+ * while keeping the button as the primary call-to-action.
+ */
+const initMilestoneCards = () => {
+  document.querySelectorAll(".c-milestone").forEach((card) => {
+    const trigger = card.querySelector("[data-media-card]");
+    if (!trigger) return;
+
+    const open = (e) => {
+      // Ignore clicks on links/buttons inside
+      const isInteractive = e.target.closest("button, a, [data-media-card]");
+      if (isInteractive) return;
+      trigger.click();
+    };
+
+    card.addEventListener("click", open);
+  });
+};
 
 /**
  * Main bootstrap on DOM ready.
@@ -343,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCollectionNavigation();
   initHeaderScrollState();
   initCollectionCards();
+  initMilestoneCards();
 
 });
 

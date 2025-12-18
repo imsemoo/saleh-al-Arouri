@@ -580,176 +580,190 @@
       </section>
 
 
-      <section class="u-section c-timeline-teaser" id="timeline">
-        <div class="u-container-narrow">
-          <header class="c-section__head">
-            <div>
-              <p class="u-muted">سرد بياني متتابع</p>
-              <h2 class="c-card__title">محطات رئيسية</h2>
+      <!-- =========================================
+  TIMELINE TEASER — Editorial milestones
+  Notes:
+  - 1 featured milestone + 4 secondary
+  - Buttons open the existing media modal via data-media-card
+========================================= -->
+      <section class="u-section c-timeline" id="timeline" aria-label="محطات رئيسية">
+        <div class="container">
+
+          <!-- Header -->
+          <header class="c-timeline__head">
+            <div class="c-timeline__head-copy">
+              <p class="c-timeline__kicker">سرد بياني متتابع</p>
+              <h2 class="c-timeline__title">محطات رئيسية</h2>
+              <p class="c-timeline__subtitle">
+                خمسة مداخل تفتح باب القصة وتجمع الوسائط داخل محطة واحدة.
+              </p>
             </div>
-            <span class="u-muted">خمسة مداخل تفتح باب القصة</span>
+
+            <div class="c-timeline__head-actions">
+              <span class="c-timeline__pill" aria-label="عدد المحطات المعروضة">
+                <strong>5</strong> محطات
+              </span>
+              <a class="c-btn c-btn--outline" href="timeline.html">الخط الزمني كامل</a>
+            </div>
           </header>
-          <div class="c-timeline-grid">
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">1982</p>
-                <p class="c-timeline-card__content">بداية السجل المباشر في الضفة، توثيق مفاصل الانطلاق الأول.</p>
+
+          <!-- Grid -->
+          <div class="c-timeline__grid">
+
+            <!-- Featured milestone (latest / strongest) -->
+            <article class="c-milestone c-milestone--featured" role="group" aria-label="محطة 2023">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">2023</p>
+                <span class="c-milestone__badge">تحول رقمي</span>
               </div>
-              <div class="c-timeline-card__footer">
-                <div class="c-timeline-card__counters">
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <strong>3</strong>
-                    <span>فيديو</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
-                    <strong>8</strong>
-                    <span>صور</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                    <strong>2</strong>
-                    <span>صوت</span>
-                  </span>
-                </div>
-                <button type="button" class="c-btn c-btn--ghost c-timeline-card__btn" data-media-card
-                  data-modal-title="محطة 1982"
-                  data-modal-description="التوثيق الأولي لتجمعات الجبهة، وجمل ميدانية تروي التحدي."
-                  data-modal-badge="محطة 1982" data-modal-timestamp="1982 · انطلاق السرد"
-                  data-modal-source="أرشيف السجل الميداني" data-modal-image="assets/img/articles/thumb1.png"
-                  data-modal-video-label="ملف فيديو 01:02" data-modal-audio-label="مقتطف صوتي 00:41">عرض
-                  التفاصيل</button>
+
+              <h3 class="c-milestone__headline">دمج السرد مع الوسائط</h3>
+              <p class="c-milestone__desc">
+                تحول رقمي كامل يدمج الذكاء البصري مع السرد التأريخي لإظهار المحطات بمصادرها.
+              </p>
+
+              <div class="c-milestone__counters" aria-label="مؤشرات الوسائط">
+                <span class="c-counter">
+                  <i class="fa-solid fa-film" aria-hidden="true"></i>
+                  <strong>21</strong><span>فيديو</span>
+                </span>
+                <span class="c-counter">
+                  <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                  <strong>34</strong><span>صور</span>
+                </span>
+                <span class="c-counter">
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                  <strong>12</strong><span>صوت</span>
+                </span>
               </div>
-            </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">1996</p>
-                <p class="c-timeline-card__content">توثيق المحطات بعد اتفاقات جديدة، وتعزيز دور الراديو والسياسة
-                  الميدانية.</p>
-              </div>
-              <div class="c-timeline-card__footer">
-                <div class="c-timeline-card__counters">
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <strong>7</strong>
-                    <span>فيديو</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
-                    <strong>12</strong>
-                    <span>صور</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                    <strong>5</strong>
-                    <span>صوت</span>
-                  </span>
-                </div>
-                <button type="button" class="c-btn c-btn--ghost c-timeline-card__btn" data-media-card
-                  data-modal-title="محطة 1996"
-                  data-modal-description="محطة إعلامية بعد الاتفاق توثق إعادة الانتشار عبر الرسائل والصور."
-                  data-modal-badge="محطة 1996" data-modal-timestamp="1996 · الأرض والشبكة"
-                  data-modal-source="قناة الهوية" data-modal-image="assets/img/articles/film1.jpg"
-                  data-modal-video-label="تعليق 02:12" data-modal-audio-label="نسخة صوتية 01:39">عرض التفاصيل</button>
-              </div>
-            </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2006</p>
-                <p class="c-timeline-card__content">بروز خطابة جديدة في فضاءات القنوات الدولية، وعرض الحقائق على الهواء.
-                </p>
-              </div>
-              <div class="c-timeline-card__footer">
-                <div class="c-timeline-card__counters">
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <strong>14</strong>
-                    <span>فيديو</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
-                    <strong>22</strong>
-                    <span>صور</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                    <strong>9</strong>
-                    <span>صوت</span>
-                  </span>
-                </div>
-                <button type="button" class="c-btn c-btn--ghost c-timeline-card__btn" data-media-card
-                  data-modal-title="محطة 2006"
-                  data-modal-description="خطاب ميداني في أوروبا يربط التقارير المباشرة بأهداف الأرشيف."
-                  data-modal-badge="محطة 2006" data-modal-timestamp="2006 · أوروبا"
-                  data-modal-source="قناة الأرشيف الدولية" data-modal-image="assets/img/videos/featured.jpg"
-                  data-modal-video-label="نبذة 03:10" data-modal-audio-label="مقاطع صوتية 01:58">عرض التفاصيل</button>
-              </div>
-            </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2014</p>
-                <p class="c-timeline-card__content">إطلاق بوابة الشهادات والمحطات الصوتية مع تسجيلات نادرة.</p>
-              </div>
-              <div class="c-timeline-card__footer">
-                <div class="c-timeline-card__counters">
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <strong>9</strong>
-                    <span>فيديو</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
-                    <strong>6</strong>
-                    <span>صور</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                    <strong>17</strong>
-                    <span>صوت</span>
-                  </span>
-                </div>
-                <button type="button" class="c-btn c-btn--ghost c-timeline-card__btn" data-media-card
-                  data-modal-title="محطة 2014" data-modal-description="أرشفة شهادات صوتية ونشرها مع المفاتيح الصحفية."
-                  data-modal-badge="محطة 2014" data-modal-timestamp="2014 · بوابة الأصوات"
-                  data-modal-source="مكتبة المحطات" data-modal-image="assets/img/videos/thumb2.jpg"
-                  data-modal-video-label="مراقبة 02:45" data-modal-audio-label="أرشيف صوتي 03:16">عرض التفاصيل</button>
-              </div>
-            </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2023</p>
-                <p class="c-timeline-card__content">تحول رقمي كامل يدمج الذكاء البصري مع السرد التأريخي.</p>
-              </div>
-              <div class="c-timeline-card__footer">
-                <div class="c-timeline-card__counters">
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <strong>21</strong>
-                    <span>فيديو</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
-                    <strong>34</strong>
-                    <span>صور</span>
-                  </span>
-                  <span class="c-media-counter">
-                    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-                    <strong>12</strong>
-                    <span>صوت</span>
-                  </span>
-                </div>
-                <button type="button" class="c-btn c-btn--ghost c-timeline-card__btn" data-media-card
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--primary c-milestone__btn" data-media-card
                   data-modal-title="محطة 2023"
                   data-modal-description="بوابة الأرشفة الذكية التي تجمع الأدلة المتنوعة في رحلة واحدة."
                   data-modal-badge="محطة 2023" data-modal-timestamp="2023 · أرشيف رقمي"
                   data-modal-source="مركز البيانات" data-modal-image="assets/img/videos/thumb3.jpg"
-                  data-modal-video-label="مقاطع 04:10" data-modal-audio-label="تسجيل 02:25">عرض التفاصيل</button>
+                  data-modal-video="assets/videos/featured.mp4" data-modal-audio-label="تسجيل 02:25">
+                  عرض تفاصيل المحطة
+                </button>
+
+                <a class="c-milestone__link" href="timeline.html#2023">
+                  فتح داخل الخط الزمني
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
               </div>
             </article>
+
+            <!-- Secondary milestones -->
+            <article class="c-milestone" role="group" aria-label="محطة 1982">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">1982</p>
+                <span class="c-milestone__badge">بداية السجل</span>
+              </div>
+              <h3 class="c-milestone__headline">الانطلاقة الأولى</h3>
+              <p class="c-milestone__desc">بداية السجل المباشر وتوثيق مفاصل الانطلاق الأول.</p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>3</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>8</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>2</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 1982" data-modal-description="التوثيق الأولي وتفاصيل ميدانية تروي التحدي."
+                  data-modal-badge="محطة 1982" data-modal-timestamp="1982 · انطلاق السرد"
+                  data-modal-source="أرشيف السجل الميداني" data-modal-image="assets/img/articles/thumb1.png"
+                  data-modal-video="assets/videos/1982.mp4" data-modal-audio-label="مقتطف صوتي 00:41">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#1982">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <article class="c-milestone" role="group" aria-label="محطة 1996">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">1996</p>
+                <span class="c-milestone__badge">اتساع الرسالة</span>
+              </div>
+              <h3 class="c-milestone__headline">الأرض والشبكة</h3>
+              <p class="c-milestone__desc">تعزيز دور الراديو والسياسة الميدانية عبر مواد متعددة.</p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>7</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>12</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>5</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 1996" data-modal-description="محطة توثق إعادة الانتشار عبر الرسائل والصور."
+                  data-modal-badge="محطة 1996" data-modal-timestamp="1996 · الأرض والشبكة"
+                  data-modal-source="قناة الهوية" data-modal-image="assets/img/articles/film1.jpg"
+                  data-modal-video="assets/videos/1996.mp4" data-modal-audio-label="نسخة صوتية 01:39">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#1996">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <article class="c-milestone" role="group" aria-label="محطة 2006">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">2006</p>
+                <span class="c-milestone__badge">فضاءات دولية</span>
+              </div>
+              <h3 class="c-milestone__headline">الهواء الأوروبي</h3>
+              <p class="c-milestone__desc">بروز خطاب في القنوات الدولية وعرض الحقائق على الهواء.</p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>14</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>22</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>9</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 2006"
+                  data-modal-description="خطاب ميداني يربط التقارير المباشرة بأهداف الأرشيف."
+                  data-modal-badge="محطة 2006" data-modal-timestamp="2006 · أوروبا"
+                  data-modal-source="قناة الأرشيف الدولية" data-modal-image="assets/img/videos/featured.jpg"
+                  data-modal-video="assets/videos/2006.mp4" data-modal-audio-label="مقاطع صوتية 01:58">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#2006">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <article class="c-milestone" role="group" aria-label="محطة 2014">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">2014</p>
+                <span class="c-milestone__badge">بوابة الأصوات</span>
+              </div>
+              <h3 class="c-milestone__headline">أرشفة الشهادات</h3>
+              <p class="c-milestone__desc">إطلاق بوابة الشهادات والتسجيلات الصوتية مع مواد نادرة.</p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>9</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>6</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>17</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 2014" data-modal-description="أرشفة شهادات صوتية ونشرها مع مفاتيح صحفية."
+                  data-modal-badge="محطة 2014" data-modal-timestamp="2014 · بوابة الأصوات"
+                  data-modal-source="مكتبة المحطات" data-modal-image="assets/img/videos/thumb2.jpg"
+                  data-modal-video="assets/videos/2014.mp4" data-modal-audio-label="أرشيف صوتي 03:16">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#2014">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
+
 
       <section class="u-section c-quote-spotlight">
         <div class="u-container-narrow">
