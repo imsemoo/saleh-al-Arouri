@@ -1379,11 +1379,21 @@ body.is-dark .c-media-switch__btn.is-active {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-20);
-  border: 1px solid rgba(15, 20, 15, 0.10);
+  border: 1px solid var(--surface-border);
   background:
     var(--surface-bg);
   box-shadow: var(--shadow-medium);
   padding: var(--space-24);
+}
+
+.c-quote-spotlight__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(199, 149, 42, 0.0), rgba(199, 149, 42, 0.85), rgba(199, 149, 42, 0.0));
+  opacity: 0.65;
 }
 
 .c-quote-spotlight__accent {
@@ -1859,26 +1869,6 @@ body.is-dark .c-media-switch__btn.is-active {
   display: block;
 }
 
-.c-footer {
-  padding: var(--space-32) var(--space-24);
-  border-top: 1px solid rgba(17, 20, 15, 0.08);
-  margin-top: var(--space-32);
-  background-color: var(--color-neutral-50);
-}
-
-.c-footer__inner {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-12);
-  flex-wrap: wrap;
-}
-
-.c-logo+.c-footer__note {
-  margin-right: auto;
-}
 
 @media (max-width: 992px) {
   .c-nav {
@@ -2752,7 +2742,6 @@ body.is-dark .c-media-switch__btn.is-active {
 html[data-theme="light"] .c-page-shell,
 body:not(.is-dark) .c-page-shell {
   background-color: #f6f4ef;
-  /* قريب من الورق */
   background-image:
     /* soft green archival glow */
     radial-gradient(1200px 620px at 18% 22%,
@@ -3180,7 +3169,19 @@ html[data-theme="dark"] .c-theme-toggle {
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   cursor: pointer;
+  position: relative;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.c-media::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(199, 149, 42, 0.0), rgba(199, 149, 42, 0.85), rgba(199, 149, 42, 0.0));
+  opacity: 0.65;
+  z-index: 9;
 }
 
 .c-media:hover,
@@ -3531,7 +3532,7 @@ html[data-theme="dark"] .c-theme-toggle {
 ========================================================= */
 
 .c-footer {
-  background: var(--color-neutral-100);
+  background: var(--surface-bg);
   border-top: 1px solid var(--surface-border);
   padding: var(--space-64) 0 var(--space-32);
   color: var(--text-secondary);

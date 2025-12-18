@@ -76,7 +76,6 @@
       </div>
     </header>
 
-    <!-- Mobile Offcanvas Menu -->
     <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
       aria-labelledby="offcanvasMenuLabel">
       <div class="offcanvas-header c-offcanvas__header">
@@ -118,6 +117,7 @@
 
 
     <main>
+      <!-- Hero -->
       <section class="c-hero" aria-label="واجهة الأرشيف الرئيسية">
         <div class="container">
           <div class="row align-items-center g-4 g-lg-5">
@@ -265,7 +265,7 @@
                     <div class="c-persona__panel is-visible" data-persona-panel="video" role="tabpanel">
                       <div class="c-persona__video">
                         <video class="js-plyr" controls preload="metadata" poster="assets/images/videos/featured.jpg">
-                          <source src="assets/videos/arouri-intro.mp4" type="video/mp4" />
+                          <source src="assets/images/videos/featured.mp4" type="video/mp4" />
                         </video>
                       </div>
 
@@ -274,7 +274,7 @@
                     <div class="c-persona__panel" data-persona-panel="audio" role="tabpanel">
                       <div class="c-persona__audio-wrap">
                         <audio class="js-plyr" controls preload="metadata">
-                          <source src="assets/audio/arouri-clip.mp3" type="audio/mpeg" />
+                          <source src="assets/audio/001.mp3" type="audio/mpeg" />
                         </audio>
                       </div>
 
@@ -283,848 +283,840 @@
 
 
                 </div>
-            </div>
-            </aside>
 
+              </aside>
+
+            </div>
           </div>
         </div>
-  </div>
-  </section>
+      </section>
 
 
 
-  <!-- =========================================
-        ARCHIVE SNAPSHOT — Metrics at a glance
-        Notes:
-        - Editorial, minimal, premium
-        - Numbers are the hero, but context is required
-      ========================================= -->
-  <section class="u-section c-snapshot" aria-label="لمحة عن الأرشيف">
-    <div class="container">
+      <section class="u-section c-snapshot" aria-label="لمحة عن الأرشيف">
+        <div class="container">
 
-      <!-- Section header -->
-      <header class="c-snapshot__head">
-        <div class="c-snapshot__head-copy">
-          <p class="c-snapshot__kicker">مقياس مباشر لحجم التوثيق</p>
-          <h2 class="c-snapshot__title">لمحة عن الأرشيف</h2>
-          <p class="c-snapshot__subtitle">
-            مؤشرات سريعة تلخص حجم المواد المتاحة وتنوعها لتسهيل الدخول إلى المحتوى الأهم.
-          </p>
-        </div>
-
-        <!-- Optional lightweight action -->
-        <div class="c-snapshot__head-actions">
-          <a class="c-btn c-btn--outline" href="media.html" aria-label="الانتقال لصفحة الوسائط">
-            استعرض المكتبة
-          </a>
-        </div>
-      </header>
-
-      <!-- Metrics grid -->
-      <div class="c-snapshot__grid" role="list" aria-label="مؤشرات الأرشيف">
-
-        <!-- Photos -->
-        <article class="c-metric" role="listitem">
-          <div class="c-metric__top">
-            <span class="c-metric__icon" aria-hidden="true">
-              <i class="fa-regular fa-image"></i>
-            </span>
-            <span class="c-metric__tag">صور</span>
-          </div>
-
-          <p class="c-metric__value">2,480</p>
-          <p class="c-metric__label">عدد الصور</p>
-          <p class="c-metric__note">من أرشيف القنوات والمشاهد الميدانية.</p>
-        </article>
-
-        <!-- Videos -->
-        <article class="c-metric" role="listitem">
-          <div class="c-metric__top">
-            <span class="c-metric__icon" aria-hidden="true">
-              <i class="fa-solid fa-video"></i>
-            </span>
-            <span class="c-metric__tag">فيديو</span>
-          </div>
-
-          <p class="c-metric__value">1,120</p>
-          <p class="c-metric__label">عدد الفيديوهات</p>
-          <p class="c-metric__note">سجلات بصرية متتالية في محطات رئيسية.</p>
-        </article>
-
-        <!-- Reels -->
-        <article class="c-metric" role="listitem">
-          <div class="c-metric__top">
-            <span class="c-metric__icon" aria-hidden="true">
-              <i class="fa-solid fa-mobile-screen"></i>
-            </span>
-            <span class="c-metric__tag">ريلز</span>
-          </div>
-
-          <p class="c-metric__value">360</p>
-          <p class="c-metric__label">عدد الريلز</p>
-          <p class="c-metric__note">محتوى رأسي مخصص للمنصات الاجتماعية.</p>
-        </article>
-
-        <!-- Audio -->
-        <article class="c-metric" role="listitem">
-          <div class="c-metric__top">
-            <span class="c-metric__icon" aria-hidden="true">
-              <i class="fa-solid fa-wave-square"></i>
-            </span>
-            <span class="c-metric__tag">صوت</span>
-          </div>
-
-          <p class="c-metric__value">890</p>
-          <p class="c-metric__label">عدد المقاطع الصوتية</p>
-          <p class="c-metric__note">تسجيلات إذاعية وشهادات ومواد نادرة.</p>
-        </article>
-
-      </div>
-
-      <!-- Footer meta -->
-      <div class="c-snapshot__foot">
-        <p class="c-snapshot__update">آخر تحديث: 15 أبريل 2026 · وحدة التوثيق</p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================================
-        FEATURED COLLECTIONS — Smart entry points
-        Notes:
-        - Editorial cards with media previews
-        - Entire card is clickable (keyboard accessible)
-      ========================================= -->
-  <section class="u-section c-collections" aria-label="مجموعات مختارة">
-    <div class="container">
-
-      <!-- Section header -->
-      <header class="c-collections__head">
-        <div class="c-collections__head-copy">
-          <p class="c-collections__kicker">مفاتيح الدخول الذكي</p>
-          <h2 class="c-collections__title">مجموعات مختارة</h2>
-          <p class="c-collections__subtitle">
-            مسارات منظمة تساعدك على تصفح الأرشيف حسب طبيعة المادة بدل البحث العشوائي.
-          </p>
-        </div>
-
-        <div class="c-collections__head-actions">
-          <a class="c-btn c-btn--outline" href="media.html">كل المجموعات</a>
-        </div>
-      </header>
-
-      <!-- Cards grid -->
-      <div class="c-collections__grid">
-
-        <!-- Featured (big) -->
-        <article class="c-collection c-collection--featured" role="link" tabindex="0"
-          data-collection-link="media.html#coverage" aria-label="الانتقال إلى مجموعة الظهور الإعلامي">
-
-          <div class="c-collection__body">
-            <div class="c-collection__meta">
-              <span class="c-collection__chip">سجل مباشر</span>
-              <span class="c-collection__hint">استعرض المجموعة</span>
+          <!-- Section header -->
+          <header class="c-snapshot__head">
+            <div class="c-snapshot__head-copy">
+              <p class="c-snapshot__kicker">مقياس مباشر لحجم التوثيق</p>
+              <h2 class="c-snapshot__title">لمحة عن الأرشيف</h2>
+              <p class="c-snapshot__subtitle">
+                مؤشرات سريعة تلخص حجم المواد المتاحة وتنوعها لتسهيل الدخول إلى المحتوى الأهم.
+              </p>
             </div>
 
-            <h3 class="c-collection__title">الظهور الإعلامي</h3>
-            <p class="c-collection__desc">
-              مسارات ظهور متلاحقة في المحطات العربية والدولية مع وعي سردي واضح.
-            </p>
-
-            <!-- Media preview (editorial strip) -->
-            <div class="c-collection__preview" aria-hidden="true">
-              <div class="c-collection__thumb c-collection__thumb--main">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-              <div class="c-collection__thumb">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-              <div class="c-collection__thumb">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
+            <!-- Optional lightweight action -->
+            <div class="c-snapshot__head-actions">
+              <a class="c-btn c-btn--outline" href="media.html" aria-label="الانتقال لصفحة الوسائط">
+                استعرض المكتبة
+              </a>
             </div>
-
-            <div class="c-collection__footer">
-              <span class="c-collection__tag">محطات · لقاءات · تقارير</span>
-              <span class="c-collection__cta">
-                <span>استعرض المجموعة</span>
-                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#testimonials"
-          aria-label="الانتقال إلى مجموعة الشهادات والمحطات">
-
-          <div class="c-collection__body">
-            <div class="c-collection__meta">
-              <span class="c-collection__chip">رؤية صحفية</span>
-              <span class="c-collection__hint">استعرض المجموعة</span>
-            </div>
-
-            <h3 class="c-collection__title">الشهادات والمحطات</h3>
-            <p class="c-collection__desc">
-              توثيق شهادات شخصية ومحطات إذاعية تفاعل معها السرد السياسي.
-            </p>
-
-            <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
-              <div class="c-collection__thumb c-collection__thumb--main">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-              <div class="c-collection__thumb">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-            </div>
-
-            <div class="c-collection__footer">
-              <span class="c-collection__tag">شهادات · إذاعات · سرد</span>
-              <span class="c-collection__cta">
-                <span>استعرض</span>
-                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#audio"
-          aria-label="الانتقال إلى مجموعة التسجيلات الصوتية">
-
-          <div class="c-collection__body">
-            <div class="c-collection__meta">
-              <span class="c-collection__chip">خزانة الصوت</span>
-              <span class="c-collection__hint">استعرض المجموعة</span>
-            </div>
-
-            <h3 class="c-collection__title">التسجيلات الصوتية / الأناشيد</h3>
-            <p class="c-collection__desc">
-              أرشيف ألحان وأهازيج وأصوات توثّق الثقافة الحية لكل محطة.
-            </p>
-
-            <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
-              <div class="c-collection__thumb c-collection__thumb--main">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-              <div class="c-collection__thumb">
-                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-              </div>
-            </div>
-
-            <div class="c-collection__footer">
-              <span class="c-collection__tag">أناشيد · تسجيلات · نادر</span>
-              <span class="c-collection__cta">
-                <span>استعرض</span>
-                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =========================================
-        TIMELINE TEASER — Editorial milestones
-        Notes:
-        - 1 featured milestone + 4 secondary
-        - Buttons open the existing media modal via data-media-card
-      ========================================= -->
-  <section class="u-section c-timeline" id="timeline" aria-label="محطات رئيسية">
-    <div class="container">
-
-      <!-- Header -->
-      <header class="c-timeline__head">
-        <div class="c-timeline__head-copy">
-          <p class="c-timeline__kicker">سرد بياني متتابع</p>
-          <h2 class="c-timeline__title">محطات رئيسية</h2>
-          <p class="c-timeline__subtitle">
-            خمس محطات تلخص المسار وتجمع الوسائط داخل سياق واحد يساعدك على فهم الصورة كاملة.
-          </p>
-        </div>
-
-        <div class="c-timeline__head-actions">
-          <span class="c-timeline__pill" aria-label="عدد المحطات المعروضة">
-            <strong>5</strong> محطات
-          </span>
-          <a class="c-btn c-btn--outline" href="timeline.html">الخط الزمني كامل</a>
-        </div>
-      </header>
-
-      <!-- Grid -->
-      <div class="c-timeline__grid">
-
-        <!-- Featured milestone (latest / strongest) -->
-        <article class="c-milestone c-milestone--featured" role="group" aria-label="محطة 2024">
-          <div class="c-milestone__top">
-            <p class="c-milestone__year">2024</p>
-            <span class="c-milestone__badge">الرحيل والصدمة</span>
-          </div>
-
-          <h3 class="c-milestone__headline">اغتيال في الضاحية الجنوبية</h3>
-          <p class="c-milestone__desc">
-            في 2 يناير 2024 قُتل صالح العاروري في ضربة بطائرة مُسيّرة استهدفت الضاحية الجنوبية لبيروت.
-            شكلت الحادثة منعطفًا سياسيًا وأمنيًا واسع الأثر في سياق الحرب الدائرة آنذاك.
-          </p>
-
-          <div class="c-milestone__counters" aria-label="مؤشرات الوسائط">
-            <span class="c-counter">
-              <i class="fa-solid fa-film" aria-hidden="true"></i>
-              <strong>—</strong><span>فيديو</span>
-            </span>
-            <span class="c-counter">
-              <i class="fa-solid fa-camera" aria-hidden="true"></i>
-              <strong>—</strong><span>صور</span>
-            </span>
-            <span class="c-counter">
-              <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-              <strong>—</strong><span>صوت</span>
-            </span>
-          </div>
-
-          <div class="c-milestone__footer">
-            <button type="button" class="c-btn c-btn--primary c-milestone__btn" data-media-card
-              data-modal-title="محطة 2024"
-              data-modal-description="تفاصيل حادثة الاغتيال في بيروت، وردود الفعل، والمواد الموثقة المرتبطة بالمشهد السياسي والأمني."
-              data-modal-badge="2024" data-modal-timestamp="2 يناير 2024 · بيروت"
-              data-modal-source="مصادر إعلامية متعددة" data-modal-image="assets/img/videos/featured.jpg"
-              data-modal-video="assets/videos/featured.mp4" data-modal-audio-label="تصريحات/مقتطفات 02:25">
-              عرض تفاصيل المحطة
-            </button>
-
-            <a class="c-milestone__link" href="timeline.html#2024">
-              فتح داخل الخط الزمني
-              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Secondary milestones -->
-
-        <!-- 1966 -->
-        <article class="c-milestone" role="group" aria-label="محطة 1966">
-          <div class="c-milestone__top">
-            <p class="c-milestone__year">1966</p>
-            <span class="c-milestone__badge">البدايات</span>
-          </div>
-          <h3 class="c-milestone__headline">الميلاد في عارورة</h3>
-          <p class="c-milestone__desc">
-            وُلد صالح محمد سليمان العاروري في بلدة عارورة قرب رام الله (الضفة الغربية) عام 1966.
-          </p>
-
-          <div class="c-milestone__counters">
-            <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
-            <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
-            <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
-          </div>
-
-          <div class="c-milestone__footer">
-            <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
-              data-modal-title="محطة 1966"
-              data-modal-description="الجذور الأولى: عارورة، البيئة المحلية، وبدايات التكوين المبكر قبل الانخراط السياسي."
-              data-modal-badge="1966" data-modal-timestamp="19 أغسطس 1966 · عارورة" data-modal-source="سجلات تعريفية"
-              data-modal-image="assets/img/articles/thumb1.png" data-modal-video="assets/videos/1966.mp4"
-              data-modal-audio-label="سرد تعريفي 00:41">
-              عرض التفاصيل
-            </button>
-            <a class="c-milestone__link" href="timeline.html#1966">فتح <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <!-- 1987 -->
-        <article class="c-milestone" role="group" aria-label="محطة 1987">
-          <div class="c-milestone__top">
-            <p class="c-milestone__year">1987</p>
-            <span class="c-milestone__badge">الانخراط</span>
-          </div>
-          <h3 class="c-milestone__headline">الجامعة وبدايات العمل التنظيمي</h3>
-          <p class="c-milestone__desc">
-            خلال دراسته في جامعة الخليل (الشريعة)، تزامن نشاطه مع اندلاع الانتفاضة الأولى، وانخرط في حركة حماس منذ
-            أواخر الثمانينيات.
-          </p>
-
-          <div class="c-milestone__counters">
-            <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
-            <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
-            <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
-          </div>
-
-          <div class="c-milestone__footer">
-            <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
-              data-modal-title="محطة 1987"
-              data-modal-description="المرحلة الطلابية وتحوّلها إلى مسار سياسي وتنظيمي في سياق الانتفاضة الأولى."
-              data-modal-badge="1987" data-modal-timestamp="1987 · الخليل/الضفة" data-modal-source="سرديات وسجلات عامة"
-              data-modal-image="assets/img/articles/film1.jpg" data-modal-video="assets/videos/1987.mp4"
-              data-modal-audio-label="مقتطفات 01:39">
-              عرض التفاصيل
-            </button>
-            <a class="c-milestone__link" href="timeline.html#1987">فتح <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <!-- 1992 -->
-        <article class="c-milestone" role="group" aria-label="محطة 1992">
-          <div class="c-milestone__top">
-            <p class="c-milestone__year">1992</p>
-            <span class="c-milestone__badge">الإبعاد</span>
-          </div>
-          <h3 class="c-milestone__headline">الإبعاد إلى مرج الزهور</h3>
-          <p class="c-milestone__desc">
-            في ديسمبر 1992 نُفذت عملية إبعاد جماعي لمئات الفلسطينيين إلى جنوب لبنان، وأصبحت “مخيمات مرج الزهور” محطة
-            بارزة في صعود حماس إعلاميًا وتنظيميًا.
-          </p>
-
-          <div class="c-milestone__counters">
-            <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
-            <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
-            <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
-          </div>
-
-          <div class="c-milestone__footer">
-            <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
-              data-modal-title="محطة 1992"
-              data-modal-description="الإبعاد الجماعي إلى جنوب لبنان وتكوين مخيم مرج الزهور كحدث مركزي في الذاكرة السياسية لتلك المرحلة."
-              data-modal-badge="1992" data-modal-timestamp="ديسمبر 1992 · مرج الزهور"
-              data-modal-source="سجلات حقوقية/إعلامية" data-modal-image="assets/img/articles/film2.jpg"
-              data-modal-video="assets/videos/1992.mp4" data-modal-audio-label="شهادات 01:58">
-              عرض التفاصيل
-            </button>
-            <a class="c-milestone__link" href="timeline.html#1992">فتح <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <!-- 2017 -->
-        <article class="c-milestone" role="group" aria-label="محطة 2017">
-          <div class="c-milestone__top">
-            <p class="c-milestone__year">2017</p>
-            <span class="c-milestone__badge">قيادة سياسية</span>
-          </div>
-          <h3 class="c-milestone__headline">نائب رئيس المكتب السياسي لحماس</h3>
-          <p class="c-milestone__desc">
-            في أكتوبر 2017 تولّى منصب نائب رئيس المكتب السياسي لحركة حماس، واستمر في هذا الدور حتى 2024.
-          </p>
-
-          <div class="c-milestone__counters">
-            <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
-            <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
-            <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
-          </div>
-
-          <div class="c-milestone__footer">
-            <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
-              data-modal-title="محطة 2017"
-              data-modal-description="صعوده إلى موقع نائب رئيس المكتب السياسي: خطابات، لقاءات، وسياقات المرحلة الإقليمية."
-              data-modal-badge="2017" data-modal-timestamp="أكتوبر 2017 · قيادة سياسية"
-              data-modal-source="بيانات/تغطيات إعلامية" data-modal-image="assets/img/videos/thumb2.jpg"
-              data-modal-video="assets/videos/2017.mp4" data-modal-audio-label="مقتطفات 03:16">
-              عرض التفاصيل
-            </button>
-            <a class="c-milestone__link" href="timeline.html#2017">فتح <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <!-- =========================================
-        QUOTE SPOTLIGHT — Verified quote (attributed)
-        Notes:
-        - Keep it premium and editorial
-        - RTL friendly layout
-        - Accessible blockquote semantics
-      ========================================= -->
-  <section class="u-section c-quote-spotlight" aria-label="اقتباس مختار">
-    <div class="container">
-      <div class="c-quote-spotlight__card">
-
-        <!-- Decorative layer -->
-        <span class="c-quote-spotlight__accent" aria-hidden="true"></span>
-        <span class="c-quote-spotlight__mark" aria-hidden="true">“</span>
-
-        <!-- Content -->
-        <div class="c-quote-spotlight__content">
-          <header class="c-quote-spotlight__head">
-            <p class="c-quote-spotlight__kicker">اقتباس موثق</p>
-            <span class="c-quote-spotlight__chip">تصريح صحفي</span>
           </header>
 
-          <blockquote class="c-quote-spotlight__quote">
-            <p class="c-quote-spotlight__text">
-              ليس غريبا علينا أن يستشهد القادة وكوادر الحركة
-            </p>
+          <!-- Metrics grid -->
+          <div class="c-snapshot__grid" role="list" aria-label="مؤشرات الأرشيف">
 
-            <footer class="c-quote-spotlight__footer">
-              <div class="c-quote-spotlight__who">
-                <span class="c-quote-spotlight__avatar" aria-hidden="true">
-                  <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <!-- Photos -->
+            <article class="c-metric" role="listitem">
+              <div class="c-metric__top">
+                <span class="c-metric__icon" aria-hidden="true">
+                  <i class="fa-regular fa-image"></i>
                 </span>
-                <div>
-                  <cite class="c-quote-spotlight__cite">صالح العاروري</cite>
-                  <span class="c-quote-spotlight__meta">مقابلة إعلامية أغسطس 2023</span>
+                <span class="c-metric__tag">صور</span>
+              </div>
+
+              <p class="c-metric__value">2,480</p>
+              <p class="c-metric__label">عدد الصور</p>
+              <p class="c-metric__note">من أرشيف القنوات والمشاهد الميدانية.</p>
+            </article>
+
+            <!-- Videos -->
+            <article class="c-metric" role="listitem">
+              <div class="c-metric__top">
+                <span class="c-metric__icon" aria-hidden="true">
+                  <i class="fa-solid fa-video"></i>
+                </span>
+                <span class="c-metric__tag">فيديو</span>
+              </div>
+
+              <p class="c-metric__value">1,120</p>
+              <p class="c-metric__label">عدد الفيديوهات</p>
+              <p class="c-metric__note">سجلات بصرية متتالية في محطات رئيسية.</p>
+            </article>
+
+            <!-- Reels -->
+            <article class="c-metric" role="listitem">
+              <div class="c-metric__top">
+                <span class="c-metric__icon" aria-hidden="true">
+                  <i class="fa-solid fa-mobile-screen"></i>
+                </span>
+                <span class="c-metric__tag">ريلز</span>
+              </div>
+
+              <p class="c-metric__value">360</p>
+              <p class="c-metric__label">عدد الريلز</p>
+              <p class="c-metric__note">محتوى رأسي مخصص للمنصات الاجتماعية.</p>
+            </article>
+
+            <!-- Audio -->
+            <article class="c-metric" role="listitem">
+              <div class="c-metric__top">
+                <span class="c-metric__icon" aria-hidden="true">
+                  <i class="fa-solid fa-wave-square"></i>
+                </span>
+                <span class="c-metric__tag">صوت</span>
+              </div>
+
+              <p class="c-metric__value">890</p>
+              <p class="c-metric__label">عدد المقاطع الصوتية</p>
+              <p class="c-metric__note">تسجيلات إذاعية وشهادات ومواد نادرة.</p>
+            </article>
+
+          </div>
+
+          <!-- Footer meta -->
+          <div class="c-snapshot__foot">
+            <p class="c-snapshot__update">آخر تحديث: 15 أبريل 2026 · وحدة التوثيق</p>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <section class="u-section c-collections" aria-label="مجموعات مختارة">
+        <div class="container">
+
+          <!-- Section header -->
+          <header class="c-collections__head">
+            <div class="c-collections__head-copy">
+              <p class="c-collections__kicker">مفاتيح الدخول الذكي</p>
+              <h2 class="c-collections__title">مجموعات مختارة</h2>
+              <p class="c-collections__subtitle">
+                مسارات منظمة تساعدك على تصفح الأرشيف حسب طبيعة المادة بدل البحث العشوائي.
+              </p>
+            </div>
+
+            <div class="c-collections__head-actions">
+              <a class="c-btn c-btn--outline" href="media.html">كل المجموعات</a>
+            </div>
+          </header>
+
+          <!-- Cards grid -->
+          <div class="c-collections__grid">
+
+            <!-- Featured (big) -->
+            <article class="c-collection c-collection--featured" role="link" tabindex="0"
+              data-collection-link="media.html#coverage" aria-label="الانتقال إلى مجموعة الظهور الإعلامي">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">سجل مباشر</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">الظهور الإعلامي</h3>
+                <p class="c-collection__desc">
+                  مسارات ظهور متلاحقة في المحطات العربية والدولية مع وعي سردي واضح.
+                </p>
+
+                <!-- Media preview (editorial strip) -->
+                <div class="c-collection__preview" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">محطات · لقاءات · تقارير</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض المجموعة</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#testimonials"
+              aria-label="الانتقال إلى مجموعة الشهادات والمحطات">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">رؤية صحفية</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">الشهادات والمحطات</h3>
+                <p class="c-collection__desc">
+                  توثيق شهادات شخصية ومحطات إذاعية تفاعل معها السرد السياسي.
+                </p>
+
+                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">شهادات · إذاعات · سرد</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#audio"
+              aria-label="الانتقال إلى مجموعة التسجيلات الصوتية">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">خزانة الصوت</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">التسجيلات الصوتية / الأناشيد</h3>
+                <p class="c-collection__desc">
+                  أرشيف ألحان وأهازيج وأصوات توثّق الثقافة الحية لكل محطة.
+                </p>
+
+                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">أناشيد · تسجيلات · نادر</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="u-section c-timeline" id="timeline" aria-label="محطات رئيسية">
+        <div class="container">
+
+          <!-- Header -->
+          <header class="c-timeline__head">
+            <div class="c-timeline__head-copy">
+              <p class="c-timeline__kicker">سرد بياني متتابع</p>
+              <h2 class="c-timeline__title">محطات رئيسية</h2>
+              <p class="c-timeline__subtitle">
+                خمس محطات تلخص المسار وتجمع الوسائط داخل سياق واحد يساعدك على فهم الصورة كاملة.
+              </p>
+            </div>
+
+            <div class="c-timeline__head-actions">
+              <span class="c-timeline__pill" aria-label="عدد المحطات المعروضة">
+                <strong>5</strong> محطات
+              </span>
+              <a class="c-btn c-btn--outline" href="timeline.html">الخط الزمني كامل</a>
+            </div>
+          </header>
+
+          <!-- Grid -->
+          <div class="c-timeline__grid">
+
+            <!-- Featured milestone (latest / strongest) -->
+            <article class="c-milestone c-milestone--featured" role="group" aria-label="محطة 2024">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">2024</p>
+                <span class="c-milestone__badge">الرحيل والصدمة</span>
+              </div>
+
+              <h3 class="c-milestone__headline">اغتيال في الضاحية الجنوبية</h3>
+              <p class="c-milestone__desc">
+                في 2 يناير 2024 قُتل صالح العاروري في ضربة بطائرة مُسيّرة استهدفت الضاحية الجنوبية لبيروت.
+                شكلت الحادثة منعطفًا سياسيًا وأمنيًا واسع الأثر في سياق الحرب الدائرة آنذاك.
+              </p>
+
+              <div class="c-milestone__counters" aria-label="مؤشرات الوسائط">
+                <span class="c-counter">
+                  <i class="fa-solid fa-film" aria-hidden="true"></i>
+                  <strong>—</strong><span>فيديو</span>
+                </span>
+                <span class="c-counter">
+                  <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                  <strong>—</strong><span>صور</span>
+                </span>
+                <span class="c-counter">
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                  <strong>—</strong><span>صوت</span>
+                </span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--primary c-milestone__btn" data-media-card
+                  data-modal-title="محطة 2024"
+                  data-modal-description="تفاصيل حادثة الاغتيال في بيروت، وردود الفعل، والمواد الموثقة المرتبطة بالمشهد السياسي والأمني."
+                  data-modal-badge="2024" data-modal-timestamp="2 يناير 2024 · بيروت"
+                  data-modal-source="مصادر إعلامية متعددة" data-modal-image="assets/img/videos/featured.jpg"
+                  data-modal-video="assets/videos/featured.mp4" data-modal-audio-label="تصريحات/مقتطفات 02:25">
+                  عرض تفاصيل المحطة
+                </button>
+
+                <a class="c-milestone__link" href="timeline.html#2024">
+                  فتح داخل الخط الزمني
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Secondary milestones -->
+
+            <!-- 1966 -->
+            <article class="c-milestone" role="group" aria-label="محطة 1966">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">1966</p>
+                <span class="c-milestone__badge">البدايات</span>
+              </div>
+              <h3 class="c-milestone__headline">الميلاد في عارورة</h3>
+              <p class="c-milestone__desc">
+                وُلد صالح محمد سليمان العاروري في بلدة عارورة قرب رام الله (الضفة الغربية) عام 1966.
+              </p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 1966"
+                  data-modal-description="الجذور الأولى: عارورة، البيئة المحلية، وبدايات التكوين المبكر قبل الانخراط السياسي."
+                  data-modal-badge="1966" data-modal-timestamp="19 أغسطس 1966 · عارورة"
+                  data-modal-source="سجلات تعريفية" data-modal-image="assets/img/articles/thumb1.png"
+                  data-modal-video="assets/videos/1966.mp4" data-modal-audio-label="سرد تعريفي 00:41">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#1966">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <!-- 1987 -->
+            <article class="c-milestone" role="group" aria-label="محطة 1987">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">1987</p>
+                <span class="c-milestone__badge">الانخراط</span>
+              </div>
+              <h3 class="c-milestone__headline">الجامعة وبدايات العمل التنظيمي</h3>
+              <p class="c-milestone__desc">
+                خلال دراسته في جامعة الخليل (الشريعة)، تزامن نشاطه مع اندلاع الانتفاضة الأولى، وانخرط في حركة حماس منذ
+                أواخر الثمانينيات.
+              </p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 1987"
+                  data-modal-description="المرحلة الطلابية وتحوّلها إلى مسار سياسي وتنظيمي في سياق الانتفاضة الأولى."
+                  data-modal-badge="1987" data-modal-timestamp="1987 · الخليل/الضفة"
+                  data-modal-source="سرديات وسجلات عامة" data-modal-image="assets/img/articles/film1.jpg"
+                  data-modal-video="assets/videos/1987.mp4" data-modal-audio-label="مقتطفات 01:39">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#1987">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <!-- 1992 -->
+            <article class="c-milestone" role="group" aria-label="محطة 1992">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">1992</p>
+                <span class="c-milestone__badge">الإبعاد</span>
+              </div>
+              <h3 class="c-milestone__headline">الإبعاد إلى مرج الزهور</h3>
+              <p class="c-milestone__desc">
+                في ديسمبر 1992 نُفذت عملية إبعاد جماعي لمئات الفلسطينيين إلى جنوب لبنان، وأصبحت “مخيمات مرج الزهور” محطة
+                بارزة في صعود حماس إعلاميًا وتنظيميًا.
+              </p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 1992"
+                  data-modal-description="الإبعاد الجماعي إلى جنوب لبنان وتكوين مخيم مرج الزهور كحدث مركزي في الذاكرة السياسية لتلك المرحلة."
+                  data-modal-badge="1992" data-modal-timestamp="ديسمبر 1992 · مرج الزهور"
+                  data-modal-source="سجلات حقوقية/إعلامية" data-modal-image="assets/img/articles/film2.jpg"
+                  data-modal-video="assets/videos/1992.mp4" data-modal-audio-label="شهادات 01:58">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#1992">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+            <!-- 2017 -->
+            <article class="c-milestone" role="group" aria-label="محطة 2017">
+              <div class="c-milestone__top">
+                <p class="c-milestone__year">2017</p>
+                <span class="c-milestone__badge">قيادة سياسية</span>
+              </div>
+              <h3 class="c-milestone__headline">نائب رئيس المكتب السياسي لحماس</h3>
+              <p class="c-milestone__desc">
+                في أكتوبر 2017 تولّى منصب نائب رئيس المكتب السياسي لحركة حماس، واستمر في هذا الدور حتى 2024.
+              </p>
+
+              <div class="c-milestone__counters">
+                <span class="c-counter"><i class="fa-solid fa-film"></i><strong>—</strong><span>فيديو</span></span>
+                <span class="c-counter"><i class="fa-solid fa-camera"></i><strong>—</strong><span>صور</span></span>
+                <span class="c-counter"><i class="fa-solid fa-microphone"></i><strong>—</strong><span>صوت</span></span>
+              </div>
+
+              <div class="c-milestone__footer">
+                <button type="button" class="c-btn c-btn--ghost c-milestone__btn" data-media-card
+                  data-modal-title="محطة 2017"
+                  data-modal-description="صعوده إلى موقع نائب رئيس المكتب السياسي: خطابات، لقاءات، وسياقات المرحلة الإقليمية."
+                  data-modal-badge="2017" data-modal-timestamp="أكتوبر 2017 · قيادة سياسية"
+                  data-modal-source="بيانات/تغطيات إعلامية" data-modal-image="assets/img/videos/thumb2.jpg"
+                  data-modal-video="assets/videos/2017.mp4" data-modal-audio-label="مقتطفات 03:16">
+                  عرض التفاصيل
+                </button>
+                <a class="c-milestone__link" href="timeline.html#2017">فتح <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section class="u-section c-quote-spotlight" aria-label="اقتباس مختار">
+        <div class="container">
+          <div class="c-quote-spotlight__card">
+
+            <!-- Decorative layer -->
+            <span class="c-quote-spotlight__accent" aria-hidden="true"></span>
+            <span class="c-quote-spotlight__mark" aria-hidden="true">“</span>
+
+            <!-- Content -->
+            <div class="c-quote-spotlight__content">
+              <header class="c-quote-spotlight__head">
+                <p class="c-quote-spotlight__kicker">اقتباس موثق</p>
+                <span class="c-quote-spotlight__chip">تصريح صحفي</span>
+              </header>
+
+              <blockquote class="c-quote-spotlight__quote">
+                <p class="c-quote-spotlight__text">
+                  ليس غريبا علينا أن يستشهد القادة وكوادر الحركة
+                </p>
+
+                <footer class="c-quote-spotlight__footer">
+                  <div class="c-quote-spotlight__who">
+                    <span class="c-quote-spotlight__avatar" aria-hidden="true">
+                      <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    </span>
+                    <div>
+                      <cite class="c-quote-spotlight__cite">صالح العاروري</cite>
+                      <span class="c-quote-spotlight__meta">مقابلة إعلامية أغسطس 2023</span>
+                    </div>
+                  </div>
+
+                  <div class="c-quote-spotlight__actions">
+                    <button type="button" class="c-btn c-btn--ghost">
+                      المزيد من الاقتباسات
+                    </button>
+                  </div>
+                </footer>
+              </blockquote>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="u-section c-latest" aria-label="آخر الوسائط">
+        <div class="container">
+
+          <header class="c-latest__head">
+            <div class="c-latest__head-copy">
+              <p class="c-latest__kicker">تحديث حي للوسائط</p>
+              <h2 class="c-latest__title">آخر الوسائط</h2>
+              <p class="c-latest__subtitle">
+                أحدث المواد المضافة إلى الأرشيف مرتبة بصريًا لتسهيل الالتقاط السريع ثم التعمّق عبر التفاصيل.
+              </p>
+            </div>
+
+            <div class="c-latest__head-actions">
+              <a class="c-btn c-btn--outline" href="media.html">كل الوسائط</a>
+            </div>
+          </header>
+
+          <div class="c-latest__grid">
+
+            <!-- =========================
+              Featured (Hero) item
+              ========================= -->
+            <article class="c-media c-media--hero" role="button" tabindex="0" data-media-card
+              data-modal-title="خطاب سياسي — 2023"
+              data-modal-description="مقتطف من مقابلة صحفية في 2023 يتناول فيها العاروري سياق المرحلة وتصاعد الأحداث."
+              data-modal-badge="فيديو" data-modal-timestamp="أغسطس 2023" data-modal-source="مقابلة صحفية"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000"
+              data-modal-video="assets/videos/featured.mp4" data-modal-audio-label="تفريغ صوتي 02:25">
+
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="خطاب سياسي — 2023" loading="lazy" />
+                <div class="c-media__overlay" aria-hidden="true"></div>
+
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--video">فيديو</span>
+                </div>
+
+                <div class="c-media__play" aria-hidden="true">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+
+                <div class="c-media__meta">
+                  <span class="c-media__meta-item"><i class="fa-regular fa-calendar"></i> أغسطس 2023</span>
+                  <span class="c-media__meta-item"><i class="fa-regular fa-circle-check"></i> مادة موثقة</span>
                 </div>
               </div>
 
-              <div class="c-quote-spotlight__actions">
-                <button type="button" class="c-btn c-btn--ghost">
-                  المزيد من الاقتباسات
-                </button>
+              <div class="c-media__content">
+                <h3 class="c-media__title">خطاب سياسي — 2023</h3>
+                <p class="c-media__desc">
+                  لقطة مركزة تقدم مدخلًا لفهم المواقف واللغة السياسية في مرحلة شديدة الحساسية.
+                </p>
               </div>
-            </footer>
-          </blockquote>
-        </div>
+            </article>
 
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =========================================
-        LATEST MEDIA — Editorial grid with a hero item
-        Notes:
-        - First item is featured (strong hierarchy)
-        - Uses existing data-media-card attributes for modal mapping
-        - RTL-safe and responsive
-      ========================================= -->
-  <section class="u-section c-latest" aria-label="آخر الوسائط">
-    <div class="container">
-
-      <header class="c-latest__head">
-        <div class="c-latest__head-copy">
-          <p class="c-latest__kicker">تحديث حي للوسائط</p>
-          <h2 class="c-latest__title">آخر الوسائط</h2>
-          <p class="c-latest__subtitle">
-            أحدث المواد المضافة إلى الأرشيف مرتبة بصريًا لتسهيل الالتقاط السريع ثم التعمّق عبر التفاصيل.
-          </p>
-        </div>
-
-        <div class="c-latest__head-actions">
-          <a class="c-btn c-btn--outline" href="media.html">كل الوسائط</a>
-        </div>
-      </header>
-
-      <div class="c-latest__grid">
-
-        <!-- =========================
-              Featured (Hero) item
-              ========================= -->
-        <article class="c-media c-media--hero" role="button" tabindex="0" data-media-card
-          data-modal-title="خطاب سياسي — 2023"
-          data-modal-description="مقتطف من مقابلة صحفية في 2023 يتناول فيها العاروري سياق المرحلة وتصاعد الأحداث."
-          data-modal-badge="فيديو" data-modal-timestamp="أغسطس 2023" data-modal-source="مقابلة صحفية"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video="assets/videos/featured.mp4"
-          data-modal-audio-label="تفريغ صوتي 02:25">
-
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="خطاب سياسي — 2023" loading="lazy" />
-            <div class="c-media__overlay" aria-hidden="true"></div>
-
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--video">فيديو</span>
-            </div>
-
-            <div class="c-media__play" aria-hidden="true">
-              <i class="fa-solid fa-play"></i>
-            </div>
-
-            <div class="c-media__meta">
-              <span class="c-media__meta-item"><i class="fa-regular fa-calendar"></i> أغسطس 2023</span>
-              <span class="c-media__meta-item"><i class="fa-regular fa-circle-check"></i> مادة موثقة</span>
-            </div>
-          </div>
-
-          <div class="c-media__content">
-            <h3 class="c-media__title">خطاب سياسي — 2023</h3>
-            <p class="c-media__desc">
-              لقطة مركزة تقدم مدخلًا لفهم المواقف واللغة السياسية في مرحلة شديدة الحساسية.
-            </p>
-          </div>
-        </article>
-
-        <!-- =========================
+            <!-- =========================
                   Secondary items
                   ========================= -->
 
-        <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="صورة أرشيفية — عارورة"
-          data-modal-description="صورة تعرّف بالمكان والجذور الأولى قبل اتساع المسار السياسي." data-modal-badge="صورة"
-          data-modal-timestamp="مواد أرشيفية" data-modal-source="أرشيف مفتوح"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="سرد بصري 01:05"
-          data-modal-audio-label="تعليق 00:51">
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="صورة أرشيفية — عارورة" loading="lazy" />
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--photo">صورة</span>
-            </div>
-          </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">صورة أرشيفية — عارورة</h3>
-            <p class="c-media__date">مواد أرشيفية · أرشيف مفتوح</p>
-          </div>
-        </article>
+            <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="صورة أرشيفية — عارورة"
+              data-modal-description="صورة تعرّف بالمكان والجذور الأولى قبل اتساع المسار السياسي."
+              data-modal-badge="صورة" data-modal-timestamp="مواد أرشيفية" data-modal-source="أرشيف مفتوح"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="سرد بصري 01:05"
+              data-modal-audio-label="تعليق 00:51">
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="صورة أرشيفية — عارورة" loading="lazy" />
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--photo">صورة</span>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">صورة أرشيفية — عارورة</h3>
+                <p class="c-media__date">مواد أرشيفية · أرشيف مفتوح</p>
+              </div>
+            </article>
 
-        <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="تغطية — مرج الزهور 1992"
-          data-modal-description="محطة الإبعاد إلى مرج الزهور كما وثقتها صور وتقارير تلك المرحلة."
-          data-modal-badge="فيديو" data-modal-timestamp="ديسمبر 1992" data-modal-source="تغطيات إعلامية"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="لقطة 02:34"
-          data-modal-audio-label="تسجيل 01:44">
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="تغطية — مرج الزهور 1992" loading="lazy" />
-            <div class="c-media__overlay" aria-hidden="true"></div>
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--video">فيديو</span>
-            </div>
-            <div class="c-media__play c-media__play--sm" aria-hidden="true">
-              <i class="fa-solid fa-play"></i>
-            </div>
-          </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">تغطية — مرج الزهور 1992</h3>
-            <p class="c-media__date">ديسمبر 1992 · تغطيات إعلامية</p>
-          </div>
-        </article>
+            <article class="c-media" role="button" tabindex="0" data-media-card
+              data-modal-title="تغطية — مرج الزهور 1992"
+              data-modal-description="محطة الإبعاد إلى مرج الزهور كما وثقتها صور وتقارير تلك المرحلة."
+              data-modal-badge="فيديو" data-modal-timestamp="ديسمبر 1992" data-modal-source="تغطيات إعلامية"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="لقطة 02:34"
+              data-modal-audio-label="تسجيل 01:44">
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="تغطية — مرج الزهور 1992" loading="lazy" />
+                <div class="c-media__overlay" aria-hidden="true"></div>
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--video">فيديو</span>
+                </div>
+                <div class="c-media__play c-media__play--sm" aria-hidden="true">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">تغطية — مرج الزهور 1992</h3>
+                <p class="c-media__date">ديسمبر 1992 · تغطيات إعلامية</p>
+              </div>
+            </article>
 
-        <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="ريل — لقطات سياق ميداني"
-          data-modal-description="مقاطع رأسية قصيرة تساعد على رؤية المشهد بزاوية مختلفة وبإيقاع سريع."
-          data-modal-badge="ريل" data-modal-timestamp="مواد متنوعة" data-modal-source="أرشيف السوشيال"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="ريل 01:12"
-          data-modal-audio-label="صوتيات 00:39">
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="ريل — لقطات سياق ميداني" loading="lazy" />
-            <div class="c-media__overlay" aria-hidden="true"></div>
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--reel">ريل</span>
-            </div>
-            <div class="c-media__play c-media__play--sm" aria-hidden="true">
-              <i class="fa-solid fa-play"></i>
-            </div>
-          </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">ريل — لقطات سياق ميداني</h3>
-            <p class="c-media__date">مواد متنوعة · أرشيف السوشيال</p>
-          </div>
-        </article>
+            <article class="c-media" role="button" tabindex="0" data-media-card
+              data-modal-title="ريل — لقطات سياق ميداني"
+              data-modal-description="مقاطع رأسية قصيرة تساعد على رؤية المشهد بزاوية مختلفة وبإيقاع سريع."
+              data-modal-badge="ريل" data-modal-timestamp="مواد متنوعة" data-modal-source="أرشيف السوشيال"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="ريل 01:12"
+              data-modal-audio-label="صوتيات 00:39">
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="ريل — لقطات سياق ميداني" loading="lazy" />
+                <div class="c-media__overlay" aria-hidden="true"></div>
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--reel">ريل</span>
+                </div>
+                <div class="c-media__play c-media__play--sm" aria-hidden="true">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">ريل — لقطات سياق ميداني</h3>
+                <p class="c-media__date">مواد متنوعة · أرشيف السوشيال</p>
+              </div>
+            </article>
 
-        <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="صور — محطات من المنفى"
-          data-modal-description="صور مجمعة مرتبطة بمحطات التنقل والمنفى في سياق المسار السياسي."
-          data-modal-badge="صورة" data-modal-timestamp="مواد أرشيفية" data-modal-source="كاتالوغ الأرشيف"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="بانوراما 00:55"
-          data-modal-audio-label="مقطع 00:30">
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="صور — محطات من المنفى" loading="lazy" />
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--photo">صورة</span>
-            </div>
-          </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">صور — محطات من المنفى</h3>
-            <p class="c-media__date">مواد أرشيفية · كاتالوغ الأرشيف</p>
-          </div>
-        </article>
+            <article class="c-media" role="button" tabindex="0" data-media-card data-modal-title="صور — محطات من المنفى"
+              data-modal-description="صور مجمعة مرتبطة بمحطات التنقل والمنفى في سياق المسار السياسي."
+              data-modal-badge="صورة" data-modal-timestamp="مواد أرشيفية" data-modal-source="كاتالوغ الأرشيف"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="بانوراما 00:55"
+              data-modal-audio-label="مقطع 00:30">
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="صور — محطات من المنفى" loading="lazy" />
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--photo">صورة</span>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">صور — محطات من المنفى</h3>
+                <p class="c-media__date">مواد أرشيفية · كاتالوغ الأرشيف</p>
+              </div>
+            </article>
 
-        <article class="c-media" role="button" tabindex="0" data-media-card
-          data-modal-title="فيديو — تصريحات وقراءة مرحلة"
-          data-modal-description="مقاطع من تصريحات وتحليلات مرتبطة بتحولات سياسية في الإقليم." data-modal-badge="فيديو"
-          data-modal-timestamp="مواد متنوعة" data-modal-source="أرشيف مقابلات"
-          data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="لقطات 03:03"
-          data-modal-audio-label="تعليق 01:17">
-          <div class="c-media__media">
-            <img src="https://dummyimage.com/600x400/dddddd/000000" alt="فيديو — تصريحات وقراءة مرحلة" loading="lazy" />
-            <div class="c-media__overlay" aria-hidden="true"></div>
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--video">فيديو</span>
-            </div>
-            <div class="c-media__play c-media__play--sm" aria-hidden="true">
-              <i class="fa-solid fa-play"></i>
-            </div>
+            <article class="c-media" role="button" tabindex="0" data-media-card
+              data-modal-title="فيديو — تصريحات وقراءة مرحلة"
+              data-modal-description="مقاطع من تصريحات وتحليلات مرتبطة بتحولات سياسية في الإقليم."
+              data-modal-badge="فيديو" data-modal-timestamp="مواد متنوعة" data-modal-source="أرشيف مقابلات"
+              data-modal-image="https://dummyimage.com/600x400/dddddd/000000" data-modal-video-label="لقطات 03:03"
+              data-modal-audio-label="تعليق 01:17">
+              <div class="c-media__media">
+                <img src="https://dummyimage.com/600x400/dddddd/000000" alt="فيديو — تصريحات وقراءة مرحلة"
+                  loading="lazy" />
+                <div class="c-media__overlay" aria-hidden="true"></div>
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--video">فيديو</span>
+                </div>
+                <div class="c-media__play c-media__play--sm" aria-hidden="true">
+                  <i class="fa-solid fa-play"></i>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">فيديو — تصريحات وقراءة مرحلة</h3>
+                <p class="c-media__date">مواد متنوعة · أرشيف مقابلات</p>
+              </div>
+            </article>
+
+            <article class="c-media c-media--audio" role="button" tabindex="0" data-media-card
+              data-modal-title="تسجيل صوتي — قراءة/مقتطف"
+              data-modal-description="مقتطف صوتي مرتبط بمحطة سياسية أو شهادة أو مادة إذاعية." data-modal-badge="صوت"
+              data-modal-timestamp="مواد أرشيفية" data-modal-source="أرشيف صوتيات"
+              data-modal-image="assets/img/videos/thumb3.jpg" data-modal-video-label="مقدمة 00:29"
+              data-modal-audio-label="ملف صوتي 03:21">
+              <div class="c-media__media c-media__media--audio">
+                <div class="c-media__audio-icon" aria-hidden="true">
+                  <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--audio">صوت</span>
+                </div>
+                <div class="c-media__audio-wave" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">تسجيل صوتي — قراءة/مقتطف</h3>
+                <p class="c-media__date">مواد أرشيفية · أرشيف صوتيات</p>
+              </div>
+            </article>
+            <article class="c-media c-media--audio" role="button" tabindex="0" data-media-card
+              data-modal-title="تسجيل صوتي — قراءة/مقتطف"
+              data-modal-description="مقتطف صوتي مرتبط بمحطة سياسية أو شهادة أو مادة إذاعية." data-modal-badge="صوت"
+              data-modal-timestamp="مواد أرشيفية" data-modal-source="أرشيف صوتيات"
+              data-modal-image="assets/img/videos/thumb3.jpg" data-modal-video-label="مقدمة 00:29"
+              data-modal-audio-label="ملف صوتي 03:21">
+              <div class="c-media__media c-media__media--audio">
+                <div class="c-media__audio-icon" aria-hidden="true">
+                  <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div class="c-media__badge">
+                  <span class="c-badge c-badge--audio">صوت</span>
+                </div>
+                <div class="c-media__audio-wave" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="c-media__content">
+                <h3 class="c-media__title">تسجيل صوتي — قراءة/مقتطف</h3>
+                <p class="c-media__date">مواد أرشيفية · أرشيف صوتيات</p>
+              </div>
+            </article>
           </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">فيديو — تصريحات وقراءة مرحلة</h3>
-            <p class="c-media__date">مواد متنوعة · أرشيف مقابلات</p>
-          </div>
-        </article>
-
-        <article class="c-media c-media--audio" role="button" tabindex="0" data-media-card
-          data-modal-title="تسجيل صوتي — قراءة/مقتطف"
-          data-modal-description="مقتطف صوتي مرتبط بمحطة سياسية أو شهادة أو مادة إذاعية." data-modal-badge="صوت"
-          data-modal-timestamp="مواد أرشيفية" data-modal-source="أرشيف صوتيات"
-          data-modal-image="assets/img/videos/thumb3.jpg" data-modal-video-label="مقدمة 00:29"
-          data-modal-audio-label="ملف صوتي 03:21">
-          <div class="c-media__media c-media__media--audio">
-            <div class="c-media__audio-icon" aria-hidden="true">
-              <i class="fa-solid fa-headphones"></i>
-            </div>
-            <div class="c-media__badge">
-              <span class="c-badge c-badge--audio">صوت</span>
-            </div>
-            <div class="c-media__audio-wave" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="c-media__content">
-            <h3 class="c-media__title">تسجيل صوتي — قراءة/مقتطف</h3>
-            <p class="c-media__date">مواد أرشيفية · أرشيف صوتيات</p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =========================================
-  NEWS SECTION — Editorial archive style
-========================================= -->
-  <section class="u-section c-news" aria-label="الأخبار والتحديثات">
-    <div class="container">
-
-      <!-- Header -->
-      <header class="c-news__head">
-        <div>
-          <p class="c-news__kicker">تحديثات وبيانات رسمية</p>
-          <h2 class="c-news__title">الأخبار</h2>
         </div>
-        <a class="c-btn c-btn--outline" href="news.html">كل الأخبار</a>
-      </header>
+      </section>
 
-      <!-- Layout -->
-      <div class="c-news__layout">
 
-        <!-- Featured news -->
-        <article class="c-news-featured" role="article">
-          <div class="c-news-featured__media">
-            <img src="https://dummyimage.com/800x520/dddddd/000000" alt="خبر مميز" loading="lazy" />
+
+      <section class="u-section c-news" aria-label="الأخبار والتحديثات">
+        <div class="container">
+
+          <!-- Header -->
+          <header class="c-news__head">
+            <div>
+              <p class="c-news__kicker">تحديثات وبيانات رسمية</p>
+              <h2 class="c-news__title">الأخبار</h2>
+            </div>
+            <a class="c-btn c-btn--outline" href="news.html">كل الأخبار</a>
+          </header>
+
+          <!-- Layout -->
+          <div class="c-news__layout">
+
+            <!-- Featured news -->
+            <article class="c-news-featured" role="article">
+              <div class="c-news-featured__media">
+                <img src="https://dummyimage.com/800x520/dddddd/000000" alt="خبر مميز" loading="lazy" />
+              </div>
+
+              <div class="c-news-featured__content">
+                <span class="c-badge c-badge--text">خبر مميز</span>
+
+                <h3 class="c-news-featured__title">
+                  مجلس التوثيق يعتمد استراتيجية الوسائط المدمجة
+                </h3>
+
+                <p class="c-news-featured__excerpt">
+                  اعتماد خطة تحريرية جديدة تربط بين الصورة والفيديو والصوت ضمن
+                  سياق واحد يحفظ هوية السرد ويمنع تفكك المعنى عبر الزمن.
+                </p>
+
+                <div class="c-news-featured__meta">
+                  <span>12 مارس 2026</span>
+                  <span>وحدة البيانات الرسمية</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Side news -->
+            <div class="c-news-list">
+
+              <article class="c-news-item">
+                <span class="c-badge c-badge--text">تصريح</span>
+                <h4 class="c-news-item__title">
+                  بيان تكريمي للمحطات الداعمة لمسار التوثيق
+                </h4>
+                <div class="c-news-item__meta">
+                  <span>01 مارس 2026</span>
+                  <span>الأرشيف الرسمي</span>
+                </div>
+              </article>
+
+              <article class="c-news-item">
+                <span class="c-badge c-badge--text">تحقيق</span>
+                <h4 class="c-news-item__title">
+                  تقرير تحليلي حول الظهور الإعلامي الأخير
+                </h4>
+                <div class="c-news-item__meta">
+                  <span>25 فبراير 2026</span>
+                  <span>مكتب التحقيق</span>
+                </div>
+              </article>
+
+              <article class="c-news-item">
+                <span class="c-badge c-badge--text">أرشيف</span>
+                <h4 class="c-news-item__title">
+                  رسالة صوتية موثقة تُنشر للمرة الأولى
+                </h4>
+                <div class="c-news-item__meta">
+                  <span>16 فبراير 2026</span>
+                  <span>وحدة الصوتيات</span>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+
+    <footer class="c-footer" role="contentinfo">
+      <div class="container">
+
+        <div class="c-footer__grid">
+
+          <!-- Brand -->
+          <div class="c-footer__brand">
+            <a class="c-footer__logo" href="index.html">
+              SALEH-AL-AROURI
+            </a>
+            <p class="c-footer__desc">
+              أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
+              في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد.
+            </p>
           </div>
 
-          <div class="c-news-featured__content">
-            <span class="c-badge c-badge--text">خبر مميز</span>
+          <!-- Navigation -->
+          <nav class="c-footer__nav" aria-label="روابط الفوتر">
+            <h4 class="c-footer__title">الأقسام</h4>
+            <ul class="c-footer__list">
+              <li><a href="timeline.html">الخط الزمني</a></li>
+              <li><a href="media.html">الوسائط</a></li>
+              <li><a href="news.html">الأخبار</a></li>
+              <li><a href="biography.html">السيرة</a></li>
+            </ul>
+          </nav>
 
-            <h3 class="c-news-featured__title">
-              مجلس التوثيق يعتمد استراتيجية الوسائط المدمجة
-            </h3>
-
-            <p class="c-news-featured__excerpt">
-              اعتماد خطة تحريرية جديدة تربط بين الصورة والفيديو والصوت ضمن
-              سياق واحد يحفظ هوية السرد ويمنع تفكك المعنى عبر الزمن.
+          <!-- Meta -->
+          <div class="c-footer__meta">
+            <h4 class="c-footer__title">عن الأرشيف</h4>
+            <p class="c-footer__small">
+              جميع المواد المعروضة لأغراض التوثيق والتحليل
+              وتعتمد على مصادر مفتوحة أو منشورة سابقًا.
             </p>
 
-            <div class="c-news-featured__meta">
-              <span>12 مارس 2026</span>
-              <span>وحدة البيانات الرسمية</span>
-            </div>
+            <p class="c-footer__copyright">
+              © 2026 SALEH-AL-AROURI Archive<br />
+              جميع الحقوق محفوظة
+            </p>
           </div>
-        </article>
-
-        <!-- Side news -->
-        <div class="c-news-list">
-
-          <article class="c-news-item">
-            <span class="c-badge c-badge--text">تصريح</span>
-            <h4 class="c-news-item__title">
-              بيان تكريمي للمحطات الداعمة لمسار التوثيق
-            </h4>
-            <div class="c-news-item__meta">
-              <span>01 مارس 2026</span>
-              <span>الأرشيف الرسمي</span>
-            </div>
-          </article>
-
-          <article class="c-news-item">
-            <span class="c-badge c-badge--text">تحقيق</span>
-            <h4 class="c-news-item__title">
-              تقرير تحليلي حول الظهور الإعلامي الأخير
-            </h4>
-            <div class="c-news-item__meta">
-              <span>25 فبراير 2026</span>
-              <span>مكتب التحقيق</span>
-            </div>
-          </article>
-
-          <article class="c-news-item">
-            <span class="c-badge c-badge--text">أرشيف</span>
-            <h4 class="c-news-item__title">
-              رسالة صوتية موثقة تُنشر للمرة الأولى
-            </h4>
-            <div class="c-news-item__meta">
-              <span>16 فبراير 2026</span>
-              <span>وحدة الصوتيات</span>
-            </div>
-          </article>
 
         </div>
-      </div>
-    </div>
-  </section>
 
+        <!-- Bottom bar -->
+        <div class="c-footer__bottom">
+          <span class="c-footer__tag">
+            Built as a living archive
+          </span>
 
-  </main>
-
-  <!-- =========================================
-  FOOTER — Archive / Editorial style
-========================================= -->
-  <footer class="c-footer" role="contentinfo">
-    <div class="container">
-
-      <div class="c-footer__grid">
-
-        <!-- Brand -->
-        <div class="c-footer__brand">
-          <a class="c-footer__logo" href="index.html">
-            SALEH-AL-AROURI
-          </a>
-          <p class="c-footer__desc">
-            أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
-            في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد.
-          </p>
-        </div>
-
-        <!-- Navigation -->
-        <nav class="c-footer__nav" aria-label="روابط الفوتر">
-          <h4 class="c-footer__title">الأقسام</h4>
-          <ul class="c-footer__list">
-            <li><a href="timeline.html">الخط الزمني</a></li>
-            <li><a href="media.html">الوسائط</a></li>
-            <li><a href="news.html">الأخبار</a></li>
-            <li><a href="biography.html">السيرة</a></li>
-          </ul>
-        </nav>
-
-        <!-- Meta -->
-        <div class="c-footer__meta">
-          <h4 class="c-footer__title">عن الأرشيف</h4>
-          <p class="c-footer__small">
-            جميع المواد المعروضة لأغراض التوثيق والتحليل
-            وتعتمد على مصادر مفتوحة أو منشورة سابقًا.
-          </p>
-
-          <p class="c-footer__copyright">
-            © 2026 SALEH-AL-AROURI Archive<br />
-            جميع الحقوق محفوظة
-          </p>
+          <div class="c-footer__links">
+            <a href="about.html">من نحن</a>
+            <a href="news.html">بيانات رسمية</a>
+          </div>
         </div>
 
       </div>
-
-      <!-- Bottom bar -->
-      <div class="c-footer__bottom">
-        <span class="c-footer__tag">
-          Built as a living archive
-        </span>
-
-        <div class="c-footer__links">
-          <a href="about.html">من نحن</a>
-          <a href="news.html">بيانات رسمية</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
+    </footer>
 
 
 
