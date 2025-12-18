@@ -446,6 +446,31 @@ const initPersonaFlip = () => {
       });
     });
 
+    // Allow clicking the card (outside interactive controls) to toggle flip
+    const toggleFlip = () => {
+      card.classList.toggle("is-flipped");
+      if (!card.classList.contains("is-flipped")) {
+        // When returning to front, pause any media inside
+        card.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
+      }
+    };
+
+    card.addEventListener("click", (e) => {
+      // Ignore clicks on interactive child elements (buttons, links, media controls, tabs)
+      const isInteractive = e.target.closest("button, a, [data-flip-to], [data-persona-media], .js-plyr, video, audio");
+      if (isInteractive) return;
+      toggleFlip();
+    });
+
+    // Keyboard activation when the card itself is focused (Enter / Space)
+    card.addEventListener("keydown", (e) => {
+      if (!["Enter", " "].includes(e.key)) return;
+      // Only toggle when the card element is the active/focused element
+      if (document.activeElement !== card) return;
+      e.preventDefault();
+      toggleFlip();
+    });
+
     // Click mode only (no hover)
     card.setAttribute("data-flip-mode", "click");
     if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
