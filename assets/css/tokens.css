@@ -1,50 +1,36 @@
 @font-face {
-  font-family: "Almarai";
-  src: url("../fonts/Almarai-Regular.ttf") format("truetype");
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Almarai-Bold";
-  src: url("../fonts/Almarai-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Almarai";
-  src: url("../fonts/Almarai-Light.ttf") format("truetype");
+  font-family: "Tajawal-Light";
+  src: url("../fonts/Tajawal-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Almarai";
-  src: url("../fonts/Almarai-ExtraBold.ttf") format("truetype");
+  font-family: "Tajawal-Bold";
+  src: url("../fonts/Tajawal-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tajawal-ExtraBold";
+  src: url("../fonts/Tajawal-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Al-Jazeera-Arabic";
-  src: url("../fonts/Al-Jazeera-Arabic Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
-@font-face {
-  font-family: "Al-Jazeera-Arabic-Bold";
-  src: url("../fonts/Al-Jazeera-Arabic\ Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: "Barada";
@@ -71,6 +57,10 @@
   --color-neutral-100: #f6f4ef;
   --color-neutral-50: #ffffff;
   --color-border: rgba(15, 20, 15, 0.15);
+
+  --text-primary: var(--color-neutral-950);
+  --text-secondary: var(--color-neutral-900);
+  --text-muted: var(--color-neutral-700);
 
   /* Spacing scale */
   --space-4: 4px;
@@ -103,8 +93,8 @@
   --type-small: 0.875rem;
 
   /* Font families */
-  --font-family-body: "Almarai", "Barada", system-ui, sans-serif;
-  --font-family-heading: "Almarai-Bold", sans-serif;
+  --font-family-body: "Tajawal", system-ui, sans-serif;
+  --font-family-heading: "Tajawal-Bold", sans-serif;
 
   /* Z-index */
   --z-index-nav: 900;
@@ -124,4 +114,80 @@
   --shadow-nav: 0 18px 35px rgba(15, 20, 15, 0.08);
 
   --radius-pill: 999px;
+}
+
+/* Premium dark theme overrides */
+html[data-theme="dark"],
+body.is-dark {
+  --color-neutral-950: #070d09;
+  --color-neutral-900: #0b1410;
+  --color-neutral-800: #0f1f17;
+  --color-neutral-700: #1a2f24;
+  --color-neutral-600: rgba(246, 244, 239, 0.7);
+  --color-neutral-400: rgba(246, 244, 239, 0.5);
+  --color-neutral-200: rgba(246, 244, 239, 0.2);
+  --color-neutral-100: rgba(246, 244, 239, 0.1);
+  --color-neutral-50: rgba(255, 255, 255, 0.06);
+  --color-primary: #23c55e;
+  --color-primary-dark: #1aa34d;
+  --color-primary-light: rgba(35, 197, 94, 0.18);
+  --color-accent: #d6a94b;
+  --color-accent-dark: #b9872f;
+  --header-bg: rgba(9, 19, 12, 0.7);
+  --header-border: rgba(214, 169, 75, 0.14);
+  --surface-bg: rgba(11, 20, 16, 0.78);
+  --surface-border: rgba(214, 169, 75, 0.14);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.45);
+  --shadow-medium: 0 18px 48px rgba(0, 0, 0, 0.55);
+  --shadow-nav: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --ring: 0 0 0 4px rgba(214, 169, 75, 0.18);
+  --text-primary: rgba(246, 244, 239, 0.96);
+  --text-secondary: rgba(246, 244, 239, 0.75);
+  --text-muted: rgba(246, 244, 239, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-neutral-950: #070d09;
+    --color-neutral-900: #0b1410;
+    --color-neutral-800: #0f1f17;
+    --color-neutral-700: #1a2f24;
+    --color-neutral-600: rgba(246, 244, 239, 0.7);
+    --color-neutral-400: rgba(246, 244, 239, 0.5);
+    --color-neutral-200: rgba(246, 244, 239, 0.2);
+    --color-neutral-100: rgba(246, 244, 239, 0.1);
+    --color-neutral-50: rgba(255, 255, 255, 0.06);
+    --color-primary: #23c55e;
+    --color-primary-dark: #1aa34d;
+    --color-primary-light: rgba(35, 197, 94, 0.18);
+    --color-accent: #d6a94b;
+    --color-accent-dark: #b9872f;
+    --header-bg: rgba(9, 19, 12, 0.7);
+    --header-border: rgba(214, 169, 75, 0.14);
+    --surface-bg: rgba(11, 20, 16, 0.78);
+    --surface-border: rgba(214, 169, 75, 0.14);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.45);
+    --shadow-medium: 0 18px 48px rgba(0, 0, 0, 0.55);
+    --shadow-nav: 0 18px 40px rgba(0, 0, 0, 0.45);
+    --ring: 0 0 0 4px rgba(214, 169, 75, 0.18);
+    --text-primary: rgba(246, 244, 239, 0.96);
+    --text-secondary: rgba(246, 244, 239, 0.75);
+    --text-muted: rgba(246, 244, 239, 0.55);
+  }
+}
+
+/* Plyr theming via tokens */
+:root {
+  --plyr-color-main: var(--color-accent);
+  --plyr-audio-controls-background: var(--surface-bg);
+  --plyr-video-controls-background: rgba(0, 0, 0, 0.55);
+  --plyr-control-radius: 12px;
+}
+
+html[data-theme="dark"],
+body.is-dark {
+  --plyr-audio-controls-background: rgba(11, 20, 16, 0.78);
+  --plyr-video-controls-background: rgba(0, 0, 0, 0.65);
 }

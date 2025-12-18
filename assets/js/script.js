@@ -311,6 +311,83 @@ const initHeaderScrollState = () => {
   // Apply initial state on load.
   toggleShadow();
 };
+// Theme toggle helpers and preference persistence
+const themeStorageKey = "salehThemePreference";
+const themePrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+const safeReadTheme = () => {
+  try {
+    return localStorage.getItem(themeStorageKey);
+  } catch {
+    return null;
+  }
+};
+
+const safeWriteTheme = (value) => {
+  try {
+    if (value) localStorage.setItem(themeStorageKey, value);
+    else localStorage.removeItem(themeStorageKey);
+  } catch {
+    /* ignore storage errors */
+  }
+};
+
+const updateThemeToggleVisual = (isDark) => {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+  toggle.setAttribute("aria-pressed", String(isDark));
+  toggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+
+  const icon = toggle.querySelector("[data-theme-icon]");
+  if (!icon) return;
+  icon.classList.toggle("fa-sun", isDark);
+  icon.classList.toggle("fa-moon", !isDark);
+};
+
+const applyColorTheme = (variant, { persist = false } = {}) => {
+  const root = document.documentElement;
+  const body = document.body;
+  if (!root || !body) return;
+
+  const isDark = variant === "dark";
+  if (isDark) {
+    root.setAttribute("data-theme", "dark");
+    body.classList.add("is-dark");
+  } else {
+    root.removeAttribute("data-theme");
+    body.classList.remove("is-dark");
+  }
+
+  updateThemeToggleVisual(isDark);
+  if (persist) safeWriteTheme(variant);
+};
+
+const handleSystemThemeChange = (event) => {
+  if (safeReadTheme()) return;
+  const next = event.matches ? "dark" : "light";
+  applyColorTheme(next);
+};
+
+const initThemeToggle = () => {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    const next = current === "dark" ? "light" : "dark";
+    applyColorTheme(next, { persist: true });
+  });
+};
+
+const storedTheme = safeReadTheme();
+const initialTheme = storedTheme || (themePrefersDark.matches ? "dark" : "light");
+applyColorTheme(initialTheme);
+
+if (themePrefersDark.addEventListener) {
+  themePrefersDark.addEventListener("change", handleSystemThemeChange);
+} else if (themePrefersDark.addListener) {
+  themePrefersDark.addListener(handleSystemThemeChange);
+}
 /**
  * Makes collection cards behave like links.
  * Uses data-collection-link attribute.
@@ -349,6 +426,68 @@ const initMilestoneCards = () => {
     card.addEventListener("click", open);
   });
 };
+const initPersonaFlip = () => {
+  document.querySelectorAll("[data-persona-flip]").forEach((card) => {
+    const toFront = () => {
+      card.classList.remove("is-flipped");
+      card.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
+    };
+
+    const toBack = () => {
+      card.classList.add("is-flipped");
+    };
+
+    card.querySelectorAll("[data-flip-to]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = btn.getAttribute("data-flip-to");
+        if (target === "back") toBack();
+        else toFront();
+      });
+    });
+
+    // Click mode only (no hover)
+    card.setAttribute("data-flip-mode", "click");
+    if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
+  });
+};
+
+const initPersonaMediaTabs = () => {
+  document.querySelectorAll("[data-persona-media]").forEach((root) => {
+    const tabs = root.querySelectorAll("[data-persona-tab]");
+    const panels = root.closest(".c-persona__back")?.querySelectorAll("[data-persona-panel]") || root.parentElement.querySelectorAll("[data-persona-panel]");
+    if (!tabs.length || !panels.length) return;
+
+    const activate = (key) => {
+      tabs.forEach((btn) => {
+        const active = btn.getAttribute("data-persona-tab") === key;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-selected", String(active));
+      });
+
+      panels.forEach((panel) => {
+        const show = panel.getAttribute("data-persona-panel") === key;
+        panel.classList.toggle("is-visible", show);
+        if (!show) panel.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
+      });
+    };
+
+    tabs.forEach((btn) => btn.addEventListener("click", () => activate(btn.getAttribute("data-persona-tab"))));
+    activate(root.querySelector("[data-persona-tab].is-active")?.getAttribute("data-persona-tab") || "video");
+  });
+};
+
+const initPlyrPlayers = () => {
+  if (!window.Plyr) return;
+  document.querySelectorAll(".js-plyr").forEach((el) => {
+    // eslint-disable-next-line no-new
+    new window.Plyr(el, {
+      controls: ["play", "progress", "current-time", "mute", "volume", "settings"],
+    });
+  });
+};
+
+
 
 /**
  * Main bootstrap on DOM ready.
@@ -363,7 +502,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScrollState();
   initCollectionCards();
   initMilestoneCards();
-
+  initThemeToggle();
+  initPersonaFlip();
+  initPersonaMediaTabs();
+  initPlyrPlayers();
 });
 
 // Expose helper for debugging or external triggers (use sparingly in production).
