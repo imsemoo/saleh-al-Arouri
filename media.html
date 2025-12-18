@@ -6,193 +6,1633 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
   <title>SALEH-AL-AROURI | مركز الوسائط</title>
-  <meta name="description" content="مكتبة الوسائط في SALEH-AL-AROURI تعرض أكبر مجموعة صور وفيديوهات وصوتيات." />
+  <meta name="description"
+    content="مكتبة الوسائط في SALEH-AL-AROURI تعرض صور وفيديو وصوتيات ضمن تصنيف واضح ومصادر عند توفرها" />
   <link rel="canonical" href="https://saleh-al-arouri.com/media.html" />
   <meta property="og:title" content="SALEH-AL-AROURI | مركز الوسائط" />
-  <meta property="og:description" content="مكتبة الوسائط في SALEH-AL-AROURI تعرض أكبر مجموعة صور وفيديوهات وصوتيات." />
-  <meta property="og:image" content="assets/img/articles/featured-large.png" />
+  <meta property="og:description"
+    content="مكتبة الوسائط في SALEH-AL-AROURI تعرض صور وفيديو وصوتيات ضمن تصنيف واضح ومصادر عند توفرها" />
+  <meta property="og:image" content="assets/images/videos/thumb1.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SALEH-AL-AROURI | مركز الوسائط" />
-  <meta name="twitter:description" content="مكتبة الوسائط في SALEH-AL-AROURI تعرض أكبر مجموعة صور وفيديوهات وصوتيات." />
+  <meta name="twitter:description"
+    content="مكتبة الوسائط في SALEH-AL-AROURI تعرض صور وفيديو وصوتيات ضمن تصنيف واضح ومصادر عند توفرها" />
   <meta name="author" content="SALEH-AL-AROURI" />
   <meta name="theme-color" content="#09130c" />
-
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/articles/thumb1.png" />
   <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css" />
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="preload" href="assets/js/script.js" as="script" />
+  <style>
+    /* =========================================
+  MEDIA PAGE — Premium layout
+========================================= */
+
+    .c-page-hero {
+      padding: var(--space-48) 0 var(--space-24);
+      border-bottom: 1px solid rgba(15, 20, 15, 0.06);
+    }
+
+    .c-page-hero__head {
+      display: grid;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    @media (min-width: 992px) {
+      .c-page-hero__head {
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: var(--space-24);
+        align-items: center;
+      }
+    }
+
+    .c-page-hero__eyebrow {
+      margin: 0;
+      color: var(--color-accent-dark);
+      font-size: var(--type-h5);
+      font-family: "Barada";
+    }
+
+    .c-page-hero__title {
+      margin: 6px 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: clamp(2.4rem, 2.4vw, 3rem);
+    }
+
+    .c-page-hero__lede {
+      margin: var(--space-12) 0 0;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 70ch;
+      font-size: 1.02rem;
+    }
+
+    .c-media-kpis {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-12);
+    }
+
+    /* Improve hero readability on textured backgrounds */
+    .c-page-hero {
+      position: relative;
+    }
+
+    .c-page-hero__lede {
+      text-wrap: pretty;
+    }
+
+    .c-kpi {
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-16);
+      padding: var(--space-16);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .c-kpi::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(520px 180px at 100% 0%,
+          rgba(199, 149, 42, 0.14),
+          rgba(199, 149, 42, 0) 55%);
+      pointer-events: none;
+    }
+
+    .c-kpi__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-16);
+      display: grid;
+      place-items: center;
+      background: rgba(199, 149, 42, 0.14);
+      border: 1px solid rgba(199, 149, 42, 0.22);
+      color: var(--color-accent-dark);
+      position: relative;
+      z-index: 1;
+    }
+
+    html[data-theme="dark"] .c-kpi__icon,
+    body.is-dark .c-kpi__icon {
+      background: rgba(214, 169, 75, 0.12);
+      border-color: rgba(214, 169, 75, 0.22);
+      color: var(--color-accent);
+    }
+
+    .c-kpi__num {
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .c-kpi__label {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Controls */
+    .c-media-controls {
+      margin-top: var(--space-48);
+      display: grid;
+      gap: var(--space-24);
+    }
+
+    @media (min-width: 992px) {
+      .c-media-controls {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .c-media-controls__search {
+      position: relative;
+    }
+
+    .c-media-controls__search i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 14px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .c-media-controls__search .c-input {
+      padding-right: 44px;
+    }
+
+    .c-media-controls__right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+      justify-content: flex-start;
+    }
+
+    .c-chipset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .c-chip {
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      color: var(--text-secondary);
+      border-radius: var(--radius-pill);
+      padding: 10px 14px;
+      font-size: var(--type-small);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .c-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(199, 149, 42, 0.25);
+    }
+
+    .c-chip.is-active {
+      background: var(--color-primary-light);
+      color: var(--text-primary);
+      border-color: rgba(199, 149, 42, 0.28);
+    }
+
+    html[data-theme="dark"] .c-chip.is-active,
+    body.is-dark .c-chip.is-active {
+      background: rgba(35, 197, 94, 0.14);
+      border-color: rgba(214, 169, 75, 0.22);
+    }
+
+    .c-select {
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      color: var(--text-primary);
+      border-radius: var(--radius-16);
+      padding: 12px 14px;
+      min-width: 220px;
+    }
+
+    /* Featured strip */
+    .c-featured {
+      margin-top: var(--space-24);
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    @media (min-width: 992px) {
+      .c-featured {
+        grid-template-columns: 1.45fr 0.55fr;
+        gap: var(--space-12);
+        align-items: stretch;
+      }
+    }
+
+    .c-featured__main {
+      border-radius: var(--radius-20);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .c-featured__side {
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    .c-featured-card {
+      border-radius: var(--radius-20);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Grid sections */
+    .c-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-16);
+      margin-bottom: var(--space-16);
+    }
+
+    .c-section-head h2 {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-section-head p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    /* Media grid refined */
+    .c-media-grid {
+      display: grid;
+      gap: var(--space-12);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .c-media-grid .c-media-card {
+      grid-column: span 12;
+    }
+
+    @media (min-width: 768px) {
+      .c-media-grid .c-media-card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .c-media-grid .c-media-card {
+        grid-column: span 4;
+      }
+    }
+
+
+    /* =========================================================
+  FEATURED — Media page (editorial layout)
+  - Main card + two side cards
+  - Works with existing .c-media-card styles
+========================================================= */
+
+    .c-featured {
+      margin-top: var(--space-24);
+      display: grid;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    /* Desktop split */
+    @media (min-width: 992px) {
+      .c-featured {
+        grid-template-columns: 1.35fr 0.65fr;
+        gap: var(--space-24);
+      }
+    }
+
+    /* Side column */
+    .c-featured__side {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    /* On small screens: show side cards in a 2-col grid if possible */
+    @media (max-width: 991.98px) {
+      .c-featured__side {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .c-featured__side {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------------------------------------------------------
+  Main featured card — “hero” treatment
+--------------------------------------------------------- */
+    .c-featured__main {
+      border-radius: var(--radius-20);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-medium);
+      transform: translateZ(0);
+    }
+
+    /* Stronger hover for featured */
+    .c-featured__main:hover,
+    .c-featured__main:focus-within {
+      border-color: rgba(199, 149, 42, 0.32);
+      box-shadow: 0 22px 56px rgba(15, 20, 15, 0.22);
+      transform: translateY(-2px);
+    }
+
+    /* Make media area more cinematic */
+    .c-featured__main .c-media-card__media {
+      position: relative;
+      background: var(--color-neutral-100);
+    }
+
+    /* Add editorial gradient for readability */
+    .c-featured__main .c-media-card__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.72) 100%);
+      pointer-events: none;
+    }
+
+    /* Badge placement — keep RTL safe */
+    .c-featured__main .c-media-card__badge {
+      position: absolute;
+      top: var(--space-16);
+      inset-inline-start: var(--space-16);
+      inset-inline-end: auto;
+      z-index: 2;
+    }
+
+    /* Play button placement (main) */
+    .c-featured__main .c-media-card__overlay {
+      opacity: 1;
+      /* always visible but subtle */
+      background: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.55));
+    }
+
+    .c-featured__main .c-media-card__play {
+      width: 66px;
+      height: 66px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(214, 169, 75, 0.92);
+      color: var(--color-neutral-950);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      transform: scale(0.98);
+      transition: transform var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .c-featured__main:hover .c-media-card__play,
+    .c-featured__main:focus-within .c-media-card__play {
+      transform: scale(1.02);
+      filter: brightness(1.03);
+    }
+
+    /* Content sits on top of image (magazine style) */
+    .c-featured__main .c-media-card__content {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: var(--space-24);
+      color: rgba(246, 244, 239, 0.96);
+    }
+
+    /* Make title pop */
+    .c-featured__main .c-media-card__title {
+      color: rgba(246, 244, 239, 0.98);
+      font-size: clamp(1.35rem, 1.4vw, 1.75rem);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* De-emphasize meta */
+    .c-featured__main .c-media-card__details {
+      margin-top: var(--space-12);
+      color: rgba(246, 244, 239, 0.68);
+    }
+
+    .c-featured__main .u-muted {
+      color: rgba(246, 244, 239, 0.72) !important;
+    }
+
+    /* ---------------------------------------------------------
+  Side cards — compact editorial cards
+--------------------------------------------------------- */
+    .c-featured-card {
+      border-radius: var(--radius-16);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      transform: translateZ(0);
+    }
+
+    /* Tighter hover */
+    .c-featured-card:hover,
+    .c-featured-card:focus-within {
+      border-color: rgba(21, 88, 45, 0.26);
+      transform: translateY(-2px);
+    }
+
+    /* Side media height normalization */
+    .c-featured-card .c-media-card__media {
+      aspect-ratio: 16 / 10;
+      background: var(--color-neutral-100);
+    }
+
+    /* Reel keeps vertical ratio but constrained */
+
+
+    /* Cleaner content spacing */
+    .c-featured-card .c-media-card__content {
+      padding: var(--space-16);
+      gap: var(--space-8);
+    }
+
+    .c-featured-card .c-media-card__title {
+      font-size: 1.05rem;
+      line-height: 1.45;
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    /* Badge alignment */
+    .c-featured-card .c-media-card__badge {
+      position: absolute;
+      top: var(--space-12);
+      inset-inline-start: var(--space-12);
+      inset-inline-end: auto;
+    }
+
+    /* Overlay only on hover for side cards */
+    .c-featured-card .c-media-card__overlay {
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .c-featured-card:hover .c-media-card__overlay,
+    .c-featured-card:focus-within .c-media-card__overlay {
+      opacity: 1;
+    }
+
+    /* Smaller play button in side cards */
+    .c-featured-card .c-media-card__play {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-pill);
+      background: rgba(214, 169, 75, 0.9);
+      color: var(--color-neutral-950);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    /* ---------------------------------------------------------
+  Accessibility polish
+--------------------------------------------------------- */
+    .c-featured__main:focus-visible,
+    .c-featured-card:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-medium), var(--ring);
+    }
+
+    /* Ensure the main content overlay works (because content is absolute) */
+    .c-featured__main .c-media-card__media {
+      min-height: 360px;
+    }
+
+    @media (max-width: 767.98px) {
+      .c-featured__main .c-media-card__media {
+        min-height: 280px;
+      }
+
+      .c-featured__main .c-media-card__content {
+        padding: var(--space-16);
+      }
+    }
+
+    /* =========================================================
+  MEDIA LIBRARY — Main grid section (Media page)
+  - Better section header
+  - Cleaner media grid
+  - Strong empty state
+  - RTL-safe + Dark mode friendly via tokens
+========================================================= */
+
+    /* ---------- Section wrapper polish ---------- */
+    .u-section[aria-label="مكتبة الوسائط"] {
+      padding-top: var(--space-48);
+      padding-bottom: var(--space-48);
+    }
+
+    /* ---------- Section head (title + action) ---------- */
+    .c-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-24);
+      padding-bottom: var(--space-16);
+      border-bottom: 1px solid rgba(15, 20, 15, 0.08);
+    }
+
+    .c-section-head h2 {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.6rem, 1.5vw, 2rem);
+      color: var(--text-primary);
+    }
+
+    .c-section-head .u-muted {
+      margin: var(--space-8) 0 0;
+      max-width: 70ch;
+      line-height: 1.85;
+      color: var(--text-muted);
+    }
+
+    /* Make the action look like a tool, not just a link */
+    .c-section-head .c-btn--ghost {
+      border: 1px solid rgba(15, 20, 15, 0.14);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-12) var(--space-16);
+      border-radius: var(--radius-16);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-section-head {
+      border-bottom-color: rgba(214, 169, 75, 0.14);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-section-head .c-btn--ghost {
+      border-color: rgba(214, 169, 75, 0.18);
+      background: rgba(11, 20, 16, 0.5);
+    }
+
+    /* ---------- Media grid upgrade ---------- */
+    .c-media-grid[data-media-grid] {
+      display: grid;
+      gap: var(--space-16);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    /* Default cards: 3 per row */
+    .c-media-grid[data-media-grid]>.c-media-card {
+      grid-column: span 3;
+    }
+
+    /* Reel cards get a bit more visual space on desktop */
+    @media (min-width: 992px) {
+      .c-media-grid[data-media-grid]>.c-media-card .u-aspect-9x16 {
+        aspect-ratio: 9 / 13;
+      }
+    }
+
+    /* Tablet: 2 per row */
+    @media (max-width: 991.98px) {
+      .c-media-grid[data-media-grid] {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .c-media-grid[data-media-grid]>.c-media-card {
+        grid-column: auto;
+      }
+    }
+
+    /* Mobile: 1 per row */
+    @media (max-width: 575.98px) {
+      .c-media-grid[data-media-grid] {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- Card treatment (premium + consistent) ---------- */
+    .c-media-grid[data-media-grid] .c-media-card {
+      border-radius: var(--radius-16);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      transform: translateZ(0);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    /* Hover + focus */
+    .c-media-grid[data-media-grid] .c-media-card:hover,
+    .c-media-grid[data-media-grid] .c-media-card:focus-within {
+      transform: translateY(-3px);
+      border-color: rgba(199, 149, 42, 0.30);
+      box-shadow: 0 18px 46px rgba(15, 20, 15, 0.18);
+    }
+
+    .c-media-grid[data-media-grid] .c-media-card:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-medium), var(--ring);
+    }
+
+    /* Media area */
+    .c-media-grid[data-media-grid] .c-media-card__media {
+      position: relative;
+      background: var(--color-neutral-100);
+    }
+
+    /* Image crispness */
+    .c-media-grid[data-media-grid] .c-media-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform var(--transition-fast);
+    }
+
+    .c-media-grid[data-media-grid] .c-media-card:hover .c-media-card__media img {
+      transform: scale(1.04);
+    }
+
+    /* Overlay: only when relevant (videos/reels) */
+    .c-media-grid[data-media-grid] .c-media-card__overlay {
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      background: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.62));
+    }
+
+    .c-media-grid[data-media-grid] .c-media-card:hover .c-media-card__overlay,
+    .c-media-grid[data-media-grid] .c-media-card:focus-within .c-media-card__overlay {
+      opacity: 1;
+    }
+
+    /* Play button */
+    .c-media-grid[data-media-grid] .c-media-card__play {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(214, 169, 75, 0.92);
+      color: var(--color-neutral-950);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Badge placement RTL-safe */
+    .c-media-grid[data-media-grid] .c-media-card__badge {
+      position: absolute;
+      top: var(--space-12);
+      inset-inline-start: var(--space-12);
+      inset-inline-end: auto;
+      z-index: 2;
+    }
+
+    /* ---------- Content area ---------- */
+    .c-media-grid[data-media-grid] .c-media-card__content {
+      padding: var(--space-16);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .c-media-grid[data-media-grid] .c-media-card__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.05rem;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+
+    /* Small meta line (year, etc.) */
+    .c-media-grid[data-media-grid] .c-media-card__content .u-muted {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    /* Details row */
+    .c-media-grid[data-media-grid] .c-media-card__details {
+      margin-top: var(--space-8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-12);
+      font-size: var(--type-small);
+      color: var(--text-secondary);
+    }
+
+    /* Make the “تفاصيل” hint feel like a CTA */
+    .c-media-grid[data-media-grid] .c-media-card__details .u-muted {
+      color: var(--color-accent-dark);
+    }
+
+    /* ---------- Audio media card improvements ---------- */
+    .c-media-grid[data-media-grid] .c-media-card__media--audio {
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(700px 280px at 20% 20%, rgba(21, 88, 45, 0.22), transparent 60%),
+        radial-gradient(520px 260px at 80% 30%, rgba(199, 149, 42, 0.18), transparent 62%),
+        linear-gradient(135deg, rgba(15, 20, 15, 0.08), rgba(15, 20, 15, 0.02));
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-media-grid[data-media-grid] .c-media-card__media--audio {
+      background:
+        radial-gradient(700px 280px at 20% 20%, rgba(35, 197, 94, 0.18), transparent 60%),
+        radial-gradient(520px 260px at 80% 30%, rgba(214, 169, 75, 0.16), transparent 62%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    }
+
+    .c-media-grid[data-media-grid] .c-media-card__audio-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-pill);
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(15, 20, 15, 0.12);
+      box-shadow: var(--shadow-soft);
+      color: var(--color-primary);
+      font-size: 1.35rem;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-media-grid[data-media-grid] .c-media-card__audio-icon {
+      background: rgba(11, 20, 16, 0.6);
+      border-color: rgba(214, 169, 75, 0.18);
+      color: var(--color-accent);
+    }
+
+    /* ---------- Empty state (premium) ---------- */
+    .c-empty[data-media-empty] {
+      margin-top: var(--space-24);
+      border-radius: var(--radius-16);
+      border: 1px dashed rgba(15, 20, 15, 0.22);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(10px);
+      padding: var(--space-24);
+      text-align: center;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-empty[data-media-empty] {
+      border-color: rgba(214, 169, 75, 0.20);
+      background: rgba(11, 20, 16, 0.45);
+    }
+
+    /* =========================================================
+  AUDIO SHELF — Premium layout (Plyr)
+  - Token-driven (light/dark)
+  - RTL-safe
+  - Editorial cards + stable grid
+========================================================= */
+
+    .c-audio-shelf {
+      padding-top: var(--space-48);
+      padding-bottom: var(--space-48);
+    }
+
+    /* ---------- Header extras ---------- */
+    .c-audio-shelf__head {
+      align-items: start;
+    }
+
+    .c-audio-shelf__kicker {
+      margin: 0;
+      font-family: "Barada", var(--font-family-body);
+      color: var(--color-accent-dark);
+      letter-spacing: 0.04em;
+    }
+
+    .c-audio-shelf__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.7rem, 1.6vw, 2.1rem);
+      color: var(--text-primary);
+    }
+
+    .c-audio-shelf__subtitle {
+      margin: var(--space-12) 0 0;
+      max-width: 75ch;
+      line-height: 1.9;
+    }
+
+    .c-audio-shelf__note {
+      margin: var(--space-16) 0 0;
+      line-height: 1.9;
+    }
+
+    /* ---------- Grid ---------- */
+    .c-audio-shelf__grid {
+      margin-top: var(--space-24);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--space-16);
+    }
+
+    .c-audio-shelf__grid>.c-audio {
+      grid-column: span 6;
+    }
+
+    @media (max-width: 991.98px) {
+      .c-audio-shelf__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .c-audio-shelf__grid>.c-audio {
+        grid-column: auto;
+      }
+    }
+
+    /* ---------- Card ---------- */
+    .c-audio {
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .c-audio:hover {
+      transform: translateY(-3px);
+      border-color: rgba(199, 149, 42, 0.28);
+      box-shadow: 0 18px 46px rgba(15, 20, 15, 0.18);
+    }
+
+    /* ---------- Top row ---------- */
+    .c-audio__top {
+      padding: var(--space-16);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--space-12);
+      align-items: start;
+      border-bottom: 1px solid rgba(15, 20, 15, 0.06);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-audio__top {
+      border-bottom-color: rgba(214, 169, 75, 0.14);
+    }
+
+    @media (max-width: 575.98px) {
+      .c-audio__top {
+        grid-template-columns: auto 1fr;
+      }
+
+      .c-audio__chips {
+        grid-column: 1 / -1;
+        justify-content: start;
+      }
+    }
+
+    .c-audio__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-16);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(320px 120px at 20% 20%, rgba(21, 88, 45, 0.22), transparent 60%),
+        radial-gradient(260px 120px at 80% 30%, rgba(199, 149, 42, 0.18), transparent 62%),
+        rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      color: var(--color-primary);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-audio__icon {
+      background:
+        radial-gradient(320px 120px at 20% 20%, rgba(35, 197, 94, 0.20), transparent 60%),
+        radial-gradient(260px 120px at 80% 30%, rgba(214, 169, 75, 0.16), transparent 62%),
+        rgba(11, 20, 16, 0.5);
+      border-color: rgba(214, 169, 75, 0.14);
+      color: var(--color-accent);
+    }
+
+    .c-audio__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.05rem;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+
+    .c-audio__meta {
+      margin: var(--space-8) 0 0;
+      font-size: var(--type-small);
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .c-audio__dot {
+      opacity: 0.7;
+    }
+
+    .c-audio__chips {
+      display: flex;
+      gap: var(--space-8);
+      align-items: center;
+      justify-content: end;
+      flex-wrap: wrap;
+    }
+
+    .c-audio__chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(15, 20, 15, 0.12);
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-audio__chip {
+      border-color: rgba(214, 169, 75, 0.16);
+      background: rgba(11, 20, 16, 0.45);
+      color: var(--text-secondary);
+    }
+
+    .c-audio__chip--accent {
+      border-color: rgba(199, 149, 42, 0.34);
+      background: rgba(199, 149, 42, 0.16);
+      color: var(--text-primary);
+    }
+
+    /* ---------- Plyr area ---------- */
+    .c-audio__player {
+      padding: var(--space-16);
+    }
+
+    /* Make Plyr blend with your design tokens */
+    .c-audio .plyr {
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Plyr controls contrast in dark mode */
+    :is(html[data-theme="dark"], body.is-dark) .c-audio .plyr {
+      border-color: rgba(214, 169, 75, 0.14);
+      background: rgba(11, 20, 16, 0.45);
+    }
+
+    /* Focus ring */
+    .c-audio .plyr:focus-within {
+      box-shadow: var(--shadow-medium), var(--ring);
+    }
+
+    /* ---------- Footer actions ---------- */
+    .c-audio__footer {
+      padding: 0 var(--space-16) var(--space-16);
+      display: flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .c-audio__btn {
+      min-height: 44px;
+      border-radius: var(--radius-16);
+    }
+
+    /* Make the outline button feel premium */
+    .c-audio__footer .c-btn--outline {
+      border-color: rgba(15, 20, 15, 0.18);
+      background: transparent;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-audio__footer .c-btn--outline {
+      border-color: rgba(214, 169, 75, 0.18);
+    }
+  </style>
 </head>
 
 <body>
   <div class="c-page-shell">
+    <!-- Header (unchanged) -->
     <header class="c-header">
-      <div class="c-header__inner">
-        <div class="c-header__brand">
-          <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        </div>
+      <div class="container">
+        <div class="c-header__inner">
+          <div class="c-header__brand">
+            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية">SALEH-AL-AROURI</a>
+          </div>
 
-        <nav class="c-nav" aria-label="روابط القسم الرئيسي">
-          <ul class="c-nav__list">
-            <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
-            <li><a class="c-nav__link is-active" href="media.html" aria-current="page">الوسائط</a></li>
-            <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
-            <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
-            <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
-            <li><a class="c-nav__link" href="about.html">من نحن</a></li>
-          </ul>
-        </nav>
+          <nav class="c-nav" aria-label="روابط القسم الرئيسي">
+            <ul class="c-nav__list">
+              <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+              <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+              <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
+              <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+              <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+              <li><a class="c-nav__link" href="about.html">من نحن</a></li>
+            </ul>
+          </nav>
 
-        <div class="c-header__actions">
-          <button type="button" class="c-nav__icon" aria-label="بحث">
-            <span aria-hidden="true">🔍</span>
+          <button type="button" class="c-theme-toggle" data-theme-toggle aria-pressed="false"
+            title="Switch to dark mode">
+            <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
           </button>
-          <button type="button" class="c-btn c-btn--ghost">تابع</button>
-          <button type="button" class="c-btn c-btn--primary" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-        </div>
 
-        <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-          aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <div class="c-header__actions">
+            <button type="button" class="c-nav__icon" aria-label="بحث">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <a class="c-btn c-btn--primary d-none d-lg-inline-flex" href="contact.html">تواصل معنا</a>
+          </div>
+
+          <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasMenuLabel">SALEH-AL-AROURI</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="أغلق القائمة"></button>
+    <!-- Offcanvas (unchanged) -->
+    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
+      aria-labelledby="offcanvasMenuLabel">
+      <div class="offcanvas-header c-offcanvas__header">
+        <div class="c-offcanvas__brand">
+          <span id="offcanvasMenuLabel" class="c-offcanvas__title">القائمة</span>
+          <a class="c-offcanvas__logo" href="index.html">SALEH-AL-AROURI</a>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="إغلاق القائمة"></button>
       </div>
-      <div class="offcanvas-body">
+
+      <div class="offcanvas-body c-offcanvas__body">
         <div class="c-offcanvas__search">
           <label class="visually-hidden" for="offcanvasSearch">بحث</label>
-          <div class="c-offcanvas__search-field">
-            <input id="offcanvasSearch" type="search" placeholder="ابحث في الأرشيف" />
-            <button type="button" aria-label="بحث">
-              <span aria-hidden="true">🔍</span>
-            </button>
-          </div>
+          <input id="offcanvasSearch" type="search" class="form-control c-input" placeholder="ابحث داخل الأرشيف" />
         </div>
-        <ul class="c-nav__list c-nav__list--stacked">
-          <li><a class="c-nav__link" href="index.html" data-bs-dismiss="offcanvas">الرئيسية</a></li>
-          <li><a class="c-nav__link is-active" href="media.html" aria-current="page" data-bs-dismiss="offcanvas">الوسائط</a></li>
-          <li><a class="c-nav__link" href="timeline.html" data-bs-dismiss="offcanvas">الخط الزمني</a></li>
-          <li><a class="c-nav__link" href="biography.html" data-bs-dismiss="offcanvas">السيرة</a></li>
-          <li><a class="c-nav__link" href="news.html" data-bs-dismiss="offcanvas">الأخبار</a></li>
-          <li><a class="c-nav__link" href="about.html" data-bs-dismiss="offcanvas">من نحن</a></li>
+
+        <ul class="c-nav__list c-nav__list--stacked" aria-label="روابط التنقل">
+          <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+          <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+          <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
+          <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+          <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+          <li><a class="c-nav__link" href="about.html">من نحن</a></li>
         </ul>
-        <div class="c-offcanvas__divider" aria-hidden="true"></div>
+
+        <hr class="c-divider" />
+
         <div class="c-offcanvas__actions">
-          <button type="button" class="c-btn c-btn--primary w-100" data-bs-dismiss="offcanvas" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-          <button type="button" class="c-btn c-btn--outline w-100" data-bs-dismiss="offcanvas">تابع</button>
+          <a class="c-btn c-btn--ghost w-100" href="about.html">تابع</a>
+          <button type="button" class="c-btn c-btn--primary w-100" onclick="modalHelper.open('mediaDetailModal')">
+            شاهد التفاصيل
+          </button>
         </div>
       </div>
     </div>
 
     <main>
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <p class="u-muted">مجموعات مرئية وصوتية</p>
-          <h1 class="c-card__title">كل الوسائط تحت سقف موحد</h1>
-          <p>مكتبة ترتّب الصور ومقاطع الفيديو والريلز والأرشيف الصوتي بطريقة يمكن تصفحها بسهولة.</p>
-          <div class="c-media-grid">
-            <article class="c-media-card">
+      <!-- Page Hero -->
+      <!-- =========================================
+  MEDIA PAGE — Hero / Filters / Featured
+  Notes:
+  - Realistic archival copy (1966–2024)
+  - KPIs remain placeholders (manual data)
+  - Featured items are neutral labels (no fabricated specific events)
+========================================= -->
+      <section class="c-page-hero" aria-label="مقدمة مركز الوسائط">
+        <div class="container">
+          <div class="c-page-hero__head">
+            <div>
+              <p class="c-page-hero__eyebrow">مركز الوسائط</p>
+
+              <h1 class="c-page-hero__title">الصورة والصوت في سياق واحد</h1>
+
+              <p class="c-page-hero__lede">
+                هذا القسم يجمع المواد المرئية والسمعية المرتبطة بصالح العاروري
+                ويعرضها بحسب النوع والسنة مع وصف مختصر ومصدر عند توفره
+                لتبقى المادة داخل سياقها لا مجرد ملف منفصل
+              </p>
+
+              <p class="c-page-hero__lede">
+                ولد في عارورة قرب رام الله عام 1966 وتولى منصب نائب رئيس المكتب السياسي لحماس منذ 2017
+                حتى اغتياله في بيروت في 2 يناير 2024
+              </p>
+            </div>
+
+            <!-- KPI summary (manual numbers later) -->
+            <div class="c-media-kpis" aria-label="ملخص سريع">
+              <div class="c-kpi">
+                <div class="c-kpi__icon" aria-hidden="true"><i class="fa-regular fa-images"></i></div>
+                <div>
+                  <div class="c-kpi__num">
+                    <span class="c-counter" data-count-to="320" data-prefix="+" data-suffix=""></span>
+                  </div>
+                  <span class="c-kpi__label">صور</span>
+                </div>
+              </div>
+
+              <div class="c-kpi">
+                <div class="c-kpi__icon" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+                <div>
+                  <div class="c-kpi__num">
+                    <span class="c-counter" data-count-to="85" data-prefix="+" data-suffix=""></span>
+                  </div>
+                  <span class="c-kpi__label">فيديو</span>
+                </div>
+              </div>
+
+              <div class="c-kpi">
+                <div class="c-kpi__icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div>
+                  <div class="c-kpi__num">
+                    <span class="c-counter" data-count-to="40" data-prefix="+" data-suffix=""></span>
+                  </div>
+                  <span class="c-kpi__label">ريلز</span>
+                </div>
+              </div>
+
+              <div class="c-kpi">
+                <div class="c-kpi__icon" aria-hidden="true"><i class="fa-solid fa-wave-square"></i></div>
+                <div>
+                  <div class="c-kpi__num">
+                    <span class="c-counter" data-count-to="60" data-prefix="+" data-suffix=""></span>
+                  </div>
+                  <span class="c-kpi__label">صوتيات</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="c-media-controls" aria-label="أدوات البحث والتصفية">
+            <div class="c-media-controls__search">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <label class="visually-hidden" for="mediaSearch">بحث داخل الوسائط</label>
+              <input id="mediaSearch" class="form-control c-input" type="search"
+                placeholder="ابحث بعنوان المادة أو وصفها أو السنة أو المصدر" data-media-search />
+            </div>
+
+            <div class="c-media-controls__right">
+              <div class="c-chipset" role="tablist" aria-label="فلتر حسب النوع" data-media-filters>
+                <button class="c-chip is-active" type="button" data-filter="all">الكل</button>
+                <button class="c-chip" type="button" data-filter="photo">
+                  <i class="fa-regular fa-image" aria-hidden="true"></i>
+                  صور
+                </button>
+                <button class="c-chip" type="button" data-filter="video">
+                  <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                  فيديو
+                </button>
+                <button class="c-chip" type="button" data-filter="reel">
+                  <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                  ريلز
+                </button>
+                <button class="c-chip" type="button" data-filter="audio">
+                  <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+                  صوت
+                </button>
+              </div>
+
+              <label class="visually-hidden" for="mediaSort">ترتيب</label>
+              <div class="c-select-wrap">
+                <select id="mediaSort" class="c-select" data-media-sort>
+                  <option value="recent">الأحدث</option>
+                  <option value="oldest">الأقدم</option>
+                  <option value="title">حسب العنوان</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down c-select__icon" aria-hidden="true"></i>
+              </div>
+
+
+            </div>
+          </div>
+
+          <!-- Featured -->
+          <div class="c-featured" aria-label="مواد مختارة">
+            <!-- Main featured (neutral but meaningful) -->
+            <article class="c-media-card c-featured__main" role="button" tabindex="0" data-media-card
+              data-media-type="video" data-media-title="مقطع مرئي: قراءة سياسية وسياق" data-media-year="2024"
+              data-media-date="2024-01-02" data-modal-title="مقطع مرئي: قراءة سياسية وسياق"
+              data-modal-description="مادة مرئية مختارة تقدم فكرة عامة عن المسار السياسي وتضع اللقطة داخل سياقها الزمني مع بيانات المصدر عند توفرها."
+              data-modal-badge="فيديو" data-modal-timestamp="2 يناير 2024" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/featured.jpg" data-modal-video="assets/videos/featured.mp4">
               <div class="c-media-card__media u-aspect-16x9">
-                <img src="assets/img/articles/world-featured.jpg" alt="بنرات دولية" loading="lazy" />
+                <img src="assets/images/videos/featured.jpg" alt="مقطع مرئي مختار" loading="lazy" />
                 <div class="c-media-card__overlay">
-                  <span class="c-media-card__play">&#9658;</span>
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
                 </div>
-                <div class="c-media-card__badge">
-                  <span class="c-badge c-badge--video">فيديو</span>
-                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--video">فيديو</span></div>
               </div>
+
               <div class="c-media-card__content">
-                <h3 class="c-media-card__title">الملتقى الدولي</h3>
+                <p class="u-muted">مختار للتصفّح السريع</p>
+                <h3 class="c-media-card__title">مقطع مرئي: قراءة سياسية وسياق</h3>
                 <div class="c-media-card__details">
-                  <span>حاصل على 3 جوائز</span>
-                  <button class="c-btn c-btn--ghost">تفاصيل</button>
+                  <span>1966–2024</span>
+                  <span class="u-muted">اضغط لعرض التفاصيل</span>
                 </div>
               </div>
             </article>
-            <article class="c-media-card">
+
+            <div class="c-featured__side">
+              <!-- Photo featured -->
+              <article class="c-media-card c-featured-card" role="button" tabindex="0" data-media-card
+                data-media-type="photo" data-media-title="صورة أرشيفية: ملامح ومسار" data-media-year="—"
+                data-media-date="2019-07-24" data-modal-title="صورة أرشيفية: ملامح ومسار"
+                data-modal-description="صورة أرشيفية تُستخدم كبوابة سريعة لقراءة المحطة وربطها بالخط الزمني داخل الأرشيف."
+                data-modal-badge="صورة" data-modal-timestamp="تاريخ تقريبي/حسب المصدر"
+                data-modal-source="مصدر عند توفره" data-modal-image="assets/images/videos/thumb2.jpg">
+                <div class="c-media-card__media">
+                  <img src="assets/images/videos/thumb2.jpg" alt="صورة أرشيفية" loading="lazy" />
+                  <div class="c-media-card__badge"><span class="c-badge c-badge--photo">صورة</span></div>
+                </div>
+
+                <div class="c-media-card__content">
+                  <h3 class="c-media-card__title">صورة أرشيفية: ملامح ومسار</h3>
+                  <div class="c-media-card__details">
+                    <span>أرشيف</span>
+                    <span class="u-muted">تفاصيل</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Reel featured -->
+              <article class="c-media-card c-featured-card" role="button" tabindex="0" data-media-card
+                data-media-type="reel" data-media-title="لقطات عمودية: مقتطف سريع" data-media-year="2020"
+                data-media-date="2020-05-12" data-modal-title="لقطات عمودية: مقتطف سريع"
+                data-modal-description="لقطات قصيرة للهواتف تقدم ملخصًا بصريًا سريعًا مع بطاقة تعريف ومصدر عند توفره."
+                data-modal-badge="ريل" data-modal-timestamp="12 مايو 2020" data-modal-source="مصدر عند توفره"
+                data-modal-image="assets/images/videos/thumb1.jpg" data-modal-video="assets/videos/reel1.mp4">
+                <div class="c-media-card__media u-aspect-9x16">
+                  <img src="assets/images/videos/thumb1.jpg" alt="لقطات عمودية" loading="lazy" />
+                  <div class="c-media-card__overlay">
+                    <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                  </div>
+                  <div class="c-media-card__badge"><span class="c-badge c-badge--reel">ريل</span></div>
+                </div>
+
+                <div class="c-media-card__content">
+                  <h3 class="c-media-card__title">لقطات عمودية: مقتطف سريع</h3>
+                  <div class="c-media-card__details">
+                    <span>2020</span>
+                    <span class="u-muted">تفاصيل</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- Main Library -->
+      <section class="u-section" aria-label="مكتبة الوسائط">
+        <div class="container">
+          <div class="c-section-head">
+            <div>
+              <h2>المكتبة</h2>
+              <p class="u-muted">نتائج قابلة للتصفية حسب النوع والبحث والترتيب</p>
+            </div>
+            <a class="c-btn c-btn--ghost" href="timeline.html">اربط بالخط الزمني</a>
+          </div>
+
+          <div class="c-media-grid" data-media-grid>
+            <!-- VIDEO -->
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="video"
+              data-media-title="حوار مصور" data-media-year="2018" data-media-date="2018-03-10"
+              data-modal-title="حوار مصور" data-modal-description="مقطع مصور ضمن الظهور الإعلامي يمكن ربطه بمحطة زمنية"
+              data-modal-badge="فيديو" data-modal-timestamp="10 مارس 2018" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb2.jpg" data-modal-video="assets/videos/featured.mp4">
+              <div class="c-media-card__media u-aspect-16x9">
+                <img src="assets/images/videos/thumb2.jpg" alt="حوار مصور" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--video">فيديو</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">حوار مصور</h3>
+                <p class="u-muted">2018</p>
+                <div class="c-media-card__details">
+                  <span>فيديو</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- REEL -->
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="reel"
+              data-media-title="لقطة عمودية قصيرة" data-media-year="2021" data-media-date="2021-11-03"
+              data-modal-title="لقطة عمودية قصيرة" data-modal-description="مادة عمودية للهواتف ضمن توثيق سريع"
+              data-modal-badge="ريل" data-modal-timestamp="3 نوفمبر 2021" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg" data-modal-video="assets/videos/reel1.mp4">
               <div class="c-media-card__media u-aspect-9x16">
-                <img src="assets/img/articles/featured-small-top.png" alt="ريلز علاقة" loading="lazy" />
-                <div class="c-media-card__badge">
-                  <span class="c-badge c-badge--reel">ريلز</span>
+                <img src="assets/images/videos/thumb1.jpg" alt="لقطة عمودية قصيرة" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
                 </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--reel">ريلز</span></div>
               </div>
               <div class="c-media-card__content">
-                <h3 class="c-media-card__title">محادثة قصيرة</h3>
-                <p class="u-muted">ريلز مخصص للهواتف</p>
+                <h3 class="c-media-card__title">لقطة عمودية قصيرة</h3>
+                <p class="u-muted">2021</p>
                 <div class="c-media-card__details">
-                  <span>30 ثانية</span>
-                  <button class="c-btn c-btn--primary">تشغيل</button>
+                  <span>ريلز</span>
+                  <span class="u-muted">تفاصيل</span>
                 </div>
               </div>
             </article>
-            <article class="c-media-card">
+
+            <!-- PHOTO -->
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="photo"
+              data-media-title="صورة أرشيفية" data-media-year="2012" data-media-date="2012-05-04"
+              data-modal-title="صورة أرشيفية" data-modal-description="صورة ضمن توثيق مرحلة زمنية"
+              data-modal-badge="صورة" data-modal-timestamp="4 مايو 2012" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg">
               <div class="c-media-card__media">
-                <img src="assets/img/articles/featured-large.png" alt="عرض الوثائق" loading="lazy" />
-                <div class="c-media-card__badge">
-                  <span class="c-badge c-badge--photo">صورة</span>
-                </div>
+                <img src="assets/images/videos/thumb1.jpg" alt="صورة أرشيفية" loading="lazy" />
+                <div class="c-media-card__badge"><span class="c-badge c-badge--photo">صورة</span></div>
               </div>
               <div class="c-media-card__content">
-                <h3 class="c-media-card__title">صورة الأرشيف</h3>
-                <p class="u-muted">مجموعة الحروب الباردة</p>
+                <h3 class="c-media-card__title">صورة أرشيفية</h3>
+                <p class="u-muted">2012</p>
                 <div class="c-media-card__details">
-                  <span>أرشيف 1976</span>
-                  <button class="c-btn c-btn--ghost">عدّ</button>
+                  <span>صورة</span>
+                  <span class="u-muted">تفاصيل</span>
                 </div>
               </div>
             </article>
+
+            <!-- AUDIO (opens modal too) -->
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="audio"
+              data-media-title="مقتطف صوتي" data-media-year="2017" data-media-date="2017-08-01"
+              data-modal-title="مقتطف صوتي" data-modal-description="تسجيل صوتي مرتبط بمحطة محددة" data-modal-badge="صوت"
+              data-modal-timestamp="2017" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg">
+              <div class="c-media-card__media c-media-card__media--audio">
+                <div class="c-media-card__audio-icon">
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--audio">صوت</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">مقتطف صوتي</h3>
+                <p class="u-muted">2017</p>
+                <div class="c-media-card__details">
+                  <span>صوت</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="c-empty u-hide" data-media-empty>
+            لا توجد نتائج مطابقة حاول تعديل البحث أو الفلتر
           </div>
         </div>
       </section>
 
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <h2 class="c-card__title">تقنيات العرض</h2>
-          <p class="u-muted">نطبق التدرج الطولي للوسائط عبر البنية التحتية.</p>
-          <div class="c-media-grid">
-            <article class="c-card">
-              <h3 class="c-card__title">جودة واضحة</h3>
-              <p>نفس الأصول مع طبقات لونية خفيفة للحصول على تباين مثالي.</p>
-            </article>
-            <article class="c-card">
-              <h3 class="c-card__title">خطوط مخصصة</h3>
-              <p>نستخدم خطوط Almarai وAl-Jazeera-Arabic لتوحيد النمط.</p>
-            </article>
+      <!-- =========================================================
+  AUDIO SHELF — Featured Audio (Plyr)
+  Notes:
+  - Uses Plyr for consistent audio UI
+  - RTL-safe + token-driven (light/dark)
+  - Each card can open your existing media modal via data-media-card
+========================================================= -->
+      <section class="u-section c-audio-shelf" aria-label="الصوتيات">
+        <div class="container">
+
+          <!-- Section header -->
+          <div class="c-section-head c-audio-shelf__head">
+            <div class="c-audio-shelf__head-copy">
+              <p class="c-audio-shelf__kicker">مكتبة الصوت</p>
+              <h2 class="c-audio-shelf__title">الصوتيات المختارة</h2>
+              <p class="u-muted c-audio-shelf__subtitle">
+                مقتطفات صوتية منتقاة تربط الخطاب والسياقه وتُحفظ مع بيانات المصدر عند توفرها.
+              </p>
+            </div>
+
+            <div class="c-audio-shelf__head-actions">
+              <a class="c-btn c-btn--ghost" href="timeline.html">
+                عرض ضمن الخط الزمني
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
+
+          <!-- Grid -->
+          <div class="c-audio-shelf__grid">
+
+            <!-- Card 1 -->
+            <article class="c-audio" aria-label="تسجيل صوتي">
+              <header class="c-audio__top">
+                <div class="c-audio__icon" aria-hidden="true">
+                  <i class="fa-solid fa-microphone-lines"></i>
+                </div>
+
+                <div class="c-audio__top-copy">
+                  <h3 class="c-audio__title">مقتطف من حديث إعلامي</h3>
+                  <p class="c-audio__meta">
+                    <span class="c-audio__year">2017</span>
+                    <span class="c-audio__dot" aria-hidden="true">•</span>
+                    <span class="c-audio__source">تسجيل متداول – المصدر يُستكمل</span>
+                  </p>
+                </div>
+
+                <div class="c-audio__chips" aria-label="تصنيفات">
+                  <span class="c-audio__chip">خطاب</span>
+                  <span class="c-audio__chip c-audio__chip--accent">صوت</span>
+                </div>
+              </header>
+
+              <!-- Audio player (Plyr target) -->
+              <div class="c-audio__player">
+                <audio class="js-plyr-audio" controls preload="metadata">
+                  <source src="assets/audio/arouri-clip.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+
+              <footer class="c-audio__footer">
+                <button class="c-btn c-btn--ghost c-audio__btn" type="button" data-media-card
+                  data-modal-title="مقتطف من حديث إعلامي"
+                  data-modal-description="مقتطف صوتي يُستخدم كبوابة للمحتوى المرتبط بالسياق الزمني والمصدر عند توفره."
+                  data-modal-badge="صوت" data-modal-timestamp="2017" data-modal-source="تسجيل متداول – المصدر يُستكمل"
+                  data-modal-image="assets/images/videos/thumb1.jpg" data-modal-audio-label="ملف صوتي 01:45">
+                  تفاصيل
+                </button>
+
+                <a class="c-btn c-btn--outline c-audio__btn" href="timeline.html#2017">
+                  اذهب للمحطة
+                </a>
+              </footer>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="c-audio" aria-label="نشيد أو مقطع صوتي">
+              <header class="c-audio__top">
+                <div class="c-audio__icon" aria-hidden="true">
+                  <i class="fa-solid fa-wave-square"></i>
+                </div>
+
+                <div class="c-audio__top-copy">
+                  <h3 class="c-audio__title">تسجيل أرشيفي قصير</h3>
+                  <p class="c-audio__meta">
+                    <span class="c-audio__year">2018</span>
+                    <span class="c-audio__dot" aria-hidden="true">•</span>
+                    <span class="c-audio__source">أرشفة أولية – المصدر يُستكمل</span>
+                  </p>
+                </div>
+
+                <div class="c-audio__chips" aria-label="تصنيفات">
+                  <span class="c-audio__chip">أرشيف</span>
+                  <span class="c-audio__chip c-audio__chip--accent">صوت</span>
+                </div>
+              </header>
+
+              <div class="c-audio__player">
+                <audio class="js-plyr-audio" controls preload="metadata">
+                  <source src="assets/audio/arouri-clip.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+
+              <footer class="c-audio__footer">
+                <button class="c-btn c-btn--ghost c-audio__btn" type="button" data-media-card
+                  data-modal-title="تسجيل أرشيفي قصير"
+                  data-modal-description="مادة صوتية قصيرة ضمن التجميعات، تُفتح داخل المودال مع تفاصيل المصدر والربط."
+                  data-modal-badge="صوت" data-modal-timestamp="2018" data-modal-source="أرشفة أولية – المصدر يُستكمل"
+                  data-modal-image="assets/images/videos/thumb1.jpg" data-modal-audio-label="ملف صوتي 02:10">
+                  تفاصيل
+                </button>
+
+                <a class="c-btn c-btn--outline c-audio__btn" href="news.html">
+                  سياق مرتبط
+                </a>
+              </footer>
+            </article>
+
+          </div>
+
+          <!-- Footer note -->
+          <p class="u-muted c-audio-shelf__note">
+            ملاحظة: يتم استكمال بيانات المصدر وتاريخ التسجيل بدقة عند توفر المادة الأصلية.
+          </p>
+
         </div>
       </section>
+
+
     </main>
 
-    <footer class="c-footer">
-      <div class="c-footer__inner">
-        <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        <p class="c-footer__note u-muted">© 2026 أرشيف SALEH-AL-AROURI. كل الحقوق محفوظة.</p>
-        <div>
-          <a class="c-nav__link" href="news.html">معلومات اتصال</a>
-          <a class="c-nav__link" href="about.html">ستراتيجيات</a>
+    <!-- Footer (unchanged) -->
+    <footer class="c-footer" role="contentinfo">
+      <div class="container">
+        <div class="c-footer__grid">
+          <div class="c-footer__brand">
+            <a class="c-footer__logo" href="index.html">SALEH-AL-AROURI</a>
+            <p class="c-footer__desc">
+              أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
+              في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد
+            </p>
+          </div>
+
+          <nav class="c-footer__nav" aria-label="روابط الفوتر">
+            <h4 class="c-footer__title">الأقسام</h4>
+            <ul class="c-footer__list">
+              <li><a href="timeline.html">الخط الزمني</a></li>
+              <li><a href="media.html">الوسائط</a></li>
+              <li><a href="news.html">الأخبار</a></li>
+              <li><a href="biography.html">السيرة</a></li>
+            </ul>
+          </nav>
+
+          <div class="c-footer__meta">
+            <h4 class="c-footer__title">عن الأرشيف</h4>
+            <p class="c-footer__small">
+              جميع المواد المعروضة لأغراض التوثيق والتحليل
+              وتعتمد على مصادر مفتوحة أو منشورة سابقا
+            </p>
+
+            <p class="c-footer__copyright">
+              © 2026 SALEH-AL-AROURI Archive<br />
+              جميع الحقوق محفوظة
+            </p>
+          </div>
+        </div>
+
+        <div class="c-footer__bottom">
+          <span class="c-footer__tag">Built as a living archive</span>
+          <div class="c-footer__links">
+            <a href="about.html">من نحن</a>
+            <a href="news.html">بيانات رسمية</a>
+          </div>
         </div>
       </div>
     </footer>
 
+    <!-- Modal (existing) -->
     <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content c-modal__inner">
           <div class="modal-body">
             <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
-            <h3 class="c-card__title">عرض الوسائط المفصل</h3>
-            <p>كل مادة يتبعها سياق منتقى بعناية ومصادر موثقة.</p>
+
+            <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
+            <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
+
+            <div class="c-badge" data-modal-badge-target style="margin-top:12px"></div>
+            <p class="u-muted" style="margin-top:10px" data-modal-timestamp-target></p>
+            <p class="u-muted" data-modal-source-target></p>
+
+            <div style="margin-top:14px">
+              <img data-modal-image-target src="assets/images/videos/thumb1.jpg" alt=""
+                style="width:100%;border-radius:16px;border:1px solid var(--surface-border)" />
+            </div>
+
+            <div data-modal-video-mount style="margin-top:14px"></div>
           </div>
         </div>
       </div>
@@ -200,9 +1640,168 @@
   </div>
 
   <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
+
+  <!-- Page-only JS -->
+  <script>
+    /* =========================================
+      Media Page Controls
+      - Filter by type
+      - Search by title/desc/year
+      - Sort (recent/oldest/title)
+      - Shows empty state
+    ========================================= */
+
+    (function () {
+      const grid = document.querySelector("[data-media-grid]");
+      const empty = document.querySelector("[data-media-empty]");
+      const search = document.querySelector("[data-media-search]");
+      const sort = document.querySelector("[data-media-sort]");
+      const filtersRoot = document.querySelector("[data-media-filters]");
+
+      if (!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll("[data-media-type]"));
+
+      const normalize = (s) => (s || "").toString().trim().toLowerCase();
+
+      const getCardText = (card) => {
+        const title = card.getAttribute("data-media-title") || "";
+        const year = card.getAttribute("data-media-year") || "";
+        const modalDesc = card.getAttribute("data-modal-description") || "";
+        return normalize([title, year, modalDesc].join(" "));
+      };
+
+      let activeFilter = "all";
+      let query = "";
+      let sortMode = "recent";
+
+      const apply = () => {
+        const visible = [];
+
+        cards.forEach((card) => {
+          const type = card.getAttribute("data-media-type");
+          const okType = activeFilter === "all" || type === activeFilter;
+          const okSearch = !query || getCardText(card).includes(query);
+
+          const show = okType && okSearch;
+          card.classList.toggle("u-hide", !show);
+
+          if (show) visible.push(card);
+        });
+
+        // sort visible by re-append in order
+        const sorted = visible.sort((a, b) => {
+          const aTitle = normalize(a.getAttribute("data-media-title"));
+          const bTitle = normalize(b.getAttribute("data-media-title"));
+
+          const aDate = a.getAttribute("data-media-date") || "1900-01-01";
+          const bDate = b.getAttribute("data-media-date") || "1900-01-01";
+
+          if (sortMode === "title") return aTitle.localeCompare(bTitle, "ar");
+          if (sortMode === "oldest") return aDate.localeCompare(bDate);
+          return bDate.localeCompare(aDate); // recent
+        });
+
+        sorted.forEach((card) => grid.appendChild(card));
+
+        if (empty) empty.classList.toggle("u-hide", sorted.length !== 0);
+      };
+
+      // Filter chips
+      if (filtersRoot) {
+        filtersRoot.querySelectorAll("[data-filter]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            filtersRoot.querySelectorAll(".c-chip").forEach((b) => b.classList.remove("is-active"));
+            btn.classList.add("is-active");
+            activeFilter = btn.getAttribute("data-filter") || "all";
+            apply();
+          });
+        });
+      }
+
+      // Search
+      if (search) {
+        search.addEventListener("input", () => {
+          query = normalize(search.value);
+          apply();
+        });
+      }
+
+      // Sort
+      if (sort) {
+        sort.addEventListener("change", () => {
+          sortMode = sort.value || "recent";
+          apply();
+        });
+      }
+
+      // KPI counters (same counter logic used before)
+      const initCounters = () => {
+        const counters = document.querySelectorAll(".c-counter[data-count-to]");
+        if (!counters.length) return;
+
+        const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+        const animate = (el, duration = 900) => {
+          const to = Number(el.getAttribute("data-count-to") || 0);
+          const prefix = el.getAttribute("data-prefix") || "";
+          const suffix = el.getAttribute("data-suffix") || "";
+
+          if (prefersReducedMotion) {
+            el.textContent = `${prefix}${to}${suffix}`;
+            return;
+          }
+
+          const startTime = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - startTime) / duration);
+            const v = Math.round(to * easeOutCubic(t));
+            el.textContent = `${prefix}${v}${suffix}`;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = `${prefix}${to}${suffix}`;
+          };
+          requestAnimationFrame(tick);
+        };
+
+        // run once
+        counters.forEach((el, idx) => setTimeout(() => animate(el, 900), idx * 120));
+      };
+
+      // first apply
+      apply();
+      initCounters();
+    })();
+    /**
+ * Initializes Plyr audio players inside the Audio Shelf.
+ * - Keeps the UI consistent across browsers
+ * - Works with your light/dark token system
+ */
+    const initPlyrAudio = () => {
+      if (!window.Plyr) return;
+
+      document.querySelectorAll(".js-plyr-audio").forEach((el) => {
+        // Avoid re-initializing if already mounted
+        if (el.dataset.plyrMounted) return;
+        // eslint-disable-next-line no-new
+        new Plyr(el, {
+          controls: ["play", "progress", "current-time", "mute", "volume"],
+          tooltips: { controls: true, seek: true },
+        });
+        el.dataset.plyrMounted = "true";
+      });
+    };
+
+    // Call it after DOM ready (or inside your existing DOMContentLoaded)
+    document.addEventListener("DOMContentLoaded", () => {
+      initPlyrAudio();
+    });
+
+  </script>
 </body>
 
 </html>

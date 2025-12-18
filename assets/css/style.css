@@ -2876,6 +2876,10 @@ body:not(.is-dark) .c-page-shell {
   color: var(--text-primary);
 }
 
+:is(html[data-theme="dark"], body.is-dark) .c-input::placeholder {
+  color: var(--text-muted);
+}
+
 :is(html[data-theme="dark"], body.is-dark) .c-divider {
   background: rgba(255, 255, 255, 0.12);
 }
@@ -3641,4 +3645,85 @@ html[data-theme="dark"] .c-theme-toggle {
 
 .c-footer__links a:hover {
   color: var(--color-primary);
+}
+
+/* =========================================
+   Select wrapper
+========================================= */
+.c-select-wrap {
+  position: relative;
+  display: inline-block;
+  min-width: 200px;
+}
+
+/* =========================================
+   Native select (clean)
+========================================= */
+.c-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  padding: var(--space-12) var(--space-48) var(--space-12) var(--space-16);
+
+  border-radius: var(--radius-12);
+  border: 1px solid var(--color-border);
+
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+
+  font-family: var(--font-family-body);
+  font-size: var(--type-small);
+
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+/* RTL */
+html[dir="rtl"] .c-select {
+  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-48);
+}
+
+/* Hover */
+.c-select:hover {
+  border-color: var(--color-accent-dark);
+}
+
+/* Focus */
+.c-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: var(--ring);
+}
+
+/* =========================================
+   Font Awesome arrow
+========================================= */
+.c-select__icon {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: var(--space-16);
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast);
+}
+
+/* Rotate arrow on focus */
+.c-select:focus+.c-select__icon {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--color-accent-dark);
+}
+
+/* Dark theme tweak */
+:is(html[data-theme="dark"], body.is-dark) .c-select__icon {
+  color: var(--color-accent);
 }
