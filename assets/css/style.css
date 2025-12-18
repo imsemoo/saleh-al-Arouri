@@ -522,7 +522,10 @@ html[data-theme="dark"] .c-nav__icon {
   align-items: center;
 }
 
-/* Stats row */
+/* =========================================
+  HERO STATS — Premium counters
+========================================= */
+
 .c-hero__stats {
   margin-top: var(--space-24);
   display: grid;
@@ -537,24 +540,87 @@ html[data-theme="dark"] .c-nav__icon {
 }
 
 .c-stat {
+  position: relative;
   background: var(--surface-bg);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-16);
   padding: var(--space-16);
   box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: var(--space-12);
+  align-items: center;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.c-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px 200px at 100% 0%,
+      rgba(199, 149, 42, 0.14),
+      rgba(199, 149, 42, 0.00) 55%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .c-stat::before,
+body.is-dark .c-stat::before {
+  background: radial-gradient(600px 200px at 100% 0%,
+      rgba(214, 169, 75, 0.14),
+      rgba(214, 169, 75, 0.00) 55%);
+}
+
+.c-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(199, 149, 42, 0.25);
+}
+
+.c-stat__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-16);
+  display: grid;
+  place-items: center;
+  background: rgba(199, 149, 42, 0.14);
+  color: var(--color-accent-dark);
+  border: 1px solid rgba(199, 149, 42, 0.22);
+  position: relative;
+  z-index: 1;
+}
+
+html[data-theme="dark"] .c-stat__icon,
+body.is-dark .c-stat__icon {
+  background: rgba(214, 169, 75, 0.12);
+  border-color: rgba(214, 169, 75, 0.22);
+  color: var(--color-accent);
+}
+
+.c-stat__icon i {
+  font-size: 1.1rem;
+}
+
+.c-stat__body {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
 }
 
 .c-stat__num {
   display: block;
   font-family: var(--font-family-heading);
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
 }
 
 .c-stat__label {
   display: block;
-  margin-top: 4px;
-  color: var(--color-neutral-600);
+  margin-top: 6px;
+  color: var(--text-muted);
   font-size: var(--type-small);
 }
 
@@ -2591,13 +2657,9 @@ body.is-dark .c-media-switch__btn.is-active {
 .c-counter {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(15, 20, 15, 0.04);
-  border: 1px solid rgba(15, 20, 15, 0.08);
+
   color: var(--text-secondary);
-  font-size: var(--type-small);
+
 }
 
 .c-counter i {
@@ -2682,6 +2744,42 @@ body.is-dark .c-media-switch__btn.is-active {
   background: linear-gradient(152deg, #263F25 6.64%, #0C1911 52.04%);
   color: var(--text-primary);
 }
+
+/* =========================================
+  PAGE SHELL — Light theme (editorial archive)
+========================================= */
+:root:not([data-theme="dark"]),
+html[data-theme="light"] .c-page-shell,
+body:not(.is-dark) .c-page-shell {
+  background-color: #f6f4ef;
+  /* قريب من الورق */
+  background-image:
+    /* soft green archival glow */
+    radial-gradient(1200px 620px at 18% 22%,
+      rgba(21, 88, 45, 0.06),
+      transparent 60%),
+
+    /* warm accent light */
+    radial-gradient(900px 420px at 82% 10%,
+      rgba(199, 149, 42, 0.08),
+      transparent 65%),
+
+    /* vertical archive grid */
+    repeating-linear-gradient(90deg,
+      rgba(15, 20, 15, 0.035) 0 1px,
+      transparent 1px 72px),
+
+    /* horizontal archive grid */
+    repeating-linear-gradient(0deg,
+      rgba(15, 20, 15, 0.035) 0 1px,
+      transparent 1px 72px);
+
+  background-blend-mode: multiply, multiply, normal, normal;
+  background-attachment: fixed;
+  color: var(--text-primary);
+}
+
+
 
 :is(html[data-theme="dark"], body.is-dark) .c-page-shell {
   background-color: #0C1911;

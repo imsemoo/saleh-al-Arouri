@@ -512,6 +512,75 @@ const initPlyrPlayers = () => {
   });
 };
 
+/* =========================================
+  Hero Stats Counter
+  - Runs once when stats enter viewport
+  - Smooth easing
+  - Supports prefix/suffix
+========================================= */
+
+const initHeroStatsCounter = () => {
+  const root = document.querySelector("[data-stats]");
+  if (!root) return;
+
+  const counters = root.querySelectorAll(".c-counter[data-count-to]");
+  if (!counters.length) return;
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const animateCounter = (el, { duration = 900 } = {}) => {
+    const to = Number(el.getAttribute("data-count-to") || 0);
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    if (prefersReducedMotion) {
+      el.textContent = `${prefix}${to}${suffix}`;
+      return;
+    }
+
+    const start = 0;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      const t = Math.min(1, elapsed / duration);
+      const eased = easeOutCubic(t);
+
+      const value = Math.round(start + (to - start) * eased);
+      el.textContent = `${prefix}${value}${suffix}`;
+
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = `${prefix}${to}${suffix}`;
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const run = () => {
+    counters.forEach((el, idx) => {
+      // Small stagger for premium feel
+      setTimeout(() => animateCounter(el, { duration: 900 }), idx * 120);
+    });
+  };
+
+  // Run once on enter viewport
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        run();
+        obs.disconnect();
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  obs.observe(root);
+};
+
+
 
 
 /**
@@ -531,6 +600,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initPersonaFlip();
   initPersonaMediaTabs();
   initPlyrPlayers();
+  initHeroStatsCounter();
+
 });
 
 // Expose helper for debugging or external triggers (use sparingly in production).
