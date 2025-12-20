@@ -19,89 +19,516 @@
   <meta name="author" content="SALEH-AL-AROURI" />
   <meta name="theme-color" content="#09130c" />
 
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/articles/thumb1.png" />
   <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css" />
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="preload" href="assets/js/script.js" as="script" />
+  <style>
+    /* =========================================
+  TIMELINE HERO
+  Notes:
+  - Token-driven for light/dark
+  - Clean hierarchy + responsive layout
+========================================= */
+
+    .c-timeline-hero {
+      padding: var(--space-64) 0 var(--space-32);
+      position: relative;
+    }
+
+    .c-timeline-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(900px 420px at 18% 18%, rgba(21, 88, 45, 0.10), transparent 60%),
+        radial-gradient(780px 360px at 82% 12%, rgba(199, 149, 42, 0.10), transparent 62%);
+      opacity: 0.95;
+    }
+
+    /* Copy */
+    .c-timeline-hero__copy {
+      position: relative;
+    }
+
+    .c-timeline-hero__kicker {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      color: var(--color-accent-dark);
+      font-size: var(--type-small);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .c-timeline-hero__title {
+      margin: var(--space-12) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(2.2rem, 2.6vw, 3.1rem);
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    .c-timeline-hero__title-accent {
+      display: block;
+      margin-top: var(--space-12);
+      font-family: var(--font-family-body);
+      font-size: clamp(1.05rem, 1.15vw, 1.2rem);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .c-timeline-hero__lede {
+      margin: var(--space-16) 0 0;
+      color: var(--text-muted);
+      line-height: 1.95;
+      font-size: 1.02rem;
+      max-width: 70ch;
+    }
+
+    /* Chips */
+    .c-timeline-hero__chips {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .c-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      min-height: 40px;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      font-size: var(--type-small);
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .c-chip i {
+      color: var(--color-primary);
+    }
+
+    .c-chip--soft {
+      box-shadow: 0 10px 24px rgba(15, 20, 15, 0.06);
+    }
+
+    /* CTAs */
+    .c-timeline-hero__ctas {
+      margin-top: var(--space-24);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    /* Note */
+    .c-timeline-hero__note {
+      margin: var(--space-16) 0 0;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      color: var(--text-muted);
+      font-size: var(--type-small);
+      padding: 10px 12px;
+      border-radius: var(--radius-12);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+    }
+
+    /* Panel */
+    .c-timeline-hero__panel {
+      position: relative;
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .c-timeline-hero__panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(520px 220px at 18% 10%, rgba(199, 149, 42, 0.16), transparent 62%),
+        radial-gradient(520px 220px at 82% 0%, rgba(21, 88, 45, 0.14), transparent 65%);
+      opacity: 0.9;
+    }
+
+    .c-timeline-hero__panel-head {
+      position: relative;
+      padding: var(--space-16) var(--space-16) var(--space-12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-12);
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .c-timeline-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      padding: 8px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      background: rgba(255, 255, 255, 0.35);
+      color: var(--text-secondary);
+      font-size: var(--type-small);
+    }
+
+    .c-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(199, 149, 42, 0.18);
+    }
+
+    .c-timeline-hero__range {
+      display: inline-flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(21, 88, 45, 0.08);
+      border: 1px solid rgba(21, 88, 45, 0.18);
+      color: var(--text-secondary);
+      font-family: var(--font-family-heading);
+    }
+
+    .c-range__from,
+    .c-range__to {
+      font-size: 1.05rem;
+    }
+
+    .c-range__sep {
+      color: var(--text-muted);
+    }
+
+    /* Panel body */
+    .c-timeline-hero__panel-body {
+      position: relative;
+      padding: var(--space-16);
+    }
+
+    /* Mini timeline list */
+    .c-mini-timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    .c-mini-timeline__item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: var(--space-12);
+      align-items: start;
+      padding: var(--space-12);
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      background: rgba(255, 255, 255, 0.35);
+      transition: var(--transition-fast);
+    }
+
+    .c-mini-timeline__item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 20, 15, 0.18);
+      box-shadow: 0 14px 26px rgba(15, 20, 15, 0.10);
+    }
+
+    .c-mini-timeline__item.is-strong {
+      border-color: rgba(199, 149, 42, 0.35);
+      background: linear-gradient(135deg,
+          rgba(199, 149, 42, 0.14),
+          rgba(21, 88, 45, 0.10));
+    }
+
+    .c-mini-timeline__year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 10px;
+      border-radius: var(--radius-12);
+      background: rgba(15, 20, 15, 0.06);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-mini-timeline__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.02rem;
+    }
+
+    .c-mini-timeline__desc {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+      line-height: 1.9;
+    }
+
+    /* Panel actions */
+    .c-timeline-hero__panel-actions {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 575.98px) {
+      .c-timeline-hero {
+        padding: var(--space-48) 0 var(--space-24);
+      }
+
+      .c-mini-timeline__item {
+        grid-template-columns: 64px 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="c-page-shell">
     <header class="c-header">
-      <div class="c-header__inner">
-        <div class="c-header__brand">
-          <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        </div>
+      <div class="container">
+        <div class="c-header__inner">
+          <div class="c-header__brand">
+            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية">SALEH-AL-AROURI</a>
+          </div>
 
-        <nav class="c-nav" aria-label="روابط القسم الرئيسي">
-          <ul class="c-nav__list">
-            <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
-            <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
-            <li><a class="c-nav__link is-active" href="timeline.html" aria-current="page">الخط الزمني</a></li>
-            <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
-            <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
-            <li><a class="c-nav__link" href="about.html">من نحن</a></li>
-          </ul>
-        </nav>
-
-        <div class="c-header__actions">
-          <button type="button" class="c-nav__icon" aria-label="بحث">
-            <span aria-hidden="true">🔍</span>
+          <nav class="c-nav" aria-label="روابط القسم الرئيسي">
+            <ul class="c-nav__list">
+              <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+              <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+              <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
+              <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+              <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+              <li><a class="c-nav__link" href="about.html">من نحن</a></li>
+            </ul>
+          </nav>
+          <!-- Theme Toggle Button -->
+          <button type="button" class="c-theme-toggle" data-theme-toggle aria-pressed="false"
+            title="Switch to dark mode">
+            <!-- Icon changes dynamically via JS -->
+            <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
           </button>
-          <button type="button" class="c-btn c-btn--ghost">تابع</button>
-          <button type="button" class="c-btn c-btn--primary" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-        </div>
 
-        <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-          aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <div class="c-header__actions">
+            <button type="button" class="c-nav__icon" aria-label="بحث">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+
+            <a class="c-btn c-btn--primary d-none d-lg-inline-flex" href="contact.html"> تواصل معنا</a>
+
+          </div>
+
+          <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasMenuLabel">SALEH-AL-AROURI</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="أغلق القائمة"></button>
+    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
+      aria-labelledby="offcanvasMenuLabel">
+      <div class="offcanvas-header c-offcanvas__header">
+        <div class="c-offcanvas__brand">
+          <span id="offcanvasMenuLabel" class="c-offcanvas__title">القائمة</span>
+          <a class="c-offcanvas__logo" href="index.html">SALEH-AL-AROURI</a>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="إغلاق القائمة"></button>
       </div>
-      <div class="offcanvas-body">
+
+      <div class="offcanvas-body c-offcanvas__body">
         <div class="c-offcanvas__search">
           <label class="visually-hidden" for="offcanvasSearch">بحث</label>
-          <div class="c-offcanvas__search-field">
-            <input id="offcanvasSearch" type="search" placeholder="ابحث في الأرشيف" />
-            <button type="button" aria-label="بحث">
-              <span aria-hidden="true">🔍</span>
-            </button>
-          </div>
+          <input id="offcanvasSearch" type="search" class="form-control c-input" placeholder="ابحث داخل الأرشيف" />
         </div>
-        <ul class="c-nav__list c-nav__list--stacked">
-          <li><a class="c-nav__link" href="index.html" data-bs-dismiss="offcanvas">الرئيسية</a></li>
-          <li><a class="c-nav__link" href="media.html" data-bs-dismiss="offcanvas">الوسائط</a></li>
-          <li><a class="c-nav__link is-active" href="timeline.html" aria-current="page" data-bs-dismiss="offcanvas">الخط الزمني</a></li>
-          <li><a class="c-nav__link" href="biography.html" data-bs-dismiss="offcanvas">السيرة</a></li>
-          <li><a class="c-nav__link" href="news.html" data-bs-dismiss="offcanvas">الأخبار</a></li>
-          <li><a class="c-nav__link" href="about.html" data-bs-dismiss="offcanvas">من نحن</a></li>
+
+        <ul class="c-nav__list c-nav__list--stacked" aria-label="روابط التنقل">
+          <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+          <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+          <li><a class="c-nav__link active" href="timeline.html">الخط الزمني</a></li>
+          <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+          <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+          <li><a class="c-nav__link" href="about.html">من نحن</a></li>
         </ul>
-        <div class="c-offcanvas__divider" aria-hidden="true"></div>
+
+        <hr class="c-divider" />
+
         <div class="c-offcanvas__actions">
-          <button type="button" class="c-btn c-btn--primary w-100" data-bs-dismiss="offcanvas" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-          <button type="button" class="c-btn c-btn--outline w-100" data-bs-dismiss="offcanvas">تابع</button>
+          <a class="c-btn c-btn--ghost w-100" href="about.html">تابع</a>
+          <button type="button" class="c-btn c-btn--primary w-100" onclick="modalHelper.open('mediaDetailModal')">
+            شاهد التفاصيل
+          </button>
         </div>
       </div>
     </div>
 
+
     <main>
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <p class="u-muted">وثائق وزمن</p>
-          <h1 class="c-card__title">المحطات التاريخية بتوثيق بصري</h1>
-          <p>نرسم الخط الزمني لكل حدث حيث الصور والفيديو والأصوات تتكامل مع السرد.</p>
+      <!-- =========================================
+  TIMELINE HERO
+  Notes:
+  - High-level intro for the timeline page
+  - Uses tokens (surface/bg/border/text) for light/dark
+  - Bootstrap container + responsive grid
+========================================= -->
+      <section class="u-section c-timeline-hero" aria-label="مقدمة الخط الزمني">
+        <div class="container">
+          <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Copy -->
+            <div class="col-lg-7">
+              <div class="c-timeline-hero__copy">
+
+                <p class="c-timeline-hero__kicker">وثائق وزمن</p>
+
+                <h1 class="c-timeline-hero__title">
+                  الخط الزمني لصالح العاروري
+                  <span class="c-timeline-hero__title-accent">بسرد مختصر ووسائط قابلة للتوثيق</span>
+                </h1>
+
+                <p class="c-timeline-hero__lede">
+                  هذه الصفحة تجمع المحطات الأساسية في مسيرة صالح العاروري داخل ترتيب زمني واضح
+                  كل محطة يمكن أن تحتوي صورا وفيديو وصوتا مع وصف قصير ومصدر عند توفره
+                </p>
+
+                <div class="c-timeline-hero__chips" role="list" aria-label="مفاتيح سريعة">
+                  <span class="c-chip c-chip--soft" role="listitem">
+                    <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                    ترتيب زمني
+                  </span>
+                  <span class="c-chip c-chip--soft" role="listitem">
+                    <i class="fa-regular fa-images" aria-hidden="true"></i>
+                    صور
+                  </span>
+                  <span class="c-chip c-chip--soft" role="listitem">
+                    <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                    فيديو
+                  </span>
+                  <span class="c-chip c-chip--soft" role="listitem">
+                    <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+                    صوتيات
+                  </span>
+                </div>
+
+                <div class="c-timeline-hero__ctas">
+                  <a class="c-btn c-btn--primary" href="#timelineIndex">
+                    ابدأ من فهرس المحطات
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </a>
+                  <a class="c-btn c-btn--outline" href="media.html">
+                    افتح مركز الوسائط
+                  </a>
+                  <a class="c-btn c-btn--ghost" href="biography.html">
+                    قراءة السيرة المختصرة
+                  </a>
+                </div>
+
+                <p class="c-timeline-hero__note">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  كل مادة هنا قابلة للتحديث يدويا وربطها بالوسائط داخل مودال التفاصيل
+                </p>
+              </div>
+            </div>
+
+            <!-- Key facts card -->
+            <div class="col-lg-5">
+              <aside class="c-timeline-hero__panel" aria-label="ملخص زمني سريع">
+                <div class="c-timeline-hero__panel-head">
+                  <div class="c-timeline-hero__badge">
+                    <span class="c-dot" aria-hidden="true"></span>
+                    ملخص سريع
+                  </div>
+
+                  <div class="c-timeline-hero__range" aria-label="النطاق الزمني">
+                    <span class="c-range__from">1966</span>
+                    <span class="c-range__sep" aria-hidden="true">—</span>
+                    <span class="c-range__to">2024</span>
+                  </div>
+                </div>
+
+                <div class="c-timeline-hero__panel-body">
+                  <!-- Timeline mini list -->
+                  <ul class="c-mini-timeline" id="timelineIndex">
+                    <li class="c-mini-timeline__item">
+                      <span class="c-mini-timeline__year">1966</span>
+                      <div class="c-mini-timeline__content">
+                        <p class="c-mini-timeline__title">الميلاد والنشأة</p>
+                        <p class="c-mini-timeline__desc">ولد في عارورة قرب رام الله في الضفة الغربية</p>
+                      </div>
+                    </li>
+
+                    <li class="c-mini-timeline__item">
+                      <span class="c-mini-timeline__year">1992</span>
+                      <div class="c-mini-timeline__content">
+                        <p class="c-mini-timeline__title">بداية الاعتقال الطويل</p>
+                        <p class="c-mini-timeline__desc">اعتقل وقضى سنوات طويلة في السجون الإسرائيلية</p>
+                      </div>
+                    </li>
+
+                    <li class="c-mini-timeline__item">
+                      <span class="c-mini-timeline__year">2010</span>
+                      <div class="c-mini-timeline__content">
+                        <p class="c-mini-timeline__title">عضوية المكتب السياسي</p>
+                        <p class="c-mini-timeline__desc">برز ضمن قيادة الحركة على المستوى السياسي</p>
+                      </div>
+                    </li>
+
+                    <li class="c-mini-timeline__item">
+                      <span class="c-mini-timeline__year">2017</span>
+                      <div class="c-mini-timeline__content">
+                        <p class="c-mini-timeline__title">نائب رئيس المكتب السياسي</p>
+                        <p class="c-mini-timeline__desc">تولى دورا قياديا كنائب لرئيس المكتب السياسي</p>
+                      </div>
+                    </li>
+
+                    <li class="c-mini-timeline__item is-strong">
+                      <span class="c-mini-timeline__year">2024</span>
+                      <div class="c-mini-timeline__content">
+                        <p class="c-mini-timeline__title">الاغتيال في بيروت</p>
+                        <p class="c-mini-timeline__desc">قتل في ضاحية بيروت الجنوبية يوم 2 يناير 2024</p>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <!-- Panel footer actions -->
+                  <div class="c-timeline-hero__panel-actions">
+                    <a class="c-btn c-btn--outline" href="#timeline">
+                      افتح المحطات بالتفصيل
+                    </a>
+                    <a class="c-btn c-btn--ghost" href="media.html#filters">
+                      فلترة الوسائط حسب السنة
+                    </a>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -156,14 +583,61 @@
       </section>
     </main>
 
-    <footer class="c-footer">
-      <div class="c-footer__inner">
-        <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        <p class="c-footer__note u-muted">© 2026 أرشيف SALEH-AL-AROURI. كل الحقوق محفوظة.</p>
-        <div>
-          <a class="c-nav__link" href="news.html">معلومات اتصال</a>
-          <a class="c-nav__link" href="about.html">ستراتيجيات</a>
+    <footer class="c-footer" role="contentinfo">
+      <div class="container">
+
+        <div class="c-footer__grid">
+
+          <!-- Brand -->
+          <div class="c-footer__brand">
+            <a class="c-footer__logo" href="index.html">
+              SALEH-AL-AROURI
+            </a>
+            <p class="c-footer__desc">
+              أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
+              في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="c-footer__nav" aria-label="روابط الفوتر">
+            <h4 class="c-footer__title">الأقسام</h4>
+            <ul class="c-footer__list">
+              <li><a href="timeline.html">الخط الزمني</a></li>
+              <li><a href="media.html">الوسائط</a></li>
+              <li><a href="news.html">الأخبار</a></li>
+              <li><a href="biography.html">السيرة</a></li>
+            </ul>
+          </nav>
+
+          <!-- Meta -->
+          <div class="c-footer__meta">
+            <h4 class="c-footer__title">عن الأرشيف</h4>
+            <p class="c-footer__small">
+              جميع المواد المعروضة لأغراض التوثيق والتحليل
+              وتعتمد على مصادر مفتوحة أو منشورة سابقًا.
+            </p>
+
+            <p class="c-footer__copyright">
+              © 2026 SALEH-AL-AROURI Archive<br />
+              جميع الحقوق محفوظة
+            </p>
+          </div>
+
         </div>
+
+        <!-- Bottom bar -->
+        <div class="c-footer__bottom">
+          <span class="c-footer__tag">
+            Built as a living archive
+          </span>
+
+          <div class="c-footer__links">
+            <a href="about.html">من نحن</a>
+            <a href="news.html">بيانات رسمية</a>
+          </div>
+        </div>
+
       </div>
     </footer>
 
@@ -180,7 +654,16 @@
     </div>
   </div>
 
+
+
+
+
+
+  </div>
+
+
   <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
