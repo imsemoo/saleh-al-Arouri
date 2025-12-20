@@ -43,9 +43,33 @@ const setActiveNavLink = () => {
  * - The first tab is activated by default.
  */
 const initTabs = () => {
-  document.querySelectorAll("[data-tabs-root]").forEach((root) => {
-    const tabs = root.querySelectorAll("[data-tabs] .c-tab");
+  // Collect tab roots declared explicitly or infer them from [data-tabs] containers
+  const roots = new Set();
+
+  // Explicit roots (opt-in)
+  document.querySelectorAll("[data-tabs-root]").forEach((r) => roots.add(r));
+
+  // Find any tabs containers and infer a sensible root (wrap, area, or closest ancestor)
+  document.querySelectorAll("[data-tabs]").forEach((tabsEl) => {
+    const inferred =
+      tabsEl.closest("[data-tabs-root]") ||
+      tabsEl.closest(".c-bio-tabs__wrap") ||
+      tabsEl.closest(".c-tabs-area") ||
+      tabsEl.closest(".c-bio-tabs") ||
+      tabsEl.closest(".c-tabs") ||
+      document.body;
+    if (inferred) roots.add(inferred);
+  });
+
+  // For each root, wire the tabs found inside it
+  roots.forEach((root) => {
+    const tabsContainer = root.querySelector("[data-tabs]") || root.querySelector(".c-bio-tabs__tabs") || root.querySelector(".c-tabs");
+    if (!tabsContainer) return;
+
+    const tabs = tabsContainer.querySelectorAll(".c-tab");
     const panels = root.querySelectorAll(".c-tab-panel");
+
+    if (!tabs.length || !panels.length) return;
 
     /**
      * Activates a given tab and shows its corresponding panel.
@@ -66,6 +90,12 @@ const initTabs = () => {
     // Wire events and set initial active tab.
     tabs.forEach((tab, i) => {
       tab.addEventListener("click", () => activateTab(tab));
+      // Also support keyboard activation for accessibility
+      tab.addEventListener("keydown", (e) => {
+        if (!["Enter", " ", "Spacebar"].includes(e.key)) return;
+        e.preventDefault();
+        activateTab(tab);
+      });
       if (i === 0) activateTab(tab);
     });
   });

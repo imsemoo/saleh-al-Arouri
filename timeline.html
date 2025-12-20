@@ -304,6 +304,407 @@
         grid-template-columns: 64px 1fr;
       }
     }
+
+    /* =========================================
+  TIMELINE CORE — Editorial Timeline
+========================================= */
+
+    .c-timeline-core {
+      padding-top: var(--space-64);
+      padding-bottom: var(--space-48);
+    }
+
+    /* Header */
+    .c-timeline-core__head {
+      margin-bottom: var(--space-32);
+    }
+
+    .c-timeline-core__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-timeline-core__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.6rem, 1.8vw, 2.1rem);
+      color: var(--text-primary);
+    }
+
+    .c-timeline-core__subtitle {
+      margin: var(--space-12) 0 0;
+      max-width: 70ch;
+      line-height: 1.9;
+    }
+
+    /* Track */
+    .c-timeline-core__track {
+      position: relative;
+      display: grid;
+      gap: var(--space-32);
+      padding-right: var(--space-32);
+    }
+
+    /* Vertical line */
+    .c-timeline-core__track::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 12px;
+      width: 2px;
+      background: linear-gradient(to bottom,
+          transparent,
+          var(--color-accent),
+          var(--color-accent),
+          transparent);
+      opacity: 0.4;
+    }
+
+    /* Node */
+    .c-timeline-node {
+      position: relative;
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: var(--space-24);
+      align-items: start;
+    }
+
+    .c-timeline-node__dot {
+      position: absolute;
+      right: -26px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      box-shadow: 0 0 0 6px rgba(199, 149, 42, 0.18);
+    }
+
+    /* Year */
+    .c-timeline-node__year {
+      font-family: var(--font-family-heading);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    /* Body */
+    .c-timeline-node__body {
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-16);
+      padding: var(--space-16);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .c-timeline-node__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .c-timeline-node__desc {
+      margin: var(--space-8) 0 0;
+      line-height: 1.9;
+      color: var(--text-secondary);
+    }
+
+    .c-timeline-node__note {
+      margin: var(--space-12) 0 0;
+      font-size: var(--type-small);
+    }
+
+    /* Emphasis states */
+    .c-timeline-node.is-strong .c-timeline-node__body {
+      border-color: rgba(199, 149, 42, 0.35);
+      background: linear-gradient(135deg,
+          rgba(199, 149, 42, 0.14),
+          rgba(21, 88, 45, 0.10));
+    }
+
+    .c-timeline-node.is-end .c-timeline-node__dot {
+      background: var(--color-primary);
+      box-shadow: 0 0 0 6px rgba(21, 88, 45, 0.22);
+    }
+
+    /* Responsive */
+    @media (max-width: 767.98px) {
+      .c-timeline-core__track {
+        padding-right: var(--space-16);
+      }
+
+      .c-timeline-node {
+        grid-template-columns: 60px 1fr;
+        gap: var(--space-16);
+      }
+    }
+
+    /* =========================================
+  TIMELINE HIGHLIGHTS — Premium Cards
+========================================= */
+
+    .c-timeline-highlights {
+      padding-top: var(--space-64);
+      padding-bottom: var(--space-48);
+    }
+
+    /* Head */
+    .c-timeline-highlights__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-24);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-32);
+    }
+
+    .c-timeline-highlights__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-timeline-highlights__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.55rem, 1.7vw, 2.05rem);
+      color: var(--text-primary);
+    }
+
+    .c-timeline-highlights__subtitle {
+      margin: var(--space-12) 0 0;
+      max-width: 72ch;
+      line-height: 1.9;
+    }
+
+    /* Grid */
+    .c-timeline-highlights__grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--space-16);
+    }
+
+    .c-highlight-card {
+      grid-column: span 4;
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-20);
+      padding: var(--space-16);
+      box-shadow: var(--shadow-soft);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .c-highlight-card::before {
+      /* Subtle top sheen */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(900px 260px at 20% 0%, rgba(199, 149, 42, 0.14), transparent 55%);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .c-highlight-card:hover,
+    .c-highlight-card:focus-within {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+      border-color: rgba(199, 149, 42, 0.28);
+    }
+
+    /* Accent variant */
+    .c-highlight-card--accent::before {
+      background: radial-gradient(900px 260px at 20% 0%, rgba(21, 88, 45, 0.22), transparent 55%);
+    }
+
+    /* Top row */
+    .c-highlight-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .c-highlight-card__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-16);
+      display: grid;
+      place-items: center;
+      background: rgba(21, 88, 45, 0.10);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      color: var(--color-primary);
+    }
+
+    .c-highlight-card--accent .c-highlight-card__icon {
+      background: rgba(199, 149, 42, 0.14);
+      color: var(--color-accent-dark);
+    }
+
+    .c-highlight-card__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .c-highlight-card__chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      font-size: var(--type-small);
+      background: rgba(15, 20, 15, 0.06);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      color: var(--text-secondary);
+    }
+
+    .c-highlight-card__year {
+      font-size: var(--type-small);
+      color: var(--text-muted);
+    }
+
+    /* Content */
+    .c-highlight-card__title {
+      margin: var(--space-12) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.06rem;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .c-highlight-card__desc {
+      margin: var(--space-8) 0 0;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Stats */
+    .c-highlight-card__stats {
+      margin-top: var(--space-16);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .c-highlight-stat {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      padding: 10px 12px;
+      border-radius: var(--radius-16);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(15, 20, 15, 0.08);
+      color: var(--text-secondary);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-highlight-stat {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    .c-highlight-stat i {
+      color: var(--color-accent-dark);
+    }
+
+    .c-highlight-stat strong {
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      margin-inline-end: 2px;
+    }
+
+    .c-highlight-stat span {
+      font-size: var(--type-small);
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .c-highlight-card__footer {
+      margin-top: var(--space-16);
+      padding-top: var(--space-12);
+      border-top: 1px solid rgba(15, 20, 15, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-12);
+      position: relative;
+      z-index: 1;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-highlight-card__footer {
+      border-top-color: rgba(255, 255, 255, 0.10);
+    }
+
+    .c-highlight-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-family: var(--font-family-heading);
+      padding: 10px 12px;
+      border-radius: var(--radius-16);
+      background: rgba(199, 149, 42, 0.12);
+      border: 1px solid rgba(199, 149, 42, 0.22);
+      transition: var(--transition-fast);
+    }
+
+    .c-highlight-card__link:hover,
+    .c-highlight-card__link:focus-visible {
+      box-shadow: var(--ring);
+      transform: translateY(-1px);
+    }
+
+    .c-highlight-card__ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      background: transparent;
+      transition: var(--transition-fast);
+    }
+
+    .c-highlight-card__ghost:hover,
+    .c-highlight-card__ghost:focus-visible {
+      color: var(--text-primary);
+      box-shadow: var(--ring);
+    }
+
+    /* Responsive */
+    @media (max-width: 991.98px) {
+      .c-highlight-card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .c-highlight-card {
+        grid-column: span 12;
+      }
+
+      .c-highlight-card__stats {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -532,55 +933,300 @@
         </div>
       </section>
 
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <div class="c-timeline">
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2000</p>
-                <p class="c-timeline-card__content">عرض صور الثورة الأولى في القدس.</p>
-              </div>
-              <div>
-                <p class="u-muted">جهود حقيقية لحفظ التاريخ الشفوي.</p>
+      <!-- =========================================
+        TIMELINE — Core Stations
+        Notes:
+        - Editorial timeline layout
+        - Clear year anchor + narrative block
+        - Designed for extension with media/modals later
+      ========================================= -->
+      <section class="u-section c-timeline-core" aria-label="محطات زمنية أساسية">
+        <div class="container">
+
+          <!-- Section header -->
+          <header class="c-timeline-core__head">
+            <div>
+              <p class="c-timeline-core__kicker">المسار الزمني</p>
+              <h2 class="c-timeline-core__title">محطات مفصلية في المسيرة</h2>
+              <p class="c-timeline-core__subtitle u-muted">
+                عرض زمني مختصر لأبرز التحولات التنظيمية والسياسية
+                مع قابلية ربط كل محطة بالوسائط والتفاصيل التوثيقية.
+              </p>
+            </div>
+          </header>
+
+          <!-- Timeline -->
+          <div class="c-timeline-core__track">
+
+            <!-- Item -->
+            <article class="c-timeline-node">
+              <span class="c-timeline-node__dot" aria-hidden="true"></span>
+
+              <div class="c-timeline-node__year">2000</div>
+
+              <div class="c-timeline-node__body">
+                <h3 class="c-timeline-node__title">
+                  الانتفاضة الثانية وبداية الحضور العلني
+                </h3>
+                <p class="c-timeline-node__desc">
+                  مرحلة مفصلية شهدت تصاعد العمل الميداني وبروز الأدوار التنظيمية
+                  داخل الضفة الغربية في ظل ملاحقة واعتقالات مكثفة.
+                </p>
+
+                <p class="c-timeline-node__note u-muted">
+                  وثائق هذه المرحلة تعتمد على شهادات وصور متفرقة
+                  جرى جمعها لاحقًا ضمن أرشيف موحد.
+                </p>
               </div>
             </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2010</p>
-                <p class="c-timeline-card__content">منصة صوتية تحوي قصص المجتمعات.</p>
-              </div>
-              <div>
-                <p class="u-muted">كل تسجيل يرافقه وصفة بصرية.</p>
+
+            <!-- Item -->
+            <article class="c-timeline-node">
+              <span class="c-timeline-node__dot" aria-hidden="true"></span>
+
+              <div class="c-timeline-node__year">2010</div>
+
+              <div class="c-timeline-node__body">
+                <h3 class="c-timeline-node__title">
+                  الانتقال إلى الدور السياسي الخارجي
+                </h3>
+                <p class="c-timeline-node__desc">
+                  بعد سنوات من الاعتقال والإبعاد
+                  بدأ الحضور السياسي الخارجي في صياغة المواقف
+                  وإدارة العلاقات الإقليمية.
+                </p>
+
+                <p class="c-timeline-node__note u-muted">
+                  تشمل هذه المرحلة تسجيلات صوتية
+                  ولقاءات إعلامية موثقة لاحقًا.
+                </p>
               </div>
             </article>
-            <article class="c-timeline-card">
-              <div>
-                <p class="c-timeline-card__year">2022</p>
-                <p class="c-timeline-card__content">توسيع أرشيف الريلز عبر منصات متزامنة.</p>
-              </div>
-              <div>
-                <p class="u-muted">مراجعة الأرشيف وصيانته بشكل دوري.</p>
+
+            <!-- Item -->
+            <article class="c-timeline-node is-strong">
+              <span class="c-timeline-node__dot" aria-hidden="true"></span>
+
+              <div class="c-timeline-node__year">2017</div>
+
+              <div class="c-timeline-node__body">
+                <h3 class="c-timeline-node__title">
+                  نائب رئيس المكتب السياسي
+                </h3>
+                <p class="c-timeline-node__desc">
+                  محطة قيادية بارزة مع تولي منصب نائب رئيس المكتب السياسي
+                  وما رافقها من حضور إعلامي ودور تنظيمي أوسع.
+                </p>
+
+                <p class="c-timeline-node__note u-muted">
+                  تم توثيق هذه المرحلة بصريًا وصوتيًا
+                  ضمن مجموعات الظهور الإعلامي.
+                </p>
               </div>
             </article>
+
+            <!-- Item -->
+            <article class="c-timeline-node is-end">
+              <span class="c-timeline-node__dot" aria-hidden="true"></span>
+
+              <div class="c-timeline-node__year">2024</div>
+
+              <div class="c-timeline-node__body">
+                <h3 class="c-timeline-node__title">
+                  الاغتيال في بيروت
+                </h3>
+                <p class="c-timeline-node__desc">
+                  اغتياله في ضاحية بيروت الجنوبية
+                  شكّل محطة فاصلة أنهت المسار الزمني
+                  وفتحت باب التوثيق الكامل للمسيرة.
+                </p>
+
+                <p class="c-timeline-node__note u-muted">
+                  تم تجميع المواد المرتبطة بهذه المرحلة
+                  من مصادر إعلامية متعددة.
+                </p>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
 
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <h2 class="c-card__title">محطات بارزة</h2>
-          <div class="c-media-grid">
-            <article class="c-card">
-              <h3 class="c-card__title">أرشفة صوت الأمس</h3>
-              <p>أكثر من 60 تسجيلًا تم رقمنتها لأجل الباحثين.</p>
+
+      <!-- =========================================
+  TIMELINE HIGHLIGHTS — Editorial Highlights
+  Notes:
+  - Designed as "key moments" blocks for the timeline page
+  - Each card can link to a year anchor or open a media modal later
+========================================= -->
+      <section class="u-section c-timeline-highlights" aria-label="محطات بارزة">
+        <div class="container">
+
+          <!-- Section head -->
+          <header class="c-timeline-highlights__head">
+            <div>
+              <p class="c-timeline-highlights__kicker">نقاط ارتكاز</p>
+              <h2 class="c-timeline-highlights__title">محطات بارزة</h2>
+              <p class="c-timeline-highlights__subtitle u-muted">
+                لقطات مركزة تساعدك على فهم التحولات الكبرى بسرعة
+                مع بوابات مباشرة للوسائط أو للخط الزمني.
+              </p>
+            </div>
+
+            <div class="c-timeline-highlights__actions">
+              <a class="c-btn c-btn--outline" href="#timeline">العودة للمحطات</a>
+            </div>
+          </header>
+
+          <!-- Grid -->
+          <div class="c-timeline-highlights__grid">
+
+            <!-- Card 1 -->
+            <article class="c-highlight-card" role="group" aria-label="محطة: رقمنة المواد الصوتية">
+              <div class="c-highlight-card__top">
+                <span class="c-highlight-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-wave-square"></i>
+                </span>
+
+                <div class="c-highlight-card__meta">
+                  <span class="c-highlight-card__chip">صوتيات</span>
+                  <span class="c-highlight-card__year">2010–2017</span>
+                </div>
+              </div>
+
+              <h3 class="c-highlight-card__title">رقمنة المواد الصوتية</h3>
+              <p class="c-highlight-card__desc">
+                تجميع تسجيلات مختارة من مقابلات وخطابات ومواد إذاعية
+                ضمن صيغة أرشيفية قابلة للبحث والتصنيف.
+              </p>
+
+              <div class="c-highlight-card__stats" aria-label="ملخص سريع">
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-headphones" aria-hidden="true"></i>
+                  <strong>60+</strong>
+                  <span>مقطع</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                  <strong>3–12</strong>
+                  <span>دقيقة</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+                  <strong>4</strong>
+                  <span>تصنيفات</span>
+                </span>
+              </div>
+
+              <div class="c-highlight-card__footer">
+                <a class="c-highlight-card__link" href="media.html#audio">
+                  فتح الصوتيات
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+
+                <!-- Optional: connect to a year anchor on timeline page -->
+                <a class="c-highlight-card__ghost" href="timeline.html#2017">سياق زمني</a>
+              </div>
             </article>
-            <article class="c-card">
-              <h3 class="c-card__title">حوار مصور</h3>
-              <p>لقطات تاريخية من غرفة التحكم أثناء اللقاءات.</p>
+
+            <!-- Card 2 -->
+            <article class="c-highlight-card c-highlight-card--accent" role="group" aria-label="محطة: الظهور الإعلامي">
+              <div class="c-highlight-card__top">
+                <span class="c-highlight-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-circle-play"></i>
+                </span>
+
+                <div class="c-highlight-card__meta">
+                  <span class="c-highlight-card__chip">فيديو</span>
+                  <span class="c-highlight-card__year">2017–2023</span>
+                </div>
+              </div>
+
+              <h3 class="c-highlight-card__title">الظهور الإعلامي والتحليل السياسي</h3>
+              <p class="c-highlight-card__desc">
+                مقاطع مرئية تُستخدم كبوابات لفهم الخطاب السياسي
+                وتطور المواقف في سياقات متعددة.
+              </p>
+
+              <div class="c-highlight-card__stats" aria-label="ملخص سريع">
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-film" aria-hidden="true"></i>
+                  <strong>20+</strong>
+                  <span>مقطع</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-language" aria-hidden="true"></i>
+                  <strong>2</strong>
+                  <span>لغات</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  <strong>محوري</strong>
+                  <span>الأثر</span>
+                </span>
+              </div>
+
+              <div class="c-highlight-card__footer">
+                <a class="c-highlight-card__link" href="media.html#coverage">
+                  فتح الظهور الإعلامي
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+
+                <a class="c-highlight-card__ghost" href="timeline.html#2023">سياق زمني</a>
+              </div>
             </article>
+
+            <!-- Card 3 -->
+            <article class="c-highlight-card" role="group" aria-label="محطة: صور أرشيفية">
+              <div class="c-highlight-card__top">
+                <span class="c-highlight-card__icon" aria-hidden="true">
+                  <i class="fa-regular fa-images"></i>
+                </span>
+
+                <div class="c-highlight-card__meta">
+                  <span class="c-highlight-card__chip">صور</span>
+                  <span class="c-highlight-card__year">1987–2006</span>
+                </div>
+              </div>
+
+              <h3 class="c-highlight-card__title">صور أرشيفية ومحطات مبكرة</h3>
+              <p class="c-highlight-card__desc">
+                لقطات ثابتة مختارة تُستخدم كخريطة بصرية للمراحل المبكرة
+                وتطور الحضور التنظيمي والسياسي.
+              </p>
+
+              <div class="c-highlight-card__stats" aria-label="ملخص سريع">
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                  <strong>30+</strong>
+                  <span>لقطة</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <strong>متعدد</strong>
+                  <span>المواقع</span>
+                </span>
+                <span class="c-highlight-stat">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  <strong>موثق</strong>
+                  <span>جزئيا</span>
+                </span>
+              </div>
+
+              <div class="c-highlight-card__footer">
+                <a class="c-highlight-card__link" href="media.html#photos">
+                  فتح الصور
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+
+                <a class="c-highlight-card__ghost" href="timeline.html#2006">سياق زمني</a>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
+
     </main>
 
     <footer class="c-footer" role="contentinfo">
