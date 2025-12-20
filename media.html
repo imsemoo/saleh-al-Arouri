@@ -34,8 +34,8 @@
   <link rel="preload" href="assets/js/script.js" as="script" />
   <style>
     /* =========================================
-  MEDIA PAGE — Premium layout
-========================================= */
+      MEDIA PAGE — Premium layout
+    ========================================= */
 
     .c-page-hero {
       padding: var(--space-48) 0 var(--space-24);
@@ -1051,6 +1051,168 @@
     :is(html[data-theme="dark"], body.is-dark) .c-audio__footer .c-btn--outline {
       border-color: rgba(214, 169, 75, 0.18);
     }
+
+    /* =========================================
+  MEDIA — Explore by Year
+========================================= */
+    .c-media-year-explorer__head {
+      margin-bottom: var(--space-16);
+    }
+
+    .c-media-year-explorer__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: var(--type-h3);
+    }
+
+    .c-media-year-explorer__sub {
+      margin: var(--space-8) 0 0;
+      max-width: 70ch;
+      line-height: 1.9;
+    }
+
+    .c-year-chipset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+      margin-top: var(--space-16);
+    }
+
+    .c-year-chip {
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      color: var(--text-primary);
+      border-radius: var(--radius-pill);
+      padding: 10px 14px;
+      font-family: var(--font-family-heading);
+      transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .c-year-chip:hover,
+    .c-year-chip:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(199, 149, 42, 0.28);
+      background: rgba(199, 149, 42, 0.10);
+    }
+
+    .c-media-year-explorer__note {
+      margin-top: var(--space-16);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-12);
+      padding: var(--space-16);
+      border-radius: var(--radius-16);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+    }
+
+    .c-media-year-explorer__note i {
+      margin-top: 3px;
+      color: var(--color-accent-dark);
+    }
+
+    /* =========================================
+  MEDIA — Guidelines
+========================================= */
+    .c-guidelines {
+      display: grid;
+      gap: var(--space-24);
+      padding: var(--space-24);
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 992px) {
+      .c-guidelines {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+      }
+    }
+
+    .c-guidelines__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-guidelines__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: var(--type-h3);
+    }
+
+    .c-guidelines__lede {
+      margin: var(--space-12) 0 0;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      max-width: 75ch;
+    }
+
+    .c-guidelines__list {
+      margin: var(--space-16) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: var(--space-12);
+      color: var(--text-secondary);
+    }
+
+    .c-guidelines__list li {
+      padding: var(--space-12);
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.08);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-guidelines__list li {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    .c-guidelines__actions {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .c-guidelines__panel-card {
+      padding: var(--space-24);
+      border-radius: var(--radius-20);
+      background:
+        radial-gradient(900px 380px at 20% 18%, rgba(199, 149, 42, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 80% 12%, rgba(21, 88, 45, 0.18), transparent 60%),
+        var(--surface-bg);
+      border: 1px solid var(--surface-border);
+    }
+
+    .c-guidelines__panel-title {
+      margin: 0 0 var(--space-12);
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-guidelines__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+
+    .c-tag {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(15, 20, 15, 0.12);
+      background: rgba(255, 255, 255, 0.35);
+      font-size: var(--type-small);
+      color: var(--text-primary);
+    }
   </style>
 </head>
 
@@ -1561,6 +1723,93 @@
             ملاحظة: يتم استكمال بيانات المصدر وتاريخ التسجيل بدقة عند توفر المادة الأصلية.
           </p>
 
+        </div>
+      </section>
+
+
+      <!-- =========================================
+  MEDIA — Explore by Year (quick navigation)
+  Notes:
+  - No JS required (optional later)
+  - Uses chips to jump/trigger filtering
+========================================= -->
+      <section class="u-section c-media-year-explorer" aria-label="استكشف حسب السنة">
+        <div class="container">
+          <header class="c-section-head c-media-year-explorer__head">
+            <div>
+              <p class="u-muted">بوابة سريعة</p>
+              <h2 class="c-media-year-explorer__title">استكشف حسب السنة</h2>
+              <p class="c-media-year-explorer__sub u-muted">
+                اختر سنة للانتقال إلى موادها أو لاستخدامها كفلتر سريع داخل المكتبة
+              </p>
+            </div>
+            <a class="c-btn c-btn--outline" href="#library">اذهب للمكتبة</a>
+          </header>
+
+          <div class="c-year-chipset" role="list" aria-label="سنوات مختارة">
+            <button class="c-year-chip" type="button" data-year="1988">1988</button>
+            <button class="c-year-chip" type="button" data-year="1992">1992</button>
+            <button class="c-year-chip" type="button" data-year="2006">2006</button>
+            <button class="c-year-chip" type="button" data-year="2010">2010</button>
+            <button class="c-year-chip" type="button" data-year="2014">2014</button>
+            <button class="c-year-chip" type="button" data-year="2018">2018</button>
+            <button class="c-year-chip" type="button" data-year="2021">2021</button>
+            <button class="c-year-chip" type="button" data-year="2024">2024</button>
+          </div>
+
+          <div class="c-media-year-explorer__note">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <p class="u-muted">
+              تقدر تربط الأزرار دي لاحقًا بفيلتر المكتبة (JS) باستخدام data-year.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- =========================================
+  MEDIA — Guidelines & Sources
+  Notes:
+  - Builds trust
+  - Editorial tone
+========================================= -->
+      <section class="u-section c-media-guidelines" aria-label="معايير التوثيق والمصادر">
+        <div class="container">
+          <div class="c-guidelines">
+            <div class="c-guidelines__copy">
+              <p class="c-guidelines__kicker">شفافية الأرشيف</p>
+              <h2 class="c-guidelines__title">معايير التوثيق والمصادر</h2>
+              <p class="c-guidelines__lede">
+                كل مادة تُعرض هنا هدفها وضع اللقطة داخل سياقها الزمني ومصدرها قدر الإمكان
+                إذا تعذّر المصدر تُوسم المادة بأنها “غير مكتمل الإسناد” حتى يتم تدقيقها
+              </p>
+
+              <ul class="c-guidelines__list">
+                <li><strong>المصدر</strong> يوثّق إن توفر: قناة بث، منصة، أرشيف، أو شاهد موثوق.</li>
+                <li><strong>التاريخ</strong> يعرض كما ورد أو كتقدير موضح عند عدم اليقين.</li>
+                <li><strong>النسخ</strong> تُحفظ بأكثر من جودة لحماية المادة من الفقد.</li>
+                <li><strong>الاستخدام</strong> المواد للاطلاع والتوثيق وليس لإعادة النشر دون تحقق.</li>
+              </ul>
+
+              <div class="c-guidelines__actions">
+                <a class="c-btn c-btn--primary" href="about.html#methodology">منهجية الأرشفة</a>
+                <a class="c-btn c-btn--outline" href="about.html#contact">تواصل لتصحيح/إضافة مصدر</a>
+              </div>
+            </div>
+
+            <div class="c-guidelines__panel" aria-hidden="true">
+              <div class="c-guidelines__panel-card">
+                <p class="c-guidelines__panel-title">وسوم الجودة</p>
+                <div class="c-guidelines__tags">
+                  <span class="c-tag">موثق</span>
+                  <span class="c-tag">مراجعة</span>
+                  <span class="c-tag">غير مكتمل</span>
+                  <span class="c-tag">قيد التدقيق</span>
+                </div>
+                <p class="u-muted" style="margin:0;line-height:1.9">
+                  الهدف ليس الكثرة فقط بل “الربط” بين المادة والزمن والسياق.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -9,182 +9,1076 @@
   <meta name="description" content="نبذة تعريفية عن SALEH-AL-AROURI، رؤيتنا في الحفاظ على الذاكرة البصرية والصوتية." />
   <link rel="canonical" href="https://saleh-al-arouri.com/about.html" />
   <meta property="og:title" content="SALEH-AL-AROURI | من نحن" />
-  <meta property="og:description" content="نبذة تعريفية عن SALEH-AL-AROURI، رؤيتنا في الحفاظ على الذاكرة البصرية والصوتية." />
+  <meta property="og:description"
+    content="نبذة تعريفية عن SALEH-AL-AROURI، رؤيتنا في الحفاظ على الذاكرة البصرية والصوتية." />
   <meta property="og:image" content="assets/img/articles/feature1.png" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SALEH-AL-AROURI | من نحن" />
-  <meta name="twitter:description" content="نبذة تعريفية عن SALEH-AL-AROURI، رؤيتنا في الحفاظ على الذاكرة البصرية والصوتية." />
+  <meta name="twitter:description"
+    content="نبذة تعريفية عن SALEH-AL-AROURI، رؤيتنا في الحفاظ على الذاكرة البصرية والصوتية." />
   <meta name="author" content="SALEH-AL-AROURI" />
   <meta name="theme-color" content="#09130c" />
 
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/articles/thumb1.png" />
   <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css" />
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="preload" href="assets/js/script.js" as="script" />
+  <style>
+    /* =========================================
+      ABOUT — Mission & Methodology
+    ========================================= */
+    .c-about__wrap {
+      padding: var(--space-24);
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .c-about__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-about__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: var(--type-h3);
+    }
+
+    .c-about__sub {
+      margin: var(--space-12) 0 0;
+      line-height: 1.9;
+      max-width: 75ch;
+    }
+
+    .c-about__grid {
+      margin-top: var(--space-24);
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    @media (min-width: 992px) {
+      .c-about__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .c-about-card {
+      padding: var(--space-16);
+      border-radius: var(--radius-20);
+      border: 1px solid rgba(15, 20, 15, 0.1);
+      background: rgba(255, 255, 255, 0.35);
+      transition: transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-about-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .c-about-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(199, 149, 42, 0.26);
+    }
+
+    .c-about-card__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-about-card__text {
+      margin: var(--space-12) 0 0;
+      line-height: 1.9;
+    }
+
+    .c-about-card__actions {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    /* =========================================
+  ABOUT HERO — Identity section
+========================================= */
+
+    .c-about-hero {
+      padding: var(--space-64) 0 var(--space-48);
+    }
+
+    .c-about-hero__inner {
+      display: grid;
+      gap: var(--space-32);
+    }
+
+    @media (min-width: 992px) {
+      .c-about-hero__inner {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: var(--space-48);
+      }
+    }
+
+    /* Content */
+    .c-about-hero__eyebrow {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-about-hero__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(2.2rem, 2.6vw, 2.9rem);
+      color: var(--text-primary);
+    }
+
+    .c-about-hero__lead {
+      margin: var(--space-16) 0 0;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      max-width: 60ch;
+    }
+
+    .c-about-hero__lead strong {
+      color: var(--color-accent-dark);
+      font-weight: 600;
+    }
+
+    .c-about-hero__desc {
+      margin: var(--space-12) 0 0;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 65ch;
+    }
+
+    .c-about-hero__actions {
+      margin-top: var(--space-24);
+      display: flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+    }
+
+    /* Highlights */
+    .c-about-hero__highlights {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .c-about-highlight {
+      padding: var(--space-24);
+      border-radius: var(--radius-16);
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .c-about-highlight__num {
+      position: absolute;
+      top: var(--space-16);
+      inset-inline-end: var(--space-16);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      color: var(--color-accent-dark);
+      opacity: 0.9;
+    }
+
+    .c-about-highlight__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .c-about-highlight__text {
+      margin: var(--space-8) 0 0;
+      font-size: var(--type-body);
+      line-height: 1.85;
+      color: var(--text-secondary);
+    }
+
+    /* Dark theme tweaks */
+    :is(html[data-theme="dark"], body.is-dark) .c-about-highlight {
+      background: rgba(11, 20, 16, 0.72);
+    }
+
+    /* =========================================
+  VMV — Vision / Mission / Values
+========================================= */
+
+    .c-vmv {
+      padding: var(--space-48) 0;
+    }
+
+    .c-vmv__head {
+      margin-bottom: var(--space-24);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+    }
+
+    .c-vmv__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-vmv__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.8rem, 2.1vw, 2.25rem);
+      color: var(--text-primary);
+    }
+
+    .c-vmv__subtitle {
+      margin: var(--space-12) 0 0;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 70ch;
+    }
+
+    .c-vmv__grid {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    @media (min-width: 992px) {
+      .c-vmv__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-16);
+      }
+    }
+
+    /* Card */
+    .c-vmv-card {
+      position: relative;
+      border-radius: var(--radius-16);
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-24);
+      overflow: hidden;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    /* Subtle top accent bar */
+    .c-vmv-card::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+          rgba(21, 88, 45, 0.9),
+          rgba(199, 149, 42, 0.85));
+      opacity: 0.9;
+    }
+
+    .c-vmv-card:hover,
+    .c-vmv-card:focus-within {
+      transform: translateY(-3px);
+      border-color: rgba(15, 20, 15, 0.18);
+      box-shadow: var(--shadow-medium);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-vmv-card:hover,
+    :is(html[data-theme="dark"], body.is-dark) .c-vmv-card:focus-within {
+      border-color: rgba(214, 169, 75, 0.22);
+    }
+
+    .c-vmv-card__top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+
+    .c-vmv-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-12);
+      display: grid;
+      place-items: center;
+      background: rgba(21, 88, 45, 0.1);
+      border: 1px solid rgba(15, 20, 15, 0.1);
+      color: var(--color-primary);
+      flex: 0 0 auto;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-vmv-card__icon {
+      background: rgba(35, 197, 94, 0.14);
+      border-color: rgba(214, 169, 75, 0.14);
+      color: var(--color-primary);
+    }
+
+    .c-vmv-card__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .c-vmv-card__desc {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    .c-vmv-card__list {
+      margin: var(--space-16) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: var(--space-8);
+    }
+
+    .c-vmv-card__list li {
+      position: relative;
+      padding-inline-start: 22px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .c-vmv-card__list li::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(199, 149, 42, 0.16);
+    }
+
+    /* Variants: keep subtle differences without breaking palette */
+    .c-vmv-card--mission .c-vmv-card__icon {
+      background: rgba(199, 149, 42, 0.1);
+      color: var(--color-accent-dark);
+    }
+
+    .c-vmv-card--values .c-vmv-card__icon {
+      background: rgba(21, 88, 45, 0.1);
+      color: var(--color-primary);
+    }
+
+    /* =========================================
+  Media Collection — Premium featured shelf
+========================================= */
+
+    .c-media-collection {
+      padding: var(--space-48) 0;
+    }
+
+    .c-media-collection__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-24);
+    }
+
+    .c-media-collection__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-media-collection__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(1.8rem, 2.1vw, 2.25rem);
+      color: var(--text-primary);
+    }
+
+    .c-media-collection__subtitle {
+      margin: var(--space-12) 0 0;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 72ch;
+    }
+
+    /* Grid */
+    .c-media-collection__grid {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    @media (min-width: 992px) {
+      .c-media-collection__grid {
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: var(--space-24);
+        align-items: stretch;
+      }
+    }
+
+    /* Card */
+    .c-mc-card {
+      border-radius: var(--radius-20);
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), border-color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .c-mc-card:hover,
+    .c-mc-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+      outline: none;
+      border-color: rgba(15, 20, 15, 0.18);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card:hover,
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card:focus-visible {
+      border-color: rgba(214, 169, 75, 0.22);
+    }
+
+    /* Media */
+    .c-mc-card__media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--color-neutral-100);
+    }
+
+    .c-mc-card--compact .c-mc-card__media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .c-mc-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform var(--transition-fast),
+        filter var(--transition-fast);
+    }
+
+    .c-mc-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(900px 380px at 18% 22%,
+          rgba(21, 88, 45, 0.32),
+          transparent 60%),
+        linear-gradient(180deg,
+          rgba(15, 20, 15, 0.05),
+          rgba(15, 20, 15, 0.72));
+      opacity: 0.9;
+      transition: opacity var(--transition-fast);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card__overlay {
+      background: radial-gradient(900px 380px at 18% 22%,
+          rgba(214, 169, 75, 0.18),
+          transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.78));
+    }
+
+    .c-mc-card:hover .c-mc-card__media img,
+    .c-mc-card:focus-visible .c-mc-card__media img {
+      transform: scale(1.06);
+      filter: saturate(1.05);
+    }
+
+    .c-mc-card__badge {
+      position: absolute;
+      top: var(--space-12);
+      inset-inline-start: var(--space-12);
+      z-index: 2;
+    }
+
+    .c-mc-card__chip {
+      position: absolute;
+      bottom: var(--space-12);
+      inset-inline-start: var(--space-12);
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(15, 20, 15, 0.12);
+      color: var(--color-neutral-950);
+      font-size: var(--type-small);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card__chip {
+      background: rgba(11, 20, 16, 0.78);
+      border-color: rgba(214, 169, 75, 0.18);
+      color: var(--text-primary);
+    }
+
+    /* Body */
+    .c-mc-card__body {
+      padding: var(--space-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+
+    .c-mc-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-mc-card__sep {
+      opacity: 0.7;
+    }
+
+    .c-mc-card__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .c-mc-card__desc {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    /* Footer */
+    .c-mc-card__footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-12);
+      padding-top: var(--space-16);
+      border-top: 1px solid rgba(15, 20, 15, 0.08);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card__footer {
+      border-top-color: rgba(214, 169, 75, 0.12);
+    }
+
+    .c-mc-card__tag {
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-mc-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-family-heading);
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mc-card__cta {
+      color: var(--color-accent);
+    }
+
+    /* Keyboard ring */
+    .c-mc-card:focus-visible {
+      box-shadow: var(--shadow-medium), var(--ring);
+    }
+  </style>
 </head>
 
 <body>
   <div class="c-page-shell">
     <header class="c-header">
-      <div class="c-header__inner">
-        <div class="c-header__brand">
-          <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        </div>
+      <div class="container">
+        <div class="c-header__inner">
+          <div class="c-header__brand">
+            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية">SALEH-AL-AROURI</a>
+          </div>
 
-        <nav class="c-nav" aria-label="روابط القسم الرئيسي">
-          <ul class="c-nav__list">
-            <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
-            <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
-            <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
-            <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
-            <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
-            <li><a class="c-nav__link is-active" href="about.html" aria-current="page">من نحن</a></li>
-          </ul>
-        </nav>
-
-        <div class="c-header__actions">
-          <button type="button" class="c-nav__icon" aria-label="بحث">
-            <span aria-hidden="true">🔍</span>
+          <nav class="c-nav" aria-label="روابط القسم الرئيسي">
+            <ul class="c-nav__list">
+              <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+              <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+              <li>
+                <a class="c-nav__link" href="timeline.html">الخط الزمني</a>
+              </li>
+              <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+              <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+              <li><a class="c-nav__link" href="about.html">من نحن</a></li>
+            </ul>
+          </nav>
+          <!-- Theme Toggle Button -->
+          <button type="button" class="c-theme-toggle" data-theme-toggle aria-pressed="false"
+            title="Switch to dark mode">
+            <!-- Icon changes dynamically via JS -->
+            <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
           </button>
-          <button type="button" class="c-btn c-btn--ghost">تابع</button>
-          <button type="button" class="c-btn c-btn--primary" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-        </div>
 
-        <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-          aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <div class="c-header__actions">
+            <button type="button" class="c-nav__icon" aria-label="بحث">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+
+            <a class="c-btn c-btn--primary d-none d-lg-inline-flex" href="contact.html">
+              تواصل معنا</a>
+          </div>
+
+          <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasMenuLabel">SALEH-AL-AROURI</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="أغلق القائمة"></button>
+    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
+      aria-labelledby="offcanvasMenuLabel">
+      <div class="offcanvas-header c-offcanvas__header">
+        <div class="c-offcanvas__brand">
+          <span id="offcanvasMenuLabel" class="c-offcanvas__title">القائمة</span>
+          <a class="c-offcanvas__logo" href="index.html">SALEH-AL-AROURI</a>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="إغلاق القائمة"></button>
       </div>
-      <div class="offcanvas-body">
+
+      <div class="offcanvas-body c-offcanvas__body">
         <div class="c-offcanvas__search">
           <label class="visually-hidden" for="offcanvasSearch">بحث</label>
-          <div class="c-offcanvas__search-field">
-            <input id="offcanvasSearch" type="search" placeholder="ابحث في الأرشيف" />
-            <button type="button" aria-label="بحث">
-              <span aria-hidden="true">🔍</span>
-            </button>
-          </div>
+          <input id="offcanvasSearch" type="search" class="form-control c-input" placeholder="ابحث داخل الأرشيف" />
         </div>
-        <ul class="c-nav__list c-nav__list--stacked">
-          <li><a class="c-nav__link" href="index.html" data-bs-dismiss="offcanvas">الرئيسية</a></li>
-          <li><a class="c-nav__link" href="media.html" data-bs-dismiss="offcanvas">الوسائط</a></li>
-          <li><a class="c-nav__link" href="timeline.html" data-bs-dismiss="offcanvas">الخط الزمني</a></li>
-          <li><a class="c-nav__link" href="biography.html" data-bs-dismiss="offcanvas">السيرة</a></li>
-          <li><a class="c-nav__link" href="news.html" data-bs-dismiss="offcanvas">الأخبار</a></li>
-          <li><a class="c-nav__link is-active" href="about.html" aria-current="page" data-bs-dismiss="offcanvas">من نحن</a></li>
+
+        <ul class="c-nav__list c-nav__list--stacked" aria-label="روابط التنقل">
+          <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+          <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+          <li>
+            <a class="c-nav__link active" href="timeline.html">الخط الزمني</a>
+          </li>
+          <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+          <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+          <li><a class="c-nav__link" href="about.html">من نحن</a></li>
         </ul>
-        <div class="c-offcanvas__divider" aria-hidden="true"></div>
+
+        <hr class="c-divider" />
+
         <div class="c-offcanvas__actions">
-          <button type="button" class="c-btn c-btn--primary w-100" data-bs-dismiss="offcanvas" onclick="modalHelper.open('mediaDetailModal')">شاهد التفاصيل</button>
-          <button type="button" class="c-btn c-btn--outline w-100" data-bs-dismiss="offcanvas">تابع</button>
+          <a class="c-btn c-btn--ghost w-100" href="about.html">تابع</a>
+          <button type="button" class="c-btn c-btn--primary w-100" onclick="modalHelper.open('mediaDetailModal')">
+            شاهد التفاصيل
+          </button>
         </div>
       </div>
     </div>
 
     <main>
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <p class="u-muted">عن المنصة</p>
-          <h1 class="c-card__title">من نحن</h1>
-          <p>نحن منصة أرشيفية توثّق الوسائط المساندة لقضية SALEH-AL-AROURI وتركز على جودة المحتوى والشفافية.</p>
+      <!-- =========================================
+        ABOUT — Identity & Purpose
+      ========================================= -->
+      <section class="u-section c-about-hero" aria-label="من نحن">
+        <div class="container">
+          <div class="c-about-hero__inner">
+            <!-- Copy -->
+            <div class="c-about-hero__content">
+              <p class="c-about-hero__eyebrow">عن المنصة</p>
+              <h1 class="c-about-hero__title">من نحن</h1>
+
+              <p class="c-about-hero__lead">
+                منصة أرشيفية مستقلة تهدف إلى توثيق المواد المرئية والسمعية
+                المرتبطة بقضية <strong>SALEH-AL-AROURI</strong>
+                ضمن سياق زمني ومعرفي واضح
+              </p>
+
+              <p class="c-about-hero__desc">
+                نعمل على جمع المحتوى وتدقيقه وتنظيمه بعيدًا عن العشوائية مع
+                الالتزام بالشفافية ومصداقية المصدر وربط كل مادة بسياقها
+                التاريخي والسياسي
+              </p>
+
+              <div class="c-about-hero__actions">
+                <a href="media.html" class="c-btn c-btn--primary">استكشف الأرشيف</a>
+                <a href="timeline.html" class="c-btn c-btn--outline">الخط الزمني</a>
+              </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="c-about-hero__highlights" aria-label="ملامح المنصة">
+              <div class="c-about-highlight">
+                <span class="c-about-highlight__num">01</span>
+                <h3 class="c-about-highlight__title">توثيق مسؤول</h3>
+                <p class="c-about-highlight__text">
+                  كل مادة تمر بعملية مراجعة وتدقيق قبل إدراجها داخل الأرشيف
+                </p>
+              </div>
+
+              <div class="c-about-highlight">
+                <span class="c-about-highlight__num">02</span>
+                <h3 class="c-about-highlight__title">سياق قبل العرض</h3>
+                <p class="c-about-highlight__text">
+                  لا نعرض صورة أو صوتًا دون ربطه بمحطة زمنية ومعرفية
+                </p>
+              </div>
+
+              <div class="c-about-highlight">
+                <span class="c-about-highlight__num">03</span>
+                <h3 class="c-about-highlight__title">شفافية المصدر</h3>
+                <p class="c-about-highlight__text">
+                  نُظهر بيانات المصدر والتاريخ عند توفرها دون تزييف أو اجتزاء
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <div class="c-media-grid">
-            <article class="c-card">
-              <h3 class="c-card__title">رؤيتنا</h3>
-              <p>الحفاظ على ذاكرة بصريـة وصوتية متجددة ومفتوحة للجمهور.</p>
+      <!-- =========================================
+        ABOUT — Vision / Mission / Values
+      ========================================= -->
+      <section class="u-section c-vmv" aria-label="الرؤية والمهمة والقيم">
+        <div class="container">
+          <!-- Section header -->
+          <header class="c-vmv__head">
+            <div class="c-vmv__head-copy">
+              <p class="c-vmv__kicker">إطار العمل</p>
+              <h2 class="c-vmv__title">رؤية واضحة ومنهج ثابت</h2>
+              <p class="c-vmv__subtitle">
+                نشتغل بمنطق الأرشفة لا بمنطق النشر السريع كل مادة تُعرض داخل
+                سياق وتاريخ ومصدر
+              </p>
+            </div>
+          </header>
+
+          <!-- Cards -->
+          <div class="c-vmv__grid">
+            <!-- Vision -->
+            <article class="c-vmv-card c-vmv-card--vision" aria-label="رؤيتنا">
+              <div class="c-vmv-card__top">
+                <span class="c-vmv-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-eye"></i>
+                </span>
+                <h3 class="c-vmv-card__title">رؤيتنا</h3>
+              </div>
+
+              <p class="c-vmv-card__desc">
+                أن يكون الأرشيف بوابة موثوقة تحفظ الذاكرة البصرية والسمعية
+                وتُعيد ترتيبها بشكل يسمح للفهم قبل التفاعل
+              </p>
+
+              <ul class="c-vmv-card__list">
+                <li>ذاكرة حيّة قابلة للتوسّع</li>
+                <li>سياق قبل العنوان</li>
+                <li>إتاحة منظمة لا فوضى محتوى</li>
+              </ul>
             </article>
-            <article class="c-card">
-              <h3 class="c-card__title">مهمتنا</h3>
-              <p>تنظيم وتوثيق وحماية المواد التي تخرج للعلن.</p>
+
+            <!-- Mission -->
+            <article class="c-vmv-card c-vmv-card--mission" aria-label="مهمتنا">
+              <div class="c-vmv-card__top">
+                <span class="c-vmv-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-bullseye"></i>
+                </span>
+                <h3 class="c-vmv-card__title">مهمتنا</h3>
+              </div>
+
+              <p class="c-vmv-card__desc">
+                جمع وتنظيم وتوثيق المواد المنشورة وربطها بمحطات زمنية مع إظهار
+                المصدر وبيانات التحقق عند توفرها
+              </p>
+
+              <ul class="c-vmv-card__list">
+                <li>تصنيف مرن حسب النوع والفترة</li>
+                <li>مراجعة وتدقيق قبل الإدراج</li>
+                <li>واجهة بحث وتصفية محترفة</li>
+              </ul>
             </article>
-            <article class="c-card">
-              <h3 class="c-card__title">قيمنا</h3>
-              <p>جدية، تلاحم، إتاحة، ومشاركة المعرفة.</p>
+
+            <!-- Values -->
+            <article class="c-vmv-card c-vmv-card--values" aria-label="قيمنا">
+              <div class="c-vmv-card__top">
+                <span class="c-vmv-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </span>
+                <h3 class="c-vmv-card__title">قيمنا</h3>
+              </div>
+
+              <p class="c-vmv-card__desc">
+                قيم عمل واضحة تمنع التزييف وتضمن احترام المادة وتُوازن بين
+                الإتاحة والمسؤولية
+              </p>
+
+              <ul class="c-vmv-card__list">
+                <li>مصداقية وشفافية</li>
+                <li>انضباط وأمانة في التوثيق</li>
+                <li>مشاركة المعرفة دون تسييلها</li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="u-section">
-        <div class="u-container-narrow">
-          <h2 class="c-card__title">مجموعة الوسائط</h2>
-          <div class="c-media-grid">
-            <article class="c-media-card">
-              <div class="c-media-card__media">
-                <img src="assets/img/articles/featured-large.png" alt="عرض وثائقي" loading="lazy" />
-                <div class="c-media-card__badge">
+      <!-- =========================================
+  ABOUT — Media Collection (Featured Picks)
+  Notes:
+  - Uses existing .c-media-card patterns but upgrades layout and hierarchy
+  - Works with your tokens (light/dark)
+========================================= -->
+      <section class="u-section c-media-collection" aria-label="مجموعة الوسائط">
+        <div class="container">
+          <!-- Section header -->
+          <header class="c-media-collection__head">
+            <div class="c-media-collection__head-copy">
+              <p class="c-media-collection__kicker">بوابة مشاهدة سريعة</p>
+              <h2 class="c-media-collection__title">مجموعة الوسائط</h2>
+              <p class="c-media-collection__subtitle">
+                نقطتا دخول مختارتان تعرضان شكل المادة وسياقها قبل الانتقال إلى
+                المكتبة الكاملة
+              </p>
+            </div>
+
+            <div class="c-media-collection__head-actions">
+              <a class="c-btn c-btn--outline" href="media.html">تصفح كل الوسائط</a>
+            </div>
+          </header>
+
+          <!-- Grid -->
+          <div class="c-media-collection__grid">
+            <!-- Card 1 -->
+            <article class="c-mc-card" role="link" tabindex="0" data-collection-link="media.html#featured-doc"
+              aria-label="الانتقال إلى برنامج العائلة">
+              <div class="c-mc-card__media">
+                <img src="assets/images/videos/featured.jpg" alt="وثائقي عن مسار صالح العاروري" loading="lazy" />
+                <div class="c-mc-card__overlay" aria-hidden="true"></div>
+
+                <div class="c-mc-card__badge">
                   <span class="c-badge c-badge--video">وثائقي</span>
                 </div>
-              </div>
-              <div class="c-media-card__content">
-                <h3 class="c-media-card__title">برنامج العائلة</h3>
-                <p class="u-muted">حلقات تجمع العائلة بالتوثيق.</p>
-              </div>
-            </article>
-            <article class="c-media-card">
-              <div class="c-media-card__media">
-                <img src="assets/img/articles/film2.jpg" alt="فيلم قصير" loading="lazy" />
-                <div class="c-media-card__badge">
-                  <span class="c-badge c-badge--reel">ريلز</span>
+
+                <div class="c-mc-card__chip">
+                  <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                  <span>فيديو</span>
                 </div>
               </div>
-              <div class="c-media-card__content">
-                <h3 class="c-media-card__title">لقطة اليوم</h3>
-                <p class="u-muted">ريلز يصف يوميات الفريق.</p>
+
+              <div class="c-mc-card__body">
+                <div class="c-mc-card__meta">
+                  <span class="c-mc-card__date">مختارات موثقة</span>
+                  <span class="c-mc-card__sep" aria-hidden="true">•</span>
+                  <span class="c-mc-card__source">تجميع تحرير الأرشيف</span>
+                </div>
+
+                <h3 class="c-mc-card__title">برنامج العائلة</h3>
+                <p class="c-mc-card__desc">
+                  حلقات تجمع شهادات قريبة وملامح إنسانية مع نقاط إسناد زمنية
+                  لتجنّب السرد المبتور
+                </p>
+
+                <div class="c-mc-card__footer">
+                  <span class="c-mc-card__tag">حلقات · شهادات · سياق</span>
+                  <span class="c-mc-card__cta">
+                    <span>افتح المجموعة</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
               </div>
             </article>
+
+            <!-- Card 2 -->
+            <article class="c-mc-card c-mc-card--compact" role="link" tabindex="0"
+              data-collection-link="media.html#daily-reels" aria-label="الانتقال إلى لقطة اليوم">
+              <div class="c-mc-card__media">
+                <img src="assets/images/videos/thumb1.jpg" alt="ريلز قصيرة من توثيق اليوم" loading="lazy" />
+                <div class="c-mc-card__overlay" aria-hidden="true"></div>
+
+                <div class="c-mc-card__badge">
+                  <span class="c-badge c-badge--reel">ريلز</span>
+                </div>
+
+                <div class="c-mc-card__chip">
+                  <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                  <span>عمودي</span>
+                </div>
+              </div>
+
+              <div class="c-mc-card__body">
+                <div class="c-mc-card__meta">
+                  <span class="c-mc-card__date">مقتطفات سريعة</span>
+                  <span class="c-mc-card__sep" aria-hidden="true">•</span>
+                  <span class="c-mc-card__source">ميدان / منصات</span>
+                </div>
+
+                <h3 class="c-mc-card__title">لقطة اليوم</h3>
+                <p class="c-mc-card__desc">
+                  ريلز يلتقط لحظات قصيرة مرتبطة بسياقها مع وصف مختصر يسمح
+                  بالعودة للمادة الأصل يبقي مدخل ذكي مش ترفيه عابر
+                </p>
+
+                <div class="c-mc-card__footer">
+                  <span class="c-mc-card__tag">ريلز · يوميات · مؤشر زمني</span>
+                  <span class="c-mc-card__cta">
+                    <span>افتح المجموعة</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+        ABOUT — Mission & Methodology
+      ========================================= -->
+      <section class="u-section c-about" aria-label="منهجية الأرشيف">
+        <div class="container">
+          <div class="c-about__wrap">
+            <header class="c-about__head">
+              <div>
+                <p class="c-about__kicker">لماذا هذا الأرشيف</p>
+                <h2 class="c-about__title">منهجية واضحة قبل أي شيء</h2>
+                <p class="c-about__sub u-muted">
+                  الأرشيف هنا ليس “عرض صور” بل محاولة لوضع المادة داخل سياقها
+                  وتثبيت مصدرها وتاريخها وتقليل الضباب الذي يُفسد الرواية.
+                </p>
+              </div>
+            </header>
+
+            <div class="c-about__grid">
+              <article class="c-about-card">
+                <h3 class="c-about-card__title">الرؤية</h3>
+                <p class="c-about-card__text u-muted">
+                  تقديم محتوى منظم يساعد القارئ على الفهم وربط المحطة بالوثيقة
+                  بدل التشتت داخل المواد المتناثرة.
+                </p>
+              </article>
+
+              <article class="c-about-card">
+                <h3 class="c-about-card__title">التحقق</h3>
+                <p class="c-about-card__text u-muted">
+                  كل مادة تمر بوسم جودة: موثق / مراجعة / غير مكتمل — ويتم
+                  تحديثها عند ورود مصدر أدق.
+                </p>
+              </article>
+
+              <article class="c-about-card" id="contact">
+                <h3 class="c-about-card__title">التواصل</h3>
+                <p class="c-about-card__text u-muted">
+                  لديك مصدر أو تاريخ أدق أو مادة أصلية؟ أرسلها لتثبيتها داخل
+                  المحطة الصحيحة.
+                </p>
+                <div class="c-about-card__actions">
+                  <a class="c-btn c-btn--primary" href="mailto:archive@example.org">ارسال بريد</a>
+                  <a class="c-btn c-btn--outline" href="news.html">آخر التحديثات</a>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="c-footer">
-      <div class="c-footer__inner">
-        <a class="c-logo" href="index.html">SALEH-AL-AROURI</a>
-        <p class="c-footer__note u-muted">© 2026 أرشيف SALEH-AL-AROURI. كل الحقوق محفوظة.</p>
-        <div>
-          <a class="c-nav__link" href="news.html">الأخبار</a>
-          <a class="c-nav__link" href="media.html">الوسائط</a>
-        </div>
-      </div>
-    </footer>
+    <footer class="c-footer" role="contentinfo">
+      <div class="container">
+        <div class="c-footer__grid">
+          <!-- Brand -->
+          <div class="c-footer__brand">
+            <a class="c-footer__logo" href="index.html"> SALEH-AL-AROURI </a>
+            <p class="c-footer__desc">
+              أرشيف توثيقي مستقل يجمع الصورة والصوت والنص في سياق واحد يحفظ
+              الذاكرة ويمنع تشويه السرد.
+            </p>
+          </div>
 
-    <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content c-modal__inner">
-          <div class="modal-body">
-            <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
-            <h3 class="c-card__title">تواصل مباشر</h3>
-            <p>نرحب بطلبات التعاون والبحث.</p>
+          <!-- Navigation -->
+          <nav class="c-footer__nav" aria-label="روابط الفوتر">
+            <h4 class="c-footer__title">الأقسام</h4>
+            <ul class="c-footer__list">
+              <li><a href="timeline.html">الخط الزمني</a></li>
+              <li><a href="media.html">الوسائط</a></li>
+              <li><a href="news.html">الأخبار</a></li>
+              <li><a href="biography.html">السيرة</a></li>
+            </ul>
+          </nav>
+
+          <!-- Meta -->
+          <div class="c-footer__meta">
+            <h4 class="c-footer__title">عن الأرشيف</h4>
+            <p class="c-footer__small">
+              جميع المواد المعروضة لأغراض التوثيق والتحليل وتعتمد على مصادر
+              مفتوحة أو منشورة سابقًا.
+            </p>
+
+            <p class="c-footer__copyright">
+              © 2026 SALEH-AL-AROURI Archive<br />
+              جميع الحقوق محفوظة
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="c-footer__bottom">
+          <span class="c-footer__tag"> Built as a living archive </span>
+
+          <div class="c-footer__links">
+            <a href="about.html">من نحن</a>
+            <a href="news.html">بيانات رسمية</a>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   </div>
 
   <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
+  <script>
+    // Opens collection cards via data-collection-link (click + keyboard)
+    document.querySelectorAll("[data-collection-link]").forEach((card) => {
+      const go = () => {
+        const href = card.getAttribute("data-collection-link");
+        if (href) window.location.href = href;
+      };
+      card.addEventListener("click", go);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          go();
+        }
+      });
+    });
+
+  </script>
 </body>
 
 </html>

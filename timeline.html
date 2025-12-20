@@ -705,6 +705,45 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* =========================================
+  TIMELINE — Tools
+========================================= */
+    .c-timeline-tools__inner {
+      padding: var(--space-24);
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    @media (min-width: 992px) {
+      .c-timeline-tools__inner {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .c-timeline-tools__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: var(--type-h3);
+      color: var(--text-primary);
+    }
+
+    .c-timeline-tools__sub {
+      margin: var(--space-8) 0 0;
+      line-height: 1.9;
+      max-width: 65ch;
+    }
+
+    .c-timeline-tools__controls {
+      display: grid;
+      gap: var(--space-12);
+      justify-items: stretch;
+    }
   </style>
 </head>
 
@@ -932,6 +971,45 @@
           </div>
         </div>
       </section>
+      <!-- =========================================
+        TIMELINE — Filters & Legend
+      ========================================= -->
+      <section class="u-section c-timeline-tools" aria-label="أدوات الخط الزمني">
+        <div class="container">
+          <div class="c-timeline-tools__inner">
+            <div>
+              <p class="u-muted" style="margin:0">تصفية ذكية</p>
+              <h2 class="c-timeline-tools__title">فلترة المحطات</h2>
+              <p class="u-muted c-timeline-tools__sub">
+                فلتر حسب النوع أو حسب العقد الزمني لتقليل التشويش أثناء القراءة.
+              </p>
+            </div>
+
+            <div class="c-timeline-tools__controls" aria-label="فلاتر الخط الزمني">
+              <div class="c-chipset" role="tablist" aria-label="فلتر حسب النوع">
+                <button class="c-chip is-active" type="button" data-filter="all">الكل</button>
+                <button class="c-chip" type="button" data-filter="photo"><i class="fa-regular fa-image"></i>
+                  صور</button>
+                <button class="c-chip" type="button" data-filter="video"><i class="fa-solid fa-circle-play"></i>
+                  فيديو</button>
+                <button class="c-chip" type="button" data-filter="audio"><i class="fa-solid fa-wave-square"></i>
+                  صوت</button>
+                <button class="c-chip" type="button" data-filter="text"><i class="fa-regular fa-file-lines"></i>
+                  نصوص</button>
+              </div>
+
+              <select class="c-select" aria-label="اختيار عقد زمني">
+                <option>كل العقود</option>
+                <option>الثمانينات</option>
+                <option>التسعينات</option>
+                <option>2000–2009</option>
+                <option>2010–2019</option>
+                <option>2020–اليوم</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- =========================================
         TIMELINE — Core Stations
@@ -1054,11 +1132,11 @@
 
 
       <!-- =========================================
-  TIMELINE HIGHLIGHTS — Editorial Highlights
-  Notes:
-  - Designed as "key moments" blocks for the timeline page
-  - Each card can link to a year anchor or open a media modal later
-========================================= -->
+        TIMELINE HIGHLIGHTS — Editorial Highlights
+        Notes:
+        - Designed as "key moments" blocks for the timeline page
+        - Each card can link to a year anchor or open a media modal later
+      ========================================= -->
       <section class="u-section c-timeline-highlights" aria-label="محطات بارزة">
         <div class="container">
 
@@ -1226,6 +1304,8 @@
           </div>
         </div>
       </section>
+
+
 
     </main>
 

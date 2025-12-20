@@ -742,6 +742,152 @@
         align-items: flex-start;
       }
     }
+
+    /* =========================================
+  BIO — Facts
+========================================= */
+    .c-bio-facts__grid {
+      display: grid;
+      gap: var(--space-24);
+    }
+
+    @media (min-width: 992px) {
+      .c-bio-facts__grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+      }
+    }
+
+    .c-bio-facts__card {
+      padding: var(--space-24);
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .c-bio-facts__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-bio-facts__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: var(--type-h3);
+    }
+
+    .c-bio-facts__lede {
+      margin: var(--space-12) 0 0;
+      line-height: 1.9;
+    }
+
+    .c-fact-list {
+      margin: var(--space-16) 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    .c-fact-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-12);
+      padding: var(--space-12);
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.08);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-fact-list li {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    .c-fact-label {
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-fact-value {
+      color: var(--text-primary);
+      font-family: var(--font-family-heading);
+    }
+
+    .c-bio-facts__actions {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .c-bio-facts__card--strip {
+      background:
+        radial-gradient(900px 380px at 18% 14%, rgba(199, 149, 42, 0.14), transparent 60%),
+        radial-gradient(900px 380px at 82% 18%, rgba(21, 88, 45, 0.14), transparent 60%),
+        var(--surface-bg);
+    }
+
+    .c-bio-facts__strip-title {
+      margin: 0 0 var(--space-16);
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-mini-timeline {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .c-mini-step {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    .c-mini-step__dot {
+      width: 12px;
+      height: 12px;
+      margin-top: 8px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(199, 149, 42, 0.18);
+    }
+
+    .c-mini-step__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-mini-step__desc {
+      margin: var(--space-4) 0 0;
+      line-height: 1.9;
+    }
+
+    .c-bio-facts__strip-link {
+      margin-top: var(--space-16);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-family: var(--font-family-heading);
+      padding: 10px 12px;
+      border-radius: var(--radius-12);
+      border: 1px solid rgba(15, 20, 15, 0.12);
+    }
+
+    .c-bio-facts__strip-link:hover {
+      border-color: rgba(199, 149, 42, 0.28);
+      background: rgba(15, 20, 15, 0.04);
+    }
   </style>
 </head>
 
@@ -1111,11 +1257,11 @@
 
 
       <!-- =========================================
-  BIO VISUAL NARRATIVE — Curated shelf
-  Notes:
-  - Two editorial cards: Photo collection + Audio highlight
-  - Cards are clickable and can also trigger modal if needed
-========================================= -->
+        BIO VISUAL NARRATIVE — Curated shelf
+        Notes:
+        - Two editorial cards: Photo collection + Audio highlight
+        - Cards are clickable and can also trigger modal if needed
+      ========================================= -->
       <section class="u-section c-bio-visual" aria-label="سرد مرئي وصوتي">
         <div class="container">
 
@@ -1223,6 +1369,74 @@
               </div>
 
             </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+  BIO — Key Facts (quick reference)
+========================================= -->
+      <section class="u-section c-bio-facts" aria-label="حقائق سريعة">
+        <div class="container">
+          <div class="c-bio-facts__grid">
+
+            <div class="c-bio-facts__card">
+              <p class="c-bio-facts__kicker">ملخص سريع</p>
+              <h2 class="c-bio-facts__title">حقائق مرجعية</h2>
+              <p class="u-muted c-bio-facts__lede">
+                بطاقة مختصرة لتثبيت النقاط الأساسية قبل الدخول في السرد التفصيلي.
+              </p>
+
+              <ul class="c-fact-list">
+                <li><span class="c-fact-label">الميلاد</span><span class="c-fact-value">قرية عارورة – رام الله</span>
+                </li>
+                <li><span class="c-fact-label">المجال</span><span class="c-fact-value">عمل سياسي وتنظيمي</span></li>
+                <li><span class="c-fact-label">الملف</span><span class="c-fact-value">الضفة – الخارج – العلاقات
+                    السياسية</span></li>
+                <li><span class="c-fact-label">الوفاة</span><span class="c-fact-value">يناير 2024 (بيروت)</span></li>
+              </ul>
+
+              <div class="c-bio-facts__actions">
+                <a class="c-btn c-btn--primary" href="timeline.html">اذهب للخط الزمني</a>
+                <a class="c-btn c-btn--outline" href="media.html">وسائط السيرة</a>
+              </div>
+            </div>
+
+            <div class="c-bio-facts__card c-bio-facts__card--strip">
+              <h3 class="c-bio-facts__strip-title">مراحل بارزة</h3>
+
+              <div class="c-mini-timeline">
+                <div class="c-mini-step">
+                  <span class="c-mini-step__dot"></span>
+                  <div>
+                    <p class="c-mini-step__title">النشأة والتعليم</p>
+                    <p class="u-muted c-mini-step__desc">تكوين مبكر داخل بيئة سياسية واجتماعية حساسة.</p>
+                  </div>
+                </div>
+
+                <div class="c-mini-step">
+                  <span class="c-mini-step__dot"></span>
+                  <div>
+                    <p class="c-mini-step__title">الاعتقال والإبعاد</p>
+                    <p class="u-muted c-mini-step__desc">مرحلة مركزية في إعادة تشكيل المسار والامتداد.</p>
+                  </div>
+                </div>
+
+                <div class="c-mini-step">
+                  <span class="c-mini-step__dot"></span>
+                  <div>
+                    <p class="c-mini-step__title">ملف الضفة والعلاقات</p>
+                    <p class="u-muted c-mini-step__desc">تركيز على التنظيم وبناء الشبكات السياسية.</p>
+                  </div>
+                </div>
+              </div>
+
+              <a class="c-bio-facts__strip-link" href="#bio-details">
+                قراءة السرد التفصيلي
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              </a>
+            </div>
 
           </div>
         </div>
