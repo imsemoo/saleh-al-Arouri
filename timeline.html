@@ -398,6 +398,52 @@
       border-radius: var(--radius-16);
       padding: var(--space-16);
       box-shadow: var(--shadow-soft);
+      display: flex;
+      gap: var(--space-16);
+      align-items: flex-start;
+    }
+
+    .c-timeline-node__media {
+      flex: 0 0 140px;
+      height: 96px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f3f3f3;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .c-timeline-node__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .c-timeline-node__content {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .c-timeline-node__meta {
+      margin-top: var(--space-8);
+      color: var(--text-muted);
+      font-size: var(--type-small);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 767.98px) {
+      .c-timeline-node__body {
+        flex-direction: column;
+      }
+
+      .c-timeline-node__media {
+        width: 100%;
+        height: 160px;
+        flex: 0 0 auto;
+      }
     }
 
     .c-timeline-node__title {
@@ -744,6 +790,594 @@
       gap: var(--space-12);
       justify-items: stretch;
     }
+
+    /* =========================================
+  TIMELINE HUB — Interactive station + tabs
+========================================= */
+
+    .c-timeline-hub {
+      padding-top: var(--space-32);
+      padding-bottom: var(--space-48);
+    }
+
+    .c-timeline-hub__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-24);
+    }
+
+    .c-timeline-hub__kicker {
+      margin: 0;
+      font-size: var(--type-small);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent-dark);
+    }
+
+    .c-timeline-hub__title {
+      margin: var(--space-8) 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: clamp(1.45rem, 1.7vw, 2rem);
+    }
+
+    .c-timeline-hub__sub {
+      margin: var(--space-10) 0 0;
+      max-width: 72ch;
+      line-height: 1.9;
+    }
+
+    .c-timeline-hub__summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .c-hub-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      color: var(--text-secondary);
+      font-size: var(--type-small);
+    }
+
+    .c-hub-pill i {
+      color: var(--color-accent-dark);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-hub-pill i {
+      color: var(--color-accent);
+    }
+
+    .c-timeline-hub__grid {
+      display: grid;
+      gap: var(--space-16);
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    @media (min-width: 992px) {
+      .c-timeline-hub__grid {
+        grid-template-columns: 360px 1fr;
+        /* index | panel */
+      }
+    }
+
+    /* Index */
+    .c-hub-index {
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-20);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .c-hub-index__head {
+      padding: var(--space-16);
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .c-hub-index__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.05rem;
+    }
+
+    .c-hub-list {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .c-hub-item {
+      border: 1px solid transparent;
+      border-radius: var(--radius-16);
+      background: transparent;
+      padding: 12px 12px;
+      cursor: pointer;
+      transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+      display: grid;
+      gap: 6px;
+    }
+
+    .c-hub-item:hover {
+      transform: translateY(-1px);
+      background: rgba(199, 149, 42, 0.08);
+      border-color: rgba(199, 149, 42, 0.22);
+    }
+
+    .c-hub-item.is-active {
+      background: var(--color-primary-light);
+      border-color: rgba(199, 149, 42, 0.22);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-hub-item.is-active {
+      background: rgba(35, 197, 94, 0.14);
+      border-color: rgba(214, 169, 75, 0.22);
+    }
+
+    .c-hub-item__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .c-hub-item__year {
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      background: rgba(15, 20, 15, 0.06);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      border-radius: var(--radius-12);
+      padding: 6px 10px;
+      font-size: var(--type-small);
+    }
+
+    .c-hub-item__badge {
+      font-size: var(--type-small);
+      color: var(--text-muted);
+    }
+
+    .c-hub-item__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .c-hub-item__desc {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: var(--type-small);
+    }
+
+    /* Panel */
+    .c-hub-panel {
+      background: var(--surface-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-20);
+      box-shadow: var(--shadow-medium);
+      overflow: hidden;
+    }
+
+    .c-hub-panel__head {
+      padding: var(--space-16);
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .c-hub-panel__head::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(720px 220px at 100% 0%, rgba(199, 149, 42, .14), transparent 58%);
+      opacity: .85;
+    }
+
+    .c-hub-panel__titles,
+    .c-hub-badges {
+      position: relative;
+      z-index: 1;
+    }
+
+    .c-hub-panel__label {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-hub-panel__title {
+      margin: 6px 0 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+    }
+
+    .c-hub-panel__meta {
+      margin: 8px 0 0;
+      line-height: 1.9;
+      max-width: 70ch;
+    }
+
+    .c-hub-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .c-hub-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      background: rgba(199, 149, 42, 0.10);
+      color: var(--text-primary);
+      font-size: var(--type-small);
+    }
+
+    .c-hub-badge--soft {
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    /* Tabs */
+    .c-hub-tabs {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      border-bottom: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+    }
+
+    @media (max-width: 575.98px) {
+      .c-hub-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .c-hub-tab {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 12px 14px;
+      border-radius: var(--radius-16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .c-hub-tab:hover {
+      transform: translateY(-1px);
+      background: rgba(199, 149, 42, 0.08);
+      border-color: rgba(199, 149, 42, 0.22);
+      color: var(--text-primary);
+    }
+
+    .c-hub-tab.is-active {
+      background: var(--color-primary-light);
+      border-color: rgba(199, 149, 42, 0.22);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-hub-tab.is-active {
+      background: rgba(35, 197, 94, 0.14);
+      border-color: rgba(214, 169, 75, 0.22);
+    }
+
+    /* Panes */
+    .c-hub-panels {
+      padding: var(--space-16);
+    }
+
+    .c-hub-pane {
+      display: none;
+    }
+
+    .c-hub-pane.is-visible {
+      display: block;
+    }
+
+    /* Details */
+    .c-hub-details__lead {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-20);
+      padding: var(--space-16);
+      background: rgba(15, 20, 15, 0.03);
+      line-height: 1.95;
+      color: var(--text-secondary);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-hub-details__lead {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .c-hub-facts {
+      margin-top: var(--space-12);
+      display: grid;
+      gap: 10px;
+    }
+
+    .c-hub-fact {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius-16);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+    }
+
+    .c-hub-fact span {
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-hub-fact strong {
+      color: var(--text-primary);
+      font-weight: 800;
+    }
+
+    .c-hub-actions {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Galleries */
+    .c-hub-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 767.98px) {
+      .c-hub-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .c-hub-thumb {
+      border-radius: var(--radius-16);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: rgba(0, 0, 0, .06);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .c-hub-thumb:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+      border-color: rgba(199, 149, 42, .25);
+    }
+
+    .c-hub-thumb img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video/Audio list */
+    .c-hub-media-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .c-hub-media-row {
+      display: grid;
+      grid-template-columns: 86px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 12px;
+      border-radius: var(--radius-16);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+    }
+
+    @media (max-width: 575.98px) {
+      .c-hub-media-row {
+        grid-template-columns: 86px 1fr;
+      }
+    }
+
+    .c-hub-media-row__thumb {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 56px;
+      border: 1px solid var(--surface-border);
+      background: rgba(0, 0, 0, .08);
+    }
+
+    .c-hub-media-row__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .c-hub-media-row__title {
+      margin: 0;
+      color: var(--text-primary);
+      font-family: var(--font-family-heading);
+      font-size: 1rem;
+    }
+
+    .c-hub-media-row__meta {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-hub-open {
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(199, 149, 42, .22);
+      background: rgba(199, 149, 42, .10);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 575.98px) {
+      .c-hub-open {
+        justify-self: start;
+      }
+    }
+
+    .c-hub-empty {
+      margin: 0;
+      padding: 14px 0 0;
+    }
+
+    /* =========================================
+  TIMELINE HERO — Integrity Panel (replacement)
+========================================= */
+
+    .c-timeline-hero__panel--integrity .c-timeline-hero__panel-body {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    /* Integrity rows */
+    .c-integrity {
+      display: grid;
+      gap: 12px;
+    }
+
+    .c-integrity__row {
+      display: grid;
+      grid-template-columns: 140px 1fr 52px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 575.98px) {
+      .c-integrity__row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .c-integrity__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-size: var(--type-small);
+    }
+
+    .c-integrity__label i {
+      color: var(--color-accent-dark);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-integrity__label i {
+      color: var(--color-accent);
+    }
+
+    .c-integrity__bar {
+      height: 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      background: rgba(15, 20, 15, 0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-integrity__bar {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .c-integrity__bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, rgba(199, 149, 42, .75), rgba(21, 88, 45, .75));
+    }
+
+    .c-integrity__val {
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      text-align: end;
+    }
+
+    @media (max-width: 575.98px) {
+      .c-integrity__val {
+        text-align: start;
+      }
+    }
+
+    /* Meta mini KPIs */
+    .c-integrity__meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 575.98px) {
+      .c-integrity__meta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .c-mini-kpi {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-16);
+      padding: 12px 12px;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-mini-kpi {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .c-mini-kpi__k {
+      display: block;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+    }
+
+    .c-mini-kpi__v {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-primary);
+      font-family: var(--font-family-heading);
+      font-weight: 800;
+    }
   </style>
 </head>
 
@@ -830,12 +1464,12 @@
 
     <main>
       <!-- =========================================
-  TIMELINE HERO
-  Notes:
-  - High-level intro for the timeline page
-  - Uses tokens (surface/bg/border/text) for light/dark
-  - Bootstrap container + responsive grid
-========================================= -->
+        TIMELINE HERO
+        Notes:
+        - High-level intro for the timeline page
+        - Uses tokens (surface/bg/border/text) for light/dark
+        - Bootstrap container + responsive grid
+      ========================================= -->
       <section class="u-section c-timeline-hero" aria-label="مقدمة الخط الزمني">
         <div class="container">
           <div class="row align-items-center g-4 g-lg-5">
@@ -897,84 +1531,219 @@
 
             <!-- Key facts card -->
             <div class="col-lg-5">
-              <aside class="c-timeline-hero__panel" aria-label="ملخص زمني سريع">
+              <aside class="c-timeline-hero__panel c-timeline-hero__panel--integrity"
+                aria-label="حالة الأرشفة والتوثيق">
                 <div class="c-timeline-hero__panel-head">
                   <div class="c-timeline-hero__badge">
                     <span class="c-dot" aria-hidden="true"></span>
-                    ملخص سريع
+                    حالة الأرشفة
                   </div>
 
-                  <div class="c-timeline-hero__range" aria-label="النطاق الزمني">
-                    <span class="c-range__from">1966</span>
+                  <div class="c-timeline-hero__range" aria-label="مستوى التوثيق">
+                    <span class="c-range__from">موثوقية</span>
                     <span class="c-range__sep" aria-hidden="true">—</span>
-                    <span class="c-range__to">2024</span>
+                    <span class="c-range__to">قابلة للتحديث</span>
                   </div>
                 </div>
 
                 <div class="c-timeline-hero__panel-body">
-                  <!-- Timeline mini list -->
-                  <ul class="c-mini-timeline" id="timelineIndex">
-                    <li class="c-mini-timeline__item">
-                      <span class="c-mini-timeline__year">1966</span>
-                      <div class="c-mini-timeline__content">
-                        <p class="c-mini-timeline__title">الميلاد والنشأة</p>
-                        <p class="c-mini-timeline__desc">ولد في عارورة قرب رام الله في الضفة الغربية</p>
-                      </div>
-                    </li>
 
-                    <li class="c-mini-timeline__item">
-                      <span class="c-mini-timeline__year">1992</span>
-                      <div class="c-mini-timeline__content">
-                        <p class="c-mini-timeline__title">بداية الاعتقال الطويل</p>
-                        <p class="c-mini-timeline__desc">اعتقل وقضى سنوات طويلة في السجون الإسرائيلية</p>
+                  <!-- Quality bars -->
+                  <div class="c-integrity">
+                    <div class="c-integrity__row">
+                      <div class="c-integrity__label">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        توثيق بصري
                       </div>
-                    </li>
-
-                    <li class="c-mini-timeline__item">
-                      <span class="c-mini-timeline__year">2010</span>
-                      <div class="c-mini-timeline__content">
-                        <p class="c-mini-timeline__title">عضوية المكتب السياسي</p>
-                        <p class="c-mini-timeline__desc">برز ضمن قيادة الحركة على المستوى السياسي</p>
+                      <div class="c-integrity__bar" role="progressbar" aria-label="توثيق بصري" aria-valuenow="78"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <span style="width:78%"></span>
                       </div>
-                    </li>
+                      <div class="c-integrity__val">78%</div>
+                    </div>
 
-                    <li class="c-mini-timeline__item">
-                      <span class="c-mini-timeline__year">2017</span>
-                      <div class="c-mini-timeline__content">
-                        <p class="c-mini-timeline__title">نائب رئيس المكتب السياسي</p>
-                        <p class="c-mini-timeline__desc">تولى دورا قياديا كنائب لرئيس المكتب السياسي</p>
+                    <div class="c-integrity__row">
+                      <div class="c-integrity__label">
+                        <i class="fa-solid fa-link" aria-hidden="true"></i>
+                        مصادر وربط
                       </div>
-                    </li>
-
-                    <li class="c-mini-timeline__item is-strong">
-                      <span class="c-mini-timeline__year">2024</span>
-                      <div class="c-mini-timeline__content">
-                        <p class="c-mini-timeline__title">الاغتيال في بيروت</p>
-                        <p class="c-mini-timeline__desc">قتل في ضاحية بيروت الجنوبية يوم 2 يناير 2024</p>
+                      <div class="c-integrity__bar" role="progressbar" aria-label="مصادر وربط" aria-valuenow="62"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <span style="width:62%"></span>
                       </div>
-                    </li>
-                  </ul>
+                      <div class="c-integrity__val">62%</div>
+                    </div>
 
-                  <!-- Panel footer actions -->
+                    <div class="c-integrity__row">
+                      <div class="c-integrity__label">
+                        <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+                        مواد صوتية
+                      </div>
+                      <div class="c-integrity__bar" role="progressbar" aria-label="مواد صوتية" aria-valuenow="55"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <span style="width:55%"></span>
+                      </div>
+                      <div class="c-integrity__val">55%</div>
+                    </div>
+                  </div>
+
+                  <!-- Meta cards -->
+                  <div class="c-integrity__meta" aria-label="مؤشرات الأرشفة">
+                    <div class="c-mini-kpi">
+                      <span class="c-mini-kpi__k">آخر تحديث</span>
+                      <strong class="c-mini-kpi__v">2 يناير 2024</strong>
+                    </div>
+                    <div class="c-mini-kpi">
+                      <span class="c-mini-kpi__k">مصادر</span>
+                      <strong class="c-mini-kpi__v">مفتوحة + أرشيفية</strong>
+                    </div>
+                    <div class="c-mini-kpi">
+                      <span class="c-mini-kpi__k">مراجعة</span>
+                      <strong class="c-mini-kpi__v">يدوية</strong>
+                    </div>
+                  </div>
+
+                  <!-- Actions -->
                   <div class="c-timeline-hero__panel-actions">
-                    <a class="c-btn c-btn--outline" href="#timeline">
-                      افتح المحطات بالتفصيل
+                    <a class="c-btn c-btn--primary" href="#hub">
+                      افتح الفهرس التفاعلي
+                      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     </a>
-                    <a class="c-btn c-btn--ghost" href="media.html#filters">
-                      فلترة الوسائط حسب السنة
+                    <a class="c-btn c-btn--outline" href="about.html#methodology">
+                      منهجية التوثيق
+                    </a>
+                    <a class="c-btn c-btn--ghost" href="contact.html">
+                      اقترح إضافة أو تصحيح
                     </a>
                   </div>
+
+                  <p class="c-timeline-hero__note" style="margin-top: var(--space-12);">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    المؤشرات تقديرية وتتحسن كلما تمت إضافة مصادر وروابط موثقة لكل محطة
+                  </p>
+
                 </div>
               </aside>
+
             </div>
 
           </div>
         </div>
       </section>
+
+      <section class="u-section c-timeline-hub" aria-label="محطات تفاعلية">
+        <div class="container">
+          <header class="c-timeline-hub__head">
+            <div>
+              <p class="c-timeline-hub__kicker">فهرس تفاعلي</p>
+              <h2 class="c-timeline-hub__title">اختر محطة وسيظهر كل ما يرتبط بها</h2>
+              <p class="u-muted c-timeline-hub__sub">
+                اضغط على محطة من اليمين لتحديث التفاصيل والوسائط المرتبطة داخل تبويبات منظمة
+              </p>
+            </div>
+
+            <div class="c-timeline-hub__summary" aria-label="إحصاءات المحطة الحالية">
+              <span class="c-hub-pill"><i class="fa-regular fa-images"></i> <strong data-hub-count="photos">0</strong>
+                صور</span>
+              <span class="c-hub-pill"><i class="fa-solid fa-circle-play"></i> <strong
+                  data-hub-count="videos">0</strong> فيديو</span>
+              <span class="c-hub-pill"><i class="fa-solid fa-wave-square"></i> <strong
+                  data-hub-count="audios">0</strong> صوت</span>
+            </div>
+          </header>
+
+          <div class="c-timeline-hub__grid">
+            <!-- RIGHT: Stations -->
+            <aside class="c-hub-index" aria-label="فهرس المحطات">
+              <div class="c-hub-index__head">
+                <h3 class="c-hub-index__title">المحطات</h3>
+                <span class="c-hub-index__hint u-muted">اضغط للتحديث</span>
+              </div>
+
+              <ul class="c-hub-list" role="listbox" aria-label="قائمة المحطات" data-hub-list>
+                <!-- JS will inject items -->
+              </ul>
+            </aside>
+
+            <!-- LEFT: Panels -->
+            <div class="c-hub-panel" aria-label="تفاصيل المحطة">
+              <!-- Panel head -->
+              <div class="c-hub-panel__head">
+                <div class="c-hub-panel__titles">
+                  <p class="c-hub-panel__label">المحطة الحالية</p>
+                  <h3 class="c-hub-panel__title" data-hub-title>—</h3>
+                  <p class="u-muted c-hub-panel__meta" data-hub-meta>—</p>
+                </div>
+
+                <div class="c-hub-badges" aria-label="وسوم المحطة">
+                  <span class="c-hub-badge" data-hub-badge>—</span>
+                  <span class="c-hub-badge c-hub-badge--soft" data-hub-year>—</span>
+                </div>
+              </div>
+
+              <!-- Tabs -->
+              <div class="c-hub-tabs" role="tablist" aria-label="تبويبات المحطة" data-hub-tabs>
+                <button class="c-hub-tab is-active" type="button" role="tab" aria-selected="true"
+                  data-hub-tab="details">
+                  <i class="fa-regular fa-file-lines"></i> تفاصيل
+                </button>
+                <button class="c-hub-tab" type="button" role="tab" aria-selected="false" data-hub-tab="photos">
+                  <i class="fa-regular fa-images"></i> صور
+                </button>
+                <button class="c-hub-tab" type="button" role="tab" aria-selected="false" data-hub-tab="videos">
+                  <i class="fa-solid fa-circle-play"></i> فيديو
+                </button>
+                <button class="c-hub-tab" type="button" role="tab" aria-selected="false" data-hub-tab="audios">
+                  <i class="fa-solid fa-wave-square"></i> صوت
+                </button>
+              </div>
+
+              <!-- Panels -->
+              <div class="c-hub-panels">
+                <!-- DETAILS -->
+                <div class="c-hub-pane is-visible" role="tabpanel" data-hub-pane="details">
+                  <div class="c-hub-details">
+                    <div class="c-hub-details__lead" data-hub-lead></div>
+
+                    <div class="c-hub-facts" aria-label="نقاط سريعة" data-hub-facts></div>
+
+                    <div class="c-hub-actions">
+                      <a class="c-btn c-btn--outline" href="#timeline">اذهب للتفاصيل الكاملة</a>
+                      <a class="c-btn c-btn--ghost" href="media.html">فتح الوسائط</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PHOTOS -->
+                <div class="c-hub-pane" role="tabpanel" data-hub-pane="photos">
+                  <div class="c-hub-gallery" data-hub-gallery="photos"></div>
+                  <p class="u-muted c-hub-empty" data-hub-empty="photos" hidden>لا توجد صور مرتبطة بهذه المحطة حاليا</p>
+                </div>
+
+                <!-- VIDEOS -->
+                <div class="c-hub-pane" role="tabpanel" data-hub-pane="videos">
+                  <div class="c-hub-media-list" data-hub-gallery="videos"></div>
+                  <p class="u-muted c-hub-empty" data-hub-empty="videos" hidden>لا توجد فيديوهات مرتبطة بهذه المحطة
+                    حاليا</p>
+                </div>
+
+                <!-- AUDIOS -->
+                <div class="c-hub-pane" role="tabpanel" data-hub-pane="audios">
+                  <div class="c-hub-media-list" data-hub-gallery="audios"></div>
+                  <p class="u-muted c-hub-empty" data-hub-empty="audios" hidden>لا توجد صوتيات مرتبطة بهذه المحطة حاليا
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <!-- =========================================
         TIMELINE — Filters & Legend
       ========================================= -->
-      <section class="u-section c-timeline-tools" aria-label="أدوات الخط الزمني">
+      <!-- <section class="u-section c-timeline-tools" aria-label="أدوات الخط الزمني">
         <div class="container">
           <div class="c-timeline-tools__inner">
             <div>
@@ -1009,7 +1778,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- =========================================
         TIMELINE — Core Stations
@@ -1043,18 +1812,27 @@
               <div class="c-timeline-node__year">2000</div>
 
               <div class="c-timeline-node__body">
-                <h3 class="c-timeline-node__title">
-                  الانتفاضة الثانية وبداية الحضور العلني
-                </h3>
-                <p class="c-timeline-node__desc">
-                  مرحلة مفصلية شهدت تصاعد العمل الميداني وبروز الأدوار التنظيمية
-                  داخل الضفة الغربية في ظل ملاحقة واعتقالات مكثفة.
-                </p>
+                <div class="c-timeline-node__media">
+                  <img src="assets/images/avatar.png" alt="صورة الانتفاضة الثانية">
+                </div>
+                <div class="c-timeline-node__content">
+                  <h3 class="c-timeline-node__title">
+                    الانتفاضة الثانية وبداية الحضور العلني
+                  </h3>
+                  <p class="c-timeline-node__desc">
+                    مرحلة مفصلية شهدت تصاعد العمل الميداني وبروز الأدوار التنظيمية
+                    داخل الضفة الغربية في ظل ملاحقة واعتقالات مكثفة.
+                  </p>
 
-                <p class="c-timeline-node__note u-muted">
-                  وثائق هذه المرحلة تعتمد على شهادات وصور متفرقة
-                  جرى جمعها لاحقًا ضمن أرشيف موحد.
-                </p>
+                  <p class="c-timeline-node__meta">
+                    صور وشهادات ميدانية • أرشيف شخصي
+                  </p>
+
+                  <p class="c-timeline-node__note u-muted">
+                    وثائق هذه المرحلة تعتمد على شهادات وصور متفرقة
+                    جرى جمعها لاحقًا ضمن أرشيف موحد.
+                  </p>
+                </div>
               </div>
             </article>
 
@@ -1065,19 +1843,28 @@
               <div class="c-timeline-node__year">2010</div>
 
               <div class="c-timeline-node__body">
-                <h3 class="c-timeline-node__title">
-                  الانتقال إلى الدور السياسي الخارجي
-                </h3>
-                <p class="c-timeline-node__desc">
-                  بعد سنوات من الاعتقال والإبعاد
-                  بدأ الحضور السياسي الخارجي في صياغة المواقف
-                  وإدارة العلاقات الإقليمية.
-                </p>
+                <div class="c-timeline-node__media">
+                  <img src="assets/images/avatar.png" alt="دور سياسي خارجي">
+                </div>
+                <div class="c-timeline-node__content">
+                  <h3 class="c-timeline-node__title">
+                    الانتقال إلى الدور السياسي الخارجي
+                  </h3>
+                  <p class="c-timeline-node__desc">
+                    بعد سنوات من الاعتقال والإبعاد
+                    بدأ الحضور السياسي الخارجي في صياغة المواقف
+                    وإدارة العلاقات الإقليمية.
+                  </p>
 
-                <p class="c-timeline-node__note u-muted">
-                  تشمل هذه المرحلة تسجيلات صوتية
-                  ولقاءات إعلامية موثقة لاحقًا.
-                </p>
+                  <p class="c-timeline-node__meta">
+                    تسجيلات صوتية ولقاءات • أرشيف إعلامي
+                  </p>
+
+                  <p class="c-timeline-node__note u-muted">
+                    تشمل هذه المرحلة تسجيلات صوتية
+                    ولقاءات إعلامية موثقة لاحقًا.
+                  </p>
+                </div>
               </div>
             </article>
 
@@ -1088,18 +1875,27 @@
               <div class="c-timeline-node__year">2017</div>
 
               <div class="c-timeline-node__body">
-                <h3 class="c-timeline-node__title">
-                  نائب رئيس المكتب السياسي
-                </h3>
-                <p class="c-timeline-node__desc">
-                  محطة قيادية بارزة مع تولي منصب نائب رئيس المكتب السياسي
-                  وما رافقها من حضور إعلامي ودور تنظيمي أوسع.
-                </p>
+                <div class="c-timeline-node__media">
+                  <img src="assets/images/avatar.png" alt="نائب رئيس المكتب السياسي">
+                </div>
+                <div class="c-timeline-node__content">
+                  <h3 class="c-timeline-node__title">
+                    نائب رئيس المكتب السياسي
+                  </h3>
+                  <p class="c-timeline-node__desc">
+                    محطة قيادية بارزة مع تولي منصب نائب رئيس المكتب السياسي
+                    وما رافقها من حضور إعلامي ودور تنظيمي أوسع.
+                  </p>
 
-                <p class="c-timeline-node__note u-muted">
-                  تم توثيق هذه المرحلة بصريًا وصوتيًا
-                  ضمن مجموعات الظهور الإعلامي.
-                </p>
+                  <p class="c-timeline-node__meta">
+                    ظهور إعلامي • صور ومقاطع
+                  </p>
+
+                  <p class="c-timeline-node__note u-muted">
+                    تم توثيق هذه المرحلة بصريًا وصوتيًا
+                    ضمن مجموعات الظهور الإعلامي.
+                  </p>
+                </div>
               </div>
             </article>
 
@@ -1110,19 +1906,28 @@
               <div class="c-timeline-node__year">2024</div>
 
               <div class="c-timeline-node__body">
-                <h3 class="c-timeline-node__title">
-                  الاغتيال في بيروت
-                </h3>
-                <p class="c-timeline-node__desc">
-                  اغتياله في ضاحية بيروت الجنوبية
-                  شكّل محطة فاصلة أنهت المسار الزمني
-                  وفتحت باب التوثيق الكامل للمسيرة.
-                </p>
+                <div class="c-timeline-node__media">
+                  <img src="assets/images/avatar.png" alt="الاغتيال في بيروت">
+                </div>
+                <div class="c-timeline-node__content">
+                  <h3 class="c-timeline-node__title">
+                    الاغتيال في بيروت
+                  </h3>
+                  <p class="c-timeline-node__desc">
+                    اغتياله في ضاحية بيروت الجنوبية
+                    شكّل محطة فاصلة أنهت المسار الزمني
+                    وفتحت باب التوثيق الكامل للمسيرة.
+                  </p>
 
-                <p class="c-timeline-node__note u-muted">
-                  تم تجميع المواد المرتبطة بهذه المرحلة
-                  من مصادر إعلامية متعددة.
-                </p>
+                  <p class="c-timeline-node__meta">
+                    تجميع مواد من مصادر متعددة • أرشفة مستمرة
+                  </p>
+
+                  <p class="c-timeline-node__note u-muted">
+                    تم تجميع المواد المرتبطة بهذه المرحلة
+                    من مصادر إعلامية متعددة.
+                  </p>
+                </div>
               </div>
             </article>
 
@@ -1367,18 +2172,6 @@
       </div>
     </footer>
 
-    <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content c-modal__inner">
-          <div class="modal-body">
-            <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
-            <h3 class="c-card__title">الخط الزمني الكامل</h3>
-            <p>كل شريحة تروي حكاية وتُضاف إلى الشبكة الزمنية.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
@@ -1393,6 +2186,318 @@
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
+  <script>
+    (function () {
+      // ======= DATA (replace later with API/JSON) =======
+      const HUB_DATA = [
+        {
+          id: "birth",
+          year: "1966",
+          badge: "مرحلة مبكرة",
+          title: "الميلاد والنشأة",
+          desc: "ولد في عارورة قرب رام الله وبدأت ملامح التكوين المبكر في بيئة ريفية فلسطينية.",
+          meta: "عارورة · الضفة الغربية · سياق اجتماعي مبكر",
+          lead: "هذه المحطة تقدم خلفية تأسيسية لفهم البيئة التي تشكل فيها وعيه الأولي وكيف انعكس ذلك لاحقا على مساره التنظيمي والسياسي.",
+          facts: [
+            { k: "المكان", v: "عارورة قرب رام الله" },
+            { k: "السنة", v: "1966" },
+            { k: "المحور", v: "تكوين مبكر" }
+          ],
+          photos: [
+            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "صورة أرشيفية" },
+            { thumb: "assets/img/articles/world-featured.jpg", full: "assets/img/articles/world-featured.jpg", label: "لقطة سياقية" }
+          ],
+          videos: [
+            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "مقطع تمهيدي", meta: "مدة قصيرة · توثيق" }
+          ],
+          audios: [
+            { thumb: "assets/img/articles/film1.jpg", src: "assets/audio/001.mp3", title: "مقتطف صوتي", meta: "شهادة/لقاء · توثيق" }
+          ]
+        },
+        {
+          id: "prison",
+          year: "1992",
+          badge: "اعتقال",
+          title: "بداية الاعتقال الطويل",
+          desc: "اعتقل وقضى سنوات طويلة في السجون الإسرائيلية ضمن موجات ملاحقة مكثفة.",
+          meta: "سجون الاحتلال · سنوات ممتدة · أثر تنظيمي",
+          lead: "الاعتقال هنا ليس مجرد تاريخ بل سياق تشكل في داخله دور سياسي وتنظيمي أعمق انعكس على المرحلة اللاحقة.",
+          facts: [
+            { k: "النوع", v: "اعتقال" },
+            { k: "المدة", v: "سنوات طويلة" },
+            { k: "الأثر", v: "تحول تنظيمي" }
+          ],
+          photos: [],
+          videos: [],
+          audios: []
+        },
+        {
+          id: "political",
+          year: "2010",
+          badge: "عمل سياسي",
+          title: "عضوية المكتب السياسي",
+          desc: "برز ضمن قيادة الحركة على المستوى السياسي وبدأت ملامح حضور أوسع في الملفات.",
+          meta: "قيادة سياسية · ملفات إقليمية · إدارة موقف",
+          lead: "هنا تظهر المرحلة التي انتقل فيها من سياقات داخلية إلى إدارة ملفات أوسع على مستوى الإقليم والخطاب السياسي.",
+          facts: [
+            { k: "الدور", v: "سياسي" },
+            { k: "التركيز", v: "إدارة ملفات" },
+            { k: "النطاق", v: "إقليمي" }
+          ],
+          photos: [
+            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "أرشيف" }
+          ],
+          videos: [
+            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "لقاء/مقطع", meta: "إعلام · سياق سياسي" }
+          ],
+          audios: []
+        },
+        {
+          id: "deputy",
+          year: "2017",
+          badge: "قيادة",
+          title: "نائب رئيس المكتب السياسي",
+          desc: "محطة قيادية بارزة ارتبطت بحضور إعلامي ودور تنظيمي أوسع.",
+          meta: "نائب رئيس المكتب السياسي · قيادة · حضور",
+          lead: "هذه المحطة هي نقطة مفصلية لأنها تمثل انتقالا واضحا إلى طبقة قيادية أعلى مع توسع نطاق التأثير والظهور.",
+          facts: [
+            { k: "الصفة", v: "نائب رئيس" },
+            { k: "السنة", v: "2017" },
+            { k: "الطابع", v: "محطة مفصلية" }
+          ],
+          photos: [
+            { thumb: "assets/img/articles/world-featured.jpg", full: "assets/img/articles/world-featured.jpg", label: "لقطة" }
+          ],
+          videos: [
+            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "ظهور إعلامي", meta: "مقطع · أرشيف" }
+          ],
+          audios: [
+            { thumb: "assets/img/articles/film1.jpg", src: "assets/audio/001.mp3", title: "تسجيل/حديث", meta: "صوت · أرشيف" }
+          ]
+        },
+        {
+          id: "assassination",
+          year: "2024",
+          badge: "نهاية المسار",
+          title: "الاغتيال في بيروت",
+          desc: "قتل في ضاحية بيروت الجنوبية يوم 2 يناير 2024 ضمن حدث مفصلي أنهى المسار الزمني.",
+          meta: "بيروت · 2 يناير 2024 · مواد متعددة المصادر",
+          lead: "تمثل هذه المحطة نهاية المسار الزمني وبداية موجة توثيق مكثفة تجمع المواد من مصادر متعددة في وقت واحد.",
+          facts: [
+            { k: "المكان", v: "بيروت" },
+            { k: "التاريخ", v: "2 يناير 2024" },
+            { k: "الوضع", v: "توثيق مستمر" }
+          ],
+          photos: [
+            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "صورة سياقية" }
+          ],
+          videos: [
+            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "مقطع سياقي", meta: "تجميع · مصادر" }
+          ],
+          audios: []
+        }
+      ];
+
+      // ======= DOM =======
+      const list = document.querySelector("[data-hub-list]");
+      const tabsWrap = document.querySelector("[data-hub-tabs]");
+      const tabBtns = tabsWrap ? Array.from(tabsWrap.querySelectorAll("[data-hub-tab]")) : [];
+      const panes = Array.from(document.querySelectorAll("[data-hub-pane]"));
+
+      const tTitle = document.querySelector("[data-hub-title]");
+      const tMeta = document.querySelector("[data-hub-meta]");
+      const tBadge = document.querySelector("[data-hub-badge]");
+      const tYear = document.querySelector("[data-hub-year]");
+      const tLead = document.querySelector("[data-hub-lead]");
+      const factsWrap = document.querySelector("[data-hub-facts]");
+
+      const counters = {
+        photos: document.querySelector("[data-hub-count='photos']"),
+        videos: document.querySelector("[data-hub-count='videos']"),
+        audios: document.querySelector("[data-hub-count='audios']")
+      };
+
+      const galleries = {
+        photos: document.querySelector("[data-hub-gallery='photos']"),
+        videos: document.querySelector("[data-hub-gallery='videos']"),
+        audios: document.querySelector("[data-hub-gallery='audios']")
+      };
+
+      const empties = {
+        photos: document.querySelector("[data-hub-empty='photos']"),
+        videos: document.querySelector("[data-hub-empty='videos']"),
+        audios: document.querySelector("[data-hub-empty='audios']")
+      };
+
+      let activeId = HUB_DATA[0]?.id || null;
+
+      // ======= Helpers =======
+      const setActiveTab = (key) => {
+        tabBtns.forEach(btn => {
+          const on = btn.getAttribute("data-hub-tab") === key;
+          btn.classList.toggle("is-active", on);
+          btn.setAttribute("aria-selected", String(on));
+        });
+        panes.forEach(p => {
+          p.classList.toggle("is-visible", p.getAttribute("data-hub-pane") === key);
+        });
+      };
+
+      const escapeHtml = (s) => String(s || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+      const renderFacts = (facts) => {
+        if (!factsWrap) return;
+        factsWrap.innerHTML = (facts || []).map(f => `
+        <div class="c-hub-fact">
+          <span>${escapeHtml(f.k)}</span>
+          <strong>${escapeHtml(f.v)}</strong>
+        </div>
+      `).join("");
+      };
+
+      const renderPhotos = (items) => {
+        if (!galleries.photos) return;
+        galleries.photos.innerHTML = (items || []).map(it => `
+        <div class="c-hub-thumb" role="button" tabindex="0"
+          data-open-image="${escapeHtml(it.full)}"
+          aria-label="فتح الصورة">
+          <img src="${escapeHtml(it.thumb)}" alt="${escapeHtml(it.label || "صورة")}" loading="lazy" />
+        </div>
+      `).join("");
+
+        const has = (items || []).length > 0;
+        if (empties.photos) empties.photos.hidden = has;
+      };
+
+      const renderMediaRows = (key, items) => {
+        const wrap = galleries[key];
+        if (!wrap) return;
+
+        wrap.innerHTML = (items || []).map(it => `
+        <div class="c-hub-media-row">
+          <div class="c-hub-media-row__thumb">
+            <img src="${escapeHtml(it.thumb)}" alt="${escapeHtml(it.title || "مادة")}" loading="lazy" />
+          </div>
+
+          <div>
+            <p class="c-hub-media-row__title">${escapeHtml(it.title || "مادة مرتبطة")}</p>
+            <p class="c-hub-media-row__meta">${escapeHtml(it.meta || "")}</p>
+          </div>
+
+          <button class="c-hub-open" type="button"
+            data-open-media="${escapeHtml(it.src)}"
+            data-open-type="${escapeHtml(key)}">
+            فتح <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+      `).join("");
+
+        const has = (items || []).length > 0;
+        if (empties[key]) empties[key].hidden = has;
+      };
+
+      const renderIndex = () => {
+        if (!list) return;
+        list.innerHTML = HUB_DATA.map(st => `
+        <li class="c-hub-item ${st.id === activeId ? "is-active" : ""}"
+            role="option"
+            aria-selected="${st.id === activeId ? "true" : "false"}"
+            tabindex="0"
+            data-hub-id="${escapeHtml(st.id)}">
+          <div class="c-hub-item__top">
+            <span class="c-hub-item__year">${escapeHtml(st.year)}</span>
+            <span class="c-hub-item__badge">${escapeHtml(st.badge)}</span>
+          </div>
+          <p class="c-hub-item__title">${escapeHtml(st.title)}</p>
+          <p class="c-hub-item__desc">${escapeHtml(st.desc)}</p>
+        </li>
+      `).join("");
+      };
+
+      const applyStation = (id) => {
+        const st = HUB_DATA.find(x => x.id === id) || HUB_DATA[0];
+        if (!st) return;
+        activeId = st.id;
+
+        if (tTitle) tTitle.textContent = st.title;
+        if (tMeta) tMeta.textContent = st.meta;
+        if (tBadge) tBadge.textContent = st.badge;
+        if (tYear) tYear.textContent = st.year;
+        if (tLead) tLead.textContent = st.lead;
+
+        renderFacts(st.facts);
+        renderPhotos(st.photos);
+        renderMediaRows("videos", st.videos);
+        renderMediaRows("audios", st.audios);
+
+        if (counters.photos) counters.photos.textContent = (st.photos || []).length;
+        if (counters.videos) counters.videos.textContent = (st.videos || []).length;
+        if (counters.audios) counters.audios.textContent = (st.audios || []).length;
+
+        renderIndex();
+      };
+
+      // ======= Events =======
+      // Index click
+      document.addEventListener("click", (e) => {
+        const item = e.target.closest("[data-hub-id]");
+        if (!item) return;
+        applyStation(item.getAttribute("data-hub-id"));
+        setActiveTab("details");
+      });
+
+      // Index keyboard
+      document.addEventListener("keydown", (e) => {
+        const item = e.target.closest("[data-hub-id]");
+        if (!item) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          applyStation(item.getAttribute("data-hub-id"));
+          setActiveTab("details");
+        }
+      });
+
+      // Tabs
+      tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          setActiveTab(btn.getAttribute("data-hub-tab"));
+        });
+      });
+
+      // Open media (simple behavior)
+      document.addEventListener("click", (e) => {
+        const imgBtn = e.target.closest("[data-open-image]");
+        if (imgBtn) {
+          const src = imgBtn.getAttribute("data-open-image");
+          // لو عندك modalHelper & mediaDetailModal تقدر تربطه هنا بدل window.open
+          window.open(src, "_blank", "noopener,noreferrer");
+          return;
+        }
+
+        const mediaBtn = e.target.closest("[data-open-media]");
+        if (mediaBtn) {
+          const src = mediaBtn.getAttribute("data-open-media");
+          const type = mediaBtn.getAttribute("data-open-type"); // videos | audios
+
+          // اختيارياً: افتح المودال بتاعك هنا بدل window.open
+          // لو تحب، هربطها لك مباشرة بـ mediaDetailModal وبـ Plyr
+          window.open(src, "_blank", "noopener,noreferrer");
+        }
+      });
+
+      // ======= Init =======
+      renderIndex();
+      applyStation(activeId);
+      setActiveTab("details");
+    })();
+  </script>
+
+
 </body>
 
 </html>

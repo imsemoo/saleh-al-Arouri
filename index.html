@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://saleh-al-arouri.com/index.html" />
   <meta property="og:title" content="SALEH-AL-AROURI | أرشيف الوسائط" />
   <meta property="og:description" content="توثيق بصري وصوتي للمحطات التاريخية لSALEH-AL-AROURI." />
-  <meta property="og:image" content="assets/img/articles/thumb1.png" />
+  <meta property="og:image" content="assets/images/videos/thumb1.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -20,7 +20,7 @@
   <meta name="author" content="SALEH-AL-AROURI" />
   <meta name="theme-color" content="#09130c" />
 
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/articles/thumb1.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/videos/thumb1.jpg" />
   <link rel="stylesheet" href="assets/css/normalize.css" />
   <link rel="stylesheet" href="assets/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
@@ -75,7 +75,6 @@
         </div>
       </div>
     </header>
-
     <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
       aria-labelledby="offcanvasMenuLabel">
       <div class="offcanvas-header c-offcanvas__header">
@@ -113,11 +112,8 @@
       </div>
     </div>
 
-
-
-
     <main>
-      <!-- Hero -->
+      <!-- Start Hero Section -->
       <section class="c-hero" aria-label="واجهة الأرشيف الرئيسية">
         <div class="container">
           <div class="row align-items-center g-4 g-lg-5">
@@ -244,10 +240,24 @@
                   </div>
 
                   <!-- BACK -->
+                  <!-- BACK -->
                   <div class="c-persona__face c-persona__back" aria-label="الواجهة الخلفية">
-                    <p class="c-persona__label">مادة تعريفية مختصرة</p>
-                    <h3 class="c-persona__media-title">فيديو أو صوت داخل الأرشيف</h3>
 
+                    <!-- Header -->
+                    <div class="c-persona__back-head">
+                      <p class="c-persona__label">مادة مختارة من الأرشيف</p>
+                      <h3 class="c-persona__media-title">
+                        ظهور إعلامي موثق ضمن مرحلة ما بعد الإفراج
+                      </h3>
+
+                      <!-- <div class="c-persona__tags">
+                        <span class="c-tag">2018</span>
+                        <span class="c-tag">مقابلة مصورة</span>
+                        <span class="c-tag">ما بعد الإفراج</span>
+                      </div> -->
+                    </div>
+
+                    <!-- Media Switch -->
                     <div class="c-media-switch" role="tablist" aria-label="التبديل بين الفيديو والصوت"
                       data-persona-media>
                       <button class="c-media-switch__btn is-active" type="button" role="tab" aria-selected="true"
@@ -268,17 +278,70 @@
                           <source src="assets/images/videos/featured.mp4" type="video/mp4" />
                         </video>
                       </div>
-
                     </div>
 
                     <div class="c-persona__panel" data-persona-panel="audio" role="tabpanel">
                       <div class="c-persona__audio-wrap">
+                        <div class="c-persona__audio-meta">
+                          <span class="c-persona__audio-badge">
+                            <i class="fa-solid fa-wave-square"></i>
+                          </span>
+                          <div class="c-persona__audio-texts">
+                            <strong>مقتطف صوتي أرشيفي</strong>
+                            <p>مسجل خلال مرحلة الإقامة خارج فلسطين</p>
+                          </div>
+                        </div>
+
                         <audio class="js-plyr" controls preload="metadata">
                           <source src="assets/audio/001.mp3" type="audio/mpeg" />
                         </audio>
                       </div>
-
                     </div>
+
+                    <!-- Context -->
+                    <div class="c-persona__context">
+                      <p>
+                        هذا المقطع يعكس ملامح الخطاب السياسي لصالح العاروري بعد الإفراج عنه عام 2007
+                        ويُستخدم داخل الأرشيف كنقطة مرجعية لمرحلة التحول في الحضور الإعلامي والعلاقات الإقليمية.
+                      </p>
+                    </div>
+
+                    <!-- Quick Meta -->
+                    <!-- <dl class="c-persona__quick-meta">
+                      <div>
+                        <dt>السنة</dt>
+                        <dd>2018</dd>
+                      </div>
+                      <div>
+                        <dt>المكان</dt>
+                        <dd>بيروت</dd>
+                      </div>
+                      <div>
+                        <dt>النوع</dt>
+                        <dd>مقابلة مصورة</dd>
+                      </div>
+                      <div>
+                        <dt>المدة</dt>
+                        <dd>04:12</dd>
+                      </div>
+                    </dl> -->
+
+                    <!-- Actions -->
+                    <div class="c-persona__actions">
+                      <!-- <a class="c-btn c-btn--primary" href="timeline.html">
+                        عرض داخل الخط الزمني
+                      </a>
+
+                      <a class="c-btn c-btn--outline" href="media.html">
+                        فتح مركز الوسائط
+                      </a> -->
+
+                      <button class="c-persona__flip-btn" type="button" data-flip-to="front"
+                        aria-label="العودة للملف الشخصي">
+                        رجوع للملف <i class="fa-solid fa-rotate-left"></i>
+                      </button>
+                    </div>
+
                   </div>
 
 
@@ -290,99 +353,115 @@
           </div>
         </div>
       </section>
+      <!-- End Hero Section -->
 
-
-
-      <section class="u-section c-snapshot" aria-label="لمحة عن الأرشيف">
+      <!-- Start Snapshot Section -->
+      <section class="u-section c-discovery" aria-label="ابدأ من هنا">
         <div class="container">
 
-          <!-- Section header -->
-          <header class="c-snapshot__head">
-            <div class="c-snapshot__head-copy">
-              <p class="c-snapshot__kicker">مقياس مباشر لحجم التوثيق</p>
-              <h2 class="c-snapshot__title">لمحة عن الأرشيف</h2>
-              <p class="c-snapshot__subtitle">
-                مؤشرات سريعة تلخص حجم المواد المتاحة وتنوعها لتسهيل الدخول إلى المحتوى الأهم.
+          <header class="c-discovery__head">
+            <div>
+              <p class="c-discovery__kicker">بوابة دخول للأرشيف</p>
+              <h2 class="c-discovery__title">ابدأ من هنا</h2>
+              <p class="c-discovery__subtitle">
+                بدل ما تتوه بين الأقسام اختر مسار واحد واضح حسب هدفك سيرة خط زمني أو وسائط
               </p>
             </div>
 
-            <!-- Optional lightweight action -->
-            <div class="c-snapshot__head-actions">
-              <a class="c-btn c-btn--outline" href="media.html" aria-label="الانتقال لصفحة الوسائط">
-                استعرض المكتبة
-              </a>
+            <div class="c-discovery__head-actions">
+              <a class="c-btn c-btn--outline" href="about.html">منهجية الأرشفة</a>
             </div>
           </header>
 
-          <!-- Metrics grid -->
-          <div class="c-snapshot__grid" role="list" aria-label="مؤشرات الأرشيف">
+          <div class="c-discovery__grid" role="list" aria-label="مسارات التصفح">
 
-            <!-- Photos -->
-            <article class="c-metric" role="listitem">
-              <div class="c-metric__top">
-                <span class="c-metric__icon" aria-hidden="true">
-                  <i class="fa-regular fa-image"></i>
-                </span>
-                <span class="c-metric__tag">صور</span>
+            <!-- Path 1 -->
+            <article class="c-path" role="listitem">
+              <div class="c-path__icon" aria-hidden="true">
+                <i class="fa-solid fa-book-open"></i>
               </div>
+              <h3 class="c-path__title">السيرة في قراءة سريعة</h3>
+              <p class="c-path__desc">
+                ملخص مركز يضع المحطات الأساسية في سياق واحد ثم ينتقل بك للتفاصيل الكاملة
+              </p>
 
-              <p class="c-metric__value">2,480</p>
-              <p class="c-metric__label">عدد الصور</p>
-              <p class="c-metric__note">من أرشيف القنوات والمشاهد الميدانية.</p>
+              <ul class="c-path__bullets" aria-label="ماذا ستجد">
+                <li>النشأة والتعليم والبدايات</li>
+                <li>الاعتقالات والتحولات</li>
+                <li>الدور السياسي والاغتيال</li>
+              </ul>
+
+              <div class="c-path__actions">
+                <a class="c-btn c-btn--primary" href="biography.html">اقرأ السيرة</a>
+                <a class="c-btn c-btn--ghost" href="biography.html#sources">المصادر</a>
+              </div>
             </article>
 
-            <!-- Videos -->
-            <article class="c-metric" role="listitem">
-              <div class="c-metric__top">
-                <span class="c-metric__icon" aria-hidden="true">
-                  <i class="fa-solid fa-video"></i>
-                </span>
-                <span class="c-metric__tag">فيديو</span>
+            <!-- Path 2 -->
+            <article class="c-path" role="listitem">
+              <div class="c-path__icon" aria-hidden="true">
+                <i class="fa-solid fa-timeline"></i>
               </div>
+              <h3 class="c-path__title">الخط الزمني بالمحطات الكبرى</h3>
+              <p class="c-path__desc">
+                تصفح خط زمني مرتب يربط بين المواد المرئية والسمعية والأحداث الأساسية
+              </p>
 
-              <p class="c-metric__value">1,120</p>
-              <p class="c-metric__label">عدد الفيديوهات</p>
-              <p class="c-metric__note">سجلات بصرية متتالية في محطات رئيسية.</p>
+              <ul class="c-path__bullets" aria-label="ماذا ستجد">
+                <li>محطات مفصلية مختارة</li>
+                <li>روابط مباشرة للمواد</li>
+                <li>ترتيب قابل للفرز</li>
+              </ul>
+
+              <div class="c-path__actions">
+                <a class="c-btn c-btn--primary" href="timeline.html">ابدأ من الخط الزمني</a>
+                <a class="c-btn c-btn--ghost" href="timeline.html#featured">محطات مختارة</a>
+              </div>
             </article>
 
-            <!-- Reels -->
-            <article class="c-metric" role="listitem">
-              <div class="c-metric__top">
-                <span class="c-metric__icon" aria-hidden="true">
-                  <i class="fa-solid fa-mobile-screen"></i>
-                </span>
-                <span class="c-metric__tag">ريلز</span>
+            <!-- Path 3 -->
+            <article class="c-path" role="listitem">
+              <div class="c-path__icon" aria-hidden="true">
+                <i class="fa-solid fa-photo-film"></i>
               </div>
+              <h3 class="c-path__title">الوسائط حسب النوع</h3>
+              <p class="c-path__desc">
+                صور فيديو ريلز وصوتيات في مكتبة واحدة مع بحث وفلترة وترتيب
+              </p>
 
-              <p class="c-metric__value">360</p>
-              <p class="c-metric__label">عدد الريلز</p>
-              <p class="c-metric__note">محتوى رأسي مخصص للمنصات الاجتماعية.</p>
-            </article>
+              <ul class="c-path__bullets" aria-label="ماذا ستجد">
+                <li>بحث حسب العنوان والسنة</li>
+                <li>فلترة حسب النوع</li>
+                <li>تفاصيل مصدر عند توفره</li>
+              </ul>
 
-            <!-- Audio -->
-            <article class="c-metric" role="listitem">
-              <div class="c-metric__top">
-                <span class="c-metric__icon" aria-hidden="true">
-                  <i class="fa-solid fa-wave-square"></i>
-                </span>
-                <span class="c-metric__tag">صوت</span>
+              <div class="c-path__actions">
+                <a class="c-btn c-btn--primary" href="media.html">افتح مركز الوسائط</a>
+                <a class="c-btn c-btn--ghost" href="media.html#audio">الصوتيات المختارة</a>
               </div>
-
-              <p class="c-metric__value">890</p>
-              <p class="c-metric__label">عدد المقاطع الصوتية</p>
-              <p class="c-metric__note">تسجيلات إذاعية وشهادات ومواد نادرة.</p>
             </article>
 
           </div>
 
-          <!-- Footer meta -->
-          <div class="c-snapshot__foot">
-            <p class="c-snapshot__update">آخر تحديث: 15 أبريل 2026 · وحدة التوثيق</p>
+          <div class="c-discovery__foot" aria-label="اقتباس أرشيفي">
+            <div class="c-quote-mini">
+              <span class="c-quote-mini__mark" aria-hidden="true">“</span>
+              <div class="c-quote-mini__body">
+                <p class="c-quote-mini__text">
+                  هذا الأرشيف يحاول تثبيت السرد عبر المواد لا عبر الانطباعات
+                </p>
+                <p class="c-quote-mini__meta">ملاحظة تحريرية · ضمن منهجية التوثيق</p>
+              </div>
+              <a class="c-btn c-btn--outline c-quote-mini__cta" href="media.html">ابدأ التصفح</a>
+            </div>
           </div>
 
         </div>
       </section>
 
+      <!-- End Snapshot Section -->
+
+      <!-- Start Timeline Section -->
       <section class="u-section c-timeline" id="timeline" aria-label="محطات رئيسية">
         <div class="container">
 
@@ -476,7 +555,7 @@
                   data-modal-title="محطة 1966"
                   data-modal-description="الجذور الأولى: عارورة، البيئة المحلية، وبدايات التكوين المبكر قبل الانخراط السياسي."
                   data-modal-badge="1966" data-modal-timestamp="19 أغسطس 1966 · عارورة"
-                  data-modal-source="سجلات تعريفية" data-modal-image="assets/img/articles/thumb1.png"
+                  data-modal-source="سجلات تعريفية" data-modal-image="assets/images/videos/thumb1.jpg"
                   data-modal-video="assets/videos/1966.mp4" data-modal-audio-label="سرد تعريفي 00:41">
                   عرض التفاصيل
                 </button>
@@ -507,7 +586,7 @@
                   data-modal-title="محطة 1987"
                   data-modal-description="المرحلة الطلابية وتحوّلها إلى مسار سياسي وتنظيمي في سياق الانتفاضة الأولى."
                   data-modal-badge="1987" data-modal-timestamp="1987 · الخليل/الضفة"
-                  data-modal-source="سرديات وسجلات عامة" data-modal-image="assets/img/articles/film1.jpg"
+                  data-modal-source="سرديات وسجلات عامة" data-modal-image="assets/images/videos/thumb3.jpg"
                   data-modal-video="assets/videos/1987.mp4" data-modal-audio-label="مقتطفات 01:39">
                   عرض التفاصيل
                 </button>
@@ -579,192 +658,605 @@
           </div>
         </div>
       </section>
+      <!-- End Timeline Section -->
 
-      <section class="u-section c-collections" aria-label="مجموعات مختارة">
+      <!-- =========================================
+  AUDIO LIBRARY SECTION — Premium
+  - RTL
+  - Tokens-compatible (light/dark)
+  - Sticky player + playlist
+  - Plyr audio
+========================================= -->
+      <section class="u-section c-audio-library" aria-label="مكتبة الصوتيات">
         <div class="container">
 
-          <!-- Section header -->
-          <header class="c-collections__head">
-            <div class="c-collections__head-copy">
-              <p class="c-collections__kicker">مفاتيح الدخول الذكي</p>
-              <h2 class="c-collections__title">مجموعات مختارة</h2>
-              <p class="c-collections__subtitle">
-                مسارات منظمة تساعدك على تصفح الأرشيف حسب طبيعة المادة بدل البحث العشوائي.
+          <!-- Header -->
+          <div class="c-audio-lib__head">
+            <div>
+              <p class="c-audio-lib__eyebrow">مكتبة الصوتيات</p>
+              <h2 class="c-audio-lib__title">مواد صوتية مصنفة ومربوطة بالسياق</h2>
+              <p class="c-audio-lib__lede">
+                تشغيل سريع، فلترة حسب النوع، وقائمة مرتبة ببيانات واضحة. كل مقطع يمكن ربطه بمحطة في الخط الزمني.
               </p>
             </div>
 
-            <div class="c-collections__head-actions">
-              <a class="c-btn c-btn--outline" href="media.html">كل المجموعات</a>
+            <div class="c-audio-lib__actions">
+              <a class="c-btn c-btn--ghost" href="timeline.html">
+                <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                اربط بالخط الزمني
+              </a>
+              <a class="c-btn c-btn--outline" href="news.html">
+                <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                سياق مرتبط
+              </a>
             </div>
-          </header>
-
-          <!-- Cards grid -->
-          <div class="c-collections__grid">
-
-            <!-- Featured (big) -->
-            <article class="c-collection c-collection--featured" role="link" tabindex="0"
-              data-collection-link="media.html#coverage" aria-label="الانتقال إلى مجموعة الظهور الإعلامي">
-
-              <div class="c-collection__body">
-                <div class="c-collection__meta">
-                  <span class="c-collection__chip">سجل مباشر</span>
-                  <span class="c-collection__hint">استعرض المجموعة</span>
-                </div>
-
-                <h3 class="c-collection__title">الظهور الإعلامي</h3>
-                <p class="c-collection__desc">
-                  مسارات ظهور متلاحقة في المحطات العربية والدولية مع وعي سردي واضح.
-                </p>
-
-                <!-- Media preview (editorial strip) -->
-                <div class="c-collection__preview" aria-hidden="true">
-                  <div class="c-collection__thumb c-collection__thumb--main">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                  <div class="c-collection__thumb">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                  <div class="c-collection__thumb">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                </div>
-
-                <div class="c-collection__footer">
-                  <span class="c-collection__tag">محطات · لقاءات · تقارير</span>
-                  <span class="c-collection__cta">
-                    <span>استعرض المجموعة</span>
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#testimonials"
-              aria-label="الانتقال إلى مجموعة الشهادات والمحطات">
-
-              <div class="c-collection__body">
-                <div class="c-collection__meta">
-                  <span class="c-collection__chip">رؤية صحفية</span>
-                  <span class="c-collection__hint">استعرض المجموعة</span>
-                </div>
-
-                <h3 class="c-collection__title">الشهادات والمحطات</h3>
-                <p class="c-collection__desc">
-                  توثيق شهادات شخصية ومحطات إذاعية تفاعل معها السرد السياسي.
-                </p>
-
-                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
-                  <div class="c-collection__thumb c-collection__thumb--main">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                  <div class="c-collection__thumb">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                </div>
-
-                <div class="c-collection__footer">
-                  <span class="c-collection__tag">شهادات · إذاعات · سرد</span>
-                  <span class="c-collection__cta">
-                    <span>استعرض</span>
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#audio"
-              aria-label="الانتقال إلى مجموعة التسجيلات الصوتية">
-
-              <div class="c-collection__body">
-                <div class="c-collection__meta">
-                  <span class="c-collection__chip">خزانة الصوت</span>
-                  <span class="c-collection__hint">استعرض المجموعة</span>
-                </div>
-
-                <h3 class="c-collection__title">التسجيلات الصوتية / الأناشيد</h3>
-                <p class="c-collection__desc">
-                  أرشيف ألحان وأهازيج وأصوات توثّق الثقافة الحية لكل محطة.
-                </p>
-
-                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
-                  <div class="c-collection__thumb c-collection__thumb--main">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                  <div class="c-collection__thumb">
-                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
-                  </div>
-                </div>
-
-                <div class="c-collection__footer">
-                  <span class="c-collection__tag">أناشيد · تسجيلات · نادر</span>
-                  <span class="c-collection__cta">
-                    <span>استعرض</span>
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-            </article>
-
           </div>
-        </div>
-      </section>
 
+          <!-- Filters + Search -->
+          <div class="c-audio-lib__controls" aria-label="أدوات المكتبة">
+            <div class="c-audio-lib__search">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <label class="visually-hidden" for="audioSearch">بحث</label>
+              <input id="audioSearch" class="form-control c-input" type="search"
+                placeholder="ابحث باسم المقطع أو الوصف أو السنة" data-audio-search />
+            </div>
 
+            <div class="c-audio-lib__filters" role="tablist" aria-label="تصنيفات الصوتيات" data-audio-filters>
+              <button class="c-chip is-active" type="button" data-filter="all">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i> الكل
+              </button>
+              <button class="c-chip" type="button" data-filter="ruh">
+                <i class="fa-solid fa-seedling" aria-hidden="true"></i> روحاني
+              </button>
+              <button class="c-chip" type="button" data-filter="quran">
+                <i class="fa-solid fa-book-quran" aria-hidden="true"></i> قرآني
+              </button>
+              <button class="c-chip" type="button" data-filter="hamasi">
+                <i class="fa-solid fa-drum" aria-hidden="true"></i> حماسي
+              </button>
+              <button class="c-chip" type="button" data-filter="ritha">
+                <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i> رثائي
+              </button>
 
+              <select class="c-audio-lib__sort" data-audio-sort aria-label="ترتيب">
+                <option value="recent">الأحدث</option>
+                <option value="popular">الأكثر استماعًا</option>
+                <option value="duration">الأطول</option>
+                <option value="title">حسب العنوان</option>
+              </select>
+            </div>
+          </div>
 
+          <!-- Layout -->
+          <div class="c-audio-lib__layout">
+            <!-- Player Card -->
+            <aside class="c-audio-player" aria-label="مشغل الصوت">
+              <div class="c-audio-player__media">
+                <img data-player-cover src="assets/images/videos/thumb2.jpg" alt="غلاف المقطع" loading="lazy" />
+                <span class="c-audio-player__badge" data-player-badge>مختار</span>
+              </div>
 
-
-
-
-
-      <section class="u-section c-quote-spotlight" aria-label="اقتباس مختار">
-        <div class="container">
-          <div class="c-quote-spotlight__card">
-
-            <!-- Decorative layer -->
-            <span class="c-quote-spotlight__accent" aria-hidden="true"></span>
-            <span class="c-quote-spotlight__mark" aria-hidden="true">“</span>
-
-            <!-- Content -->
-            <div class="c-quote-spotlight__content">
-              <header class="c-quote-spotlight__head">
-                <p class="c-quote-spotlight__kicker">اقتباس موثق</p>
-                <span class="c-quote-spotlight__chip">تصريح صحفي</span>
-              </header>
-
-              <blockquote class="c-quote-spotlight__quote">
-                <p class="c-quote-spotlight__text">
-                  ليس غريبا علينا أن يستشهد القادة وكوادر الحركة
+              <div class="c-audio-player__body">
+                <p class="c-audio-player__meta" data-player-meta>2017 · مصدر عند توفره</p>
+                <h3 class="c-audio-player__title" data-player-title>اختر مقطعًا من القائمة</h3>
+                <p class="c-audio-player__desc" data-player-desc>
+                  عند اختيار أي عنصر من القائمة سيتم تشغيله هنا مع تحديث البيانات.
                 </p>
 
-                <footer class="c-quote-spotlight__footer">
-                  <div class="c-quote-spotlight__who">
-                    <span class="c-quote-spotlight__avatar" aria-hidden="true">
-                      <i class="fa-solid fa-user" aria-hidden="true"></i>
-                    </span>
-                    <div>
-                      <cite class="c-quote-spotlight__cite">صالح العاروري</cite>
-                      <span class="c-quote-spotlight__meta">مقابلة إعلامية أغسطس 2023</span>
+                <div class="c-audio-player__stats">
+                  <div class="c-mini">
+                    <span class="c-mini__icon"><i class="fa-regular fa-clock"></i></span>
+                    <span class="c-mini__label">المدة</span>
+                    <span class="c-mini__value" data-player-duration>--:--</span>
+                  </div>
+                  <div class="c-mini">
+                    <span class="c-mini__icon"><i class="fa-solid fa-headphones-simple"></i></span>
+                    <span class="c-mini__label">استماعات</span>
+                    <span class="c-mini__value" data-player-plays>—</span>
+                  </div>
+                  <div class="c-mini">
+                    <span class="c-mini__icon"><i class="fa-solid fa-tag"></i></span>
+                    <span class="c-mini__label">التصنيف</span>
+                    <span class="c-mini__value" data-player-category>—</span>
+                  </div>
+                </div>
+
+                <!-- Plyr mount -->
+                <div class="c-audio-player__plyr">
+                  <audio class="js-plyr-audio" controls preload="metadata" data-player-audio>
+                    <source src="assets/audio/arouri-clip.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+
+                <div class="c-audio-player__cta">
+                  <a class="c-btn c-btn--ghost w-100" href="timeline.html">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    اذهب للمحطة الزمنية
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Playlist -->
+            <section class="c-audio-list" aria-label="قائمة المقاطع">
+              <div class="c-audio-list__head">
+                <h3 class="c-audio-list__title">القائمة</h3>
+                <p class="c-audio-list__hint u-muted">
+                  اضغط على أي مقطع للتشغيل. يمكنك الفلترة والبحث والترتيب.
+                </p>
+              </div>
+
+              <div class="c-audio-list__table" role="list" data-audio-list>
+                <!-- Row -->
+                <article class="c-audio-row is-active" role="listitem" tabindex="0" data-audio-item
+                  data-title="رحلة الروح" data-desc="مقتطف صوتي ضمن سياق توثيقي" data-year="2017"
+                  data-source="مصدر عند توفره" data-category="ruh" data-category-label="روحاني" data-plays="12500"
+                  data-date="2017-08-01" data-cover="assets/images/videos/thumb2.jpg"
+                  data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>12.5K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb2.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">رحلة الروح</h4>
+                      <p class="c-audio-row__sub u-muted">2017 · مقتطف صوتي ضمن سياق توثيقي</p>
                     </div>
                   </div>
 
-                  <div class="c-quote-spotlight__actions">
-                    <button type="button" class="c-btn c-btn--ghost">
-                      المزيد من الاقتباسات
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل" data-media-card
+                      data-modal-title="رحلة الروح" data-modal-description="مقتطف صوتي ضمن سياق توثيقي"
+                      data-modal-badge="صوت" data-modal-timestamp="2017" data-modal-source="مصدر عند توفره"
+                      data-modal-image="assets/images/videos/thumb2.jpg">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
                     </button>
                   </div>
-                </footer>
-              </blockquote>
-            </div>
+                </article>
 
+                <!-- Row -->
+                <article class="c-audio-row" role="listitem" tabindex="0" data-audio-item data-title="مقتطف أرشيفي"
+                  data-desc="مقطع مختار من خطاب مسجل" data-year="2018" data-source="مصدر عند توفره"
+                  data-category="ritha" data-category-label="رثائي" data-plays="8200" data-date="2018-02-10"
+                  data-cover="assets/images/videos/thumb3.jpg" data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>8.2K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb3.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">مقتطف أرشيفي</h4>
+                      <p class="c-audio-row__sub u-muted">2018 · مقطع مختار من خطاب مسجل</p>
+                    </div>
+                  </div>
+
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Row -->
+                <article class="c-audio-row" role="listitem" tabindex="0" data-audio-item data-title="قراءة مختارة"
+                  data-desc="مقطع قرآني قصير" data-year="2020" data-source="مصدر عند توفره" data-category="quran"
+                  data-category-label="قرآني" data-plays="30200" data-date="2020-09-18"
+                  data-cover="assets/images/videos/thumb1.jpg" data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>30.2K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb1.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">قراءة مختارة</h4>
+                      <p class="c-audio-row__sub u-muted">2020 · مقطع قرآني قصير</p>
+                    </div>
+                  </div>
+
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </article>
+                <!-- Row -->
+                <article class="c-audio-row is-active" role="listitem" tabindex="0" data-audio-item
+                  data-title="رحلة الروح" data-desc="مقتطف صوتي ضمن سياق توثيقي" data-year="2017"
+                  data-source="مصدر عند توفره" data-category="ruh" data-category-label="روحاني" data-plays="12500"
+                  data-date="2017-08-01" data-cover="assets/images/videos/thumb2.jpg"
+                  data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>12.5K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb2.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">رحلة الروح</h4>
+                      <p class="c-audio-row__sub u-muted">2017 · مقتطف صوتي ضمن سياق توثيقي</p>
+                    </div>
+                  </div>
+
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل" data-media-card
+                      data-modal-title="رحلة الروح" data-modal-description="مقتطف صوتي ضمن سياق توثيقي"
+                      data-modal-badge="صوت" data-modal-timestamp="2017" data-modal-source="مصدر عند توفره"
+                      data-modal-image="assets/images/videos/thumb2.jpg">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Row -->
+                <article class="c-audio-row" role="listitem" tabindex="0" data-audio-item data-title="مقتطف أرشيفي"
+                  data-desc="مقطع مختار من خطاب مسجل" data-year="2018" data-source="مصدر عند توفره"
+                  data-category="ritha" data-category-label="رثائي" data-plays="8200" data-date="2018-02-10"
+                  data-cover="assets/images/videos/thumb3.jpg" data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>8.2K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb3.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">مقتطف أرشيفي</h4>
+                      <p class="c-audio-row__sub u-muted">2018 · مقطع مختار من خطاب مسجل</p>
+                    </div>
+                  </div>
+
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Row -->
+                <article class="c-audio-row" role="listitem" tabindex="0" data-audio-item data-title="قراءة مختارة"
+                  data-desc="مقطع قرآني قصير" data-year="2020" data-source="مصدر عند توفره" data-category="quran"
+                  data-category-label="قرآني" data-plays="30200" data-date="2020-09-18"
+                  data-cover="assets/images/videos/thumb1.jpg" data-audio="assets/audio/arouri-clip.mp3">
+                  <div class="c-audio-row__time">
+                    <span class="c-audio-row__timeText" data-duration>--:--</span>
+                  </div>
+
+                  <div class="c-audio-row__plays">
+                    <span class="c-audio-row__playsText" data-plays-text>30.2K</span>
+                  </div>
+
+                  <div class="c-audio-row__main">
+                    <div class="c-audio-row__thumb">
+                      <img src="assets/images/videos/thumb1.jpg" alt="" loading="lazy" />
+                      <span class="c-audio-row__playIcon" aria-hidden="true">
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    </div>
+
+                    <div class="c-audio-row__info">
+                      <h4 class="c-audio-row__title">قراءة مختارة</h4>
+                      <p class="c-audio-row__sub u-muted">2020 · مقطع قرآني قصير</p>
+                    </div>
+                  </div>
+
+                  <div class="c-audio-row__actions">
+                    <button class="c-icon-btn" type="button" aria-label="تفاصيل">
+                      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="ربط بالمحطة">
+                      <i class="fa-solid fa-timeline" aria-hidden="true"></i>
+                    </button>
+                    <button class="c-icon-btn" type="button" aria-label="نسخ رابط">
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </article>
+              </div>
+
+              <div class="c-empty u-hide" data-audio-empty>
+                لا توجد نتائج مطابقة حاول تعديل البحث أو الفلتر
+              </div>
+            </section>
           </div>
         </div>
       </section>
 
 
 
+
+      <!-- Start Quote Spotlight Section -->
+      <!-- =========================================================
+  QUOTES — Premium Spotlight + Rail
+========================================================= -->
+      <section class="c-quotes" aria-label="الاقتباسات">
+        <div class="container">
+
+          <div class="c-quotes__head">
+            <div>
+              <p class="c-quotes__eyebrow">اقتباسات مختارة</p>
+              <h2 class="c-quotes__title">كلمات تختصر المعنى وتثبت الأثر</h2>
+              <p class="c-quotes__lede">
+                مجموعة اقتباسات قابلة للبحث والتصنيف مع تفاصيل السياق والمصدر عند توفره.
+              </p>
+            </div>
+
+            <div class="c-quotes__tools">
+              <div class="c-quotes__search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <label class="visually-hidden" for="quotesSearch">بحث في الاقتباسات</label>
+                <input id="quotesSearch" type="search" class="form-control c-input"
+                  placeholder="ابحث بالكلمة أو السنة أو التصنيف" data-q-search />
+              </div>
+
+              <div class="c-quotes__filters" data-q-filters>
+                <button class="c-chip is-active" type="button" data-filter="all">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i> الكل
+                </button>
+                <button class="c-chip" type="button" data-filter="press">
+                  <i class="fa-regular fa-newspaper" aria-hidden="true"></i> تصريح صحفي
+                </button>
+                <button class="c-chip" type="button" data-filter="interview">
+                  <i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> مقابلة
+                </button>
+                <button class="c-chip" type="button" data-filter="statement">
+                  <i class="fa-solid fa-scroll" aria-hidden="true"></i> بيان
+                </button>
+                <button class="c-chip" type="button" data-filter="speech">
+                  <i class="fa-solid fa-bullhorn" aria-hidden="true"></i> خطاب
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-quotes__layout">
+
+            <!-- Featured -->
+            <article class="c-quote-featured" aria-label="اقتباس مميز" data-q-featured>
+              <span class="c-quote-featured__topline" aria-hidden="true"></span>
+              <span class="c-quote-featured__accent" aria-hidden="true"></span>
+              <span class="c-quote-featured__mark" aria-hidden="true">“</span>
+
+              <div class="c-quote-featured__content">
+                <header class="c-quote-featured__head">
+                  <p class="c-quote-featured__kicker" data-q-kicker>اقتباس موثق</p>
+                  <span class="c-quote-featured__chip" data-q-chip>
+                    <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                    تصريح صحفي
+                  </span>
+                </header>
+
+                <blockquote class="c-quote-featured__quote">
+                  <p class="c-quote-featured__text" data-q-text>
+                    ليس غريبا علينا أن يستشهد القادة وكوادر الحركة
+                  </p>
+
+                  <footer class="c-quote-featured__footer">
+                    <div class="c-quote-featured__who">
+                      <span class="c-quote-featured__avatar" aria-hidden="true">
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                      </span>
+                      <div>
+                        <cite class="c-quote-featured__cite" data-q-who>صالح العاروري</cite>
+                        <span class="c-quote-featured__meta" data-q-meta>مقابلة إعلامية · أغسطس 2023</span>
+                      </div>
+                    </div>
+
+                    <div class="c-quote-featured__actions">
+                      <button class="c-qbtn" type="button" aria-label="نسخ الاقتباس" data-q-copy>
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                      </button>
+                      <button class="c-qbtn" type="button" aria-label="مشاركة" data-q-share>
+                        <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                      </button>
+                      <button class="c-btn c-btn--ghost" type="button" data-q-open-modal data-bs-toggle="modal"
+                        data-bs-target="#quoteModal">
+                        المزيد
+                      </button>
+                    </div>
+                  </footer>
+                </blockquote>
+
+                <div class="c-quote-modal__source" data-q-source>
+                  المصدر: <span data-q-source-text>مصدر عند توفره</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rail -->
+            <aside class="c-quote-rail" aria-label="قائمة الاقتباسات">
+              <div class="c-quote-rail__head">
+                <div>
+                  <h3 class="c-quote-rail__title">الاقتباسات</h3>
+                  <p class="u-muted c-quote-rail__hint">اضغط لاختيار اقتباس وعرضه كبطاقة مميزة</p>
+                </div>
+
+                <div class="c-quote-rail__nav">
+                  <button class="c-qbtn" type="button" aria-label="السابق" data-q-prev>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                  </button>
+                  <button class="c-qbtn" type="button" aria-label="التالي" data-q-next>
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="c-quote-rail__body">
+                <div class="c-quote-rail__list" data-q-list>
+                  <!-- Cards (data-driven) -->
+                  <article class="c-quote-item is-active" tabindex="0" role="button" data-q-item data-q-id="q1"
+                    data-q-type="press" data-q-type-label="تصريح صحفي" data-q-type-icon="fa-regular fa-newspaper"
+                    data-q-year="2023" data-q-date="2023-08-01" data-q-title="اقتباس موثق"
+                    data-q-text="ليس غريبا علينا أن يستشهد القادة وكوادر الحركة"
+                    data-q-meta="مقابلة إعلامية · أغسطس 2023" data-q-source="مصدر عند توفره">
+                    <div class="c-quote-item__top">
+                      <span class="c-quote-item__chip">
+                        <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                        تصريح صحفي
+                      </span>
+                      <span class="c-quote-item__meta">2023</span>
+                    </div>
+                    <p class="c-quote-item__text">ليس غريبا علينا أن يستشهد القادة وكوادر الحركة</p>
+                    <div class="c-quote-item__who">
+                      <i class="fa-solid fa-user" aria-hidden="true"></i>
+                      <span>صالح العاروري</span>
+                    </div>
+                  </article>
+
+                  <article class="c-quote-item" tabindex="0" role="button" data-q-item data-q-id="q2"
+                    data-q-type="interview" data-q-type-label="مقابلة" data-q-type-icon="fa-solid fa-microphone-lines"
+                    data-q-year="2022" data-q-date="2022-05-10" data-q-title="اقتباس موثق"
+                    data-q-text="المعركة ليست لحظة انفعال بل مسار طويل من الإعداد والثبات"
+                    data-q-meta="حوار تلفزيوني · مايو 2022" data-q-source="مصدر عند توفره">
+                    <div class="c-quote-item__top">
+                      <span class="c-quote-item__chip">
+                        <i class="fa-solid fa-microphone-lines" aria-hidden="true"></i>
+                        مقابلة
+                      </span>
+                      <span class="c-quote-item__meta">2022</span>
+                    </div>
+                    <p class="c-quote-item__text">المعركة ليست لحظة انفعال بل مسار طويل من الإعداد والثبات</p>
+                    <div class="c-quote-item__who">
+                      <i class="fa-solid fa-user" aria-hidden="true"></i>
+                      <span>صالح العاروري</span>
+                    </div>
+                  </article>
+
+
+                </div>
+
+                <div class="c-quotes__empty u-hide" data-q-empty>
+                  لا توجد نتائج مطابقة حاول تغيير البحث أو التصنيف
+                </div>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Quote Modal (Bootstrap) -->
+      <div class="modal fade c-modal" id="quoteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content c-modal__inner">
+            <div class="modal-body">
+              <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
+
+              <p class="u-muted" style="margin:0" data-qm-chip></p>
+              <h3 class="c-card__title" style="margin-top:10px" data-qm-title>اقتباس</h3>
+
+              <blockquote style="margin-top:12px">
+                <p style="margin:0;line-height:2;color:var(--text-primary);font-family:var(--font-family-heading);font-size:1.15rem"
+                  data-qm-text></p>
+              </blockquote>
+
+              <p class="u-muted" style="margin-top:12px" data-qm-meta></p>
+
+              <div class="c-quote-modal__source" style="margin-top:12px">
+                المصدر: <span data-qm-source>مصدر عند توفره</span>
+              </div>
+
+              <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+                <button class="c-btn c-btn--ghost" type="button" data-qm-copy>
+                  <i class="fa-regular fa-copy" aria-hidden="true"></i> نسخ الاقتباس
+                </button>
+                <button class="c-btn c-btn--outline" type="button" data-qm-share>
+                  <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> مشاركة
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Quote Spotlight Section -->
+
+      <!-- Start Latest Media Section -->
       <section class="u-section c-latest" aria-label="آخر الوسائط">
         <div class="container">
 
@@ -972,12 +1464,144 @@
           </div>
         </div>
       </section>
+      <!-- End Latest Media Section -->
 
-
-
-      <section class="u-section c-news" aria-label="الأخبار والتحديثات">
+      <!-- Start Collections Section -->
+      <section class="u-section c-collections" aria-label="مجموعات مختارة">
         <div class="container">
 
+          <!-- Section header -->
+          <header class="c-collections__head">
+            <div class="c-collections__head-copy">
+              <p class="c-collections__kicker">مفاتيح الدخول الذكي</p>
+              <h2 class="c-collections__title">مجموعات مختارة</h2>
+              <p class="c-collections__subtitle">
+                مسارات منظمة تساعدك على تصفح الأرشيف حسب طبيعة المادة بدل البحث العشوائي.
+              </p>
+            </div>
+
+            <div class="c-collections__head-actions">
+              <a class="c-btn c-btn--outline" href="media.html">كل المجموعات</a>
+            </div>
+          </header>
+
+          <!-- Cards grid -->
+          <div class="c-collections__grid">
+
+            <!-- Featured (big) -->
+            <article class="c-collection c-collection--featured" role="link" tabindex="0"
+              data-collection-link="media.html#coverage" aria-label="الانتقال إلى مجموعة الظهور الإعلامي">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">سجل مباشر</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">الظهور الإعلامي</h3>
+                <p class="c-collection__desc">
+                  مسارات ظهور متلاحقة في المحطات العربية والدولية مع وعي سردي واضح.
+                </p>
+
+                <!-- Media preview (editorial strip) -->
+                <div class="c-collection__preview" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">محطات · لقاءات · تقارير</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض المجموعة</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#testimonials"
+              aria-label="الانتقال إلى مجموعة الشهادات والمحطات">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">رؤية صحفية</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">الشهادات والمحطات</h3>
+                <p class="c-collection__desc">
+                  توثيق شهادات شخصية ومحطات إذاعية تفاعل معها السرد السياسي.
+                </p>
+
+                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">شهادات · إذاعات · سرد</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="c-collection" role="link" tabindex="0" data-collection-link="media.html#audio"
+              aria-label="الانتقال إلى مجموعة التسجيلات الصوتية">
+
+              <div class="c-collection__body">
+                <div class="c-collection__meta">
+                  <span class="c-collection__chip">خزانة الصوت</span>
+                  <span class="c-collection__hint">استعرض المجموعة</span>
+                </div>
+
+                <h3 class="c-collection__title">التسجيلات الصوتية / الأناشيد</h3>
+                <p class="c-collection__desc">
+                  أرشيف ألحان وأهازيج وأصوات توثّق الثقافة الحية لكل محطة.
+                </p>
+
+                <div class="c-collection__preview c-collection__preview--compact" aria-hidden="true">
+                  <div class="c-collection__thumb c-collection__thumb--main">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                  <div class="c-collection__thumb">
+                    <img src="https://dummyimage.com/600x400/dddddd/000000" alt="" loading="lazy" />
+                  </div>
+                </div>
+
+                <div class="c-collection__footer">
+                  <span class="c-collection__tag">أناشيد · تسجيلات · نادر</span>
+                  <span class="c-collection__cta">
+                    <span>استعرض</span>
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+      <!-- End Collections Section -->
+
+      <!-- Start News Section -->
+      <section class="u-section c-news" aria-label="الأخبار والتحديثات">
+        <div class="container">
           <!-- Header -->
           <header class="c-news__head">
             <div>
@@ -1055,11 +1679,10 @@
           </div>
         </div>
       </section>
-
+      <!-- End News Section -->
 
     </main>
-
-
+    <!-- =========================================  Footer — Editorial Layout ========================================== -->
     <footer class="c-footer" role="contentinfo">
       <div class="container">
 
@@ -1117,14 +1740,11 @@
 
       </div>
     </footer>
-
-
+    <!-- End Footer -->
 
 
   </div>
-  <!-- =========================================
-  Media Detail Modal — Editorial Layout
-========================================= -->
+  <!-- ========================================= Media Detail Modal — Editorial Layout ========================================= -->
   <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
       <div class="modal-content c-modal__inner">
@@ -1163,7 +1783,8 @@
 
               <!-- Image -->
               <figure class="c-modal__image">
-                <img data-modal-image-target src="assets/img/articles/thumb1.png" alt="صورة أرشيفية" loading="lazy" />
+                <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="صورة أرشيفية"
+                  loading="lazy" />
               </figure>
 
               <!-- Audio -->
@@ -1191,7 +1812,9 @@
     </div>
   </div>
 
+  <!-- ========================================= Scripts ========================================= -->
   <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Plyr JS for media players -->
   <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
