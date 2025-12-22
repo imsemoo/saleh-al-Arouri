@@ -789,7 +789,9 @@ body.is-dark .c-media-switch__btn.is-active {
 
 @media (max-width: 991.98px) {
   .c-persona {
-    height: 560px;
+    height: 650px;
+    max-height: 650px;
+
   }
 }
 

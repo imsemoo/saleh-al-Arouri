@@ -306,10 +306,32 @@
     }
 
     /* =========================================
-  TIMELINE CORE — Editorial Timeline
-========================================= */
+        <!-- Media Detail Modal (shared) -->
+        <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content c-modal__inner">
+              <div class="modal-body">
+                <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
 
-    .c-timeline-core {
+                <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
+                <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
+
+                <div class="c-badge" data-modal-badge-target style="margin-top:12px"></div>
+                <p class="u-muted" style="margin-top:10px" data-modal-timestamp-target></p>
+                <p class="u-muted" data-modal-source-target></p>
+
+                <div style="margin-top:14px">
+                  <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="" style="width:100%;border-radius:16px;border:1px solid var(--surface-border)" />
+                </div>
+
+                <div data-modal-video-mount style="margin-top:14px"></div>
+                <div data-modal-audio-mount style="margin-top:14px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
       padding-top: var(--space-64);
       padding-bottom: var(--space-48);
     }
@@ -2364,7 +2386,9 @@
         if (!galleries.photos) return;
         galleries.photos.innerHTML = (items || []).map(it => `
         <div class="c-hub-thumb" role="button" tabindex="0"
-          data-open-image="${escapeHtml(it.full)}"
+          data-media-card
+          data-modal-image="${escapeHtml(it.full)}"
+          data-modal-title="${escapeHtml(it.label || 'صورة')}"
           aria-label="فتح الصورة">
           <img src="${escapeHtml(it.thumb)}" alt="${escapeHtml(it.label || "صورة")}" loading="lazy" />
         </div>
@@ -2390,8 +2414,11 @@
           </div>
 
           <button class="c-hub-open" type="button"
-            data-open-media="${escapeHtml(it.src)}"
-            data-open-type="${escapeHtml(key)}">
+            data-media-card
+            data-modal-video="${escapeHtml(it.src)}"
+            data-modal-image="${escapeHtml(it.thumb)}"
+            data-modal-title="${escapeHtml(it.title || 'مادة مرتبطة')}"
+            data-modal-description="${escapeHtml(it.meta || '')}">
             فتح <i class="fa-solid fa-arrow-left"></i>
           </button>
         </div>
@@ -2471,10 +2498,13 @@
 
       // Open media (simple behavior)
       document.addEventListener("click", (e) => {
+        // Compatibility: if older data-* attributes exist, attempt to delegate to the
+        // new modal-based approach. Otherwise fallback to opening in new tab.
         const imgBtn = e.target.closest("[data-open-image]");
         if (imgBtn) {
           const src = imgBtn.getAttribute("data-open-image");
-          // لو عندك modalHelper & mediaDetailModal تقدر تربطه هنا بدل window.open
+          const trigger = document.querySelector(`[data-media-card][data-modal-image="${src}"]`);
+          if (trigger && typeof trigger.click === 'function') { trigger.click(); return; }
           window.open(src, "_blank", "noopener,noreferrer");
           return;
         }
@@ -2482,10 +2512,8 @@
         const mediaBtn = e.target.closest("[data-open-media]");
         if (mediaBtn) {
           const src = mediaBtn.getAttribute("data-open-media");
-          const type = mediaBtn.getAttribute("data-open-type"); // videos | audios
-
-          // اختيارياً: افتح المودال بتاعك هنا بدل window.open
-          // لو تحب، هربطها لك مباشرة بـ mediaDetailModal وبـ Plyr
+          const trigger = document.querySelector(`[data-media-card][data-modal-video="${src}"]`);
+          if (trigger && typeof trigger.click === 'function') { trigger.click(); return; }
           window.open(src, "_blank", "noopener,noreferrer");
         }
       });

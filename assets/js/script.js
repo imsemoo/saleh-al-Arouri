@@ -170,6 +170,7 @@ const initMediaModals = () => {
 
   // Video targets (we will inject a video player)
   const videoMount = modalEl.querySelector("[data-modal-video-mount]");
+  const audioMount = modalEl.querySelector("[data-modal-audio-mount]");
 
   const defaults = {
     title: "أرشيف الوسائط",
@@ -190,15 +191,35 @@ const initMediaModals = () => {
    * - Embed URL: <iframe>
    */
   const renderVideo = (videoUrl, posterUrl) => {
-    if (!videoMount) return;
+    // No mounts available
+    if (!videoMount && !audioMount) return;
 
     // Clear previous content
-    videoMount.innerHTML = "";
+    if (videoMount) videoMount.innerHTML = "";
+    if (audioMount) audioMount.innerHTML = "";
 
-    // If no video provided: render nothing (keep the modal clean)
+    // If no media provided: render nothing
     if (!videoUrl) return;
 
     const isEmbed = /youtube\.com\/embed|player\.vimeo\.com|https?:\/\//i.test(videoUrl) && !/\.mp4(\?|$)/i.test(videoUrl);
+    const isAudio = /\.(mp3|wav|ogg|m4a|aac)(\?|$)/i.test(videoUrl);
+
+    if (isAudio) {
+      const audio = document.createElement("audio");
+      audio.className = "c-modal__audio-player";
+      audio.controls = true;
+      audio.preload = "metadata";
+
+      const src = document.createElement("source");
+      src.src = videoUrl;
+      // best-effort mime type
+      src.type = "audio/mpeg";
+      audio.appendChild(src);
+
+      if (audioMount) audioMount.appendChild(audio);
+      else if (videoMount) videoMount.appendChild(audio);
+      return;
+    }
 
     if (isEmbed) {
       const iframe = document.createElement("iframe");
@@ -207,7 +228,7 @@ const initMediaModals = () => {
       iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
       iframe.setAttribute("allowfullscreen", "true");
       iframe.className = "c-modal__video-frame";
-      videoMount.appendChild(iframe);
+      if (videoMount) videoMount.appendChild(iframe);
       return;
     }
 
@@ -223,7 +244,7 @@ const initMediaModals = () => {
     source.type = "video/mp4";
 
     video.appendChild(source);
-    videoMount.appendChild(video);
+    if (videoMount) videoMount.appendChild(video);
   };
 
   /**
@@ -254,6 +275,7 @@ const initMediaModals = () => {
    */
   modalEl.addEventListener("hidden.bs.modal", () => {
     if (videoMount) videoMount.innerHTML = "";
+    if (audioMount) audioMount.innerHTML = "";
   });
 
   // Bind triggers
