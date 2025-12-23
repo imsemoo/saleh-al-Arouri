@@ -42,7 +42,8 @@
       <div class="container">
         <div class="c-header__inner">
           <div class="c-header__brand">
-            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية"><img src="assets/images/logo.png" alt=""></a>
+            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية"><img src="assets/images/logo.png"
+                alt=""></a>
           </div>
 
           <nav class="c-nav" aria-label="روابط القسم الرئيسي">
@@ -310,19 +311,29 @@
       </section>
 
 
-      <!-- Main Library -->
-      <section class="u-section" aria-label="مكتبة الوسائط">
+      <!-- =========================
+  VIDEOS SECTION
+========================= -->
+      <section class="u-section c-media-block" aria-label="مكتبة الفيديو">
         <div class="container">
-          <div class="c-section-head">
+          <header class="c-media-block__head">
             <div>
-              <h2>المكتبة</h2>
-              <p class="u-muted">نتائج قابلة للتصفية حسب النوع والبحث والترتيب</p>
+              <p class="c-media-block__kicker">المقاطع الطويلة</p>
+              <h2 class="c-media-block__title">الفيديو</h2>
+              <p class="u-muted c-media-block__sub">مقاطع مرئية ضمن الظهور الإعلامي والمحطات المفصلية</p>
             </div>
-            <a class="c-btn c-btn--ghost" href="timeline.html">اربط بالخط الزمني</a>
-          </div>
 
-          <div class="c-media-grid" data-media-grid>
-            <!-- VIDEO -->
+            <div class="c-media-block__actions">
+              <span class="c-media-block__count"><i class="fa-solid fa-circle-play"></i> <strong
+                  data-count="video">0</strong></span>
+              <a class="c-btn c-btn--outline" href="#videos">عرض الكل</a>
+            </div>
+          </header>
+
+          <div class="c-media-grid c-media-grid--videos" data-grid="video">
+            <!-- ضع هنا كروت الفيديو فقط -->
+            <!-- مثال: نفس كارت الفيديو بتاعك كما هو -->
+            <!-- VIDEO CARD -->
             <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="video"
               data-media-title="حوار مصور" data-media-year="2018" data-media-date="2018-03-10"
               data-modal-title="حوار مصور" data-modal-description="مقطع مصور ضمن الظهور الإعلامي يمكن ربطه بمحطة زمنية"
@@ -344,8 +355,76 @@
                 </div>
               </div>
             </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="video"
+              data-media-title="حوار مصور" data-media-year="2018" data-media-date="2018-03-10"
+              data-modal-title="حوار مصور" data-modal-description="مقطع مصور ضمن الظهور الإعلامي يمكن ربطه بمحطة زمنية"
+              data-modal-badge="فيديو" data-modal-timestamp="10 مارس 2018" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb2.jpg" data-modal-video="assets/videos/featured.mp4">
+              <div class="c-media-card__media u-aspect-16x9">
+                <img src="assets/images/videos/thumb2.jpg" alt="حوار مصور" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--video">فيديو</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">حوار مصور</h3>
+                <p class="u-muted">2018</p>
+                <div class="c-media-card__details">
+                  <span>فيديو</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="video"
+              data-media-title="حوار مصور" data-media-year="2018" data-media-date="2018-03-10"
+              data-modal-title="حوار مصور" data-modal-description="مقطع مصور ضمن الظهور الإعلامي يمكن ربطه بمحطة زمنية"
+              data-modal-badge="فيديو" data-modal-timestamp="10 مارس 2018" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb2.jpg" data-modal-video="assets/videos/featured.mp4">
+              <div class="c-media-card__media u-aspect-16x9">
+                <img src="assets/images/videos/thumb2.jpg" alt="حوار مصور" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--video">فيديو</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">حوار مصور</h3>
+                <p class="u-muted">2018</p>
+                <div class="c-media-card__details">
+                  <span>فيديو</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+          </div>
 
-            <!-- REEL -->
+          <div class="c-empty u-hide" data-empty="video">لا توجد فيديوهات حاليا</div>
+        </div>
+      </section>
+
+
+      <!-- =========================
+        REELS SECTION
+      ========================= -->
+      <section class="u-section c-media-block" aria-label="مكتبة الريلز">
+        <div class="container">
+          <header class="c-media-block__head">
+            <div>
+              <p class="c-media-block__kicker">عمودي للمنصات</p>
+              <h2 class="c-media-block__title">الريلز</h2>
+              <p class="u-muted c-media-block__sub">مقاطع قصيرة عالية التركيز تلخص لحظات ومحطات</p>
+            </div>
+
+            <div class="c-media-block__actions">
+              <span class="c-media-block__count"><i class="fa-solid fa-mobile-screen"></i> <strong
+                  data-count="reel">0</strong></span>
+              <a class="c-btn c-btn--outline" href="#reels">عرض الكل</a>
+            </div>
+          </header>
+
+          <div class="c-media-grid c-media-grid--reels" data-grid="reel">
+            <!-- REEL CARD -->
             <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="reel"
               data-media-title="لقطة عمودية قصيرة" data-media-year="2021" data-media-date="2021-11-03"
               data-modal-title="لقطة عمودية قصيرة" data-modal-description="مادة عمودية للهواتف ضمن توثيق سريع"
@@ -367,8 +446,76 @@
                 </div>
               </div>
             </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="reel"
+              data-media-title="لقطة عمودية قصيرة" data-media-year="2021" data-media-date="2021-11-03"
+              data-modal-title="لقطة عمودية قصيرة" data-modal-description="مادة عمودية للهواتف ضمن توثيق سريع"
+              data-modal-badge="ريل" data-modal-timestamp="3 نوفمبر 2021" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg" data-modal-video="assets/videos/reel1.mp4">
+              <div class="c-media-card__media u-aspect-9x16">
+                <img src="assets/images/videos/thumb1.jpg" alt="لقطة عمودية قصيرة" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--reel">ريلز</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">لقطة عمودية قصيرة</h3>
+                <p class="u-muted">2021</p>
+                <div class="c-media-card__details">
+                  <span>ريلز</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="reel"
+              data-media-title="لقطة عمودية قصيرة" data-media-year="2021" data-media-date="2021-11-03"
+              data-modal-title="لقطة عمودية قصيرة" data-modal-description="مادة عمودية للهواتف ضمن توثيق سريع"
+              data-modal-badge="ريل" data-modal-timestamp="3 نوفمبر 2021" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg" data-modal-video="assets/videos/reel1.mp4">
+              <div class="c-media-card__media u-aspect-9x16">
+                <img src="assets/images/videos/thumb1.jpg" alt="لقطة عمودية قصيرة" loading="lazy" />
+                <div class="c-media-card__overlay">
+                  <span class="c-media-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--reel">ريلز</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">لقطة عمودية قصيرة</h3>
+                <p class="u-muted">2021</p>
+                <div class="c-media-card__details">
+                  <span>ريلز</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+          </div>
 
-            <!-- PHOTO -->
+          <div class="c-empty u-hide" data-empty="reel">لا توجد ريلز حاليا</div>
+        </div>
+      </section>
+
+
+      <!-- =========================
+          PHOTOS SECTION
+        ========================= -->
+      <section class="u-section c-media-block" aria-label="مكتبة الصور">
+        <div class="container">
+          <header class="c-media-block__head">
+            <div>
+              <p class="c-media-block__kicker">خريطة بصرية</p>
+              <h2 class="c-media-block__title">الصور</h2>
+              <p class="u-muted c-media-block__sub">لقطات أرشيفية مرتبة ومحفوظة مع إمكانية ربطها بالخط الزمني</p>
+            </div>
+
+            <div class="c-media-block__actions">
+              <span class="c-media-block__count"><i class="fa-regular fa-images"></i> <strong
+                  data-count="photo">0</strong></span>
+              <a class="c-btn c-btn--outline" href="#photos">عرض الكل</a>
+            </div>
+          </header>
+
+          <div class="c-media-grid c-media-grid--photos" data-grid="photo">
+            <!-- PHOTO CARD -->
             <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="photo"
               data-media-title="صورة أرشيفية" data-media-year="2012" data-media-date="2012-05-04"
               data-modal-title="صورة أرشيفية" data-modal-description="صورة ضمن توثيق مرحلة زمنية"
@@ -387,8 +534,90 @@
                 </div>
               </div>
             </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="photo"
+              data-media-title="صورة أرشيفية" data-media-year="2012" data-media-date="2012-05-04"
+              data-modal-title="صورة أرشيفية" data-modal-description="صورة ضمن توثيق مرحلة زمنية"
+              data-modal-badge="صورة" data-modal-timestamp="4 مايو 2012" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg">
+              <div class="c-media-card__media">
+                <img src="assets/images/videos/thumb1.jpg" alt="صورة أرشيفية" loading="lazy" />
+                <div class="c-media-card__badge"><span class="c-badge c-badge--photo">صورة</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">صورة أرشيفية</h3>
+                <p class="u-muted">2012</p>
+                <div class="c-media-card__details">
+                  <span>صورة</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="photo"
+              data-media-title="صورة أرشيفية" data-media-year="2012" data-media-date="2012-05-04"
+              data-modal-title="صورة أرشيفية" data-modal-description="صورة ضمن توثيق مرحلة زمنية"
+              data-modal-badge="صورة" data-modal-timestamp="4 مايو 2012" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg">
+              <div class="c-media-card__media">
+                <img src="assets/images/videos/thumb1.jpg" alt="صورة أرشيفية" loading="lazy" />
+                <div class="c-media-card__badge"><span class="c-badge c-badge--photo">صورة</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">صورة أرشيفية</h3>
+                <p class="u-muted">2012</p>
+                <div class="c-media-card__details">
+                  <span>صورة</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
+          </div>
 
-            <!-- AUDIO (opens modal too) -->
+          <div class="c-empty u-hide" data-empty="photo">لا توجد صور حاليا</div>
+        </div>
+      </section>
+
+
+      <!-- =========================
+            AUDIO SECTION
+          ========================= -->
+      <section class="u-section c-media-block" aria-label="مكتبة الصوتيات">
+        <div class="container">
+          <header class="c-media-block__head">
+            <div>
+              <p class="c-media-block__kicker">تسجيلات وشهادات</p>
+              <h2 class="c-media-block__title">الصوت</h2>
+              <p class="u-muted c-media-block__sub">مقاطع صوتية مختارة قابلة للتوثيق وربطها بمحطات محددة</p>
+            </div>
+
+            <div class="c-media-block__actions">
+              <span class="c-media-block__count"><i class="fa-solid fa-wave-square"></i> <strong
+                  data-count="audio">0</strong></span>
+              <a class="c-btn c-btn--outline" href="#audio">عرض الكل</a>
+            </div>
+          </header>
+
+          <div class="c-media-grid c-media-grid--audio" data-grid="audio">
+            <!-- AUDIO CARD -->
+            <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="audio"
+              data-media-title="مقتطف صوتي" data-media-year="2017" data-media-date="2017-08-01"
+              data-modal-title="مقتطف صوتي" data-modal-description="تسجيل صوتي مرتبط بمحطة محددة" data-modal-badge="صوت"
+              data-modal-timestamp="2017" data-modal-source="مصدر عند توفره"
+              data-modal-image="assets/images/videos/thumb1.jpg">
+              <div class="c-media-card__media c-media-card__media--audio">
+                <div class="c-media-card__audio-icon">
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                </div>
+                <div class="c-media-card__badge"><span class="c-badge c-badge--audio">صوت</span></div>
+              </div>
+              <div class="c-media-card__content">
+                <h3 class="c-media-card__title">مقتطف صوتي</h3>
+                <p class="u-muted">2017</p>
+                <div class="c-media-card__details">
+                  <span>صوت</span>
+                  <span class="u-muted">تفاصيل</span>
+                </div>
+              </div>
+            </article>
             <article class="c-media-card" role="button" tabindex="0" data-media-card data-media-type="audio"
               data-media-title="مقتطف صوتي" data-media-year="2017" data-media-date="2017-08-01"
               data-modal-title="مقتطف صوتي" data-modal-description="تسجيل صوتي مرتبط بمحطة محددة" data-modal-badge="صوت"
@@ -411,19 +640,18 @@
             </article>
           </div>
 
-          <div class="c-empty u-hide" data-media-empty>
-            لا توجد نتائج مطابقة حاول تعديل البحث أو الفلتر
-          </div>
+          <div class="c-empty u-hide" data-empty="audio">لا توجد صوتيات حاليا</div>
         </div>
       </section>
 
+
       <!-- =========================================================
-  AUDIO SHELF — Featured Audio (Plyr)
-  Notes:
-  - Uses Plyr for consistent audio UI
-  - RTL-safe + token-driven (light/dark)
-  - Each card can open your existing media modal via data-media-card
-========================================================= -->
+        AUDIO SHELF — Featured Audio (Plyr)
+        Notes:
+        - Uses Plyr for consistent audio UI
+        - RTL-safe + token-driven (light/dark)
+        - Each card can open your existing media modal via data-media-card
+      ========================================================= -->
       <section class="u-section c-audio-shelf" aria-label="الصوتيات">
         <div class="container">
 
@@ -686,7 +914,8 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content c-modal__inner">
           <div class="modal-body">
-            <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
+            <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق"><i
+                class="fa-solid fa-xmark"></i></button>
 
             <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
             <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
@@ -695,10 +924,6 @@
             <p class="u-muted" style="margin-top:10px" data-modal-timestamp-target></p>
             <p class="u-muted" data-modal-source-target></p>
 
-            <div style="margin-top:14px">
-              <img data-modal-image-target src="assets/images/videos/thumb1.jpg" alt=""
-                style="width:100%;border-radius:16px;border:1px solid var(--surface-border)" />
-            </div>
 
             <div data-modal-video-mount style="margin-top:14px"></div>
           </div>
@@ -715,161 +940,30 @@
 
   <!-- Page-only JS -->
   <script>
-    /* =========================================
-      Media Page Controls
-      - Filter by type
-      - Search by title/desc/year
-      - Sort (recent/oldest/title)
-      - Shows empty state
-    ========================================= */
+
 
     (function () {
-      const grid = document.querySelector("[data-media-grid]");
-      const empty = document.querySelector("[data-media-empty]");
-      const search = document.querySelector("[data-media-search]");
-      const sort = document.querySelector("[data-media-sort]");
-      const filtersRoot = document.querySelector("[data-media-filters]");
+      const TYPES = ["video", "reel", "photo", "audio"];
 
-      if (!grid) return;
+      TYPES.forEach(type => {
+        const grid = document.querySelector(`[data-grid="${type}"]`);
+        const counter = document.querySelector(`[data-count="${type}"]`);
+        const empty = document.querySelector(`[data-empty="${type}"]`);
 
-      const cards = Array.from(grid.querySelectorAll("[data-media-type]"));
+        if (!grid) return;
 
-      const normalize = (s) => (s || "").toString().trim().toLowerCase();
+        const cards = grid.querySelectorAll(`[data-media-card][data-media-type="${type}"]`);
+        const count = cards.length;
 
-      const getCardText = (card) => {
-        const title = card.getAttribute("data-media-title") || "";
-        const year = card.getAttribute("data-media-year") || "";
-        const modalDesc = card.getAttribute("data-modal-description") || "";
-        return normalize([title, year, modalDesc].join(" "));
-      };
+        if (counter) counter.textContent = count;
 
-      let activeFilter = "all";
-      let query = "";
-      let sortMode = "recent";
-
-      const apply = () => {
-        const visible = [];
-
-        cards.forEach((card) => {
-          const type = card.getAttribute("data-media-type");
-          const okType = activeFilter === "all" || type === activeFilter;
-          const okSearch = !query || getCardText(card).includes(query);
-
-          const show = okType && okSearch;
-          card.classList.toggle("u-hide", !show);
-
-          if (show) visible.push(card);
-        });
-
-        // sort visible by re-append in order
-        const sorted = visible.sort((a, b) => {
-          const aTitle = normalize(a.getAttribute("data-media-title"));
-          const bTitle = normalize(b.getAttribute("data-media-title"));
-
-          const aDate = a.getAttribute("data-media-date") || "1900-01-01";
-          const bDate = b.getAttribute("data-media-date") || "1900-01-01";
-
-          if (sortMode === "title") return aTitle.localeCompare(bTitle, "ar");
-          if (sortMode === "oldest") return aDate.localeCompare(bDate);
-          return bDate.localeCompare(aDate); // recent
-        });
-
-        sorted.forEach((card) => grid.appendChild(card));
-
-        if (empty) empty.classList.toggle("u-hide", sorted.length !== 0);
-      };
-
-      // Filter chips
-      if (filtersRoot) {
-        filtersRoot.querySelectorAll("[data-filter]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            filtersRoot.querySelectorAll(".c-chip").forEach((b) => b.classList.remove("is-active"));
-            btn.classList.add("is-active");
-            activeFilter = btn.getAttribute("data-filter") || "all";
-            apply();
-          });
-        });
-      }
-
-      // Search
-      if (search) {
-        search.addEventListener("input", () => {
-          query = normalize(search.value);
-          apply();
-        });
-      }
-
-      // Sort
-      if (sort) {
-        sort.addEventListener("change", () => {
-          sortMode = sort.value || "recent";
-          apply();
-        });
-      }
-
-      // KPI counters (same counter logic used before)
-      const initCounters = () => {
-        const counters = document.querySelectorAll(".c-counter[data-count-to]");
-        if (!counters.length) return;
-
-        const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-        const animate = (el, duration = 900) => {
-          const to = Number(el.getAttribute("data-count-to") || 0);
-          const prefix = el.getAttribute("data-prefix") || "";
-          const suffix = el.getAttribute("data-suffix") || "";
-
-          if (prefersReducedMotion) {
-            el.textContent = `${prefix}${to}${suffix}`;
-            return;
-          }
-
-          const startTime = performance.now();
-          const tick = (now) => {
-            const t = Math.min(1, (now - startTime) / duration);
-            const v = Math.round(to * easeOutCubic(t));
-            el.textContent = `${prefix}${v}${suffix}`;
-            if (t < 1) requestAnimationFrame(tick);
-            else el.textContent = `${prefix}${to}${suffix}`;
-          };
-          requestAnimationFrame(tick);
-        };
-
-        // run once
-        counters.forEach((el, idx) => setTimeout(() => animate(el, 900), idx * 120));
-      };
-
-      // first apply
-      apply();
-      initCounters();
-    })();
-    /**
- * Initializes Plyr audio players inside the Audio Shelf.
- * - Keeps the UI consistent across browsers
- * - Works with your light/dark token system
- */
-    const initPlyrAudio = () => {
-      if (!window.Plyr) return;
-
-      document.querySelectorAll(".js-plyr-audio").forEach((el) => {
-        // Avoid re-initializing if already mounted
-        if (el.dataset.plyrMounted) return;
-        // eslint-disable-next-line no-new
-        new Plyr(el, {
-          controls: ["play", "progress", "current-time", "mute", "volume"],
-          tooltips: { controls: true, seek: true },
-        });
-        el.dataset.plyrMounted = "true";
+        if (empty) {
+          empty.classList.toggle("u-hide", count !== 0);
+        }
       });
-    };
-
-    // Call it after DOM ready (or inside your existing DOMContentLoaded)
-    document.addEventListener("DOMContentLoaded", () => {
-      initPlyrAudio();
-    });
-
+    })();
   </script>
+
 </body>
 
 </html>
