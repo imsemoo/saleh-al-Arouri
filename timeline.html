@@ -306,32 +306,10 @@
     }
 
     /* =========================================
-        <!-- Media Detail Modal (shared) -->
-        <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content c-modal__inner">
-              <div class="modal-body">
-                <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
+  TIMELINE CORE — Editorial Timeline
+========================================= */
 
-                <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
-                <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
-
-                <div class="c-badge" data-modal-badge-target style="margin-top:12px"></div>
-                <p class="u-muted" style="margin-top:10px" data-modal-timestamp-target></p>
-                <p class="u-muted" data-modal-source-target></p>
-
-                <div style="margin-top:14px">
-                  <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="" style="width:100%;border-radius:16px;border:1px solid var(--surface-border)" />
-                </div>
-
-                <div data-modal-video-mount style="margin-top:14px"></div>
-                <div data-modal-audio-mount style="margin-top:14px"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
+    .c-timeline-core {
       padding-top: var(--space-64);
       padding-bottom: var(--space-48);
     }
@@ -1205,7 +1183,7 @@
 
     .c-hub-thumb img {
       width: 100%;
-      height: 140px;
+      height: 180px;
       object-fit: cover;
       display: block;
     }
@@ -1218,7 +1196,7 @@
 
     .c-hub-media-row {
       display: grid;
-      grid-template-columns: 86px 1fr auto;
+      grid-template-columns: 120px 1fr auto;
       gap: 12px;
       align-items: center;
       padding: 12px 12px;
@@ -1236,7 +1214,7 @@
     .c-hub-media-row__thumb {
       border-radius: 12px;
       overflow: hidden;
-      height: 56px;
+      height: 100px;
       border: 1px solid var(--surface-border);
       background: rgba(0, 0, 0, .08);
     }
@@ -1399,6 +1377,68 @@
       color: var(--text-primary);
       font-family: var(--font-family-heading);
       font-weight: 800;
+    }
+
+    /* =========================================
+      MEDIA MODAL
+    ========================================= */
+    .c-media-modal .modal-dialog {}
+
+    .c-media-modal__content {
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-medium);
+      overflow: hidden;
+    }
+
+    .c-media-modal__header {
+      border-bottom: 1px solid var(--surface-border);
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-media-modal__header {
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .c-media-modal__title {
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+    }
+
+    .c-media-modal__body {
+      padding: var(--space-16);
+    }
+
+    .c-media-modal__pane {
+      margin: 0;
+    }
+
+    .c-media-modal__img {
+      width: 100%;
+      max-height: min(72vh, 720px);
+      object-fit: contain;
+      border-radius: var(--radius-16);
+      border: 1px solid var(--surface-border);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .c-media-modal__cap {
+      margin-top: 10px;
+      line-height: 1.85;
+    }
+
+    .c-media-modal__player {
+      width: 100%;
+      border-radius: var(--radius-16);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .c-media-modal__footer {
+      border-top: 1px solid var(--surface-border);
     }
   </style>
 </head>
@@ -2196,6 +2236,242 @@
 
 
 
+    <!-- =========================
+  MEDIA MODAL (Photo / Video / Audio)
+  - Bootstrap Modal
+  - Plyr for video/audio
+  - No external page navigation
+========================== -->
+    <div class="modal fade c-media-modal" id="mediaModal" tabindex="-1" aria-hidden="true" aria-label="عارض الوسائط">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content c-media-modal__content">
+
+          <div class="modal-header c-media-modal__header">
+            <div class="c-media-modal__titles">
+              <h5 class="c-media-modal__title mb-0" data-media-modal-title>—</h5>
+              <p class="c-media-modal__meta u-muted mb-0" data-media-modal-meta hidden>—</p>
+            </div>
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+
+          <div class="modal-body c-media-modal__body">
+            <!-- PHOTO -->
+            <figure class="c-media-modal__pane" data-media-pane="photo" hidden>
+              <img class="c-media-modal__img" src="" alt="" loading="eager" decoding="async" data-media-img />
+              <figcaption class="c-media-modal__cap u-muted" data-media-cap hidden></figcaption>
+            </figure>
+
+            <!-- VIDEO -->
+            <div class="c-media-modal__pane" data-media-pane="video" hidden>
+              <video class="c-media-modal__player" playsinline controls data-plyr-video>
+                <source src="" type="video/mp4" data-media-src />
+              </video>
+            </div>
+
+            <!-- AUDIO -->
+            <div class="c-media-modal__pane" data-media-pane="audio" hidden>
+              <audio class="c-media-modal__player" controls data-plyr-audio>
+                <source src="" type="audio/mp3" data-media-src />
+              </audio>
+            </div>
+
+            <!-- Fallback -->
+            <div class="c-media-modal__fallback" data-media-pane="empty" hidden>
+              <p class="u-muted mb-0">لا يمكن عرض هذه المادة حالياً</p>
+            </div>
+          </div>
+
+          <div class="modal-footer c-media-modal__footer">
+            <a class="c-btn c-btn--ghost" href="#" target="_blank" rel="noopener noreferrer" data-media-open-native
+              hidden>
+              فتح في نافذة جديدة
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+            <button type="button" class="c-btn c-btn--primary" data-bs-dismiss="modal">
+              إغلاق
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- =========================
+  HUB DATA (STATIC HTML)
+  - No JSON file
+  - Each station is an article with dataset + embedded lists
+========================== -->
+    <section hidden aria-hidden="true" id="hubStaticData">
+
+      <!-- 1) النشأة -->
+      <article class="hub-station" data-id="birth" data-year="1966" data-badge="نشأة وتكوين"
+        data-title="الميلاد والنشأة في عارورة"
+        data-desc="بدايات التكوين في بيئة قروية بالضفة الغربية صنعت حساسية عالية تجاه الأرض والهوية والظلم اليومي."
+        data-meta="عارورة · رام الله · سياق اجتماعي مبكر"
+        data-lead="هذه المحطة تُقرأ كمدخل لفهم تكوين الشخصية: الريف الفلسطيني ليس مجرد مكان بل شبكة علاقات وذاكرة واحتكاك دائم بواقع الاحتلال. أرشيف هذه المرحلة غالباً يعتمد على صور عائلية وشهادات محلية.">
+
+        <ul data-facts>
+          <li data-k="المكان" data-v="عارورة قرب رام الله"></li>
+          <li data-k="النوع" data-v="محطة تأسيسية"></li>
+          <li data-k="المادة المتاحة" data-v="صور عائلية وشهادات محلية"></li>
+          <li data-k="ملاحظة توثيق" data-v="الأفضل ربط كل صورة بسياق ومصدر إن توفر"></li>
+        </ul>
+
+        <ul data-photos>
+          <li data-thumb="assets/images/articles/Square/2.jpg" data-full="assets/images/articles/Square/2.jpg"
+            data-label="عارورة وسياق المكان"></li>
+          <li data-thumb="assets/images/articles/Square/3.jpg" data-full="assets/images/articles/Square/3.jpg"
+            data-label="صورة أرشيفية عامة (Placeholder)"></li>
+          <li data-thumb="assets/images/articles/Square/4.jpg" data-full="assets/images/articles/Square/4.jpg"
+            data-label="لقطة من مواد بصرية مساندة"></li>
+        </ul>
+
+        <ul data-videos>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="مقدمة: كيف نقرأ المحطات؟" data-meta="فيديو تمهيدي · يشرح منهجية الأرشفة"></li>
+        </ul>
+
+        <ul data-audios>
+          <li data-thumb="assets/images/articles/Square/1.jpg" data-src="assets/audio/001.mp3"
+            data-title="مقتطف صوتي تمهيدي" data-meta="تعليق/مقدمة أرشيفية · Placeholder"></li>
+        </ul>
+      </article>
+
+
+      <!-- 2) الاعتقال -->
+      <article class="hub-station" data-id="prison" data-year="1992" data-badge="اعتقال"
+        data-title="الاعتقال الطويل وتحوّل الدور"
+        data-desc="مرحلة الاعتقال تُعامل في الأرشفة كـ(منعطف) لأنها تنقل الشخص من حضور محلي إلى أفق تنظيمي أوسع."
+        data-meta="سجون الاحتلال · سنوات ممتدة · أثر تنظيمي"
+        data-lead="في الأرشيفات الفلسطينية عادةً ما تُوثّق فترات الاعتقال عبر شهادات، رسائل، صور قديمة، ومواد صحفية. الهدف هنا ليس تضخيم التفاصيل بل تثبيت السياق: كيف يصنع السجن لغة سياسية أكثر صلابة، وكيف يتشكل النفَس التنظيمي تحت القيد.">
+
+        <ul data-facts>
+          <li data-k="السياق" data-v="ملاحقة واعتقالات على خلفية النشاط السياسي"></li>
+          <li data-k="الأثر" data-v="تعمّق تنظيمي وإعادة صياغة الأولويات"></li>
+          <li data-k="مواد مناسبة" data-v="شهادات مكتوبة/مسموعة + لقطات صحفية"></li>
+          <li data-k="اقتراح توثيق" data-v="إضافة خط زمني فرعي: اعتقال/إفراج/إعادة اعتقال"></li>
+        </ul>
+
+        <ul data-photos>
+          <li data-thumb="assets/images/articles/Square/4.jpg" data-full="assets/images/articles/Square/4.jpg"
+            data-label="لقطة صحفية عامة (Placeholder)"></li>
+          <li data-thumb="assets/images/articles/Square/3.jpg" data-full="assets/images/articles/Square/3.jpg"
+            data-label="مواد أرشيفية داعمة"></li>
+        </ul>
+
+        <ul data-videos>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="شرح سياقي: الاعتقال كتحوّل" data-meta="فيديو قصير · إطار تحليلي أرشيفي"></li>
+        </ul>
+
+        <ul data-audios>
+          <li data-thumb="assets/images/articles/Square/1.jpg" data-src="assets/audio/001.mp3"
+            data-title="شهادة/سرد أرشيفي" data-meta="صوت · Placeholder"></li>
+        </ul>
+      </article>
+
+
+      <!-- 3) الإبعاد/الخروج للحضور الخارجي -->
+      <article class="hub-station" data-id="external" data-year="2010" data-badge="عمل سياسي"
+        data-title="الانتقال للحضور السياسي الخارجي"
+        data-desc="تحوّل من إدارة سياقات داخلية إلى التعامل مع فضاء أوسع: خطاب سياسي، علاقات، ورسائل إعلامية."
+        data-meta="فضاء خارجي · ملفات إقليمية · إدارة موقف"
+        data-lead="هذه المحطة مهمتها تنظيم المادة الإعلامية: لقاءات، مقتطفات خطاب، وتصريحات. الهدف هنا بناء مكتبة مرجعية يمكن الرجوع لها بحسب العام أو الموضوع، مع ربط كل مقطع ببطاقة: (العنوان، التاريخ، المنصة، الرابط/المصدر).">
+
+        <ul data-facts>
+          <li data-k="طبيعة المحطة" data-v="تحول في نطاق التأثير"></li>
+          <li data-k="مادة أساسية" data-v="مقاطع مرئية + نصوص تصريحات"></li>
+          <li data-k="تصنيف مقترح" data-v="حسب الموضوع: مقاومة/سياسة/إقليم/رسائل داخلية"></li>
+          <li data-k="توصية" data-v="تثبيت تاريخ كل مادة وربطها بمصدر واضح"></li>
+        </ul>
+
+        <ul data-photos>
+          <li data-thumb="assets/images/articles/Square/2.jpg" data-full="assets/images/articles/Square/2.jpg"
+            data-label="لقطة سياقية (Placeholder)"></li>
+        </ul>
+
+        <ul data-videos>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="مقطع أرشيفي: لقاء/تصريح" data-meta="فيديو · منصة إعلامية · Placeholder"></li>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="مقطع قصير: رسالة سياسية" data-meta="فيديو قصير · توثيق"></li>
+        </ul>
+
+        <ul data-audios>
+          <li data-thumb="assets/images/articles/Square/1.jpg" data-src="assets/audio/001.mp3"
+            data-title="مقتطف صوتي من حديث" data-meta="صوت · Placeholder"></li>
+        </ul>
+      </article>
+
+
+      <!-- 4) محطة قيادية -->
+      <article class="hub-station" data-id="deputy" data-year="2017" data-badge="قيادة"
+        data-title="مرحلة قيادية وحضور إعلامي أوسع"
+        data-desc="تزايد الظهور في المجال العام وتحوّل المواد المتاحة إلى (مكتبة) قابلة للفرز حسب الحدث أو الرسالة."
+        data-meta="قيادة سياسية · ظهور إعلامي · مواد متعددة"
+        data-lead="في هذه المرحلة يصبح التنظيم البصري مهم جداً: كل مادة يجب أن تُعرض ببطاقة: عنوان واضح + وصف موجز + سياق + مصدر. هنا أيضاً تظهر قيمة (القصاصات) القصيرة: دقيقة إلى دقيقتين، كمدخل لمن يريد الفهم السريع.">
+
+        <ul data-facts>
+          <li data-k="النقطة" data-v="ارتفاع كثافة المواد الإعلامية"></li>
+          <li data-k="مخرجات مقترحة" data-v="قصاصات + مقاطع كاملة + تفريغ نصي"></li>
+          <li data-k="حالة التوثيق" data-v="قابلة للتحسين بربط المصادر"></li>
+          <li data-k="ملاحظة UI" data-v="إظهار شارة (مصدر مؤكد) عند توفر رابط رسمي"></li>
+        </ul>
+
+        <ul data-photos>
+          <li data-thumb="assets/images/articles/Square/3.jpg" data-full="assets/images/articles/Square/3.jpg"
+            data-label="لقطة أرشيفية عامة (Placeholder)"></li>
+          <li data-thumb="assets/images/articles/Square/2.jpg" data-full="assets/images/articles/Square/2.jpg"
+            data-label="مواد بصرية مساندة"></li>
+        </ul>
+
+        <ul data-videos>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="مقطع: حضور إعلامي" data-meta="فيديو · أرشيف · Placeholder"></li>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="مقطع: تحليل/تعليق" data-meta="فيديو قصير · سياق سياسي"></li>
+        </ul>
+
+        <ul data-audios>
+          <li data-thumb="assets/images/articles/Square/1.jpg" data-src="assets/audio/001.mp3"
+            data-title="مقتطف صوتي مرتبط" data-meta="صوت · أرشيف · Placeholder"></li>
+        </ul>
+      </article>
+
+
+      <!-- 5) النهاية/الحدث الفاصل -->
+      <article class="hub-station" data-id="assassination" data-year="2024" data-badge="نهاية المسار"
+        data-title="حدث فاصل وبداية موجة التوثيق"
+        data-desc="تتكثف المادة فجأة: بيانات، تغطيات، ردود فعل، ثم يبدأ الفرز: ما هو توثيق وما هو ضجيج."
+        data-meta="بيروت · يناير 2024 · مصادر متعددة"
+        data-lead="أرشفة الأحداث الفاصلة تحتاج قواعد: (1) فصل الخبر عن الرأي، (2) تثبيت المصدر، (3) عدم تكرار نفس المقطع بعناوين مختلفة، (4) عمل (مجموعة مواد) مرتبطة: بيان/تغطية/تحليل/سياق تاريخي.">
+
+        <ul data-facts>
+          <li data-k="الهدف" data-v="جمع المادة ثم تنظيفها من التكرار"></li>
+          <li data-k="تصنيف" data-v="بيانات رسمية · تغطيات · تحليلات · سياق"></li>
+          <li data-k="مؤشر جودة" data-v="عالي عندما تُربط المواد بمصدر واضح"></li>
+          <li data-k="اقتراح" data-v="إضافة تبويب (مصادر) داخل المحطة"></li>
+        </ul>
+
+        <ul data-photos>
+          <li data-thumb="assets/images/articles/Square/2.jpg" data-full="assets/images/articles/Square/2.jpg"
+            data-label="صورة سياقية (Placeholder)"></li>
+          <li data-thumb="assets/images/articles/Square/3.jpg" data-full="assets/images/articles/Square/3.jpg"
+            data-label="لقطة من مواد تغطية (Placeholder)"></li>
+        </ul>
+
+        <ul data-videos>
+          <li data-thumb="assets/images/videos/featured.jpg" data-src="assets/images/videos/featured.mp4"
+            data-title="تجميعة: تغطية خبرية" data-meta="فيديو · مصادر متعددة · Placeholder"></li>
+        </ul>
+
+        <ul data-audios>
+          <li data-thumb="assets/images/articles/Square/1.jpg" data-src="assets/audio/001.mp3"
+            data-title="مقتطف صوتي (إن توفر)" data-meta="صوت · Placeholder"></li>
+        </ul>
+      </article>
+
+    </section>
 
 
 
@@ -2210,117 +2486,59 @@
   <script src="assets/js/script.js" defer></script>
   <script>
     (function () {
-      // ======= DATA (replace later with API/JSON) =======
-      const HUB_DATA = [
-        {
-          id: "birth",
-          year: "1966",
-          badge: "مرحلة مبكرة",
-          title: "الميلاد والنشأة",
-          desc: "ولد في عارورة قرب رام الله وبدأت ملامح التكوين المبكر في بيئة ريفية فلسطينية.",
-          meta: "عارورة · الضفة الغربية · سياق اجتماعي مبكر",
-          lead: "هذه المحطة تقدم خلفية تأسيسية لفهم البيئة التي تشكل فيها وعيه الأولي وكيف انعكس ذلك لاحقا على مساره التنظيمي والسياسي.",
-          facts: [
-            { k: "المكان", v: "عارورة قرب رام الله" },
-            { k: "السنة", v: "1966" },
-            { k: "المحور", v: "تكوين مبكر" }
-          ],
-          photos: [
-            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "صورة أرشيفية" },
-            { thumb: "assets/img/articles/world-featured.jpg", full: "assets/img/articles/world-featured.jpg", label: "لقطة سياقية" }
-          ],
-          videos: [
-            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "مقطع تمهيدي", meta: "مدة قصيرة · توثيق" }
-          ],
-          audios: [
-            { thumb: "assets/img/articles/film1.jpg", src: "assets/audio/001.mp3", title: "مقتطف صوتي", meta: "شهادة/لقاء · توثيق" }
-          ]
-        },
-        {
-          id: "prison",
-          year: "1992",
-          badge: "اعتقال",
-          title: "بداية الاعتقال الطويل",
-          desc: "اعتقل وقضى سنوات طويلة في السجون الإسرائيلية ضمن موجات ملاحقة مكثفة.",
-          meta: "سجون الاحتلال · سنوات ممتدة · أثر تنظيمي",
-          lead: "الاعتقال هنا ليس مجرد تاريخ بل سياق تشكل في داخله دور سياسي وتنظيمي أعمق انعكس على المرحلة اللاحقة.",
-          facts: [
-            { k: "النوع", v: "اعتقال" },
-            { k: "المدة", v: "سنوات طويلة" },
-            { k: "الأثر", v: "تحول تنظيمي" }
-          ],
-          photos: [],
-          videos: [],
-          audios: []
-        },
-        {
-          id: "political",
-          year: "2010",
-          badge: "عمل سياسي",
-          title: "عضوية المكتب السياسي",
-          desc: "برز ضمن قيادة الحركة على المستوى السياسي وبدأت ملامح حضور أوسع في الملفات.",
-          meta: "قيادة سياسية · ملفات إقليمية · إدارة موقف",
-          lead: "هنا تظهر المرحلة التي انتقل فيها من سياقات داخلية إلى إدارة ملفات أوسع على مستوى الإقليم والخطاب السياسي.",
-          facts: [
-            { k: "الدور", v: "سياسي" },
-            { k: "التركيز", v: "إدارة ملفات" },
-            { k: "النطاق", v: "إقليمي" }
-          ],
-          photos: [
-            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "أرشيف" }
-          ],
-          videos: [
-            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "لقاء/مقطع", meta: "إعلام · سياق سياسي" }
-          ],
-          audios: []
-        },
-        {
-          id: "deputy",
-          year: "2017",
-          badge: "قيادة",
-          title: "نائب رئيس المكتب السياسي",
-          desc: "محطة قيادية بارزة ارتبطت بحضور إعلامي ودور تنظيمي أوسع.",
-          meta: "نائب رئيس المكتب السياسي · قيادة · حضور",
-          lead: "هذه المحطة هي نقطة مفصلية لأنها تمثل انتقالا واضحا إلى طبقة قيادية أعلى مع توسع نطاق التأثير والظهور.",
-          facts: [
-            { k: "الصفة", v: "نائب رئيس" },
-            { k: "السنة", v: "2017" },
-            { k: "الطابع", v: "محطة مفصلية" }
-          ],
-          photos: [
-            { thumb: "assets/img/articles/world-featured.jpg", full: "assets/img/articles/world-featured.jpg", label: "لقطة" }
-          ],
-          videos: [
-            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "ظهور إعلامي", meta: "مقطع · أرشيف" }
-          ],
-          audios: [
-            { thumb: "assets/img/articles/film1.jpg", src: "assets/audio/001.mp3", title: "تسجيل/حديث", meta: "صوت · أرشيف" }
-          ]
-        },
-        {
-          id: "assassination",
-          year: "2024",
-          badge: "نهاية المسار",
-          title: "الاغتيال في بيروت",
-          desc: "قتل في ضاحية بيروت الجنوبية يوم 2 يناير 2024 ضمن حدث مفصلي أنهى المسار الزمني.",
-          meta: "بيروت · 2 يناير 2024 · مواد متعددة المصادر",
-          lead: "تمثل هذه المحطة نهاية المسار الزمني وبداية موجة توثيق مكثفة تجمع المواد من مصادر متعددة في وقت واحد.",
-          facts: [
-            { k: "المكان", v: "بيروت" },
-            { k: "التاريخ", v: "2 يناير 2024" },
-            { k: "الوضع", v: "توثيق مستمر" }
-          ],
-          photos: [
-            { thumb: "assets/img/articles/featured-large.png", full: "assets/img/articles/featured-large.png", label: "صورة سياقية" }
-          ],
-          videos: [
-            { thumb: "assets/images/videos/featured.jpg", src: "assets/images/videos/featured.mp4", title: "مقطع سياقي", meta: "تجميع · مصادر" }
-          ],
-          audios: []
-        }
-      ];
+      // =========================
+      // STATIC HTML DATA PARSER
+      // =========================
+      const root = document.getElementById("hubStaticData");
+      const stations = root ? Array.from(root.querySelectorAll(".hub-station")) : [];
 
-      // ======= DOM =======
+      const readList = (el, selector, mapFn) => {
+        const wrap = el.querySelector(selector);
+        if (!wrap) return [];
+        return Array.from(wrap.children).map(mapFn).filter(Boolean);
+      };
+
+      const HUB_DATA = stations.map((st) => {
+        const facts = readList(st, "[data-facts]", (li) => ({
+          k: li.getAttribute("data-k") || "",
+          v: li.getAttribute("data-v") || ""
+        }));
+
+        const photos = readList(st, "[data-photos]", (li) => ({
+          thumb: li.getAttribute("data-thumb") || "",
+          full: li.getAttribute("data-full") || "",
+          label: li.getAttribute("data-label") || "صورة"
+        }));
+
+        const videos = readList(st, "[data-videos]", (li) => ({
+          thumb: li.getAttribute("data-thumb") || "",
+          src: li.getAttribute("data-src") || "",
+          title: li.getAttribute("data-title") || "فيديو",
+          meta: li.getAttribute("data-meta") || ""
+        }));
+
+        const audios = readList(st, "[data-audios]", (li) => ({
+          thumb: li.getAttribute("data-thumb") || "",
+          src: li.getAttribute("data-src") || "",
+          title: li.getAttribute("data-title") || "صوت",
+          meta: li.getAttribute("data-meta") || ""
+        }));
+
+        return {
+          id: st.getAttribute("data-id") || "",
+          year: st.getAttribute("data-year") || "",
+          badge: st.getAttribute("data-badge") || "",
+          title: st.getAttribute("data-title") || "",
+          desc: st.getAttribute("data-desc") || "",
+          meta: st.getAttribute("data-meta") || "",
+          lead: st.getAttribute("data-lead") || "",
+          facts, photos, videos, audios
+        };
+      }).filter(x => x.id);
+
+      // =========================
+      // DOM
+      // =========================
       const list = document.querySelector("[data-hub-list]");
       const tabsWrap = document.querySelector("[data-hub-tabs]");
       const tabBtns = tabsWrap ? Array.from(tabsWrap.querySelectorAll("[data-hub-tab]")) : [];
@@ -2353,7 +2571,16 @@
 
       let activeId = HUB_DATA[0]?.id || null;
 
-      // ======= Helpers =======
+      // =========================
+      // Helpers
+      // =========================
+      const escapeHtml = (s) => String(s || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
       const setActiveTab = (key) => {
         tabBtns.forEach(btn => {
           const on = btn.getAttribute("data-hub-tab") === key;
@@ -2365,13 +2592,6 @@
         });
       };
 
-      const escapeHtml = (s) => String(s || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
       const renderFacts = (facts) => {
         if (!factsWrap) return;
         factsWrap.innerHTML = (facts || []).map(f => `
@@ -2382,13 +2602,15 @@
       `).join("");
       };
 
-      const renderPhotos = (items) => {
+      const renderPhotos = (items, stationTitle) => {
         if (!galleries.photos) return;
         galleries.photos.innerHTML = (items || []).map(it => `
         <div class="c-hub-thumb" role="button" tabindex="0"
-          data-media-card
-          data-modal-image="${escapeHtml(it.full)}"
-          data-modal-title="${escapeHtml(it.label || 'صورة')}"
+          data-modal-type="photo"
+          data-modal-src="${escapeHtml(it.full)}"
+          data-modal-title="${escapeHtml(it.label || "صورة")}"
+          data-modal-meta="${escapeHtml(stationTitle || "")}"
+          data-modal-cap="${escapeHtml(it.label || "")}"
           aria-label="فتح الصورة">
           <img src="${escapeHtml(it.thumb)}" alt="${escapeHtml(it.label || "صورة")}" loading="lazy" />
         </div>
@@ -2398,9 +2620,11 @@
         if (empties.photos) empties.photos.hidden = has;
       };
 
-      const renderMediaRows = (key, items) => {
+      const renderMediaRows = (key, items, stationTitle) => {
         const wrap = galleries[key];
         if (!wrap) return;
+
+        const type = key === "videos" ? "video" : "audio";
 
         wrap.innerHTML = (items || []).map(it => `
         <div class="c-hub-media-row">
@@ -2414,11 +2638,10 @@
           </div>
 
           <button class="c-hub-open" type="button"
-            data-media-card
-            data-modal-video="${escapeHtml(it.src)}"
-            data-modal-image="${escapeHtml(it.thumb)}"
-            data-modal-title="${escapeHtml(it.title || 'مادة مرتبطة')}"
-            data-modal-description="${escapeHtml(it.meta || '')}">
+            data-modal-type="${escapeHtml(type)}"
+            data-modal-src="${escapeHtml(it.src)}"
+            data-modal-title="${escapeHtml(it.title || "")}"
+            data-modal-meta="${escapeHtml(it.meta || stationTitle || "")}">
             فتح <i class="fa-solid fa-arrow-left"></i>
           </button>
         </div>
@@ -2458,9 +2681,9 @@
         if (tLead) tLead.textContent = st.lead;
 
         renderFacts(st.facts);
-        renderPhotos(st.photos);
-        renderMediaRows("videos", st.videos);
-        renderMediaRows("audios", st.audios);
+        renderPhotos(st.photos, st.title);
+        renderMediaRows("videos", st.videos, st.title);
+        renderMediaRows("audios", st.audios, st.title);
 
         if (counters.photos) counters.photos.textContent = (st.photos || []).length;
         if (counters.videos) counters.videos.textContent = (st.videos || []).length;
@@ -2469,16 +2692,165 @@
         renderIndex();
       };
 
-      // ======= Events =======
-      // Index click
+      // =========================
+      // MODAL PLAYER (Bootstrap + Plyr)
+      // =========================
+      const modalEl = document.getElementById("mediaModal");
+      const modal = modalEl ? new bootstrap.Modal(modalEl) : null;
+
+      const modalTitle = modalEl?.querySelector("[data-media-modal-title]");
+      const modalMeta = modalEl?.querySelector("[data-media-modal-meta]");
+      const openNative = modalEl?.querySelector("[data-media-open-native]");
+
+      const panePhoto = modalEl?.querySelector("[data-media-pane='photo']");
+      const paneVideo = modalEl?.querySelector("[data-media-pane='video']");
+      const paneAudio = modalEl?.querySelector("[data-media-pane='audio']");
+      const paneEmpty = modalEl?.querySelector("[data-media-pane='empty']");
+
+      const img = modalEl?.querySelector("[data-media-img]");
+      const cap = modalEl?.querySelector("[data-media-cap]");
+
+      const videoEl = modalEl?.querySelector("[data-plyr-video]");
+      const audioEl = modalEl?.querySelector("[data-plyr-audio]");
+
+      let plyrVideo = null;
+      let plyrAudio = null;
+
+      const hideAllPanes = () => {
+        [panePhoto, paneVideo, paneAudio, paneEmpty].forEach(p => { if (p) p.hidden = true; });
+      };
+
+      const destroyPlayers = () => {
+        try { plyrVideo?.destroy(); } catch (_) { }
+        try { plyrAudio?.destroy(); } catch (_) { }
+        plyrVideo = null;
+        plyrAudio = null;
+
+        if (videoEl) {
+          videoEl.pause?.();
+          videoEl.removeAttribute("src");
+          const s = videoEl.querySelector("source[data-media-src]");
+          if (s) s.setAttribute("src", "");
+          videoEl.load?.();
+        }
+
+        if (audioEl) {
+          audioEl.pause?.();
+          audioEl.removeAttribute("src");
+          const s = audioEl.querySelector("source[data-media-src]");
+          if (s) s.setAttribute("src", "");
+          audioEl.load?.();
+        }
+      };
+
+      const openMediaModal = ({ type, src, title, meta, caption }) => {
+        if (!modal || !modalEl) return;
+
+        hideAllPanes();
+        destroyPlayers();
+
+        if (modalTitle) modalTitle.textContent = title || "—";
+
+        if (modalMeta) {
+          const hasMeta = !!(meta && String(meta).trim());
+          modalMeta.hidden = !hasMeta;
+          if (hasMeta) modalMeta.textContent = meta;
+        }
+
+        if (openNative) {
+          openNative.hidden = !src;
+          if (src) openNative.setAttribute("href", src);
+        }
+
+        if (!src) {
+          if (paneEmpty) paneEmpty.hidden = false;
+          modal.show();
+          return;
+        }
+
+        if (type === "photo") {
+          if (img) {
+            img.src = src;
+            img.alt = title || "صورة";
+          }
+          if (cap) {
+            const hasCap = !!(caption && String(caption).trim());
+            cap.hidden = !hasCap;
+            if (hasCap) cap.textContent = caption;
+          }
+          if (panePhoto) panePhoto.hidden = false;
+          modal.show();
+          return;
+        }
+
+        if (type === "video") {
+          const s = videoEl?.querySelector("source[data-media-src]");
+          if (s) s.setAttribute("src", src);
+          videoEl?.load?.();
+          if (paneVideo) paneVideo.hidden = false;
+
+          // Init Plyr
+          if (window.Plyr && videoEl) {
+            plyrVideo = new Plyr(videoEl, {
+              controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "settings", "fullscreen"]
+            });
+          }
+          modal.show();
+          return;
+        }
+
+        if (type === "audio") {
+          const s = audioEl?.querySelector("source[data-media-src]");
+          if (s) s.setAttribute("src", src);
+          audioEl?.load?.();
+          if (paneAudio) paneAudio.hidden = false;
+
+          // Init Plyr
+          if (window.Plyr && audioEl) {
+            plyrAudio = new Plyr(audioEl, {
+              controls: ["play", "progress", "current-time", "mute", "volume", "settings"]
+            });
+          }
+          modal.show();
+          return;
+        }
+
+        if (paneEmpty) paneEmpty.hidden = false;
+        modal.show();
+      };
+
+      // Cleanup on close (stop audio/video)
+      if (modalEl) {
+        modalEl.addEventListener("hidden.bs.modal", () => {
+          destroyPlayers();
+          if (img) img.src = "";
+          if (cap) { cap.textContent = ""; cap.hidden = true; }
+        });
+      }
+
+      // =========================
+      // Events
+      // =========================
       document.addEventListener("click", (e) => {
         const item = e.target.closest("[data-hub-id]");
-        if (!item) return;
-        applyStation(item.getAttribute("data-hub-id"));
-        setActiveTab("details");
+        if (item) {
+          applyStation(item.getAttribute("data-hub-id"));
+          setActiveTab("details");
+          return;
+        }
+
+        const openBtn = e.target.closest("[data-modal-src][data-modal-type]");
+        if (openBtn) {
+          openMediaModal({
+            type: openBtn.getAttribute("data-modal-type"),
+            src: openBtn.getAttribute("data-modal-src"),
+            title: openBtn.getAttribute("data-modal-title") || "—",
+            meta: openBtn.getAttribute("data-modal-meta") || "",
+            caption: openBtn.getAttribute("data-modal-cap") || ""
+          });
+        }
       });
 
-      // Index keyboard
       document.addEventListener("keydown", (e) => {
         const item = e.target.closest("[data-hub-id]");
         if (!item) return;
@@ -2489,36 +2861,11 @@
         }
       });
 
-      // Tabs
       tabBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          setActiveTab(btn.getAttribute("data-hub-tab"));
-        });
+        btn.addEventListener("click", () => setActiveTab(btn.getAttribute("data-hub-tab")));
       });
 
-      // Open media (simple behavior)
-      document.addEventListener("click", (e) => {
-        // Compatibility: if older data-* attributes exist, attempt to delegate to the
-        // new modal-based approach. Otherwise fallback to opening in new tab.
-        const imgBtn = e.target.closest("[data-open-image]");
-        if (imgBtn) {
-          const src = imgBtn.getAttribute("data-open-image");
-          const trigger = document.querySelector(`[data-media-card][data-modal-image="${src}"]`);
-          if (trigger && typeof trigger.click === 'function') { trigger.click(); return; }
-          window.open(src, "_blank", "noopener,noreferrer");
-          return;
-        }
-
-        const mediaBtn = e.target.closest("[data-open-media]");
-        if (mediaBtn) {
-          const src = mediaBtn.getAttribute("data-open-media");
-          const trigger = document.querySelector(`[data-media-card][data-modal-video="${src}"]`);
-          if (trigger && typeof trigger.click === 'function') { trigger.click(); return; }
-          window.open(src, "_blank", "noopener,noreferrer");
-        }
-      });
-
-      // ======= Init =======
+      // Boot
       renderIndex();
       applyStation(activeId);
       setActiveTab("details");
