@@ -326,7 +326,6 @@
             <div class="c-media-block__actions">
               <span class="c-media-block__count"><i class="fa-solid fa-circle-play"></i> <strong
                   data-count="video">0</strong></span>
-              <a class="c-btn c-btn--outline" href="#videos">عرض الكل</a>
             </div>
           </header>
 
@@ -399,6 +398,10 @@
             </article>
           </div>
 
+          <div class="c-media-loadmore" style="text-align:center;margin-top:18px">
+            <button class="c-btn c-btn--outline js-load-more" type="button" data-load-type="video">عرض المزيد</button>
+          </div>
+
           <div class="c-empty u-hide" data-empty="video">لا توجد فيديوهات حاليا</div>
         </div>
       </section>
@@ -419,7 +422,6 @@
             <div class="c-media-block__actions">
               <span class="c-media-block__count"><i class="fa-solid fa-mobile-screen"></i> <strong
                   data-count="reel">0</strong></span>
-              <a class="c-btn c-btn--outline" href="#reels">عرض الكل</a>
             </div>
           </header>
 
@@ -511,6 +513,10 @@
             </article>
           </div>
 
+          <div class="c-media-loadmore" style="text-align:center;margin-top:18px">
+            <button class="c-btn c-btn--outline js-load-more" type="button" data-load-type="reel">عرض المزيد</button>
+          </div>
+
           <div class="c-empty u-hide" data-empty="reel">لا توجد ريلز حاليا</div>
         </div>
       </section>
@@ -531,7 +537,6 @@
             <div class="c-media-block__actions">
               <span class="c-media-block__count"><i class="fa-regular fa-images"></i> <strong
                   data-count="photo">0</strong></span>
-              <a class="c-btn c-btn--outline" href="#photos">عرض الكل</a>
             </div>
           </header>
 
@@ -611,6 +616,10 @@
             </article>
           </div>
 
+          <div class="c-media-loadmore" style="text-align:center;margin-top:18px">
+            <button class="c-btn c-btn--outline js-load-more" type="button" data-load-type="photo">عرض المزيد</button>
+          </div>
+
           <div class="c-empty u-hide" data-empty="photo">لا توجد صور حاليا</div>
         </div>
       </section>
@@ -631,7 +640,6 @@
             <div class="c-media-block__actions">
               <span class="c-media-block__count"><i class="fa-solid fa-wave-square"></i> <strong
                   data-count="audio">0</strong></span>
-              <a class="c-btn c-btn--outline" href="#audio">عرض الكل</a>
             </div>
           </header>
 
@@ -677,6 +685,10 @@
                 </div>
               </div>
             </article>
+          </div>
+
+          <div class="c-media-loadmore" style="text-align:center;margin-top:18px">
+            <button class="c-btn c-btn--outline js-load-more" type="button" data-load-type="audio">عرض المزيد</button>
           </div>
 
           <div class="c-empty u-hide" data-empty="audio">لا توجد صوتيات حاليا</div>
@@ -1000,6 +1012,44 @@
           empty.classList.toggle("u-hide", count !== 0);
         }
       });
+
+      // Load-more: append one visual row of cards and disable the button
+      function itemsPerRow(grid) {
+        const items = Array.from(grid.querySelectorAll('[data-media-card]'));
+        if (!items.length) return 3;
+        const firstTop = items[0].offsetTop;
+        let perRow = 0;
+        for (let it of items) {
+          if (it.offsetTop === firstTop) perRow++;
+          else break;
+        }
+        return perRow || 3;
+      }
+
+      document.querySelectorAll('.js-load-more').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const type = this.getAttribute('data-load-type');
+          const grid = document.querySelector(`[data-grid="${type}"]`);
+          if (!grid) return;
+
+          const perRow = itemsPerRow(grid);
+          const sourceItems = grid.querySelectorAll('[data-media-card]');
+          if (!sourceItems.length) return;
+
+          // Clone first `perRow` items (wrap if fewer available)
+          for (let i = 0; i < perRow; i++) {
+            const idx = i % sourceItems.length;
+            const clone = sourceItems[idx].cloneNode(true);
+            grid.appendChild(clone);
+          }
+
+          // Disable button after one load
+          this.disabled = true;
+          this.textContent = 'تم التحميل';
+          this.classList.add('is-disabled');
+        });
+      });
+
     })();
   </script>
 
