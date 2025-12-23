@@ -770,7 +770,7 @@
                 <!-- Plyr mount -->
                 <div class="c-audio-player__plyr">
                   <audio class="js-plyr-audio" controls preload="metadata" data-player-audio>
-                    <source src="assets/audio/arouri-clip.mp3" type="audio/mpeg" />
+                    <source src="assets/audio/001.mp3" type="audio/mpeg" />
                   </audio>
                 </div>
 
@@ -1751,84 +1751,139 @@
 
   </div>
   <!-- ========================================= Media Detail Modal — Editorial Layout ========================================= -->
+  <!-- =========================================
+ Media Detail Modal — Pro Split Layout (50/50)
+ UI-only refactor
+========================================= -->
   <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
       <div class="modal-content c-modal__inner">
 
-        <!-- Close -->
+        <!-- Close (top corner) -->
         <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">
-          ×
+          <span aria-hidden="true">×</span>
         </button>
 
         <div class="modal-body c-modal__body">
 
-          <!-- ===== Header ===== -->
+          <!-- ===== Sticky Header ===== -->
           <header class="c-modal__header">
-            <span class="c-modal__badge" data-modal-badge-target></span>
+            <div class="c-modal__header-top">
+              <span class="c-modal__badge" data-modal-badge-target></span>
 
-            <h2 class="c-modal__title" data-modal-title-target>
-              بلا عنوان
-            </h2>
+              <div class="c-modal__meta">
+                <span class="c-modal__meta-item" data-modal-timestamp-target></span>
+                <span class="c-modal__meta-sep" aria-hidden="true">•</span>
+                <span class="c-modal__meta-item" data-modal-source-target></span>
+              </div>
+            </div>
 
-            <div class="c-modal__meta">
-              <span data-modal-timestamp-target></span>
-              <span data-modal-source-target></span>
+            <h2 class="c-modal__title" data-modal-title-target>بلا عنوان</h2>
+
+            <!-- Optional chips (UI only, safe if not filled) -->
+            <div class="c-modal__chips" aria-label="وسوم">
+              <span class="c-modal__chip" data-modal-kind-target>وسائط</span>
+              <span class="c-modal__chip c-modal__chip--soft" data-modal-duration-target hidden>المدة: —</span>
+              <span class="c-modal__chip c-modal__chip--soft" data-modal-location-target hidden>المكان: —</span>
             </div>
           </header>
 
-          <!-- ===== Two-column Media + Details ===== -->
-          <div class="c-modal__content-grid">
+          <!-- ===== Split Layout ===== -->
+          <section class="c-modal__split" aria-label="عرض الوسائط والتفاصيل">
 
-            <!-- Media column: mounts for video OR audio (script injects into these) -->
-            <div class="c-modal__media">
-              <div class="c-modal__media-wrap">
+            <!-- RIGHT: Media -->
+            <div class="c-modal__media" aria-label="المشغل">
+
+              <div class="c-modal__media-stage">
+                <!-- JS injects video/audio/iframe here -->
                 <div class="c-modal__video-mount" data-modal-video-mount></div>
-                <div class="c-modal__audio-mount" data-modal-audio-mount></div>
+
+                <!-- Fallback image (kept for non-video cases) -->
+                <figure class="c-modal__fallback" aria-label="صورة">
+                  <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="صورة أرشيفية"
+                    loading="lazy" />
+                </figure>
+
+                <!-- Overlay label (UI only) -->
+                <div class="c-modal__media-overlay" aria-hidden="true">
+                  <span class="c-modal__overlay-pill">
+                    <i class="fa-solid fa-play"></i>
+                    تشغيل
+                  </span>
+                </div>
+              </div>
+
+              <!-- Media strip (optional preview rows) -->
+              <div class="c-modal__media-strip" aria-label="مرفقات">
+                <button class="c-modal__thumb is-active" type="button" aria-label="المحتوى الحالي">
+                  <i class="fa-solid fa-circle-play"></i>
+                  <span>المحتوى</span>
+                </button>
+
+                <button class="c-modal__thumb" type="button" aria-label="الصورة المرفقة">
+                  <i class="fa-regular fa-image"></i>
+                  <span>صورة</span>
+                </button>
+
+                <button class="c-modal__thumb" type="button" aria-label="الصوت المرفق">
+                  <i class="fa-solid fa-wave-square"></i>
+                  <span>صوت</span>
+                </button>
               </div>
             </div>
 
-            <!-- Details column: image, label, actions, meta -->
-            <aside class="c-modal__details">
+            <!-- LEFT: Details -->
+            <aside class="c-modal__details" aria-label="بيانات وتفاصيل">
 
-              <figure class="c-modal__image">
-                <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="صورة أرشيفية"
-                  loading="lazy" />
-              </figure>
+              <!-- Description -->
+              <section class="c-modal__section">
+                <h3 class="c-modal__section-title">
+                  <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                  الوصف
+                </h3>
+                <p class="c-modal__desc" data-modal-description-target>مقتطف وسائط.</p>
+              </section>
 
-              <div class="c-modal__details-body">
-                <div class="c-modal__info">
-                  <p class="c-modal__audio-label" data-modal-audio-label-target></p>
-                  <div class="c-modal__meta-list">
-                    <span data-modal-timestamp-target></span>
-                    <span data-modal-source-target></span>
+              <!-- Quick facts (UI-only; safe if empty) -->
+              <section class="c-modal__section">
+                <h3 class="c-modal__section-title">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  بيانات سريعة
+                </h3>
+
+                <div class="c-modal__facts" role="list">
+                  <div class="c-modal__fact" role="listitem">
+                    <span class="c-modal__fact-k">النوع</span>
+                    <strong class="c-modal__fact-v" data-modal-kind2-target>—</strong>
+                  </div>
+                  <div class="c-modal__fact" role="listitem">
+                    <span class="c-modal__fact-k">التاريخ</span>
+                    <strong class="c-modal__fact-v" data-modal-date-target>—</strong>
+                  </div>
+                  <div class="c-modal__fact" role="listitem">
+                    <span class="c-modal__fact-k">المصدر</span>
+                    <strong class="c-modal__fact-v" data-modal-source2-target>—</strong>
+                  </div>
+                  <div class="c-modal__fact" role="listitem">
+                    <span class="c-modal__fact-k">التصنيف</span>
+                    <strong class="c-modal__fact-v" data-modal-tag-target>—</strong>
                   </div>
                 </div>
+              </section>
 
-                <div class="c-modal__actions">
-                  <a class="c-btn c-btn--outline c-modal__download" href="#" data-modal-download-target>
-                    <i class="fa-solid fa-download"></i>
-                    تحميل
-                  </a>
-                  <button class="c-btn c-btn--ghost c-modal__share" type="button" data-modal-share>
-                    <i class="fa-solid fa-share-nodes"></i>
-                    مشاركة
-                  </button>
-                </div>
-
-                <div class="c-modal__extra">
-                  <small class="c-modal__caption" data-modal-caption-target></small>
-                </div>
-              </div>
+              <!-- Actions (UI only) -->
+              <section class="c-modal__section c-modal__section--actions">
+                <button type="button" class="c-btn c-btn--primary c-modal__action">
+                  نسخ الرابط
+                  <i class="fa-solid fa-link" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="c-btn c-btn--outline c-modal__action">
+                  فتح المصدر
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </button>
+              </section>
 
             </aside>
-
-          </div>
-
-          <!-- ===== Description ===== -->
-          <section class="c-modal__description">
-            <p data-modal-description-target>
-              مقتطف وسائط.
-            </p>
           </section>
 
         </div>
