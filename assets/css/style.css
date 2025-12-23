@@ -1946,9 +1946,7 @@ body.is-dark .c-quote-modal__source {
   color: var(--text-primary);
 }
 
-.c-badge.c-badge--reel {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+
 
 .c-badge.c-badge--audio {
   background-color: rgba(0, 0, 0, 0.6);
@@ -3510,7 +3508,6 @@ body:not(.is-dark) .c-page-shell {
 
 :is(html[data-theme="dark"], body.is-dark) .u-badge,
 :is(html[data-theme="dark"], body.is-dark) .c-badge {
-  background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: var(--text-primary);
 }
@@ -6056,10 +6053,7 @@ body.is-dark .c-chip.is-active {
   border-color: rgba(214, 169, 75, 0.28);
 }
 
-:is(html[data-theme="dark"], body.is-dark) .c-badge--audio {
-  background: rgba(214, 169, 75, 0.18);
-  border-color: rgba(214, 169, 75, 0.22);
-}
+
 
 /* =========================================================
   10) EMPTY STATE — premium + on-brand
