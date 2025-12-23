@@ -398,6 +398,106 @@ html[data-theme="dark"] .c-nav__icon {
 .c-offcanvas__actions {
   display: grid;
   gap: var(--space-10);
+
+/* =========================================
+   Media Detail Modal — two-column layout
+   ========================================= */
+.c-modal__body {
+  padding: 20px 22px;
+}
+
+.c-modal__content-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.c-modal__media {
+  display: block;
+}
+
+.c-modal__media-wrap > * {
+  margin-bottom: 12px;
+}
+
+.c-modal__video-mount,
+.c-modal__audio-mount {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.c-modal__video-player {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+  background: #000;
+}
+
+.c-modal__video-frame {
+  width: 100%;
+  height: 420px;
+  border: 0;
+  display: block;
+}
+
+.c-modal__audio-player {
+  width: 100%;
+}
+
+.c-modal__details {
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.c-modal__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(17,20,15,0.06);
+}
+
+.c-modal__details-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.c-modal__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.c-modal__caption {
+  color: var(--text-secondary);
+}
+
+.c-modal__audio-label {
+  font-weight: 700;
+}
+
+@media (max-width: 991.98px) {
+  .c-modal__content-grid {
+    grid-template-columns: 1fr;
+  }
+  .c-modal__details {
+    order: 2;
+  }
+  .c-modal__media {
+    order: 1;
+  }
+  .c-modal__video-frame {
+    height: 260px;
+  }
+}
 }
 
 /* Better mobile tap targets */
@@ -4010,7 +4110,6 @@ html[data-theme="dark"] .c-theme-toggle {
 .c-select-wrap {
   position: relative;
   display: inline-block;
-  min-width: 200px;
 }
 
 /* =========================================
@@ -4138,7 +4237,9 @@ html[dir="rtl"] .c-select {
 
 /* Controls */
 .c-audio-lib__controls {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: var(--space-12);
   padding: var(--space-16);
   border-radius: var(--radius-20);
@@ -4157,6 +4258,7 @@ html[dir="rtl"] .c-select {
 
 .c-audio-lib__search {
   position: relative;
+  width: 48%;
 }
 
 .c-audio-lib__search i {
@@ -4185,7 +4287,7 @@ html[dir="rtl"] .c-select {
   color: var(--text-primary);
   border-radius: var(--radius-16);
   padding: 10px 12px;
-  min-width: 180px;
+  min-width: 180px !important;
 }
 
 html[data-theme="dark"] .c-audio-lib__sort,
@@ -5941,7 +6043,7 @@ body.is-dark .c-path__icon {
 }
 
 .c-quote-mini__mark {
-  font-size: 2rem;
+  font-size: 4rem;
   color: rgba(199, 149, 42, 0.55);
   line-height: 1;
 }

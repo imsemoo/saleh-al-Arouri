@@ -718,12 +718,18 @@
                 <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i> رثائي
               </button>
 
-              <select class="c-audio-lib__sort" data-audio-sort aria-label="ترتيب">
-                <option value="recent">الأحدث</option>
-                <option value="popular">الأكثر استماعًا</option>
-                <option value="duration">الأطول</option>
-                <option value="title">حسب العنوان</option>
-              </select>
+              <div class="c-select-wrap">
+
+
+                <select class="c-audio-lib__sort c-select" data-audio-sort aria-label="ترتيب">
+                  <option value="recent">الأحدث</option>
+                  <option value="popular">الأكثر استماعًا</option>
+                  <option value="duration">الأطول</option>
+                  <option value="title">حسب العنوان</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down c-select__icon" aria-hidden="true"></i>
+              </div>
             </div>
           </div>
 
@@ -1770,35 +1776,53 @@
             </div>
           </header>
 
-          <!-- ===== Media Grid ===== -->
-          <section class="c-modal__grid">
+          <!-- ===== Two-column Media + Details ===== -->
+          <div class="c-modal__content-grid">
 
-            <!-- Video (Primary) -->
-            <div class="c-modal__video">
-              <div class="c-modal__video-mount" data-modal-video-mount></div>
+            <!-- Media column: mounts for video OR audio (script injects into these) -->
+            <div class="c-modal__media">
+              <div class="c-modal__media-wrap">
+                <div class="c-modal__video-mount" data-modal-video-mount></div>
+                <div class="c-modal__audio-mount" data-modal-audio-mount></div>
+              </div>
             </div>
 
-            <!-- Side Stack -->
-            <aside class="c-modal__side">
+            <!-- Details column: image, label, actions, meta -->
+            <aside class="c-modal__details">
 
-              <!-- Image -->
               <figure class="c-modal__image">
                 <img data-modal-image-target src="assets/images/videos/featured.jpg" alt="صورة أرشيفية"
                   loading="lazy" />
               </figure>
 
-              <!-- Audio -->
-              <div class="c-modal__audio">
-                <div class="c-modal__audio-icon">
-                  <i class="fa-solid fa-microphone"></i>
+              <div class="c-modal__details-body">
+                <div class="c-modal__info">
+                  <p class="c-modal__audio-label" data-modal-audio-label-target></p>
+                  <div class="c-modal__meta-list">
+                    <span data-modal-timestamp-target></span>
+                    <span data-modal-source-target></span>
+                  </div>
                 </div>
-                <p data-modal-audio-label-target>
-                  تسجيل صوتي مختصر
-                </p>
+
+                <div class="c-modal__actions">
+                  <a class="c-btn c-btn--outline c-modal__download" href="#" data-modal-download-target>
+                    <i class="fa-solid fa-download"></i>
+                    تحميل
+                  </a>
+                  <button class="c-btn c-btn--ghost c-modal__share" type="button" data-modal-share>
+                    <i class="fa-solid fa-share-nodes"></i>
+                    مشاركة
+                  </button>
+                </div>
+
+                <div class="c-modal__extra">
+                  <small class="c-modal__caption" data-modal-caption-target></small>
+                </div>
               </div>
 
             </aside>
-          </section>
+
+          </div>
 
           <!-- ===== Description ===== -->
           <section class="c-modal__description">

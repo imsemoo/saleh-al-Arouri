@@ -681,26 +681,40 @@
       </div>
     </footer>
 
-    <!-- Modal (existing) -->
+    <!-- Modal (media detail) -->
     <div class="modal fade c-modal" id="mediaDetailModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content c-modal__inner">
-          <div class="modal-body">
-            <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
 
-            <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
-            <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
+          <button type="button" class="c-modal__close" data-bs-dismiss="modal" aria-label="إغلاق">&times;</button>
 
-            <div class="c-badge" data-modal-badge-target style="margin-top:12px"></div>
-            <p class="u-muted" style="margin-top:10px" data-modal-timestamp-target></p>
-            <p class="u-muted" data-modal-source-target></p>
+          <div class="modal-body c-modal__body">
+            <header class="c-modal__header">
+              <h3 class="c-card__title" data-modal-title-target>عرض الوسائط</h3>
+              <div class="c-badge" data-modal-badge-target></div>
+              <div class="c-modal__meta">
+                <span data-modal-timestamp-target></span>
+                <span data-modal-source-target></span>
+              </div>
+            </header>
 
-            <div style="margin-top:14px">
-              <img data-modal-image-target src="assets/images/videos/thumb1.jpg" alt=""
-                style="width:100%;border-radius:16px;border:1px solid var(--surface-border)" />
+            <div class="c-modal__content-grid">
+              <div class="c-modal__media">
+                <div class="c-modal__video-mount" data-modal-video-mount></div>
+                <div class="c-modal__audio-mount" data-modal-audio-mount></div>
+              </div>
+
+              <aside class="c-modal__details">
+                <figure class="c-modal__image">
+                  <img data-modal-image-target src="assets/images/videos/thumb1.jpg" alt="" loading="lazy" />
+                </figure>
+                <div class="c-modal__details-body">
+                  <p class="c-modal__audio-label" data-modal-audio-label-target></p>
+                  <p class="u-muted" data-modal-description-target>كل مادة يتبعها سياق ومصدر عند توفره</p>
+                </div>
+              </aside>
             </div>
 
-            <div data-modal-video-mount style="margin-top:14px"></div>
           </div>
         </div>
       </div>
