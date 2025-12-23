@@ -1,55 +1,114 @@
 /**
  * ------------------------------------------------------------
- * Global UI Initializers (Vanilla JS + Bootstrap + optional OwlCarousel)
+ * Global UI Initializers (Vanilla JS + Bootstrap + optional libs)
  * ------------------------------------------------------------
- * Notes:
- * - Keep functions small, defensive, and dependency-aware.
- * - Avoid hard crashes if optional libs (jQuery/OwlCarousel/Bootstrap) are missing.
- * - Use dataset-driven UI updates to keep HTML as the source of truth.
+ * Principles:
+ * - Small, focused functions (single responsibility).
+ * - Defensive checks for optional dependencies (Bootstrap / jQuery / OwlCarousel / Plyr).
+ * - Dataset-driven UI: HTML remains the source of truth.
+ * - Accessibility: keyboard support + aria attributes where relevant.
+ *
+ * This file is intended for a static site (multi-page) and is safe to include on all pages.
  */
+
+/* ============================================================
+   0) Utilities (small helpers used across features)
+============================================================ */
 
 /**
- * Marks the current navigation link as active based on the current pathname.
- * - Supports direct file routing (e.g., /about.html) and folder routing (e.g., /about/ -> index.html fallback).
- * - Adds `aria-current="page"` for accessibility on the active link.
+ * Key list used for keyboard activation across "button-like" elements.
+ * Spacebar appears as " " in modern browsers.
+ */
+const ACTIVATION_KEYS = ["Enter", " "];
+
+/**
+ * Safe localStorage getter (won't crash in private mode / blocked storage).
+ * @param {string} key
+ * @returns {string|null}
+ */
+const safeStorageGet = (key) => {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Safe localStorage setter / remover.
+ * @param {string} key
+ * @param {string|null} value
+ */
+const safeStorageSet = (key, value) => {
+  try {
+    if (value) localStorage.setItem(key, value);
+    else localStorage.removeItem(key);
+  } catch {
+    /* ignore storage errors */
+  }
+};
+
+/**
+ * Runs handler for click OR keyboard activation (Enter/Space).
+ * @param {Event} event
+ * @param {Function} handler
+ */
+const handleActivation = (event, handler) => {
+  if (event.type === "keydown") {
+    if (!ACTIVATION_KEYS.includes(event.key)) return;
+    event.preventDefault();
+  }
+  handler();
+};
+
+/* ============================================================
+   1) Navigation Active Link
+============================================================ */
+
+/**
+ * Marks the current navigation link as active based on current pathname.
+ * - Supports direct file routing (e.g., /about.html)
+ * - Supports folder routing (e.g., /about/ -> index.html fallback)
+ * - Adds `aria-current="page"` on the active link for accessibility
  */
 const setActiveNavLink = () => {
-  // Normalize current page name (fallback to index.html for directory roots).
-  const path = window.location.pathname.split("/").pop() || "index.html";
+  const currentFile = window.location.pathname.split("/").pop() || "index.html";
 
   document.querySelectorAll(".c-nav__link").forEach((link) => {
-    // Extract final segment from the link href to compare with current page.
     const href = link.getAttribute("href") || "";
-    const target = href.split("/").pop();
+    const targetFile = href.split("/").pop();
 
-    // Exact filename match (simple and predictable for static sites).
-    const isMatch = target === path;
+    const isActive = targetFile === currentFile;
 
-    // Toggle UI state + a11y state.
-    link.classList.toggle("is-active", isMatch);
-    if (isMatch) link.setAttribute("aria-current", "page");
+    link.classList.toggle("is-active", isActive);
+
+    if (isActive) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   });
 };
 
+/* ============================================================
+   2) Generic Tabs (dataset-driven)
+============================================================ */
+
 /**
  * Initializes tab components under any `[data-tabs-root]` containers.
  * Expected structure:
- * - Tabs:   [data-tabs] .c-tab (each tab must have data-tab-target)
- * - Panels: .c-tab-panel (each panel must have data-tab-panel)
+ * - Tabs container: [data-tabs]
+ * - Tabs: .c-tab (each must have `data-tab-target="key"`)
+ * - Panels: .c-tab-panel (each must have `data-tab-panel="key"`)
  *
  * Behavior:
- * - Clicking a tab activates its matching panel.
- * - The first tab is activated by default.
+ * - Clicking/Enter/Space on tab activates matching panel
+ * - First tab is activated by default (if none already active)
  */
 const initTabs = () => {
-  // Collect tab roots declared explicitly or infer them from [data-tabs] containers
   const roots = new Set();
 
-  // Explicit roots (opt-in)
+  // Explicit roots (recommended)
   document.querySelectorAll("[data-tabs-root]").forEach((r) => roots.add(r));
 
-  // Find any tabs containers and infer a sensible root (wrap, area, or closest ancestor)
+  // Infer roots from [data-tabs] containers (fallback for legacy markup)
   document.querySelectorAll("[data-tabs]").forEach((tabsEl) => {
     const inferred =
       tabsEl.closest("[data-tabs-root]") ||
@@ -58,119 +117,128 @@ const initTabs = () => {
       tabsEl.closest(".c-bio-tabs") ||
       tabsEl.closest(".c-tabs") ||
       document.body;
-    if (inferred) roots.add(inferred);
+
+    roots.add(inferred);
   });
 
-  // For each root, wire the tabs found inside it
   roots.forEach((root) => {
-    const tabsContainer = root.querySelector("[data-tabs]") || root.querySelector(".c-bio-tabs__tabs") || root.querySelector(".c-tabs");
+    const tabsContainer =
+      root.querySelector("[data-tabs]") ||
+      root.querySelector(".c-bio-tabs__tabs") ||
+      root.querySelector(".c-tabs");
+
     if (!tabsContainer) return;
 
-    const tabs = tabsContainer.querySelectorAll(".c-tab");
-    const panels = root.querySelectorAll(".c-tab-panel");
+    const tabs = Array.from(tabsContainer.querySelectorAll(".c-tab"));
+    const panels = Array.from(root.querySelectorAll(".c-tab-panel"));
 
     if (!tabs.length || !panels.length) return;
 
     /**
-     * Activates a given tab and shows its corresponding panel.
-     * @param {HTMLElement} tab - The tab element to activate.
+     * Activates a tab element and shows its corresponding panel.
+     * @param {HTMLElement} tabEl
      */
-    const activateTab = (tab) => {
-      const target = tab.getAttribute("data-tab-target");
+    const activateTab = (tabEl) => {
+      const key = tabEl.getAttribute("data-tab-target");
+      if (!key) return;
 
-      // Toggle active styling for tabs.
-      tabs.forEach((t) => t.classList.toggle("is-active", t === tab));
+      tabs.forEach((t) => t.classList.toggle("is-active", t === tabEl));
 
-      // Toggle visibility for panels by matching the data attribute.
-      panels.forEach((p) =>
-        p.classList.toggle("is-visible", p.getAttribute("data-tab-panel") === target)
-      );
+      panels.forEach((p) => {
+        const show = p.getAttribute("data-tab-panel") === key;
+        p.classList.toggle("is-visible", show);
+      });
     };
 
-    // Wire events and set initial active tab.
-    tabs.forEach((tab, i) => {
+    // Wire events
+    tabs.forEach((tab, idx) => {
       tab.addEventListener("click", () => activateTab(tab));
-      // Also support keyboard activation for accessibility
-      tab.addEventListener("keydown", (e) => {
-        if (!["Enter", " ", "Spacebar"].includes(e.key)) return;
-        e.preventDefault();
-        activateTab(tab);
-      });
-      if (i === 0) activateTab(tab);
+      tab.addEventListener("keydown", (e) => handleActivation(e, () => activateTab(tab)));
+
+      // Default selection: first tab
+      if (idx === 0) activateTab(tab);
     });
   });
 };
 
+/* ============================================================
+   3) Optional OwlCarousel (Hero)
+============================================================ */
+
 /**
- * Initializes the hero carousel if jQuery + OwlCarousel are present.
- * This is optional: if those libraries are not loaded, the page still works.
+ * Initializes the hero carousel if jQuery + OwlCarousel exist.
+ * This is optional: if not present, nothing breaks.
  */
 const initHeroCarousel = () => {
-  // Dependency check: OwlCarousel is a jQuery plugin.
-  if (window.jQuery && window.jQuery.fn.owlCarousel) {
-    const $carousel = window.jQuery(".js-hero-carousel");
+  const hasJQ = !!window.jQuery;
+  const hasOwl = hasJQ && !!window.jQuery.fn?.owlCarousel;
+  if (!hasOwl) return;
 
-    // Only init if we actually have a carousel element.
-    if ($carousel.length) {
-      $carousel.owlCarousel({
-        loop: true,
-        margin: 24,
-        nav: false,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 7000,
-        responsive: {
-          0: { items: 1 },
-          768: { items: 2 },
-        },
-      });
-    }
-  }
+  const $carousel = window.jQuery(".js-hero-carousel");
+  if (!$carousel.length) return;
+
+  $carousel.owlCarousel({
+    loop: true,
+    margin: 24,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 7000,
+    responsive: {
+      0: { items: 1 },
+      768: { items: 2 },
+    },
+  });
 };
 
+/* ============================================================
+   4) Bootstrap Modal Helper (tiny wrapper)
+============================================================ */
+
 /**
- * Small helper wrapper around Bootstrap's modal API.
- * Keeps modal usage centralized and easy to extend later.
+ * Small helper around Bootstrap's Modal API.
+ * Keeps modal usage centralized and easy to extend.
  */
 const modalHelper = {
   /**
    * Opens a Bootstrap modal by element id.
-   * @param {string} id - The modal element id.
+   * @param {string} id
    */
-  open: (id) => {
+  open(id) {
     const modalEl = document.getElementById(id);
+    if (!modalEl || !window.bootstrap?.Modal) return;
 
-    // Dependency check: Bootstrap Modal must exist.
-    if (modalEl && window.bootstrap?.Modal) {
-      const modal = new window.bootstrap.Modal(modalEl);
-      modal.show();
-    }
+    const modal = new window.bootstrap.Modal(modalEl);
+    modal.show();
   },
 };
+
+/* ============================================================
+   5) Media Detail Modal (hydrates from data-* on cards)
+============================================================ */
+
 /**
  * Media Detail Modal
  * - Binds click/keyboard to [data-media-card] triggers
- * - Hydrates the Bootstrap modal fields from data-* attributes
- * - Supports optional video playback (mp4 or embed URL)
+ * - Hydrates modal fields from trigger dataset
+ * - Supports optional video playback:
+ *   - mp4 -> <video controls>
+ *   - embed URL -> <iframe>
  */
 const initMediaModals = () => {
   const modalEl = document.getElementById("mediaDetailModal");
-  if (!modalEl) return;
+  if (!modalEl || !window.bootstrap?.Modal) return;
 
-  // Bootstrap availability guard
-  if (!window.bootstrap?.Modal) return;
-
-  // Cache targets (defensive)
+  // Cache modal targets (defensive: targets may not exist on some pages)
   const titleEl = modalEl.querySelector("[data-modal-title-target]");
-  const descriptionEl = modalEl.querySelector("[data-modal-description-target]");
+  const descEl = modalEl.querySelector("[data-modal-description-target]");
   const badgeEl = modalEl.querySelector("[data-modal-badge-target]");
-  const timestampEl = modalEl.querySelector("[data-modal-timestamp-target]");
+  const timeEl = modalEl.querySelector("[data-modal-timestamp-target]");
   const sourceEl = modalEl.querySelector("[data-modal-source-target]");
   const imageEl = modalEl.querySelector("[data-modal-image-target]");
-
-  // Video targets (we will inject a video player)
   const videoMount = modalEl.querySelector("[data-modal-video-mount]");
 
+  // Reasonable fallbacks
   const defaults = {
     title: "أرشيف الوسائط",
     description: "مادة مختارة ضمن توثيق بصري وسمعي.",
@@ -180,38 +248,43 @@ const initMediaModals = () => {
     image: "assets/img/articles/thumb1.png",
   };
 
-  // Create a single Bootstrap modal instance (recommended)
+  // Single instance (recommended by Bootstrap)
   const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalEl);
 
   /**
-   * Renders video player into the modal.
-   * Supports:
-   * - MP4: <video controls>
-   * - Embed URL: <iframe>
+   * Clears any mounted video content (prevents audio continuing after close).
+   */
+  const clearVideo = () => {
+    if (videoMount) videoMount.innerHTML = "";
+  };
+
+  /**
+   * Renders a video player into the modal.
+   * @param {string} videoUrl
+   * @param {string} posterUrl
    */
   const renderVideo = (videoUrl, posterUrl) => {
     if (!videoMount) return;
 
-    // Clear previous content
-    videoMount.innerHTML = "";
-
-    // If no video provided: render nothing (keep the modal clean)
+    clearVideo();
     if (!videoUrl) return;
 
-    const isEmbed = /youtube\.com\/embed|player\.vimeo\.com|https?:\/\//i.test(videoUrl) && !/\.mp4(\?|$)/i.test(videoUrl);
+    const isMp4 = /\.mp4(\?|$)/i.test(videoUrl);
+    const isEmbed =
+      /youtube\.com\/embed|player\.vimeo\.com|https?:\/\//i.test(videoUrl) && !isMp4;
 
     if (isEmbed) {
       const iframe = document.createElement("iframe");
       iframe.src = videoUrl;
-      iframe.title = "مشغل الفيديو";
+      iframe.title = "Video player";
+      iframe.className = "c-modal__video-frame";
       iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
       iframe.setAttribute("allowfullscreen", "true");
-      iframe.className = "c-modal__video-frame";
       videoMount.appendChild(iframe);
       return;
     }
 
-    // Default: mp4 file
+    // Default: mp4
     const video = document.createElement("video");
     video.className = "c-modal__video-player";
     video.controls = true;
@@ -227,159 +300,141 @@ const initMediaModals = () => {
   };
 
   /**
-   * Updates modal UI from trigger dataset and opens it.
+   * Hydrates modal UI from trigger dataset and opens it.
+   * @param {DOMStringMap} dataset
    */
   const updateModal = (dataset) => {
-    if (titleEl) titleEl.textContent = dataset.modalTitle || defaults.title;
-    if (descriptionEl) descriptionEl.textContent = dataset.modalDescription || defaults.description;
+    const title = dataset.modalTitle || defaults.title;
+
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) descEl.textContent = dataset.modalDescription || defaults.description;
     if (badgeEl) badgeEl.textContent = dataset.modalBadge || defaults.badge;
-    if (timestampEl) timestampEl.textContent = dataset.modalTimestamp || defaults.timestamp;
+    if (timeEl) timeEl.textContent = dataset.modalTimestamp || defaults.timestamp;
     if (sourceEl) sourceEl.textContent = dataset.modalSource || defaults.source;
 
     if (imageEl) {
       const img = dataset.modalImage || defaults.image;
       imageEl.src = img;
-      imageEl.alt = dataset.modalTitle || defaults.title;
+      imageEl.alt = title;
     }
 
-    // Inject video if provided
     renderVideo(dataset.modalVideo, dataset.modalImage);
-
-    // Open modal
     bsModal.show();
   };
 
-  /**
-   * Stop any playing media when the modal closes.
-   */
-  modalEl.addEventListener("hidden.bs.modal", () => {
-    if (videoMount) videoMount.innerHTML = "";
-  });
+  // Cleanup on close
+  modalEl.addEventListener("hidden.bs.modal", clearVideo);
 
   // Bind triggers
   document.querySelectorAll("[data-media-card]").forEach((trigger) => {
-    const handle = (event) => {
-      if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
-      if (event.type === "keydown") event.preventDefault();
-      updateModal(trigger.dataset);
+    const openFromTrigger = (event) => {
+      handleActivation(event, () => updateModal(trigger.dataset));
     };
 
-    trigger.addEventListener("click", handle);
-    if (trigger.getAttribute("role") === "button") trigger.addEventListener("keydown", handle);
+    trigger.addEventListener("click", openFromTrigger);
+
+    // Only add keyboard if it behaves like a button
+    if (trigger.getAttribute("role") === "button") {
+      trigger.addEventListener("keydown", openFromTrigger);
+    }
   });
 };
 
+/* ============================================================
+   6) Collection Navigation (delegated)
+============================================================ */
+
 /**
- * Enables "clickable cards" navigation inside the collection grid container.
+ * Enables "clickable cards" navigation inside .c-collection-grid using event delegation.
  * Expected:
  * - Container: .c-collection-grid
- * - Click targets: [data-collection-link] with a URL value
- *
- * Also supports keyboard activation (Enter/Space) when focused.
+ * - Items: [data-collection-link="url"]
  */
 const initCollectionNavigation = () => {
   const container = document.querySelector(".c-collection-grid");
   if (!container) return;
 
-  /**
-   * Navigates to a provided URL string.
-   * @param {string} link - Destination URL.
-   */
-  const navigate = (link) => {
-    if (!link) return;
-    window.location.href = link;
+  const navigate = (url) => {
+    if (!url) return;
+    window.location.href = url;
   };
 
-  /**
-   * Handles pointer click navigation from a delegated container listener.
-   */
-  const handleClick = (event) => {
+  container.addEventListener("click", (event) => {
     const card = event.target.closest("[data-collection-link]");
     if (!card) return;
 
-    // Prevent unexpected default behavior (e.g., if nested <a> tags exist).
     event.preventDefault();
     navigate(card.dataset.collectionLink);
-  };
+  });
 
-  /**
-   * Handles keyboard navigation for Enter/Space on focused elements.
-   */
-  const handleKeydown = (event) => {
-    if (!["Enter", " "].includes(event.key)) return;
+  container.addEventListener("keydown", (event) => {
+    if (!ACTIVATION_KEYS.includes(event.key)) return;
 
     const card = event.target.closest("[data-collection-link]");
     if (!card) return;
 
     event.preventDefault();
     navigate(card.dataset.collectionLink);
-  };
-
-  // Delegated events keep listeners minimal and resilient to DOM changes.
-  container.addEventListener("click", handleClick);
-  container.addEventListener("keydown", handleKeydown);
+  });
 };
 
+/* ============================================================
+   7) Header Scroll State (sticky UI)
+============================================================ */
+
 /**
- * Adds a scrolled state class to the header when the page is scrolled.
+ * Adds `c-header--scrolled` to .c-header after a small scroll offset.
  * Useful for sticky headers (shadow/background changes).
  */
 const initHeaderScrollState = () => {
   const header = document.querySelector(".c-header");
   if (!header) return;
 
-  /**
-   * Toggles the header scrolled class based on scroll position.
-   */
-  const toggleShadow = () => {
+  const update = () => {
     header.classList.toggle("c-header--scrolled", window.scrollY > 10);
   };
 
-  // Passive scroll listener for better scrolling performance.
-  window.addEventListener("scroll", toggleShadow, { passive: true });
-
-  // Apply initial state on load.
-  toggleShadow();
-};
-// Theme toggle helpers and preference persistence
-const themeStorageKey = "salehThemePreference";
-const themePrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-const safeReadTheme = () => {
-  try {
-    return localStorage.getItem(themeStorageKey);
-  } catch {
-    return null;
-  }
+  window.addEventListener("scroll", update, { passive: true });
+  update();
 };
 
-const safeWriteTheme = (value) => {
-  try {
-    if (value) localStorage.setItem(themeStorageKey, value);
-    else localStorage.removeItem(themeStorageKey);
-  } catch {
-    /* ignore storage errors */
-  }
-};
+/* ============================================================
+   8) Theme Toggle (light/dark + OS preference + persistence)
+============================================================ */
 
+const THEME_STORAGE_KEY = "salehThemePreference";
+const themePrefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+/**
+ * Updates the theme toggle UI (icon + aria).
+ * @param {boolean} isDark
+ */
 const updateThemeToggleVisual = (isDark) => {
   const toggle = document.querySelector("[data-theme-toggle]");
   if (!toggle) return;
+
   toggle.setAttribute("aria-pressed", String(isDark));
   toggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
 
   const icon = toggle.querySelector("[data-theme-icon]");
   if (!icon) return;
+
   icon.classList.toggle("fa-sun", isDark);
   icon.classList.toggle("fa-moon", !isDark);
 };
 
+/**
+ * Applies theme to <html> and <body>.
+ * @param {"light"|"dark"} variant
+ * @param {{persist?: boolean}} options
+ */
 const applyColorTheme = (variant, { persist = false } = {}) => {
   const root = document.documentElement;
   const body = document.body;
   if (!root || !body) return;
 
   const isDark = variant === "dark";
+
   if (isDark) {
     root.setAttribute("data-theme", "dark");
     body.classList.add("is-dark");
@@ -389,15 +444,21 @@ const applyColorTheme = (variant, { persist = false } = {}) => {
   }
 
   updateThemeToggleVisual(isDark);
-  if (persist) safeWriteTheme(variant);
+  if (persist) safeStorageSet(THEME_STORAGE_KEY, variant);
 };
 
+/**
+ * If user didn't explicitly choose a theme, follow OS theme changes.
+ * @param {MediaQueryListEvent} event
+ */
 const handleSystemThemeChange = (event) => {
-  if (safeReadTheme()) return;
-  const next = event.matches ? "dark" : "light";
-  applyColorTheme(next);
+  if (safeStorageGet(THEME_STORAGE_KEY)) return;
+  applyColorTheme(event.matches ? "dark" : "light");
 };
 
+/**
+ * Initializes theme toggle button.
+ */
 const initThemeToggle = () => {
   const toggle = document.querySelector("[data-theme-toggle]");
   if (!toggle) return;
@@ -409,58 +470,103 @@ const initThemeToggle = () => {
   });
 };
 
-const storedTheme = safeReadTheme();
-const initialTheme = storedTheme || (themePrefersDark.matches ? "dark" : "light");
-applyColorTheme(initialTheme);
-
-if (themePrefersDark.addEventListener) {
-  themePrefersDark.addEventListener("change", handleSystemThemeChange);
-} else if (themePrefersDark.addListener) {
-  themePrefersDark.addListener(handleSystemThemeChange);
-}
 /**
- * Makes collection cards behave like links.
- * Uses data-collection-link attribute.
+ * Boot theme early (before user interactions).
+ * - Prefer stored theme if exists
+ * - Otherwise follow OS preference
+ */
+const bootTheme = () => {
+  const stored = safeStorageGet(THEME_STORAGE_KEY);
+  const initial = stored || (themePrefersDark?.matches ? "dark" : "light");
+
+  applyColorTheme(initial);
+
+  // Listen to OS changes (modern + legacy)
+  if (themePrefersDark?.addEventListener) {
+    themePrefersDark.addEventListener("change", handleSystemThemeChange);
+  } else if (themePrefersDark?.addListener) {
+    themePrefersDark.addListener(handleSystemThemeChange);
+  }
+};
+
+/* ============================================================
+   9) Collection Cards (direct binding) — OPTIONAL
+   Note: if you use initCollectionNavigation (delegated) you may not need this.
+============================================================ */
+
+/**
+ * Makes elements with [data-collection-link] behave like links.
+ * Use this only if you don't have a delegated container approach.
  */
 const initCollectionCards = () => {
   document.querySelectorAll("[data-collection-link]").forEach((card) => {
     const href = card.getAttribute("data-collection-link");
     if (!href) return;
 
-    const go = (e) => {
-      if (e.type === "keydown" && !["Enter", " "].includes(e.key)) return;
-      if (e.type === "keydown") e.preventDefault();
-      window.location.href = href;
+    const go = (event) => {
+      handleActivation(event, () => {
+        window.location.href = href;
+      });
     };
 
     card.addEventListener("click", go);
     card.addEventListener("keydown", go);
   });
 };
+
+/* ============================================================
+   10) Milestone Cards (click card body -> open inner media trigger)
+============================================================ */
+
 /**
- * Makes milestone cards open the modal when clicking on the card body,
- * while keeping the button as the primary call-to-action.
+ * Makes milestone cards open a nested [data-media-card] trigger on body click.
+ * - Keeps buttons/links inside working normally.
  */
 const initMilestoneCards = () => {
   document.querySelectorAll(".c-milestone").forEach((card) => {
     const trigger = card.querySelector("[data-media-card]");
     if (!trigger) return;
 
-    const open = (e) => {
-      // Ignore clicks on links/buttons inside
+    card.addEventListener("click", (e) => {
+      // Ignore clicks on interactive elements
       const isInteractive = e.target.closest("button, a, [data-media-card]");
       if (isInteractive) return;
-      trigger.click();
-    };
 
-    card.addEventListener("click", open);
+      trigger.click();
+    });
   });
 };
+
+/* ============================================================
+   11) Persona Flip Cards (front/back)
+============================================================ */
+
+/**
+ * Enables flip interaction for persona cards.
+ * Requirements:
+ * - Root: [data-persona-flip]
+ * - Buttons: [data-flip-to="back"] / [data-flip-to="front"]
+ *
+ * Behavior:
+ * - Click on non-interactive area toggles flip
+ * - Pauses media when returning to front
+ * - Adds tabindex="0" for keyboard activation
+ */
 const initPersonaFlip = () => {
   document.querySelectorAll("[data-persona-flip]").forEach((card) => {
+    const pauseMedia = () => {
+      card.querySelectorAll("video, audio").forEach((m) => {
+        try {
+          m.pause();
+        } catch {
+          /* ignore */
+        }
+      });
+    };
+
     const toFront = () => {
       card.classList.remove("is-flipped");
-      card.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
+      pauseMedia();
     };
 
     const toBack = () => {
@@ -476,43 +582,71 @@ const initPersonaFlip = () => {
       });
     });
 
-    // Allow clicking the card (outside interactive controls) to toggle flip
     const toggleFlip = () => {
       card.classList.toggle("is-flipped");
-      if (!card.classList.contains("is-flipped")) {
-        // When returning to front, pause any media inside
-        card.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
-      }
+      if (!card.classList.contains("is-flipped")) pauseMedia();
     };
 
     card.addEventListener("click", (e) => {
-      // Ignore clicks on interactive child elements (buttons, links, media controls, tabs)
-      const isInteractive = e.target.closest("button, a, [data-flip-to], [data-persona-media], .js-plyr, video, audio");
+      // Ignore interactive children (buttons, links, media controls)
+      const isInteractive = e.target.closest(
+        "button, a, [data-flip-to], [data-persona-media], .js-plyr, video, audio"
+      );
       if (isInteractive) return;
+
       toggleFlip();
     });
 
-    // Keyboard activation when the card itself is focused (Enter / Space)
+    // Keyboard activation when card itself is focused
     card.addEventListener("keydown", (e) => {
-      if (!["Enter", " "].includes(e.key)) return;
-      // Only toggle when the card element is the active/focused element
       if (document.activeElement !== card) return;
-      e.preventDefault();
-      toggleFlip();
+      handleActivation(e, toggleFlip);
     });
 
-    // Click mode only (no hover)
+    // Click mode only
     card.setAttribute("data-flip-mode", "click");
     if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
   });
 };
 
+/* ============================================================
+   12) Persona Media Tabs (inside persona back face)
+============================================================ */
+
+/**
+ * Tabs for persona media panels.
+ * Requirements:
+ * - Tabs container: [data-persona-media]
+ * - Tabs: [data-persona-tab="key"]
+ * - Panels: [data-persona-panel="key"]
+ */
 const initPersonaMediaTabs = () => {
   document.querySelectorAll("[data-persona-media]").forEach((root) => {
-    const tabs = root.querySelectorAll("[data-persona-tab]");
-    const panels = root.closest(".c-persona__back")?.querySelectorAll("[data-persona-panel]") || root.parentElement.querySelectorAll("[data-persona-panel]");
+    const tabs = Array.from(root.querySelectorAll("[data-persona-tab]"));
+    const panels =
+      Array.from(root.closest(".c-persona__back")?.querySelectorAll("[data-persona-panel]") || []) ||
+      Array.from(root.parentElement?.querySelectorAll("[data-persona-panel]") || []);
+
     if (!tabs.length || !panels.length) return;
 
+    const pauseHiddenPanelMedia = () => {
+      panels.forEach((panel) => {
+        if (!panel.classList.contains("is-visible")) {
+          panel.querySelectorAll("video, audio").forEach((m) => {
+            try {
+              m.pause();
+            } catch {
+              /* ignore */
+            }
+          });
+        }
+      });
+    };
+
+    /**
+     * Activate by key.
+     * @param {string} key
+     */
     const activate = (key) => {
       tabs.forEach((btn) => {
         const active = btn.getAttribute("data-persona-tab") === key;
@@ -523,17 +657,34 @@ const initPersonaMediaTabs = () => {
       panels.forEach((panel) => {
         const show = panel.getAttribute("data-persona-panel") === key;
         panel.classList.toggle("is-visible", show);
-        if (!show) panel.querySelectorAll("video, audio").forEach((m) => { try { m.pause(); } catch { } });
       });
+
+      pauseHiddenPanelMedia();
     };
 
-    tabs.forEach((btn) => btn.addEventListener("click", () => activate(btn.getAttribute("data-persona-tab"))));
-    activate(root.querySelector("[data-persona-tab].is-active")?.getAttribute("data-persona-tab") || "video");
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => activate(btn.getAttribute("data-persona-tab")));
+    });
+
+    // Default: currently active tab, otherwise "video"
+    const initialKey =
+      root.querySelector("[data-persona-tab].is-active")?.getAttribute("data-persona-tab") || "video";
+
+    activate(initialKey);
   });
 };
 
+/* ============================================================
+   13) Plyr Players (optional)
+============================================================ */
+
+/**
+ * Initializes Plyr players for elements with .js-plyr.
+ * Optional: if Plyr is not loaded, nothing breaks.
+ */
 const initPlyrPlayers = () => {
   if (!window.Plyr) return;
+
   document.querySelectorAll(".js-plyr").forEach((el) => {
     // eslint-disable-next-line no-new
     new window.Plyr(el, {
@@ -542,24 +693,37 @@ const initPlyrPlayers = () => {
   });
 };
 
-/* =========================================
-  Hero Stats Counter
-  - Runs once when stats enter viewport
-  - Smooth easing
-  - Supports prefix/suffix
-========================================= */
+/* ============================================================
+   14) Hero Stats Counter (IntersectionObserver + easing)
+============================================================ */
 
+/**
+ * Hero Stats Counter
+ * - Runs once when stats enter viewport
+ * - Smooth easeOutCubic
+ * - Supports prefix/suffix via data attributes
+ *
+ * Markup:
+ * - Root: [data-stats]
+ * - Counter: .c-counter[data-count-to][data-prefix?][data-suffix?]
+ */
 const initHeroStatsCounter = () => {
   const root = document.querySelector("[data-stats]");
   if (!root) return;
 
-  const counters = root.querySelectorAll(".c-counter[data-count-to]");
+  const counters = Array.from(root.querySelectorAll(".c-counter[data-count-to]"));
   if (!counters.length) return;
 
-  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion =
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
 
   const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
+  /**
+   * Animates a single counter element.
+   * @param {HTMLElement} el
+   * @param {{duration?: number}} options
+   */
   const animateCounter = (el, { duration = 900 } = {}) => {
     const to = Number(el.getAttribute("data-count-to") || 0);
     const prefix = el.getAttribute("data-prefix") || "";
@@ -570,7 +734,7 @@ const initHeroStatsCounter = () => {
       return;
     }
 
-    const start = 0;
+    const from = 0;
     const startTime = performance.now();
 
     const tick = (now) => {
@@ -578,7 +742,7 @@ const initHeroStatsCounter = () => {
       const t = Math.min(1, elapsed / duration);
       const eased = easeOutCubic(t);
 
-      const value = Math.round(start + (to - start) * eased);
+      const value = Math.round(from + (to - from) * eased);
       el.textContent = `${prefix}${value}${suffix}`;
 
       if (t < 1) requestAnimationFrame(tick);
@@ -588,19 +752,19 @@ const initHeroStatsCounter = () => {
     requestAnimationFrame(tick);
   };
 
-  const run = () => {
+  const runAll = () => {
     counters.forEach((el, idx) => {
-      // Small stagger for premium feel
+      // Small stagger for a premium feel
       setTimeout(() => animateCounter(el, { duration: 900 }), idx * 120);
     });
   };
 
-  // Run once on enter viewport
+  // Run once when visible
   const obs = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        run();
+        runAll();
         obs.disconnect();
       });
     },
@@ -610,29 +774,35 @@ const initHeroStatsCounter = () => {
   obs.observe(root);
 };
 
-
-
+/* ============================================================
+   15) Main Bootstrap (DOM Ready)
+============================================================ */
 
 /**
- * Main bootstrap on DOM ready.
- * Keeps startup sequence explicit and easy to maintain.
+ * Boot sequence.
+ * Keep startup explicit and predictable.
  */
 document.addEventListener("DOMContentLoaded", () => {
+  // Theme should be applied early; still safe here for static pages.
+  bootTheme();
+
   setActiveNavLink();
   initTabs();
   initHeroCarousel();
   initMediaModals();
   initCollectionNavigation();
   initHeaderScrollState();
-  initCollectionCards();
+
+  // Optional/feature-specific inits
+  initCollectionCards(); // Remove if you're using delegated navigation only.
   initMilestoneCards();
   initThemeToggle();
+
   initPersonaFlip();
   initPersonaMediaTabs();
   initPlyrPlayers();
   initHeroStatsCounter();
-
 });
 
-// Expose helper for debugging or external triggers (use sparingly in production).
+// Expose helper for external triggers (use sparingly in production)
 window.modalHelper = modalHelper;

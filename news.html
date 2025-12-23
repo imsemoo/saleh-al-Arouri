@@ -487,43 +487,112 @@
 
     </main>
 
+   <!-- =========================================
+        Footer — Editorial / Archive (Upgraded)
+        Notes:
+        - 4 columns grid (Brand / Sections / Years / About)
+        - Optional "Archive strip" for status + CTA
+        - RTL-safe using logical properties
+      ========================================= -->
     <footer class="c-footer" role="contentinfo">
       <div class="container">
+
+        <!-- Archive strip (optional but recommended) -->
+        <div class="c-footer__strip" aria-label="ملخص الأرشيف">
+          <div class="c-footer__strip-left">
+            <span class="c-footer__status">
+              <span class="c-footer__dot" aria-hidden="true"></span>
+              أرشفة مستمرة
+            </span>
+
+            <span class="c-footer__update u-muted">
+              آخر تحديث: <strong>15 أبريل 2026</strong>
+            </span>
+          </div>
+
+          <div class="c-footer__strip-right">
+            <a class="c-footer__cta" href="media.html">
+              استعرض الوسائط
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="c-footer__cta c-footer__cta--ghost" href="timeline.html">
+              افتح الخط الزمني
+            </a>
+          </div>
+        </div>
 
         <div class="c-footer__grid">
 
           <!-- Brand -->
           <div class="c-footer__brand">
-            <a class="c-footer__logo" href="index.html">
-              <img src="assets/images/logo.png" alt="">
+            <a class="c-footer__logo" href="index.html" aria-label="العودة للرئيسية">
+              <img src="assets/images/logo.png" alt="SALEH-AL-AROURI Archive" loading="lazy">
             </a>
+
             <p class="c-footer__desc">
               أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
               في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد.
             </p>
+
+            <!-- Quick meta chips -->
+            <div class="c-footer__chips" aria-label="مفاتيح سريعة">
+              <a class="c-footer__chip" href="media.html#videos"><i class="fa-solid fa-video"></i> فيديو</a>
+              <a class="c-footer__chip" href="media.html#reels"><i class="fa-solid fa-mobile-screen"></i> ريلز</a>
+              <a class="c-footer__chip" href="media.html#audio"><i class="fa-solid fa-wave-square"></i> صوت</a>
+              <a class="c-footer__chip" href="media.html#photos"><i class="fa-regular fa-images"></i> صور</a>
+            </div>
           </div>
 
           <!-- Navigation -->
-          <nav class="c-footer__nav" aria-label="روابط الفوتر">
+          <nav class="c-footer__nav" aria-label="روابط الأرشيف">
             <h4 class="c-footer__title">الأقسام</h4>
             <ul class="c-footer__list">
               <li><a href="timeline.html">الخط الزمني</a></li>
               <li><a href="media.html">الوسائط</a></li>
               <li><a href="news.html">الأخبار</a></li>
               <li><a href="biography.html">السيرة</a></li>
+              <li><a href="about.html">من نحن</a></li>
+              <li><a href="contact.html">تواصل</a></li>
             </ul>
+          </nav>
+
+          <!-- Years / Decades -->
+          <nav class="c-footer__years" aria-label="التصنيف حسب السنوات">
+            <h4 class="c-footer__title">حسب السنوات</h4>
+
+            <!-- You can link to timeline anchors or media filters -->
+            <div class="c-footer__year-grid">
+              <a class="c-footer__year" href="timeline.html#1966">1966</a>
+              <a class="c-footer__year" href="timeline.html#1987">1987</a>
+              <a class="c-footer__year" href="timeline.html#1992">1992</a>
+              <a class="c-footer__year" href="timeline.html#2000">2000</a>
+              <a class="c-footer__year" href="timeline.html#2010">2010</a>
+              <a class="c-footer__year" href="timeline.html#2017">2017</a>
+              <a class="c-footer__year is-strong" href="timeline.html#2024">2024</a>
+            </div>
+
+            <p class="c-footer__hint u-muted">
+              تقدر تعتبرها “بوابات” للخط الزمني أو فلاتر للوسائط لاحقًا.
+            </p>
           </nav>
 
           <!-- Meta -->
           <div class="c-footer__meta">
             <h4 class="c-footer__title">عن الأرشيف</h4>
+
             <p class="c-footer__small">
               جميع المواد المعروضة لأغراض التوثيق والتحليل
               وتعتمد على مصادر مفتوحة أو منشورة سابقًا.
             </p>
 
+            <div class="c-footer__legal">
+              <a class="c-footer__legal-link" href="about.html">سياسة المصدر</a>
+              <span class="c-footer__legal-sep" aria-hidden="true">•</span>
+              <a class="c-footer__legal-link" href="news.html">بيانات رسمية</a>
+            </div>
+
             <p class="c-footer__copyright">
-              © 2026 SALEH-AL-AROURI Archive<br />
+              © 2026 SALEH-AL-AROURI Archive<br>
               جميع الحقوق محفوظة
             </p>
           </div>
@@ -532,19 +601,22 @@
 
         <!-- Bottom bar -->
         <div class="c-footer__bottom">
-          <span class="c-footer__tag">
-            Built as a living archive
-          </span>
+          <div class="c-footer__bottom-left">
+            <span class="c-footer__tag">Built as a living archive</span>
+            <span class="c-footer__sep" aria-hidden="true">—</span>
+            <span class="c-footer__mini u-muted">واجهة توثيقية قابلة للتحديث والتوسع</span>
+          </div>
 
-          <div class="c-footer__links">
+          <div class="c-footer__links" aria-label="روابط سريعة">
             <a href="about.html">من نحن</a>
-            <a href="news.html">بيانات رسمية</a>
+            <a href="timeline.html">الخط الزمني</a>
+            <a href="media.html">الوسائط</a>
           </div>
         </div>
 
       </div>
     </footer>
-
+    <!-- End Footer -->
   </div>
 
   <script src="assets/js/jquery-3.7.1.min.js"></script>
