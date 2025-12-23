@@ -4346,7 +4346,7 @@ html[data-theme="dark"] .c-theme-toggle {
 
 /* RTL */
 html[dir="rtl"] .c-select {
-  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-48);
+  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-32);
 }
 
 /* Hover */
@@ -5073,7 +5073,7 @@ body.is-dark .c-chip.is-active {
   color: var(--text-primary);
   border-radius: var(--radius-16);
   padding: 12px 14px;
-  min-width: 220px;
+  min-width: 160px;
 }
 
 /* Featured strip */

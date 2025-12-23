@@ -485,7 +485,48 @@
     display: grid;
     gap: var(--space-12);
     justify-items: stretch;
+    align-items: center;
   }
+
+  .c-newsroom__tools select {
+    min-width: 140px;
+  }
+
+  .c-newsroom__tools .c-newsroom__search {
+    width: 100%;
+    min-width: 300px;
+
+  }
+
+  @media (min-width: 768px) {
+    .c-newsroom__tools {
+      grid-auto-flow: column;
+      grid-template-columns: auto auto auto 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+  }
+
+  .c-newsroom__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .c-newsroom__date input[type="date"] {
+    padding: 8px 10px;
+    border-radius: var(--radius-12);
+    border: 1px solid var(--surface-border);
+    background: var(--surface-bg);
+    color: var(--text-primary);
+  }
+
+  .c-newsroom__category {
+    min-width: 160px;
+  }
+
+
+
 
   .c-newsroom__search {
     position: relative;
@@ -898,12 +939,39 @@
                 <input id="newsSearch" class="form-control c-input" type="search"
                   placeholder="ابحث بعنوان الخبر أو الوسم" />
               </div>
+              <div class="c-select-wrap">
+                <select id="newsCategory" class="c-select c-newsroom__category" aria-label="التصنيف">
+                  <option value="all">كل التصنيفات</option>
+                  <option value="statements">بيان</option>
+                  <option value="reports">تقارير</option>
+                  <option value="interviews">مقابلات</option>
+                  <option value="video">فيديو</option>
+                </select>
 
-              <select class="c-select" aria-label="ترتيب الأخبار">
-                <option>الأحدث</option>
-                <option>الأقدم</option>
-                <option>حسب العنوان</option>
-              </select>
+                <i class="fa-solid fa-chevron-down c-select__icon" aria-hidden="true"></i>
+              </div>
+
+
+              <div class="c-select-wrap">
+                <select class="c-select" aria-label="ترتيب الأخبار">
+                  <option>الأحدث</option>
+                  <option>الأقدم</option>
+                  <option>حسب العنوان</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down c-select__icon" aria-hidden="true"></i>
+              </div>
+              <div class="c-newsroom__date" aria-hidden="false">
+                <label class="visually-hidden" for="dateFrom">التاريخ من</label>
+                <input id="dateFrom" class="c-input" type="date" />
+                <label class="visually-hidden" for="dateTo">التاريخ إلى</label>
+                <input id="dateTo" class="c-input" type="date" />
+              </div>
+
+
+
+
+
             </div>
           </header>
 
