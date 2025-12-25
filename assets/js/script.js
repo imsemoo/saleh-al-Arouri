@@ -382,12 +382,16 @@ const initHeaderScrollState = () => {
 };
 
 /* ============================================================
-   8) Theme Toggle
+   8) Theme Toggle (Fixed: System Dark won't override Light)
 ============================================================ */
 
 const THEME_STORAGE_KEY = "salehThemePreference";
 const themePrefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
 
+/**
+ * Update toggle visuals (icon + aria)
+ * @param {boolean} isDark
+ */
 const updateThemeToggleVisual = (isDark) => {
   const toggle = document.querySelector("[data-theme-toggle]");
   if (!toggle) return;
@@ -402,28 +406,48 @@ const updateThemeToggleVisual = (isDark) => {
   icon.classList.toggle("fa-moon", !isDark);
 };
 
+/**
+ * Apply theme:
+ * - "dark"  => html[data-theme="dark"]
+ * - "light" => html[data-theme="light"]  (IMPORTANT: explicit!)
+ * - "system" => remove attribute (follow OS)
+ */
 const applyColorTheme = (variant, { persist = false } = {}) => {
   const root = document.documentElement;
   const body = document.body;
   if (!root || !body) return;
 
-  const isDark = variant === "dark";
+  let effective = variant;
 
-  if (isDark) {
-    root.setAttribute("data-theme", "dark");
-    body.classList.add("is-dark");
+  if (variant === "system") {
+    const systemIsDark = !!themePrefersDark?.matches;
+    effective = systemIsDark ? "dark" : "light";
+    root.removeAttribute("data-theme"); // allow CSS prefers-color-scheme if you use it
   } else {
-    root.removeAttribute("data-theme");
-    body.classList.remove("is-dark");
+    // IMPORTANT FIX:
+    // Set explicit "light" when light, do NOT remove attribute.
+    root.setAttribute("data-theme", variant);
   }
 
+  const isDark = effective === "dark";
+  body.classList.toggle("is-dark", isDark);
+
   updateThemeToggleVisual(isDark);
-  if (persist) safeStorageSet(THEME_STORAGE_KEY, variant);
+
+  if (persist) {
+    // store only "dark" | "light" | "system"
+    safeStorageSet(THEME_STORAGE_KEY, variant);
+  }
 };
 
-const handleSystemThemeChange = (event) => {
-  if (safeStorageGet(THEME_STORAGE_KEY)) return;
-  applyColorTheme(event.matches ? "dark" : "light");
+/**
+ * OS theme changes should only affect UI when user didn't pick manual theme,
+ * or explicitly set "system".
+ */
+const handleSystemThemeChange = () => {
+  const stored = safeStorageGet(THEME_STORAGE_KEY);
+  if (stored && stored !== "system") return; // user forced light/dark
+  applyColorTheme("system");
 };
 
 const initThemeToggle = () => {
@@ -431,19 +455,31 @@ const initThemeToggle = () => {
   if (!toggle) return;
 
   toggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    const next = current === "dark" ? "light" : "dark";
+    const stored = safeStorageGet(THEME_STORAGE_KEY);
+
+    // If user never chose => start from system then toggle to opposite
+    // But simplest UX: toggle between light/dark only.
+    // Determine current effective theme:
+    const isCurrentlyDark =
+      document.documentElement.getAttribute("data-theme") === "dark" ||
+      (document.documentElement.hasAttribute("data-theme") === false && !!themePrefersDark?.matches);
+
+    const next = isCurrentlyDark ? "light" : "dark";
     applyColorTheme(next, { persist: true });
   });
 };
 
 const bootTheme = () => {
-  const stored = safeStorageGet(THEME_STORAGE_KEY);
-  const initial = stored || (themePrefersDark?.matches ? "dark" : "light");
+  const stored = safeStorageGet(THEME_STORAGE_KEY); // "dark" | "light" | "system" | null
+  const initial = stored || "system";
+
   applyColorTheme(initial);
 
-  if (themePrefersDark?.addEventListener) themePrefersDark.addEventListener("change", handleSystemThemeChange);
-  else if (themePrefersDark?.addListener) themePrefersDark.addListener(handleSystemThemeChange);
+  if (themePrefersDark?.addEventListener) {
+    themePrefersDark.addEventListener("change", handleSystemThemeChange);
+  } else if (themePrefersDark?.addListener) {
+    themePrefersDark.addListener(handleSystemThemeChange);
+  }
 };
 
 /* ============================================================

@@ -117,8 +117,7 @@
 }
 
 /* Premium dark theme overrides */
-html[data-theme="dark"],
-body.is-dark {
+html[data-theme="dark"] {
   --color-neutral-950: #070d09;
   --color-neutral-900: #0b1410;
   --color-neutral-800: #0f1f17;
@@ -190,4 +189,25 @@ html[data-theme="dark"],
 body.is-dark {
   --plyr-audio-controls-background: rgba(11, 20, 16, 0.78);
   --plyr-video-controls-background: rgba(0, 0, 0, 0.65);
+}
+
+/* ============================================================
+   Custom Scrollbar — Base
+   Applies to: body + all scrollable containers
+============================================================ */
+
+:root {
+  /* Light theme defaults */
+  --scrollbar-size: 10px;
+
+  --scrollbar-track: #f2f3f5;
+  --scrollbar-thumb: #c9ccd3;
+  --scrollbar-thumb-hover: #b4b8c2;
+  --scrollbar-thumb-active: #9da2af;
+}
+
+:root {
+  --scrollbar-track: var(--color-surface-muted);
+  --scrollbar-thumb: var(--color-border-soft);
+  --scrollbar-thumb-hover: var(--color-border-strong);
 }
