@@ -12274,6 +12274,7 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:active {
 .c-photo-album__thumbs {
   margin-top: var(--space-12);
   display: grid;
+  justify-content: center;
   grid-auto-flow: column;
   grid-auto-columns: 86px;
   gap: var(--space-8);
