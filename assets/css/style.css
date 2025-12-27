@@ -135,7 +135,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-8);
   padding: var(--space-8) var(--space-16);
   min-height: 44px;
   border-radius: var(--radius-12);
@@ -1386,7 +1386,7 @@ body.is-dark .c-media-switch__btn.is-active {
 .c-media-counter {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-8);
   font-size: var(--type-small);
   color: var(--color-neutral-600);
 }
@@ -2473,7 +2473,7 @@ body.is-dark .c-qbtn.is-success {
   border: none;
   flex: 1;
   background: transparent;
-  padding: var(--space-6);
+  padding: var(--space-8);
   font-size: var(--type-body);
   color: var(--text-secondary);
 }
@@ -3326,7 +3326,6 @@ body.is-dark .c-qbtn.is-success {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: var(--space-6);
 }
 
 .c-counter {
@@ -4577,7 +4576,7 @@ html[data-theme="dark"] .c-theme-toggle {
   text-align: center;
 
   padding: 10px 12px;
-  border-radius: var(--radius-14);
+  border-radius: var(--radius-16);
   border: 1px solid rgba(15, 20, 15, 0.12);
   background: rgba(255, 255, 255, .04);
 
@@ -11712,7 +11711,7 @@ body.is-dark .c-toc a.is-active {
 ========================================================= */
 
 .c-reels-modal .modal-dialog {
-  max-width: var(--page-max-width);
+  max-width: 600px;
 }
 
 .c-reels-modal__inner {
@@ -11741,8 +11740,7 @@ body.is-dark .c-toc a.is-active {
 }
 
 .c-reels-modal__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+
   gap: var(--space-16);
   padding: var(--space-16);
   padding-top: var(--space-64);

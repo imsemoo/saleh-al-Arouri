@@ -320,7 +320,6 @@
 
               <div class="c-path__actions">
                 <a class="c-btn c-btn--primary" href="timeline.html">ابدأ من الخط الزمني</a>
-                <a class="c-btn c-btn--ghost" href="timeline.html#featured">محطات مختارة</a>
               </div>
             </article>
 
@@ -342,7 +341,6 @@
 
               <div class="c-path__actions">
                 <a class="c-btn c-btn--primary" href="media.html">افتح مركز الوسائط</a>
-                <a class="c-btn c-btn--ghost" href="media.html#audio">الصوتيات المختارة</a>
               </div>
             </article>
             <!-- Path 1 — News / Updates -->
@@ -364,7 +362,6 @@
 
               <div class="c-path__actions">
                 <a class="c-btn c-btn--primary" href="news.html">تابع الأخبار</a>
-                <a class="c-btn c-btn--ghost" href="news.html#highlights">أبرز العناوين</a>
               </div>
             </article>
 
@@ -1166,44 +1163,49 @@
           <div class="c-reels__grid" data-reels-grid>
 
             <!-- Featured reel -->
-            <article class="c-reel-card c-reel-card--featured" role="button" tabindex="0" data-reel-card
-              data-reel-id="r1" data-reel-title="ريل — قراءة المشهد" data-reel-meta="مواد متنوعة · أرشيف السوشيال"
-              data-reel-source="أرشيف السوشيال" data-reel-date="2023-08-01" data-reel-duration="01:12"
-              data-reel-poster="assets/images/articles/Vertical/1.jpg" data-reel-video="assets/images/videos/reel1.mp4">
+            <!-- Normal reel cards (repeat) -->
+            <article class="c-reel-card" role="button" tabindex="0" data-reel-card data-reel-id="r2"
+              data-reel-title="ريل — لقطة ميدانية" data-reel-meta="مواد متنوعة · أرشيف السوشيال"
+              data-reel-source="أرشيف السوشيال" data-reel-date="2022-05-10" data-reel-duration="00:39"
+              data-reel-poster="assets/images/articles/Vertical/2.jpg" data-reel-video="assets/images/videos/reel1.mp4">
 
               <div class="c-reel-card__media" aria-hidden="true">
-                <img src="assets/images/articles/Vertical/1.jpg" alt="" loading="lazy">
+                <img src="assets/images/articles/Vertical/2.jpg" alt="" loading="lazy">
                 <span class="c-reel-card__shade" aria-hidden="true"></span>
                 <div class="c-media-card__badge">
                   <span class="c-badge c-badge--reel ">
-                    <i class="fa-solid fa-video" aria-hidden="true"></i>
-                    ريل
+                    <i class="fa-solid fa-video"></i> ريل
                   </span>
                 </div>
-
-
-                <span class="c-reel-card__play" aria-hidden="true">
-                  <i class="fa-solid fa-play"></i>
-                </span>
-
-                <div class="c-reel-card__metaBar" aria-hidden="true">
-                  <span class="c-reel-card__metaItem">
-                    <i class="fa-regular fa-clock"></i>
-                    01:12
-                  </span>
-                  <span class="c-reel-card__metaItem">
-                    <i class="fa-regular fa-circle-check"></i>
-                    موثق
-                  </span>
-                </div>
+                <span class="c-reel-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
               </div>
 
               <div class="c-reel-card__content">
-                <h3 class="c-reel-card__title">ريل — قراءة المشهد</h3>
+                <h3 class="c-reel-card__title">ريل — لقطة ميدانية</h3>
                 <p class="c-reel-card__desc">مواد متنوعة · أرشيف السوشيال</p>
               </div>
             </article>
 
+
+            <article class="c-reel-card" role="button" tabindex="0" data-reel-card data-reel-id="r3"
+              data-reel-title="ريل — جملة مكثفة" data-reel-meta="مواد متنوعة · أرشيف السوشيال"
+              data-reel-source="أرشيف السوشيال" data-reel-date="2021-11-03" data-reel-duration="00:55"
+              data-reel-poster="assets/images/articles/Vertical/3.jpg" data-reel-video="assets/images/videos/reel1.mp4">
+
+              <div class="c-reel-card__media" aria-hidden="true">
+                <img src="assets/images/articles/Vertical/3.jpg" alt="" loading="lazy">
+                <span class="c-reel-card__shade" aria-hidden="true"></span>
+                <div class="c-media-card__badge">
+                  <span class="c-badge c-badge--reel "><i class="fa-solid fa-video"></i> ريل</span>
+                </div>
+                <span class="c-reel-card__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              </div>
+
+              <div class="c-reel-card__content">
+                <h3 class="c-reel-card__title">ريل — جملة مكثفة</h3>
+                <p class="c-reel-card__desc">مواد متنوعة · أرشيف السوشيال</p>
+              </div>
+            </article>
             <!-- Normal reel cards (repeat) -->
             <article class="c-reel-card" role="button" tabindex="0" data-reel-card data-reel-id="r2"
               data-reel-title="ريل — لقطة ميدانية" data-reel-meta="مواد متنوعة · أرشيف السوشيال"
@@ -1781,7 +1783,7 @@
           </section>
 
           <!-- Right: Details -->
-          <aside class="c-reels-side" aria-label="تفاصيل الريل">
+          <!-- <aside class="c-reels-side" aria-label="تفاصيل الريل">
             <header class="c-reels-side__head">
               <span class="c-reels-side__badge">
                 <i class="fa-solid fa-video" aria-hidden="true"></i>
@@ -1836,7 +1838,7 @@
               </section>
 
             </div>
-          </aside>
+          </aside> -->
 
         </div>
       </div>

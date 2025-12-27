@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <!-- =========================================
+    CONTACT US — SALEH-AL-AROURI Archive
+    Notes:
+    - Token-driven (light/dark) and RTL-safe
+    - Bootstrap RTL + existing tokens/style
+    - Accessible form + client-side validation + optional mailto fallback
+  ========================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>SALEH-AL-AROURI | تواصل معنا</title>
+  <meta name="description" content="تواصل مع فريق الأرشيف لإرسال مصادر، تصحيح معلومات، أو اقتراحات تطوير." />
+
+  <link rel="canonical" href="https://saleh-al-arouri.com/contact.html" />
+  <meta property="og:title" content="SALEH-AL-AROURI | تواصل معنا" />
+  <meta property="og:description" content="تواصل مع فريق الأرشيف لإرسال مصادر، تصحيح معلومات، أو اقتراحات تطوير." />
+  <meta property="og:image" content="assets/images/og/contact.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SALEH-AL-AROURI | تواصل معنا" />
+  <meta name="twitter:description" content="تواصل مع فريق الأرشيف لإرسال مصادر، تصحيح معلومات، أو اقتراحات تطوير." />
+  <meta name="author" content="SALEH-AL-AROURI" />
+  <meta name="theme-color" content="#09130c" />
+
+  <!-- Core CSS (match your project) -->
+  <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="preload" href="assets/js/script.js" as="script" />
+
+  <style>
+    /* =========================================================
+      CONTACT PAGE — Premium Editorial Layout
+      Goals:
+      - Clear hierarchy and trust signals
+      - Responsive grid + sticky meta panel
+      - Token-driven + RTL-safe
+    ========================================================= */
+
+    /* ---------- Page hero ---------- */
+    .c-contact-hero {
+      padding: var(--space-64) 0 var(--space-32);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .c-contact-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(900px 420px at 18% 18%, rgba(21, 88, 45, 0.10), transparent 60%),
+        radial-gradient(780px 360px at 82% 12%, rgba(199, 149, 42, 0.12), transparent 62%);
+      opacity: 0.95;
+    }
+
+    .c-contact-hero__inner {
+      position: relative;
+    }
+
+    .c-contact-hero__kicker {
+      font-family: "Barada";
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      color: var(--color-accent-dark);
+      font-size: var(--type-body);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .c-contact-hero__title {
+      margin: var(--space-12) 0 0;
+      font-family: var(--font-family-heading);
+      font-size: clamp(2rem, 2.4vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    .c-contact-hero__lede {
+      margin: var(--space-16) 0 0;
+      color: var(--text-muted);
+      line-height: 1.95;
+      max-width: 72ch;
+      font-size: 1.02rem;
+    }
+
+    .c-contact-hero__chips {
+      margin-top: var(--space-16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+    }
+
+    .c-contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      min-height: 40px;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      font-size: var(--type-small);
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(15, 20, 15, 0.06);
+      text-decoration: none;
+    }
+
+    .c-contact-chip i {
+      color: var(--color-primary);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-contact-chip {
+      background: rgba(11, 20, 16, 0.45);
+    }
+
+    /* ---------- Main layout ---------- */
+    .c-contact {
+      padding: var(--space-48) 0 var(--space-64);
+    }
+
+    .c-contact__grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: var(--space-24);
+      align-items: start;
+    }
+
+    @media (max-width: 991.98px) {
+      .c-contact__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- Cards ---------- */
+    .c-contact-card {
+      border-radius: var(--radius-20);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .c-contact-card__head {
+      padding: var(--space-16) var(--space-16) var(--space-12);
+      border-bottom: 1px solid rgba(15, 20, 15, 0.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-contact-card__head {
+      border-bottom-color: rgba(214, 169, 75, 0.14);
+    }
+
+    .c-contact-card__title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .c-contact-card__sub {
+      margin: var(--space-8) 0 0;
+      color: var(--text-muted);
+      line-height: 1.85;
+      max-width: 70ch;
+      font-size: var(--type-small);
+    }
+
+    .c-contact-card__body {
+      padding: var(--space-16);
+    }
+
+    /* ---------- Form ---------- */
+    .c-form {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .c-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .c-label {
+      font-size: var(--type-small);
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+
+    .c-hint {
+      margin: 0;
+      font-size: var(--type-small);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .c-input,
+    .c-select,
+    .c-textarea {
+      width: 100%;
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(15, 20, 15, 0.14);
+      background: rgba(255, 255, 255, 0.60);
+      color: var(--text-primary);
+      padding: 12px 12px;
+      outline: none;
+      transition: box-shadow var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
+      direction: rtl;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-input,
+    :is(html[data-theme="dark"], body.is-dark) .c-select,
+    :is(html[data-theme="dark"], body.is-dark) .c-textarea {
+      border-color: rgba(214, 169, 75, 0.18);
+      background: rgba(11, 20, 16, 0.40);
+    }
+
+    .c-input:focus,
+    .c-select:focus,
+    .c-textarea:focus {
+      border-color: rgba(199, 149, 42, 0.45);
+      box-shadow: var(--ring);
+      transform: translateY(-1px);
+    }
+
+    .c-textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.9;
+    }
+
+    .c-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+
+    @media (max-width: 575.98px) {
+      .c-field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Validation */
+    .c-error {
+      display: none;
+      font-size: var(--type-small);
+      color: #b42318;
+    }
+
+    .is-invalid .c-error {
+      display: block;
+    }
+
+    .is-invalid .c-input,
+    .is-invalid .c-select,
+    .is-invalid .c-textarea {
+      border-color: rgba(180, 35, 24, 0.55);
+      box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.14);
+    }
+
+    /* Form footer */
+    .c-form__footer {
+      margin-top: var(--space-8);
+      padding-top: var(--space-16);
+      border-top: 1px solid rgba(15, 20, 15, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-form__footer {
+      border-top-color: rgba(214, 169, 75, 0.14);
+    }
+
+    .c-form__privacy {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      font-size: var(--type-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .c-form__privacy i {
+      color: var(--color-accent);
+    }
+
+    .c-form__actions {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Side panel ---------- */
+    .c-contact-side {
+      position: sticky;
+      top: 92px;
+    }
+
+    @media (max-width: 991.98px) {
+      .c-contact-side {
+        position: static;
+      }
+    }
+
+    .c-side-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-12);
+    }
+
+    .c-side-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: var(--space-12);
+      align-items: start;
+
+      padding: var(--space-16);
+      border-radius: var(--radius-20);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-side-item {
+      border-color: rgba(214, 169, 75, 0.16);
+      background: rgba(11, 20, 16, 0.40);
+    }
+
+    .c-side-ico {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-16);
+      display: grid;
+      place-items: center;
+      background: rgba(21, 88, 45, 0.10);
+      border: 1px solid rgba(15, 20, 15, 0.10);
+      color: var(--color-primary);
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-side-ico {
+      border-color: rgba(214, 169, 75, 0.16);
+      background: rgba(35, 197, 94, 0.10);
+    }
+
+    .c-side-title {
+      margin: 0;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      font-size: 1.02rem;
+    }
+
+    .c-side-text {
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: var(--type-small);
+      line-height: 1.85;
+    }
+
+    .c-side-link {
+      margin-top: var(--space-8);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: var(--font-family-heading);
+      color: var(--text-primary);
+      padding: 10px 12px;
+      border-radius: var(--radius-16);
+      background: rgba(199, 149, 42, 0.12);
+      border: 1px solid rgba(199, 149, 42, 0.22);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .c-side-link:hover,
+    .c-side-link:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: var(--ring);
+      border-color: rgba(199, 149, 42, 0.34);
+      outline: none;
+    }
+
+    /* ---------- Success / alert ---------- */
+    .c-alert {
+      border-radius: var(--radius-16);
+      border: 1px solid rgba(21, 88, 45, 0.22);
+      background: rgba(21, 88, 45, 0.10);
+      padding: 12px 14px;
+      color: var(--text-primary);
+      display: none;
+      line-height: 1.8;
+    }
+
+    .c-alert.is-visible {
+      display: block;
+    }
+
+    :is(html[data-theme="dark"], body.is-dark) .c-alert {
+      border-color: rgba(214, 169, 75, 0.18);
+      background: rgba(35, 197, 94, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="c-page-shell">
+
+    <!-- =========================================
+      Header (match your existing header structure)
+    ========================================= -->
+    <header class="c-header">
+      <div class="container">
+        <div class="c-header__inner">
+          <div class="c-header__brand">
+            <a class="c-logo" href="index.html" aria-label="العودة للرئيسية">SALEH-AL-AROURI</a>
+          </div>
+
+          <nav class="c-nav" aria-label="روابط القسم الرئيسي">
+            <ul class="c-nav__list">
+              <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+              <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+              <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
+              <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+              <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+              <li><a class="c-nav__link" href="about.html">من نحن</a></li>
+              <li><a class="c-nav__link" href="contact.html">تواصل</a></li>
+            </ul>
+          </nav>
+
+          <!-- Theme Toggle Button -->
+          <button type="button" class="c-theme-toggle" data-theme-toggle aria-pressed="false"
+            title="Switch to dark mode">
+            <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
+          </button>
+
+          <div class="c-header__actions">
+            <button type="button" class="c-nav__icon" aria-label="بحث">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <a class="c-btn c-btn--primary d-none d-lg-inline-flex" href="contact.html"> تواصل معنا</a>
+          </div>
+
+          <button class="c-nav__toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+            aria-controls="offcanvasMenu" aria-label="فتح القائمة الرئيسية">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Offcanvas (same as your project) -->
+    <div class="offcanvas offcanvas-end c-offcanvas" tabindex="-1" id="offcanvasMenu"
+      aria-labelledby="offcanvasMenuLabel">
+      <div class="offcanvas-header c-offcanvas__header">
+        <div class="c-offcanvas__brand">
+          <span id="offcanvasMenuLabel" class="c-offcanvas__title">القائمة</span>
+          <a class="c-offcanvas__logo" href="index.html">SALEH-AL-AROURI</a>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="إغلاق القائمة"></button>
+      </div>
+
+      <div class="offcanvas-body c-offcanvas__body">
+        <div class="c-offcanvas__search">
+          <label class="visually-hidden" for="offcanvasSearch">بحث</label>
+          <input id="offcanvasSearch" type="search" class="form-control c-input" placeholder="ابحث داخل الأرشيف" />
+        </div>
+
+        <ul class="c-nav__list c-nav__list--stacked" aria-label="روابط التنقل">
+          <li><a class="c-nav__link" href="index.html">الرئيسية</a></li>
+          <li><a class="c-nav__link" href="media.html">الوسائط</a></li>
+          <li><a class="c-nav__link" href="timeline.html">الخط الزمني</a></li>
+          <li><a class="c-nav__link" href="biography.html">السيرة</a></li>
+          <li><a class="c-nav__link" href="news.html">الأخبار</a></li>
+          <li><a class="c-nav__link" href="about.html">من نحن</a></li>
+          <li><a class="c-nav__link active" href="contact.html">تواصل</a></li>
+        </ul>
+
+        <hr class="c-divider" />
+
+        <div class="c-offcanvas__actions">
+          <a class="c-btn c-btn--ghost w-100" href="about.html">تابع</a>
+          <a class="c-btn c-btn--primary w-100" href="media.html">مركز الوسائط</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+
+      <!-- =========================================
+        Contact Hero
+      ========================================= -->
+      <section class="u-section c-contact-hero" aria-label="مقدمة التواصل">
+        <div class="container">
+          <div class="c-contact-hero__inner">
+            <p class="c-contact-hero__kicker">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              تواصل موثق
+            </p>
+
+            <h1 class="c-contact-hero__title">تواصل معنا</h1>
+
+            <p class="c-contact-hero__lede">
+              إذا لديك مصدر موثوق أو تصحيح معلومة أو اقتراح تطوير للواجهة
+              ارسل لنا التفاصيل وسنراجعها ضمن سياق الأرشفة
+              نفضل الروابط المباشرة وذكر التاريخ والمصدر إن أمكن
+            </p>
+
+            <div class="c-contact-hero__chips" role="list" aria-label="طرق سريعة">
+              <a class="c-contact-chip" href="#contactForm" role="listitem">
+                <i class="fa-regular fa-envelope"></i>
+                نموذج المراسلة
+              </a>
+              <a class="c-contact-chip" href="media.html" role="listitem">
+                <i class="fa-solid fa-photo-film"></i>
+                مركز الوسائط
+              </a>
+              <a class="c-contact-chip" href="timeline.html" role="listitem">
+                <i class="fa-regular fa-clock"></i>
+                الخط الزمني
+              </a>
+              <a class="c-contact-chip" href="news.html" role="listitem">
+                <i class="fa-regular fa-file-lines"></i>
+                بيانات رسمية
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+        Contact Main
+      ========================================= -->
+      <section class="u-section c-contact" aria-label="محتوى التواصل">
+        <div class="container">
+
+          <div class="c-contact__grid">
+
+            <!-- Form card -->
+            <section class="c-contact-card" aria-label="نموذج التواصل">
+              <header class="c-contact-card__head">
+                <div>
+                  <h2 class="c-contact-card__title" id="contactForm">أرسل رسالة للأرشيف</h2>
+                  <p class="c-contact-card__sub">
+                    اكتب رسالتك بشكل مختصر وواضح
+                    لو الرسالة عن تصحيح معلومة اذكر التاريخ والمصدر والرابط
+                  </p>
+                </div>
+
+                <span class="c-contact-chip" aria-hidden="true">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  حماية البيانات
+                </span>
+              </header>
+
+              <div class="c-contact-card__body">
+
+                <!-- Success message -->
+                <div class="c-alert" data-contact-alert role="status" aria-live="polite"></div>
+
+                <form class="c-form" id="contactFormEl" novalidate>
+
+                  <div class="c-field-row">
+
+                    <div class="c-field" data-field>
+                      <label class="c-label" for="fullName">الاسم</label>
+                      <input class="c-input" id="fullName" name="fullName" type="text" autocomplete="name"
+                        placeholder="مثال: أحمد محمد" required minlength="2" />
+                      <p class="c-error">الاسم مطلوب (حرفين على الأقل)</p>
+                    </div>
+
+                    <div class="c-field" data-field>
+                      <label class="c-label" for="email">البريد الإلكتروني</label>
+                      <input class="c-input" id="email" name="email" type="email" autocomplete="email"
+                        placeholder="name@example.com" required />
+                      <p class="c-error">اكتب بريد صحيح</p>
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="c-field" data-field>
+                    <label class="c-label" for="referenceUrl">عنوان المصدر (اختياري لكن مفضل)</label>
+                    <input class="c-input" id="referenceUrl" name="referenceUrl" type="url"
+                      placeholder="https://example.com/article" />
+                    <p class="c-hint">ممكن ترفق أكثر من رابط داخل الرسالة أيضًا</p>
+                  </div>
+
+                  <div class="c-field" data-field>
+                    <label class="c-label" for="message">الرسالة</label>
+                    <textarea class="c-textarea" id="message" name="message" required minlength="20"
+                      placeholder="اكتب تفاصيل الرسالة.. اذكر التاريخ والمصدر والرابط إن أمكن"></textarea>
+                    <p class="c-error">الرسالة مطلوبة (20 حرف على الأقل)</p>
+                  </div>
+
+                  <div class="c-form__footer">
+                    <p class="c-form__privacy">
+                      <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                      لا نشارك بياناتك مع أي طرف ثالث
+                    </p>
+
+                    <div class="c-form__actions">
+                      <button type="submit" class="c-btn c-btn--primary">
+                        إرسال
+                      </button>
+
+
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </section>
+
+            <!-- Side info -->
+            <aside class="c-contact-side" aria-label="معلومات وتوجيهات">
+              <div class="c-contact-card">
+                <header class="c-contact-card__head">
+                  <div>
+                    <h3 class="c-contact-card__title">قبل الإرسال</h3>
+                    <p class="c-contact-card__sub">
+                      لتسريع المراجعة حاول تضمين أكبر قدر من المعلومات الموثوقة
+                    </p>
+                  </div>
+                </header>
+
+                <div class="c-contact-card__body">
+                  <ul class="c-side-list">
+
+                    <li class="c-side-item">
+                      <span class="c-side-ico" aria-hidden="true">
+                        <i class="fa-solid fa-link"></i>
+                      </span>
+                      <div>
+                        <p class="c-side-title">ارفق رابط المصدر</p>
+                        <p class="c-side-text">
+                          الروابط المباشرة للمادة أو للخبر تساعدنا على التحقق بسرعة.
+                        </p>
+                      </div>
+                    </li>
+
+                    <li class="c-side-item">
+                      <span class="c-side-ico" aria-hidden="true">
+                        <i class="fa-regular fa-calendar"></i>
+                      </span>
+                      <div>
+                        <p class="c-side-title">حدد التاريخ</p>
+                        <p class="c-side-text">
+                          اذكر تاريخ الحدث أو تاريخ النشر لو كان متاحًا لتثبيت السياق الزمني.
+                        </p>
+                      </div>
+                    </li>
+
+                    <li class="c-side-item">
+                      <span class="c-side-ico" aria-hidden="true">
+                        <i class="fa-solid fa-shield-halved"></i>
+                      </span>
+                      <div>
+                        <p class="c-side-title">خصوصية واحترام</p>
+                        <p class="c-side-text">
+                          رسائل الإساءة أو المحتوى غير المناسب سيتم تجاهله.
+                        </p>
+                      </div>
+                    </li>
+
+                  </ul>
+
+
+                </div>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =========================================
+      Footer (use your upgraded footer if already applied)
+    ========================================= -->
+    <footer class="c-footer" role="contentinfo">
+      <div class="container">
+
+        <!-- Archive strip (optional but recommended) -->
+        <div class="c-footer__strip" aria-label="ملخص الأرشيف">
+          <div class="c-footer__strip-left">
+            <span class="c-footer__status">
+              <span class="c-footer__dot" aria-hidden="true"></span>
+              أرشفة مستمرة
+            </span>
+
+            <span class="c-footer__update u-muted">
+              آخر تحديث: <strong>15 أبريل 2026</strong>
+            </span>
+          </div>
+
+          <div class="c-footer__strip-right">
+            <a class="c-footer__cta" href="media.html">
+              استعرض الوسائط
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="c-footer__cta c-footer__cta--ghost" href="timeline.html">
+              افتح الخط الزمني
+            </a>
+          </div>
+        </div>
+
+        <div class="c-footer__grid">
+
+          <!-- Brand -->
+          <div class="c-footer__brand">
+            <a class="c-footer__logo" href="index.html" aria-label="العودة للرئيسية">
+              <img src="assets/images/logo.png" alt="SALEH-AL-AROURI Archive" loading="lazy">
+            </a>
+
+            <p class="c-footer__desc">
+              أرشيف توثيقي مستقل يجمع الصورة والصوت والنص
+              في سياق واحد يحفظ الذاكرة ويمنع تشويه السرد.
+            </p>
+
+            <!-- Quick meta chips -->
+            <div class="c-footer__chips" aria-label="مفاتيح سريعة">
+              <a class="c-footer__chip" href="media.html#videos"><i class="fa-solid fa-video"></i> فيديو</a>
+              <a class="c-footer__chip" href="media.html#reels"><i class="fa-solid fa-mobile-screen"></i> ريلز</a>
+              <a class="c-footer__chip" href="media.html#audio"><i class="fa-solid fa-wave-square"></i> صوت</a>
+              <a class="c-footer__chip" href="media.html#photos"><i class="fa-regular fa-images"></i> صور</a>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="c-footer__nav" aria-label="روابط الأرشيف">
+            <h4 class="c-footer__title">الأقسام</h4>
+            <ul class="c-footer__list">
+              <li><a href="timeline.html">الخط الزمني</a></li>
+              <li><a href="media.html">الوسائط</a></li>
+              <li><a href="news.html">الأخبار</a></li>
+              <li><a href="about.html">من نحن</a></li>
+              <li><a href="contact.html">تواصل</a></li>
+            </ul>
+          </nav>
+
+          <!-- Years / Decades -->
+          <nav class="c-footer__years" aria-label="التصنيف حسب السنوات">
+            <h4 class="c-footer__title">حسب السنوات</h4>
+
+            <!-- You can link to timeline anchors or media filters -->
+            <div class="c-footer__year-grid">
+              <a class="c-footer__year" href="timeline.html#1966">1966</a>
+              <a class="c-footer__year" href="timeline.html#1987">1987</a>
+              <a class="c-footer__year" href="timeline.html#1992">1992</a>
+              <a class="c-footer__year" href="timeline.html#2000">2000</a>
+              <a class="c-footer__year" href="timeline.html#2010">2010</a>
+              <a class="c-footer__year" href="timeline.html#2017">2017</a>
+              <a class="c-footer__year is-strong" href="timeline.html#2024">2024</a>
+            </div>
+
+            <p class="c-footer__hint u-muted">
+              تقدر تعتبرها “بوابات” للخط الزمني أو فلاتر للوسائط لاحقًا.
+            </p>
+          </nav>
+
+          <!-- Meta -->
+          <div class="c-footer__meta">
+            <h4 class="c-footer__title">عن الأرشيف</h4>
+
+            <p class="c-footer__small">
+              جميع المواد المعروضة لأغراض التوثيق والتحليل
+              وتعتمد على مصادر مفتوحة أو منشورة سابقًا.
+            </p>
+
+            <div class="c-footer__legal">
+              <a class="c-footer__legal-link" href="about.html">سياسة المصدر</a>
+              <span class="c-footer__legal-sep" aria-hidden="true">•</span>
+              <a class="c-footer__legal-link" href="news.html">بيانات رسمية</a>
+            </div>
+
+            <p class="c-footer__copyright">
+              © 2026 SALEH-AL-AROURI Archive<br>
+              جميع الحقوق محفوظة
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="c-footer__bottom">
+          <div class="c-footer__bottom-left">
+            <span class="c-footer__tag">Built as a living archive</span>
+            <span class="c-footer__sep" aria-hidden="true">—</span>
+            <span class="c-footer__mini u-muted">واجهة توثيقية قابلة للتحديث والتوسع</span>
+          </div>
+
+          <div class="c-footer__links" aria-label="روابط سريعة">
+            <a href="about.html">من نحن</a>
+            <a href="timeline.html">الخط الزمني</a>
+            <a href="media.html">الوسائط</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js" defer></script>
+
+  <script>
+    /**
+     * ------------------------------------------------------------
+     * Contact Page (Client-side)
+     * ------------------------------------------------------------
+     * Notes:
+     * - This is UI-only (no backend).
+     * - Validates inputs and shows a success message.
+     * - Provides "mailto:" fallback for sending via email client.
+     */
+
+    (() => {
+      const form = document.getElementById("contactFormEl");
+      const alertBox = document.querySelector("[data-contact-alert]");
+      const mailtoBtn = document.getElementById("mailtoFallbackBtn");
+
+      // Change this to your real inbox when ready
+      const CONTACT_EMAIL = "archive@example.com";
+
+      if (!form) return;
+
+      const setFieldValidity = (fieldWrap, isValid) => {
+        if (!fieldWrap) return;
+        fieldWrap.classList.toggle("is-invalid", !isValid);
+      };
+
+      const getFieldWrap = (input) => input?.closest("[data-field]");
+
+      const validate = () => {
+        let ok = true;
+
+        const fullName = form.querySelector("#fullName");
+        const email = form.querySelector("#email");
+        const topic = form.querySelector("#topic");
+        const message = form.querySelector("#message");
+
+        // Full name
+        const nameValid = !!fullName.value.trim() && fullName.value.trim().length >= 2;
+        setFieldValidity(getFieldWrap(fullName), nameValid);
+        ok = ok && nameValid;
+
+        // Email
+        const emailValid = email.checkValidity();
+        setFieldValidity(getFieldWrap(email), emailValid);
+        ok = ok && emailValid;
+
+        // Topic
+        const topicValid = !!topic.value;
+        setFieldValidity(getFieldWrap(topic), topicValid);
+        ok = ok && topicValid;
+
+        // Message
+        const msgValid = !!message.value.trim() && message.value.trim().length >= 20;
+        setFieldValidity(getFieldWrap(message), msgValid);
+        ok = ok && msgValid;
+
+        return ok;
+      };
+
+      const showAlert = (text) => {
+        if (!alertBox) return;
+        alertBox.textContent = text;
+        alertBox.classList.add("is-visible");
+      };
+
+      const clearAlert = () => {
+        if (!alertBox) return;
+        alertBox.classList.remove("is-visible");
+        alertBox.textContent = "";
+      };
+
+      // Validate on input (progressive)
+      form.querySelectorAll("input, select, textarea").forEach((el) => {
+        el.addEventListener("input", () => {
+          // Only clear errors on input to reduce annoyance
+          const wrap = getFieldWrap(el);
+          if (wrap && wrap.classList.contains("is-invalid")) {
+            // Re-check current field only
+            setFieldValidity(wrap, el.checkValidity() && (el.id !== "message" || el.value.trim().length >= 20));
+          }
+          clearAlert();
+        });
+      });
+
+      // Submit (UI-only)
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        clearAlert();
+
+        const ok = validate();
+        if (!ok) {
+          showAlert("من فضلك راجع الحقول المطلوبة قبل الإرسال.");
+          return;
+        }
+
+        // Simulated success (replace with real POST later)
+        showAlert("تم استلام رسالتك بنجاح. شكرًا لمساهمتك في توثيق الأرشيف.");
+
+        // Optional: Reset after success
+        form.reset();
+      });
+
+      // Mailto fallback
+      if (mailtoBtn) {
+        mailtoBtn.addEventListener("click", () => {
+          const fullName = form.querySelector("#fullName")?.value?.trim() || "";
+          const email = form.querySelector("#email")?.value?.trim() || "";
+          const topic = form.querySelector("#topic")?.value || "other";
+          const relatedYear = form.querySelector("#relatedYear")?.value || "";
+          const referenceUrl = form.querySelector("#referenceUrl")?.value?.trim() || "";
+          const message = form.querySelector("#message")?.value?.trim() || "";
+
+          const subject = encodeURIComponent(`[Archive Contact] ${topic}${relatedYear ? " — " + relatedYear : ""}`);
+          const bodyLines = [
+            `Name: ${fullName}`,
+            `Email: ${email}`,
+            `Topic: ${topic}`,
+            `Related Year: ${relatedYear || "-"}`,
+            `Reference URL: ${referenceUrl || "-"}`,
+            "",
+            "Message:",
+            message || "-"
+          ];
+
+          const body = encodeURIComponent(bodyLines.join("\n"));
+          window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
