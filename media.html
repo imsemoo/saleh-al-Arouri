@@ -1166,6 +1166,10 @@
     (function () {
       const TYPES = ["video", "reel", "photo", "audio"];
 
+      function getGridItems(grid) {
+        return grid.querySelectorAll('[data-media-card],[data-reel-card],.c-audio');
+      }
+
       TYPES.forEach(type => {
         const grid = document.querySelector(`[data-grid="${type}"]`);
         const counter = document.querySelector(`[data-count="${type}"]`);
@@ -1173,10 +1177,21 @@
 
         if (!grid) return;
 
-        const cards = grid.querySelectorAll(`[data-media-card][data-media-type="${type}"]`);
+        let cards;
+        if (type === 'reel') {
+          cards = grid.querySelectorAll('[data-reel-card]');
+        } else if (type === 'audio') {
+          cards = grid.querySelectorAll('.c-audio');
+        } else {
+          cards = grid.querySelectorAll('[data-media-card][data-media-type="' + type + '"]');
+        }
+
         const count = cards.length;
 
-        if (counter) counter.textContent = count;
+        // Update the counter for all types (including audio)
+        if (counter) {
+          counter.textContent = count;
+        }
 
         if (empty) {
           empty.classList.toggle("u-hide", count !== 0);
@@ -1185,7 +1200,7 @@
 
       // Load-more: append one visual row of cards and disable the button
       function itemsPerRow(grid) {
-        const items = Array.from(grid.querySelectorAll('[data-media-card]'));
+        const items = Array.from(getGridItems(grid));
         if (!items.length) return 3;
         const firstTop = items[0].offsetTop;
         let perRow = 0;
@@ -1203,7 +1218,7 @@
           if (!grid) return;
 
           const perRow = itemsPerRow(grid);
-          const sourceItems = grid.querySelectorAll('[data-media-card]');
+          const sourceItems = getGridItems(grid);
           if (!sourceItems.length) return;
 
           // Clone first `perRow` items (wrap if fewer available)
